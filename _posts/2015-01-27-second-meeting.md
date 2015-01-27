@@ -8,11 +8,13 @@ categories: meetings
 
 # Houm.io
 
-Let's do it! Hylke and Jan will contact them after this meeting.
+Some team members are afraid that working together with Huom.io will cost a lot of time.
+
+Let's do it anyway! Hylke, Jan and Samuel think it won't take too much time. Hylke and Jan will contact the guys after the meeting.
 
 # Research Papers
 
-Hylke contacted some of hist friends in the Industrial Design department in Delft and found some research papers. It could be a good idea to try to contact the ID department of Aalto. Hylke and Jan will do this.
+Hylke contacted some of his friends in the Industrial Design department in Delft and received some research papers, but they're not super useful. It could be a good idea to try to contact the ID department of Aalto. Hylke and Jan will do this after the meeting.
 
 # More Ideas
 
@@ -20,15 +22,17 @@ Hylke contacted some of hist friends in the Industrial Design department in Delf
 * **Music Game**
 * **Public Spaces:**
   * Bus Stops
-  * Coffee Break rooms
+  * Coffee Break rooms - **Good idea**
 * **Quiz / Riddle**
 * **Tic Tac Toe** in the coffee room --- **AWESOME!**
 
 We're going with: **Games in the Coffee Room**
 
+Jan's brothers are in the field of Game Design, maybe they have more cool ideas.
+
 # Project Plan
 
-We will probably hear something about this tomorrow.
+We will hopefully hear something about this tomorrow.
 
 # Timeline
 
@@ -53,6 +57,6 @@ We will probably hear something about this tomorrow.
 
 # Tasks
 
-* Hylke and Jan will contact Huom.io
-* Hylke and Jan will contact the ID department.
-* Jan will ask his brothers for ideas.
+* Hylke and Jan contact Huom.io
+* Hylke and Jan contact the ID department.
+* Jan asks his brothers for ideas.
