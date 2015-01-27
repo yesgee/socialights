@@ -14,3 +14,4 @@ MobiLed is an Android app that controls LED lights.
 * [Jan van de Kerkhof](https://github.com/janvandekerkhof)
 * [Samuel Balcha](https://github.com/samuelbalcha)
 * [Sowmya Ravidas](https://github.com/sowmyaravidas)
+* *Tutor: Sakari Luukkainen*
