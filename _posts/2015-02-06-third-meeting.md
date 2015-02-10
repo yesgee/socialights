@@ -30,11 +30,10 @@ We will meet next Tuesday at 13:00, when Hylke will be back, to start discussing
 
 # Timeline
 
-* **Week 5 (26 Jan)**
-* **Course:** OpenStack lecture
-* **Team:** Second meeting (27 Jan, 13:00)
 * **Week 6 (2 Feb)**
 * **Team:** Third meeting (3 Feb, 13:00) *Unavailable: Hylke*
+* **Week 7 (9 Feb)**
+* **Team:** Fourth meeting (10 Feb, 13:00)
 * **Week 8 (16 Feb)**
 * **Deadline:** Project plan (22 Feb)
 * **Week 9 (23 Feb)**
