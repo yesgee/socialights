@@ -37,23 +37,23 @@ We will hopefully hear something about this tomorrow.
 # Timeline
 
 * **Week 5 (26 Jan)**
-* **Course:** OpenStack lecture
-* **Team:** Second meeting (27 Jan, 13:00)
+  * **Course:** OpenStack lecture
+  * **Team:** Second meeting (27 Jan, 13:00)
 * **Week 6 (2 Feb)**
-* **Team:** Third meeting (3 Feb, 13:00) *Unavailable: Hylke*
+  * **Team:** Third meeting (3 Feb, 13:00) *Unavailable: Hylke*
 * **Week 8 (16 Feb)**
-* **Deadline:** Project plan (22 Feb)
+  * **Deadline:** Project plan (22 Feb)
 * **Week 9 (23 Feb)**
-* **Course:** RACS programming clinic
+  * **Course:** RACS programming clinic
 * **Week 10 (2 Mar)**
-* **Course:** Android and OpenStack clinic
+  * **Course:** Android and OpenStack clinic
 * **Week 12 (16 Mar)**
-* **Course:** Mobile ecosystems lecture
+  * **Course:** Mobile ecosystems lecture
 * **Week 13 (23 Mar)**
-* **Course:** Startup information lecture
+  * **Course:** Startup information lecture
 * **Week 19 (4 May)**
-* **Course:** Project demonstrations
-* **Deadline:** Final report (6 May)
+  * **Course:** Project demonstrations
+  * **Deadline:** Final report (6 May)
 
 # Tasks
 
