@@ -38,6 +38,7 @@ Present the stakeholders of the project and list all group members along with th
 
 * Project Manager
 * Primary contact for **Development**
+* Primary contact for **Q42** and **Philips**
 * [@htdvisser](https://github.com/htdvisser)
 * [hylke.visser@aalto.fi](hylke.visser@aalto.fi)
 
@@ -45,6 +46,7 @@ Present the stakeholders of the project and list all group members along with th
 
 * Project Manager
 * Primary contact for **Reporting**
+* Primary contact for **Houm.io**
 * [@janvandekerkhof](https://github.com/janvandekerkhof)
 * [jan.vandekerkhof@aalto.fi](jan.vandekerkhof@aalto.fi)
 
@@ -97,31 +99,47 @@ We are going to:
 
 > Describe all planned work practices in a concrete but concise way. How the practice is used, what tasks/meetings/materials etc. are needed, who is responsible of what etc. In addition, list all the tools you plan to use, and describe the required development and test environments.
 
+## Communication
 
+**Gitter:** We use our [chatroom on Gitter](https://gitter.im/mobi-led/mobi-led) to communicate with the team.
 
-> Possible sub-topics (ask the tutor what are relevant for your project):
+**2-Daily standups:** During weeks when a lot of development is done, we plan to use 2-daily standups (either in a short meeting, on Google Hangouts or on Gitter) to keep the team up to date on every member's individual progress.
 
-> * Time tracking (is some tool used, how often reported, who creates tasks, ...)
+**Weekly meetings:** We use weekly meetings (every Tuesday) with the entire team. During these meetings we discuss problems we encounter, brainstorm about the project and define the project planning. Summaries of these meetings are posted on our [webpage](https://mobi-led.github.io/mobi-led/).
 
-* Issue tracker on Github
+**External contacts:** For external communication, we can be contacted on our email addresses (see above). We have a primary contact (or responsible team member) for different subjects, so external parties are in contact with the same person every time.
+
+**Webpage:** Our [webpage](https://mobi-led.github.io/mobi-led/) is used to post updates about the project.
+
+## Development
+
+**Github Issues:** Development tasks and bugs will be created on the [Issues system on Github](https://github.com/mobi-led/mobi-led/issues) and assigned to a team member. This team member is responsible for the completion of the task.
+
+**Git and Github:** We use [Git](http://git-scm.com/) for version control. Our repository is hosted on [Github](https://github.com/mobi-led/mobi-led).
+
+**Branching Model:** The [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/) branching model is used, which means that features are built in *feature-branches*, which are merged in the *develop* branch, which should only contain stable code. The *master* branch contains production code and is managed by the *lead developers* only. Different versions of the software are represented as *tags*.
+
+**Commits:** Commits should always have a commit message describing the changes and preferably also mention the related issues. The first line of the commit message should be max. 50 characters, extra information can be added by inserting an empty line after the first line, and Markdown can be used.
+
+**Synchronisation:** Developers should always try to keep their branches up-to-date with the *develop* branch by *rebase*-ing often. When multiple developers are working on the same branch, they are required to coordinate with each other to avoid conflicting changes.
+
+**Tests:** Every piece of code should be sufficiently tested. It is good practice to include both the functional code and the test cases for that source code in a commit.
+
+**Documentation:** Source should contain a sufficient amount of documentation to help other team members understand the code. For our Android source code, we use [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html).
+
+**Code Conventions:** Android Source code should conform to the [Android Code Style](http://source.android.com/source/code-style.html).
+
+**Code Reviews:** After completing a feature-branch, the assignee should create a *Pull Request* to the *develop* branch. Another developer is assigned to review this pull request. This developer has to review the source code, run the tests and then merge the feature into the *develop* branch.
+
+**Continuous Integration:** We use [Travis CI](https://travis-ci.org/) to continuously build and test our software.
+
+## Documentation and Reporting
 
 > * Documenting (documentation tools, document storage and delivery to stakeholders, document authors, document review, ...)
 
-* Inline documentation for code
 * Github Pages for meetings, general documentation and reporting
 
-> * Communication (How do you arrange optimal amount of communication and knowledge transfer between all stakeholders?)
-
-* Gitter for team communication (2-daily standups)
-* Weekly team meetings
-* Email for external communication
-* Github Pages for external communication
-
-> * Version control (which version management tool is used, what conventions to follow (check-out/check-in frequency, change log, tagging), which files to manage, ...)
-
-* Git
-* Github
-* Git Flow
+## Design
 
 > * Design (How architectural design and lower level design is done? Modeling tools used? Validation?)
 
@@ -133,10 +151,7 @@ Different for each system part:
 * Hue Bridge
 * Hue Lights
 
-> * Quality assurance (quality goals, QA practices, ...)
-
-* Code Reviews
-* Continuous Integration and Testing (Travis)
+## Tools and Environment
 
 > * Tools (Summary of all tools used. Mention version numbers and availability information, if relevant to the project. Description of all development and test environments that are needed; both software and hardware environments.)
 
