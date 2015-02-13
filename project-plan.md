@@ -4,7 +4,7 @@ title: Project Plan
 permalink: /project-plan/
 ---
 
-# Introduction
+## Introduction
 
 <!-- Give a brief overview of the system to be developed, motivation for its development, the environment where it will be used, and possibly the types of users for the system. -->
 
@@ -21,7 +21,7 @@ Present the stakeholders of the project and list all group members along with th
 
 -->
 
-# Team, Partners and other Stakeholders
+## Team, Partners and other Stakeholders
 
 ### Gayathri Srinivaasan
 
@@ -76,11 +76,11 @@ Present the stakeholders of the project and list all group members along with th
 * [q42.com](http://q42.com/)
 * The company that builds the software for Philips Hue.
 
-# Goals and scope
+## Goals and scope
 
 > This section describes the goals of the project group and the individual learning goals of the group members. Define the scope of the project. You may also include the business goals of the system, and describe the benefits it provides to different stakeholders, including the users.
 
-## Goals
+<!-- Goals -->
 
 * Getting people together, getting to know new people
 * Encourage social interaction
@@ -88,18 +88,18 @@ Present the stakeholders of the project and list all group members along with th
 * Collaborative problem solving
 * Cool gadget
 
-## Scope
+<!-- Scope -->
 
 We are going to:
 
 * Build the Mobile App
 * Hook into Hue Cloud
 
-# Work practices and tools
+## Work practices and tools
 
 > Describe all planned work practices in a concrete but concise way. How the practice is used, what tasks/meetings/materials etc. are needed, who is responsible of what etc. In addition, list all the tools you plan to use, and describe the required development and test environments.
 
-## Communication
+### Communication
 
 **Gitter:** We use our [chatroom on Gitter](https://gitter.im/mobi-led/mobi-led) to communicate with the team.
 
@@ -111,7 +111,7 @@ We are going to:
 
 **Webpage:** Our [webpage](https://mobi-led.github.io/mobi-led/) is used to post updates about the project.
 
-## Development
+### Development
 
 **Github Issues:** Development tasks and bugs will be created on the [Issues system on Github](https://github.com/mobi-led/mobi-led/issues) and assigned to a team member. This team member is responsible for the completion of the task.
 
@@ -133,13 +133,13 @@ We are going to:
 
 **Continuous Integration:** We use [Travis CI](https://travis-ci.org/) to continuously build and test our software.
 
-## Documentation and Reporting
+### Documentation and Reporting
 
 > * Documenting (documentation tools, document storage and delivery to stakeholders, document authors, document review, ...)
 
 * Github Pages for meetings, general documentation and reporting
 
-## Design
+### Design
 
 > * Design (How architectural design and lower level design is done? Modeling tools used? Validation?)
 
@@ -151,7 +151,7 @@ Different for each system part:
 * Hue Bridge
 * Hue Lights
 
-## Tools and Environment
+### Tools and Environment
 
 > * Tools (Summary of all tools used. Mention version numbers and availability information, if relevant to the project. Description of all development and test environments that are needed; both software and hardware environments.)
 
@@ -171,7 +171,7 @@ Different for each system part:
 
 * Hue Cloud
 
-# Schedule and resources
+## Schedule and resources
 
 > Design an initial schedule for the project. Consider whether you want to split the project into iterations. Allocate 120 hours per each group member for the project (5 credits * 27 hours / credit - 15 hours for lectures, etc. = 120 hours). In addition, consider any material hardware or software resources used in the project.
 
@@ -197,13 +197,13 @@ Different for each system part:
   * Project demonstrations
   * Final report
 
-# System overview
+## System overview
 
 > This chapter is a high level description of the intended solution (= the system). It typically includes
 
 > * a graph (for example a use case diagram) that defines user groups and the main functions of the system
 > * short textual description of the system
 
-# Requirements
+## Requirements
 
 > Define the functional and non-functional requirements of the system.
