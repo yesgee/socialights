@@ -76,18 +76,13 @@ Our App will provide a quiz-based game that can be played with two teams in the 
 
 <!-- Goals -->
 
-* Getting people together, getting to know new people
-* Encourage social interaction
-* Strengthen social foundation of a company
-* Collaborative problem solving
-* Cool gadget
+### Goals
 
-<!-- Scope -->
+The main goal of this project is to build an application that is able to bring colleagues together within a company and make them get to know and understand each other. With *SociaLights*, we strive to enhance social interaction between people and, by doing so, strengthen the social foundation of the companies that adopt *SociaLights*. We believe that a cooperative and playful game in the coffee room will lead to the development of social ties and cooporative skills that contribute to future (collaborative) problem solving capabilities of the company.
+Our secondary goal is to make the game, combined with lights, into a *cool* gadget, such that young and vibrant companies will sooner be tempted to acquire the lights and the application.
 
-We are going to:
-
-* Build the Mobile App
-* Hook into Hue Cloud
+### Scope
+In the project we will limit ourselves to building the mobile game and making it work for deployment in **one coffee room**. We will only build the mobile (Android) application and we will depend on a third party to hook into the cloud software, which we will not be building (or adjusting) ourselves.  
 
 ## Work practices and tools
 
