@@ -58,8 +58,9 @@ Our App will provide a quiz-based game that can be played with two teams in the 
 
 ### Sakari Luukkainen
 
+[![Email](https://img.shields.io/badge/email-sakari.luukkainen@aalto.fi-blue.svg?style=flat-square)](mailto:sakari.luukkainen@aalto.fi)
+
 * Tutor
-* [sakari.luukkainen@aalto.fi](sakari.luukkainen@aalto.fi)
 
 ### Partner: Philips (not confirmed)
 
@@ -85,8 +86,6 @@ Our secondary goal is to make the game, combined with lights, into a *cool* gadg
 In the project we will limit ourselves to building the mobile game and making it work for deployment in **one coffee room**. We will only build the mobile (Android) application and we will depend on a third party to hook into the cloud software, which we will not be building (or adjusting) ourselves.  
 
 ## Work practices and tools
-
-> Describe all planned work practices in a concrete but concise way. How the practice is used, what tasks/meetings/materials etc. are needed, who is responsible of what etc. In addition, list all the tools you plan to use, and describe the required development and test environments.
 
 ### Communication
 
@@ -124,9 +123,7 @@ In the project we will limit ourselves to building the mobile game and making it
 
 ### Documentation and Reporting
 
-> * Documenting (documentation tools, document storage and delivery to stakeholders, document authors, document review, ...)
-
-* Github Pages for meetings, general documentation and reporting
+Next to the documentation of the source code, we often write other documentation and reports like this Project Plan. These documents are written using Markdown and posted on our [webpage](https://mobi-led.github.io/mobi-led/). If the document has to be delivered to some of our stakeholders, the document is converted to PDF and emailed to the stakeholders.
 
 ### Design
 
@@ -160,7 +157,7 @@ Different for each system part:
 
 * Hue Cloud
 
-## Schedule and resources
+## Schedule
 
 > Design an initial schedule for the project. Consider whether you want to split the project into iterations. Allocate 120 hours per each group member for the project (5 credits * 27 hours / credit - 15 hours for lectures, etc. = 120 hours). In addition, consider any material hardware or software resources used in the project.
 
@@ -185,6 +182,10 @@ Different for each system part:
 * **Week 19 (4 May)**
   * Project demonstrations
   * Final report
+
+## Resources
+
+
 
 ## System overview
 
