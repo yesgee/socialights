@@ -92,8 +92,6 @@ We are going to:
 
 ## Work practices and tools
 
-> Describe all planned work practices in a concrete but concise way. How the practice is used, what tasks/meetings/materials etc. are needed, who is responsible of what etc. In addition, list all the tools you plan to use, and describe the required development and test environments.
-
 ### Communication
 
 **Gitter:** We use our [chatroom on Gitter](https://gitter.im/mobi-led/mobi-led) to communicate with the team.
@@ -130,9 +128,7 @@ We are going to:
 
 ### Documentation and Reporting
 
-> * Documenting (documentation tools, document storage and delivery to stakeholders, document authors, document review, ...)
-
-* Github Pages for meetings, general documentation and reporting
+Next to the documentation of the source code, we often write other documentation and reports like this Project Plan. These documents are written using Markdown and posted on our [webpage](https://mobi-led.github.io/mobi-led/). If the document has to be delivered to some of our stakeholders, the document is converted to PDF and emailed to the stakeholders.
 
 ### Design
 
