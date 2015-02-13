@@ -6,61 +6,55 @@ permalink: /project-plan/
 
 ## Introduction
 
-<!-- Give a brief overview of the system to be developed, motivation for its development, the environment where it will be used, and possibly the types of users for the system. -->
-
 In large companies and organisations employees often don't know many of their colleagues except for their direct co-workers. During their breaks, they get a cup of coffee and return to their office. This leaves the coffee rooms empty and unattractive and doesn't lead to any social interaction between co-workers. We plan to build an application that makes these coffee rooms more attractive by enabling employees to interact with the room and with each other in a playful way. This will increase social interaction and collaboration between co-workers.
 
 Our App will provide a quiz-based game that can be played with two teams in the same coffee room, but also between two teams in two separate coffee rooms (on different floors or office locations, for example). Participants will have to collaborate with each other to find the answers to the questions and the lights in the coffee room will provide feedback for the game, inviting other people in the room to also participate.
-
-<!--
-
-Present the stakeholders of the project and list all group members along with their contact information. You may assign roles (such as project manager) to the group members and/or list the relevant interests or skills of the group members.
-
-* Companies / Organisations (Customers)
-* Employees (Users)
-
--->
 
 ## Team, Partners and other Stakeholders
 
 ### Gayathri Srinivaasan
 
-* [@yesgee](https://github.com/yesgee)
-* [gayathri.srinivaasan@aalto.fi](gayathri.srinivaasan@aalto.fi)
+[![Gitter](https://img.shields.io/badge/gitter-@yesgee-green.svg?style=flat-square)](https://gitter.im/yesgee)
+[![Email](https://img.shields.io/badge/email-gayathri.srinivaasan@aalto.fi-blue.svg?style=flat-square)](mailto:gayathri.srinivaasan@aalto.fi)
 
 ### Harika Satharasi
 
+[![Gitter](https://img.shields.io/badge/gitter-@harikasatharasi-green.svg?style=flat-square)](https://gitter.im/harikasatharasi)
+[![Email](https://img.shields.io/badge/email-harika.satharasi@aalto.fi-blue.svg?style=flat-square)](mailto:harika.satharasi@aalto.fi)
+
 * Primary contact for **Testing**
-* [@harikasatharasi](https://github.com/harikasatharasi)
-* [harika.satharasi@aalto.fi](harika.satharasi@aalto.fi)
 
 ### Hylke Visser
+
+[![Gitter](https://img.shields.io/badge/gitter-@htdvisser-green.svg?style=flat-square)](https://gitter.im/htdvisser)
+[![Email](https://img.shields.io/badge/email-hylke.visser@aalto.fi-blue.svg?style=flat-square)](mailto:hylke.visser@aalto.fi)
 
 * Project Manager
 * Primary contact for **Development**
 * Primary contact for **Q42** and **Philips**
-* [@htdvisser](https://github.com/htdvisser)
-* [hylke.visser@aalto.fi](hylke.visser@aalto.fi)
 
 ### Jan van de Kerkhof
+
+[![Gitter](https://img.shields.io/badge/gitter-@janvandekerkhof-green.svg?style=flat-square)](https://gitter.im/janvandekerkhof)
+[![Email](https://img.shields.io/badge/email-jan.vandekerkhof@aalto.fi-blue.svg?style=flat-square)](mailto:jan.vandekerkhof@aalto.fi)
 
 * Project Manager
 * Primary contact for **Reporting**
 * Primary contact for **Houm.io**
-* [@janvandekerkhof](https://github.com/janvandekerkhof)
-* [jan.vandekerkhof@aalto.fi](jan.vandekerkhof@aalto.fi)
 
 ### Samuel Balcha
 
+[![Gitter](https://img.shields.io/badge/gitter-@samuelbalcha-green.svg?style=flat-square)](https://gitter.im/samuelbalcha)
+[![Email](https://img.shields.io/badge/email-samuel.balcha@gmail.com-blue.svg?style=flat-square)](mailto:samuel.balcha@gmail.com)
+
 * Primary contact for **Documentation**
-* [@samuelbalcha](https://github.com/samuelbalcha)
-* [samuel.balcha@gmail.com](samuel.balcha@gmail.com)
 
 ### Sowmya Ravidas
 
+[![Gitter](https://img.shields.io/badge/gitter-@sowmyaravidas-green.svg?style=flat-square)](https://gitter.im/sowmyaravidas)
+[![Email](https://img.shields.io/badge/email-sowmya.ravidas@aalto.fi-blue.svg?style=flat-square)](mailto:sowmya.ravidas@aalto.fi)
+
 * Primary contact for **Design**
-* [@sowmyaravidas](https://github.com/sowmyaravidas)
-* [sowmya.ravidas@aalto.fi](sowmya.ravidas@aalto.fi)
 
 ### Sakari Luukkainen
 
