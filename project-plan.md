@@ -83,7 +83,8 @@ The main goal of this project is to build an application that is able to bring c
 Our secondary goal is to make the game, combined with lights, into a *cool* gadget, such that young and vibrant companies will sooner be tempted to acquire the lights and the application.
 
 ### Scope
-In the project we will limit ourselves to building the mobile game and making it work for deployment in **one coffee room**. We will only build the mobile (Android) application and we will depend on a third party to hook into the cloud software, which we will not be building (or adjusting) ourselves.  
+
+In the project we will limit ourselves to building the mobile game and making it work for deployment in **one coffee room**, with the possibility to expand to multiple rooms later. We will build the mobile (Android) application and a simple cloud-based game server. We will depend on a third party service (Hue Cloud) to communicate with the Hue Lights. In the project we will only implement the quiz game, but keep the possibility to add more game types later.
 
 ## Work practices and tools
 
