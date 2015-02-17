@@ -203,8 +203,63 @@ When a user enters a coffee room enabled with SociaLights, he can choose to:
 
 It is necessary to have at least two people in the game before it can start. A set of quiz questions is then fetched from the server and each team gets points based on the number of questions answered in a certain amount of time. Each of the two teams is represented by a color with the Hue lights, while the third light is used as a countdown timer for each question.
 
+## Interaction Details
 
+**Scenario 1:**
 
+1. Bob enters the coffee room.
+2. Bob's phone shows a notification: *This room is SociaLights-enabled. Play a game?*
+3. Bob dismisses the notification, gets coffee and goes back to work.
+
+**Scenario 2:**
+
+1. Alice enters the coffee room.
+2. Alice's phone shows a notification: *This room is SociaLights-enabled. Play a game?*
+3. Alice pushes the notification.
+4. The App shows the available games.
+5. Alice chooses "Pub Quiz".
+6. The App tells Alice to wait for another team to play against.
+
+**Scenario 3:**
+
+1. Fred enters the coffee room.
+2. Fred's phone shows a notification: *This room is SociaLights-enabled. Play "Pub Quiz" with Alice?*
+3. Fred pushes the notification.
+4. The App starts the game.
+
+**Scenario 4:**
+
+1. Charlie enters the coffee room.
+2. Charlie's phone shows a notification: *This room is SociaLights-enabled. Play "Pub Quiz" with Alice and Fred?*
+3. Charlie pushes the notification.
+4. The App shows the game lobby.
+5. Charlie joins Fred's team.
+6. The App shows Charlie the game.
+
+**Scenario 5:**
+
+1. The system shows a question.
+2. The timing-light is pulsing green.
+3. Alice and Fred try to find the right answer.
+4. The timing-light is pulsing faster and becomes orange.
+5. The timing-light turns red.
+6. Neither team gets points for answering the question.
+
+**Scenario 6:**
+
+1. The system shows a question.
+2. The timing-light is pulsing green.
+3. Alice and Fred try to find the right answer.
+4. Alice selects the correct answer.
+5. The lights change to her colour, the App shows that this was the correct answer, Alice has won this round.
+
+**Scenario 7:**
+
+1. The system shows a question.
+2. The timing-light is pulsing green.
+3. Alice and Fred try to find the right answer.
+4. Fred selects the wrong answer.
+5. The lights change to [...], the App shows the correct answer, Fred has lost this round.
 
 ## Requirements
 
