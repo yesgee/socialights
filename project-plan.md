@@ -73,10 +73,6 @@ Our App will provide a quiz-based game that can be played with two teams in the 
 
 ## Goals and scope
 
-> This section describes the goals of the project group and the individual learning goals of the group members. Define the scope of the project. You may also include the business goals of the system, and describe the benefits it provides to different stakeholders, including the users.
-
-<!-- Goals -->
-
 ### Goals
 
 The main goal of this project is to build an application that is able to bring colleagues together within a company and make them get to know and understand each other. With *SociaLights*, we strive to enhance social interaction between people and, by doing so, strengthen the social foundation of the companies that adopt *SociaLights*. We believe that a cooperative and playful game in the coffee room will lead to the development of social ties and cooporative skills that contribute to future (collaborative) problem solving capabilities of the company.
@@ -186,7 +182,11 @@ Different for each system part:
 
 ## Resources
 
-
+* Hue Lights
+* Hue Bridge
+* Hue Cloud API access
+* Server in the Cloud
+* Test device
 
 ## System overview
 
@@ -269,10 +269,22 @@ It is necessary to have at least two people in the game before it can start. A s
 
 **Making teams:** The app fetches the game configuration from the server and displays a *lobby* where players can choose their team. *in our project it is only possible to make teams within one coffee room, in future versions it could be possible to play against a team in another coffee room.* It is possible to change teams by pressing a **switch teams** button. When teams are unbalanced, the app shows a warning about this. Each team should have at least one member. If the last member of the team leaves, all other players see the *lobby* and have to change teams.
 
+**Starting the game:**
+
+**Quiz questions and answers:**
+
+**Timing Light:**
+
+**Team Light:**
+
 **Earning points:** Players earn points when their team correctly answers a question. The score is shown in the App and stored on the server.
+
+**End of the game:**
 
 **User accounts:** Upon installation, the app generates a user account. The access key for this account is stored on the phone, the user's information is stored on the server.
 
 ## Requirements
 
 > Define the functional and non-functional requirements of the system.
+
+See [Google Docks](https://docs.google.com/spreadsheets/d/1TlKp4EfiT8U_naFl1jRu_1kfopJC-fWiy7DMPm6gAjc/edit#gid=0).
