@@ -261,6 +261,18 @@ It is necessary to have at least two people in the game before it can start. A s
 4. Fred selects the wrong answer.
 5. The lights change to [...], the App shows the correct answer, Fred has lost this round.
 
+## Technical Details
+
+**Notification when entering the room:** The App recognises a Bluetooth LE Beacon which is deployed in the room and activates the notification. *not in project scope, could be implemented later.*
+
+**Available games list:** The app fetches the list of available games for this particular room from the server and displays them on the screen. *in our project we will only implement one game, with the possibility to add more game types later.*
+
+**Making teams:** The app fetches the game configuration from the server and displays a *lobby* where players can choose their team. *in our project it is only possible to make teams within one coffee room, in future versions it could be possible to play against a team in another coffee room.* It is possible to change teams by pressing a **switch teams** button. When teams are unbalanced, the app shows a warning about this. Each team should have at least one member. If the last member of the team leaves, all other players see the *lobby* and have to change teams.
+
+**Earning points:** Players earn points when their team correctly answers a question. The score is shown in the App and stored on the server.
+
+**User accounts:** Upon installation, the app generates a user account. The access key for this account is stored on the phone, the user's information is stored on the server.
+
 ## Requirements
 
 > Define the functional and non-functional requirements of the system.
