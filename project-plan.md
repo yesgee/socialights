@@ -190,22 +190,21 @@ Different for each system part:
 
 ## System overview
 
-> This chapter is a high level description of the intended solution (= the system). It typically includes
+The system consists of 3 major components:
 
-> * a graph (for example a use case diagram) that defines user groups and the main functions of the system
+* Hue lights & Hue Cloud
+* SociaLights Server (Cloud-based)
+* SociaLights Android application
 
- 
-**System description: **
+When a user enters a coffee room enabled with SociaLights, he can choose to:
 
-The system consists of 3 major components namely, the Android client, the Hue lights & Cloud and the Server. 
+* Start a new game and wait for a competing team member
+* Join an existing team
+
+It is necessary to have at least two people in the game before it can start. A set of quiz questions is then fetched from the server and each team gets points based on the number of questions answered in a certain amount of time. Each of the two teams is represented by a color with the Hue lights, while the third light is used as a countdown timer for each question.
 
 
-When a user enters a coffee room enabled with SociaLights, he can either 
 
- - Start a new game and wait for a competing team member or
- - Join an existing team. 
-
-It is necessary to have at least two people in the coffee room to start a game. A set of quiz questions are fetched from the server and each team gets points based on the number of questions answered in a certain amount of time. Each of the two teams in the room is represented by a color with the hue lights, while the third light is used as a countdown timer for each question. 
 
 ## Requirements
 
