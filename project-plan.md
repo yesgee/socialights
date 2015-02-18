@@ -285,31 +285,34 @@ It is necessary to have at least two people in the game before it can start. A s
 
 ## Requirements
 
-> Define the functional and non-functional requirements of the system.
+### Functional Requirements
 
-Some of the most important functional requirements are listed below. 
+Some of the most important functional requirements are listed below.
 
-- The system should send a notification to the user about the availability of the SociaLight game. 
-- User should be able to see the list of available games while inside the coffee room. 
-- User should be able to select and start the quiz game.
-- User can join to play the game by pressing a button.
-- User can leave the game by pressing a button.
-- Mobile app should allow user to chose the led color for his team.
-- LED lights should show different colors when a correct or wrong answer is submitted.
-- LED lights switch off when there is no user playing the game.
+* The system should send a notification to the user about the availability of the SociaLight game.
+* User should be able to see the list of available games while inside the coffee room.
+* User should be able to select and start the quiz game.
+* User can join to play the game by pressing a button.
+* User can leave the game by pressing a button.
+* Mobile app should allow user to chose the led color for his team.
+* LED lights should show different colors when a correct or wrong answer is submitted.
+* LED lights switch off when there is no user playing the game.
 
-Non-functional requirements are listed below.
+### Non-functional Requirements
 
-Interoperability
-- The supported OS for the mobile app is android. (minimum sdk version should be added).
+**Interoperability**
 
-Performance
-- The system should identify that a user has entered the room within 1 minute.
-- The system should send notification to the user within 1 minute.
-- The quiz game should start within 10 seconds after a user hits the play button.
+* The supported OS for the mobile app is android. (minimum sdk version should be added).
 
-Usability
-- The mobile app user interface is easy to understand.
-- The LED lights are lit in a manner that does not disturb people in the room. 
+**Performance**
 
-See [Google Docks](https://docs.google.com/spreadsheets/d/1TlKp4EfiT8U_naFl1jRu_1kfopJC-fWiy7DMPm6gAjc/edit#gid=0).
+* The system should identify that a user has entered the room within 1 minute.
+* The system should send notification to the user within 1 minute.
+* The quiz game should start within 10 seconds after a user hits the play button.
+
+**Usability**
+
+* The mobile app user interface is easy to understand.
+* The LED lights are lit in a manner that does not disturb people in the room.
+
+See [Google Docs](https://docs.google.com/spreadsheets/d/1TlKp4EfiT8U_naFl1jRu_1kfopJC-fWiy7DMPm6gAjc/edit#gid=0).
