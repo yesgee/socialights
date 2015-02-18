@@ -303,35 +303,58 @@ It is necessary to have at least two people in the game before it can start. A s
 
 ### Functional Requirements
 
-* The User can install the Application on his smartphone.
-* The User can configure his name in the Application.
-* The User can turn on/off notifications.
-* The Application sends a notification to the User about the availability of SociaLights.
-* The User can see the list of available games while inside the coffee room.
-* The User can select the quiz game.
-* The User can join the game by pressing a button.
-* The User can leave the game by pressing a button.
-* The User can switch teams by pressing a button.
-* The User can configure the the LED colour for his team.
-* The Application displays a quiz question and possible answers.
-* The LED lights show the remaining time.
-* The Application displays feedback about correct/incorrect answers of the User.
-* The LED lights show different colours when a correct or wrong answer is submitted.
-* The Application keeps track of the team scores.
-* The Application displays the team scores.
-* The Application keeps track of individual points.
-* The LED lights switch off when there is no user playing the game.
+* Install the Application 
+The user should be able to install the SociaLights app easily and must also be able to configure his name it. 
+
+* Send notification about the availability of SociaLights.
+The application notify the users about the availability of SociaLights when they enter the coffee room. 
+
+* Turn on/off Notifications
+
+Users must be able to turn on or off notifications while entering the coffee room.
+The application should navigate the user once he accepts the notification.
+
+* User Selects the Quiz Game
+
+The user should be able to select the quiz game and read the instruction manual on how to play the game. 
+
+* Join the Game by pressing a button
+
+The app should be user friendly and users must be able to join the game with a press of a button. The application should allow users to quit the game whenever they wish to. 
+
+* Create a Team
+The user can create a team if there are no existing teams. He can send invites to others to join the game with him or wait for another person to join and play against him. The application should allow users to select which option he/she wants to choose. 
+
+* Join Existing Team
+If there are people playing the game already, the user can join them. The app should list the existing teams with the members in it. The user selects the team he wants to be in. Each team is represented with a color of the bulb. 
+
+* Play the Quiz Game
+The application should allow users to start the game. It should list the questions and the possible answers. The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time. The lights will show different colors when user clicks a correct or wrong answers. 
+
+* Switch Teams
+The application should give flexibility for the users to switch teams if they want to. 
+
+* The User can configure the the LED colour for his team
+The application should allow users to change his team color to his/her own choice. If the color already exists for the opponent, then the application prompts user to select another color
+
+* Track Team Scores.
+The application should keep track of the team score. 
+The light grows brighter with the increase in score. The application should display the score and probably cheerup the users to play hard. 
+
+* Switch Off
+The LED lights must switch off automatically when there is no one playing the game. 
+
 
 ### Non-functional Requirements
 
 **Interoperability**
 
-* The supported OS for the mobile app is android. (minimum sdk version should be added).
+* The supported OS for the mobile app is android. (minimum sdk version should be added)
 
 **Performance**
 
-* The system should identify that a user has entered the room within 1 minute.
-* The system should send notification to the user within 1 minute.
+* The system should identify that a user has entered the room within 30 seconds.
+* The system should send notification to the user within 30 seconds.
 * The quiz game should start within 10 seconds after a user hits the play button.
 
 **Usability**
