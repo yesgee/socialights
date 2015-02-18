@@ -27,7 +27,7 @@ See **Project Plan** page.
 * **Week 7 (9 Feb)**
   * **Team:** Fourth meeting (10 Feb, 13:00)
 * **Week 8 (16 Feb)**
-  * **Team:** Third meeting (18 Feb, 13:00) *Unavailable: Jan (maybe on Skype)*
+  * **Team:** Fifth meeting (18 Feb, 13:00) *Unavailable: Jan (maybe on Skype)*
   * **Deadline:** Project plan (22 Feb)
 * **Week 9 (23 Feb)**
   * **Course:** RACS programming clinic
