@@ -158,29 +158,35 @@ Different for each system part:
 
 ## Schedule
 
-> Design an initial schedule for the project. Consider whether you want to split the project into iterations. Allocate 120 hours per each group member for the project (5 credits * 27 hours / credit - 15 hours for lectures, etc. = 120 hours). In addition, consider any material hardware or software resources used in the project.
+**Preparation and Planning:** Week 4 - Week 8 (19 Jan - 20 Feb)
 
-* **Week 8 (16 Feb)**
-  * Get Hue lights
-  * Inform about Hue Cloud (Hylke)
-* **Week 9 (23 Feb)** - Development setup
-  * Android Application Skeleton
-  * Server Skeleton
-  * CI / Testing
-  * Connect and set up Hue Bridge
-  * Connect to Hue Cloud
-* **Week 10 (2 Mar)**
-* **Week 11 (9 Mar)**
-* **Week 12 (16 Mar)**
-* **Week 13 (23 Mar)**
-* **Week 14 (30 Mar)**
-* **Week 15 (6 Apr)**
-* **Week 16 (13 Apr)**
-* **Week 17 (20 Apr)**
-* **Week 18 (27 Apr)**
-* **Week 19 (4 May)**
-  * Project demonstrations
-  * Final report
+* First meetings
+* Project planning
+* Brainstorming
+* Writing Project Plan
+* Inform about Hue Cloud
+* Try to get Hue lights sponsored / borrowed from Philips
+
+**Development setup:** Week 9 (23 Feb - 27 Feb)
+
+* Get Hue lights
+* Set up Hue Lights and Connection
+* Set up Hue Lights Mocking System
+* Set up Android Application Skeleton
+* Set up Server Skeleton
+* Set up CI / Testing
+
+**Sprint 1:** Week 10 - Week 12 (2 Mar - 20 Mar)
+
+**Sprint 2:** Week 13 - Week 15 (23 Mar - 10 Apr)
+
+**Sprint 3:** Week 16 - Week 17 (13 Apr - 24 Apr)
+
+**Finishing Up:** Week 18 - Week 19 (27 Apr - 6 May)
+
+* Debugging the App
+* Writing Final Report
+* Prepare for Demonstration
 
 ## Resources
 
@@ -262,6 +268,8 @@ It is necessary to have at least two people in the game before it can start. A s
 3. Alice and Fred try to find the right answer.
 4. Fred selects the wrong answer.
 5. The lights change to [...], the App shows the correct answer, Fred has lost this round.
+
+[TODO: Add diagram made by @harikasatharasi]
 
 ## Technical Details
 
