@@ -140,28 +140,27 @@ Different for each system part:
 
 > * Tools (Summary of all tools used. Mention version numbers and availability information, if relevant to the project. Description of all development and test environments that are needed; both software and hardware environments.)
 
-**Project Tools:**
+#### Project tools
 
-* Git: VCS
-* Github: Repository Hosting
-* Taiga: Planning
+**Git and Github:** We use [Git](http://git-scm.com/) for version control. Our repository is hosted on [Github](https://github.com/mobi-led/mobi-led).
 
-**Development Tools**
+**Taiga:** We will use [Taiga](https://taiga.io/) for our project planning, scrum management and issue tracking.
 
-* Android Studio (1.0.x)
-  * Android API Level 21
-  * Android v7 Support Library
-* Atom (Optional)
-  * Editorconfig plugin
+#### Development tools
 
-**Server**
+**Android Studio:** We will use [Android Studio](http://developer.android.com/tools/studio/index.html) version 1.0.x. for the development of our Android application. We will use API level 21 and make use of the android v7 Support Library.
 
-* Node
+**Atom (Optional):** We will use the [Atom](https://atom.io/) text editor for creating our documentation and to develop the Node.js code for our server. The use of Atom is optional and any text editor can be used that supports the [Editorconfig](http://editorconfig.org/) plugin.
 
-**External Tools / Services**
+#### Server
 
-* Hue Cloud
-* Travis CI
+We will use the [Node.js](http://nodejs.org/) platform to develop our server implementation.
+
+#### External Tools and Services
+
+**Hue Cloud:** For our cloud functionality we are dependant on access to the Hue Cloud, which we will be provided with through Philips.
+
+**Travis CI:** We will use the [Travis CI](https://travis-ci.org) testing server to test our application.
 
 ## Schedule
 
