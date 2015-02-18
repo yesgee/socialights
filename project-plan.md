@@ -140,13 +140,19 @@ Different for each system part:
 
 > * Tools (Summary of all tools used. Mention version numbers and availability information, if relevant to the project. Description of all development and test environments that are needed; both software and hardware environments.)
 
+**Project Tools:**
+
+* Git: VCS
+* Github: Repository Hosting
+* Taiga: Planning
+
 **Development Tools**
 
 * Android Studio (1.0.x)
   * Android API Level 21
   * Android v7 Support Library
-* Git (2.2.x)
 * Atom (Optional)
+  * Editorconfig plugin
 
 **Server**
 
@@ -155,6 +161,7 @@ Different for each system part:
 **External Tools / Services**
 
 * Hue Cloud
+* Travis CI
 
 ## Schedule
 
