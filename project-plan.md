@@ -271,19 +271,19 @@ It is necessary to have at least two people in the game before it can start. A s
 
 **Making teams:** The app fetches the game configuration from the server and displays a *lobby* where players can choose their team. *in our project it is only possible to make teams within one coffee room, in future versions it could be possible to play against a team in another coffee room.* It is possible to change teams by pressing a **switch teams** button. When teams are unbalanced, the app shows a warning about this. Each team should have at least one member. If the last member of the team leaves, all other players see the *lobby* and have to change teams.
 
-**Starting the game:**
+**Starting the game:** When both teams have at least one player, the game can start. The server pushes the game state to the clients, and the clients communicate user actions directly with the server.
 
-**Quiz questions and answers:**
+**Quiz questions and answers:** Quiz questions and their answers are stored on the server. These questions can be edited on the server by an administrator. Questions are randomly chosen. In future versions of the application it might be possible to add tags or categories to questions, to be able to select the type of quiz.
 
-**Timing Light:**
+**Timing Light:** The timing light indicates the time that is left to answer the question. This interaction is based on the colour and pulsing speed of the light.
 
-**Team Light:**
+**Team Light:** Each team can choose a unique colour, and the team will be represented with this colour. The colour is visible in both the application and on the lights in the coffee room.
 
 **Earning points:** Players earn points when their team correctly answers a question. The score is shown in the App and stored on the server.
 
-**End of the game:**
+**End of the game:** The game ends after a pre-set time, when there are less than two players left or when the players decide to end the game.
 
-**User accounts:** Upon installation, the app generates a user account. The access key for this account is stored on the phone, the user's information is stored on the server.
+**User accounts:** Upon installation, the app generates a user account. The access key for this account is stored on the phone, the user's information is stored on the server. 
 
 ## Requirements
 
