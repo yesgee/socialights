@@ -90,11 +90,11 @@ In the project we will limit ourselves to building the mobile game and making it
 
 **2-Daily standups:** During weeks when a lot of development is done, we plan to use 2-daily standups (either in a short meeting, on Google Hangouts or on Gitter) to keep the team up to date on every member's individual progress.
 
-**Weekly meetings:** We use weekly meetings (every Tuesday) with the entire team. During these meetings we discuss problems we encounter, brainstorm about the project and define the project planning. Summaries of these meetings are posted on our [webpage](https://mobi-led.github.io/mobi-led/).
+**Weekly meetings:** We use weekly meetings (every Tuesday) with the entire team. During these meetings we discuss problems we encounter, brainstorm about the project and define the project planning. Summaries of these meetings are posted on our [webpage](https://mobi-led.github.io/).
 
 **External contacts:** For external communication, we can be contacted on our email addresses (see above). We have a primary contact (or responsible team member) for different subjects, so external parties are in contact with the same person every time.
 
-**Webpage:** Our [webpage](https://mobi-led.github.io/mobi-led/) is used to post updates about the project.
+**Webpage:** Our [webpage](https://mobi-led.github.io/) is used to post updates about the project.
 
 ### Development
 
@@ -122,7 +122,7 @@ In the project we will limit ourselves to building the mobile game and making it
 
 ### Documentation and Reporting
 
-Next to the documentation of the source code, we often write other documentation and reports like this Project Plan. These documents are written using Markdown and posted on our [webpage](https://mobi-led.github.io/mobi-led/). If the document has to be delivered to some of our stakeholders, the document is converted to PDF and emailed to the stakeholders.
+Next to the documentation of the source code, we often write other documentation and reports like this Project Plan. These documents are written using Markdown and posted on our [webpage](https://mobi-led.github.io/). If the document has to be delivered to some of our stakeholders, the document is converted to PDF and emailed to the stakeholders.
 
 ### Design
 
