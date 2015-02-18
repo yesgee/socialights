@@ -304,9 +304,11 @@ It is necessary to have at least two people in the game before it can start. A s
 ### Functional Requirements
 
 * Install the Application 
+
 The user should be able to install the SociaLights app easily and must also be able to configure his name it. 
 
-* Send notification about the availability of SociaLights.
+* Send Notification about SociaLights.
+
 The application notify the users about the availability of SociaLights when they enter the coffee room. 
 
 * Turn on/off Notifications
@@ -323,25 +325,32 @@ The user should be able to select the quiz game and read the instruction manual 
 The app should be user friendly and users must be able to join the game with a press of a button. The application should allow users to quit the game whenever they wish to. 
 
 * Create a Team
+
 The user can create a team if there are no existing teams. He can send invites to others to join the game with him or wait for another person to join and play against him. The application should allow users to select which option he/she wants to choose. 
 
 * Join Existing Team
+
 If there are people playing the game already, the user can join them. The app should list the existing teams with the members in it. The user selects the team he wants to be in. Each team is represented with a color of the bulb. 
 
 * Play the Quiz Game
+
 The application should allow users to start the game. It should list the questions and the possible answers. The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time. The lights will show different colors when user clicks a correct or wrong answers. 
 
 * Switch Teams
+
 The application should give flexibility for the users to switch teams if they want to. 
 
-* The User can configure the the LED colour for his team
+* Configure LED colour 
+
 The application should allow users to change his team color to his/her own choice. If the color already exists for the opponent, then the application prompts user to select another color
 
-* Track Team Scores.
+* Track Team Scores
+
 The application should keep track of the team score. 
 The light grows brighter with the increase in score. The application should display the score and probably cheerup the users to play hard. 
 
 * Switch Off
+
 The LED lights must switch off automatically when there is no one playing the game. 
 
 
