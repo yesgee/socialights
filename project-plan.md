@@ -106,13 +106,15 @@ In the project we will limit ourselves to building the mobile game and making it
 
 **Commits:** Commits should always have a commit message describing the changes and preferably also mention the related issues. The first line of the commit message should be max. 50 characters, extra information can be added by inserting an empty line after the first line, and Markdown can be used.
 
+**Files to commit:** Commits should only contain relevant source code files. A ``.gitignore`` file will make sure developers don't commit build files and other irrelevant files.
+
 **Synchronisation:** Developers should always try to keep their branches up-to-date with the *develop* branch by *rebase*-ing often. When multiple developers are working on the same branch, they are required to coordinate with each other to avoid conflicting changes.
 
 **Tests:** Every piece of code should be sufficiently tested. It is good practice to include both the functional code and the test cases for that source code in a commit.
 
 **Documentation:** Source should contain a sufficient amount of documentation to help other team members understand the code. For our Android source code, we use [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html).
 
-**Code Conventions:** Android Source code should conform to the [Android Code Style](http://source.android.com/source/code-style.html).
+**Code Conventions:** Android Source code should conform to the [Android Code Style](http://source.android.com/source/code-style.html). Furthermore, an [editorconfig](http://editorconfig.org/) file will be available in the repository to make sure all editors other than Android Studio will use the same configuration.
 
 **Code Reviews:** After completing a feature-branch, the assignee should create a *Pull Request* to the *develop* branch. Another developer is assigned to review this pull request. This developer has to review the source code, run the tests and then merge the feature into the *develop* branch.
 
