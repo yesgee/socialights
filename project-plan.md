@@ -283,22 +283,30 @@ It is necessary to have at least two people in the game before it can start. A s
 
 **End of the game:** The game ends after a pre-set time, when there are less than two players left or when the players decide to end the game.
 
-**User accounts:** Upon installation, the app generates a user account. The access key for this account is stored on the phone, the user's information is stored on the server. 
+**User accounts:** Upon installation, the app generates a user account. The access key for this account is stored on the phone, the user's information is stored on the server.
 
 ## Requirements
 
 ### Functional Requirements
 
-Some of the most important functional requirements are listed below.
-
-* The system should send a notification to the user about the availability of the SociaLight game.
-* User should be able to see the list of available games while inside the coffee room.
-* User should be able to select and start the quiz game.
-* User can join to play the game by pressing a button.
-* User can leave the game by pressing a button.
-* Mobile app should allow user to chose the led color for his team.
-* LED lights should show different colors when a correct or wrong answer is submitted.
-* LED lights switch off when there is no user playing the game.
+* The User can install the Application on his smartphone.
+* The User can configure his name in the Application.
+* The User can turn on/off notifications.
+* The Application sends a notification to the User about the availability of SociaLights.
+* The User can see the list of available games while inside the coffee room.
+* The User can select the quiz game.
+* The User can join the game by pressing a button.
+* The User can leave the game by pressing a button.
+* The User can switch teams by pressing a button.
+* The User can configure the the LED colour for his team.
+* The Application displays a quiz question and possible answers.
+* The LED lights show the remaining time.
+* The Application displays feedback about correct/incorrect answers of the User.
+* The LED lights show different colours when a correct or wrong answer is submitted.
+* The Application keeps track of the team scores.
+* The Application displays the team scores.
+* The Application keeps track of individual points.
+* The LED lights switch off when there is no user playing the game.
 
 ### Non-functional Requirements
 
