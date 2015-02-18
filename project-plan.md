@@ -162,7 +162,7 @@ We will use the [Node.js](http://nodejs.org/) platform to develop our server imp
 
 **Travis CI:** We will use the [Travis CI](https://travis-ci.org) testing server to test our application.
 
-## Schedule
+### Schedule
 
 **Preparation and Planning:** Week 4 - Week 8 (19 Jan - 20 Feb)
 
@@ -194,7 +194,7 @@ We will use the [Node.js](http://nodejs.org/) platform to develop our server imp
 * Writing Final Report
 * Prepare for Demonstration
 
-## Resources
+### Resources
 
 * Hue Lights
 * Hue Bridge
@@ -217,7 +217,7 @@ When a user enters a coffee room enabled with SociaLights, he can choose to:
 
 It is necessary to have at least two people in the game before it can start. A set of quiz questions is then fetched from the server and each team gets points based on the number of questions answered in a certain amount of time. Each of the two teams is represented by a color with the Hue lights, while the third light is used as a countdown timer for each question.
 
-## Interaction Details
+### Interaction Details
 
 **Scenario 1:**
 
@@ -277,7 +277,7 @@ It is necessary to have at least two people in the game before it can start. A s
 
 [TODO: Add diagram made by @harikasatharasi]
 
-## Technical Details
+### Technical Details
 
 **Notification when entering the room:** The App recognises a Bluetooth LE Beacon which is deployed in the room and activates the notification. *not in project scope, could be implemented later.*
 

@@ -50,3 +50,56 @@ $on-laptop:        800px;
         "layout",
         "syntax-highlighting"
 ;
+
+@media print {
+  body {
+    font-size: 10pt;
+    font-family: "Source Sans Pro";
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  p, blockquote, pre,
+  ul, ol, dl, figure {
+    margin-bottom: 0.2cm;
+    margin-top: 0;
+  }
+
+  h1, h2 {
+    font-weight: 700;
+  }
+
+  .post-content {
+
+    h1 {
+      font-size: 3em;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+
+    h3 {
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    pre, code {
+      font-family: "Source Code Pro";
+      font-size: 1em;
+    }
+
+  }
+
+  .site-header, .site-footer {
+    display: none;
+  }
+
+  h2 {
+    page-break-before: always;
+  }
+}
