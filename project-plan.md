@@ -322,11 +322,11 @@ It is necessary to have at least two people in the game before it can start. A s
 
 **Install the Application**
 
-The user should be able to install the SociaLights app easily and must also be able to configure his name it. 
+The user should be able to install the SociaLights app easily and must also be able to configure his name in it. 
 
 **Send Notification about SociaLights**
 
-The application notify the users about the availability of SociaLights when they enter the coffee room. 
+The application notifies the users about the availability of SociaLights when they enter a coffee room enabled with SociaLights. 
 
 **Turn on/off Notifications**
 
@@ -343,15 +343,15 @@ The app should be user friendly and users must be able to join the game with a p
 
 **Create a Team**
 
-The user can create a team if there are no existing teams. He can send invites to others to join the game with him or wait for another person to join and play against him. The application should allow users to select which option he/she wants to choose. 
+The user can create a team if there are no existing teams. He can send invites to others to join the game with him or wait for another person to join and play against him. The application should allow users to choose what he wants to do. 
 
 **Join Existing Team**
 
-If there are people playing the game already, the user can join them. The app should list the existing teams with the members in it. The user selects the team he wants to be in. Each team is represented with a color of the bulb. 
+If there is already an existing team, the user can join the same. The app should list the existing teams with the members in it. The user can select the team he wants to be in. Each team is represented by a bulb of certain color.
 
 **Play the Quiz Game**
 
-The application should allow users to start the game. It should list the questions and the possible answers. The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time. The lights will show different colors when user clicks a correct or wrong answers. 
+The application should allow users to start the game when teams are ready. It should list the questions and multiple choices.  The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time with the change of color. The lights will show different colors when user clicks a right or wrong answer. 
 
 **Switch Teams**
 
@@ -359,12 +359,12 @@ The application should give flexibility for the users to switch teams if they wa
 
 **Configure LED colour**
 
-The application should allow users to change his team color to his/her own choice. If the color already exists for the opponent, then the application prompts user to select another color
+The application should allow users to change his team color to his/her own choice. If the color already exists for the opponent, then the application prompts user to select another color.
 
 **Track Team Scores**
 
 The application should keep track of the team score. 
-The light grows brighter with the increase in score. The application should display the score and probably cheerup the users to play hard. 
+The light grows brighter with the increase in score. The application should display the score and probably cheer up the users to play hard. 
 
 **Switch Off**
 
