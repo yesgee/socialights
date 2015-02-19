@@ -194,13 +194,30 @@ We will use the [Node.js](http://nodejs.org/) platform to develop our server imp
 * Writing Final Report
 * Prepare for Demonstration
 
-### Resources
+## Resources
 
-* Hue Lights
-* Hue Bridge
-* Hue Cloud API access
-* Server in the Cloud
-* Test device
+The following are the key resources of the SociaLights system -
+
+**Hue Lights**
+
+The main component of SociaLights is the set of wireless LED light bulbs which can deliver any hue in the spectrum. 
+
+**Hue Bridge**
+
+The Hue bridge is an integral part of the Hue system and as the name says, acts as a bridge between our client app and the hue light bulbs.The bridge also enables remote control of the light bulbs over the Internet.
+
+**Hue Cloud API access**
+
+SociaLights will use a third party cloud service to communicate with the Hue light bulbs.
+
+
+**Server in the Cloud**
+
+Our android client will interface with a server side module developed using nodejs, which is used to fetch questions/answers for the quiz game.
+ 
+**Test device**
+
+As per the scope of this project, SociaLights game is developed for Android mobile devices.
 
 ## System overview
 
