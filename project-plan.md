@@ -128,23 +128,12 @@ Next to the documentation of the source code, we often write other documentation
 
 ### Architectural design
 
-The following figure is a preliminary architectural design based on the general information we have about the Hue system. It will be updated once we obtain the Hue toolkit.
+The following figure is a preliminary architectural design based on the general information we have about the Hue system. We used Google's basic drawing tool for this phase. It will be updated once we obtain the Hue toolkit.
 
 ![alt text](https://github.com/mobi-led/mobi-led.github.io/blob/master/images/Hue_Net.png "System architecture")
 
-According to the current Phillips Hue API, we are obliged to host the Node server in the same network as the Hue Bridge. Therefore all the components mentioned in the above figure reside in the same network.
-
-
-> * Design (How architectural design and lower level design is done? Modeling tools used? Validation?)
-
-
-Different for each system part:
-
-* Client (Android Application)
-* Server
-* Hue Cloud
-* Hue Bridge
-* Hue Lights
+According to the current Phillips Hue API, we are obliged to host the Node server in the same network as the Hue Bridge. Therefore all the components mentioned in the above figure reside in the same local network.
+The Resources section contains the usage and description of the components needed for the SociaLight system.   
 
 ### Tools and Environment
 
@@ -385,7 +374,7 @@ The LED lights must switch off automatically when there is no one playing the ga
 
 **Interoperability**
 
-* The supported OS for the mobile app is android. (minimum sdk version should be added)
+* The supported OS for the mobile app is android.
 
 **Performance**
 
