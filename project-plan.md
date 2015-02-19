@@ -150,23 +150,29 @@ Different for each system part:
 
 > * Tools (Summary of all tools used. Mention version numbers and availability information, if relevant to the project. Description of all development and test environments that are needed; both software and hardware environments.)
 
-**Development Tools**
+#### Project tools
 
-* Android Studio (1.0.x)
-  * Android API Level 21
-  * Android v7 Support Library
-* Git (2.2.x)
-* Atom (Optional)
+**Git and Github:** We use [Git](http://git-scm.com/) for version control. Our repository is hosted on [Github](https://github.com/mobi-led/mobi-led).
 
-**Server**
+**Taiga:** We will use [Taiga](https://taiga.io/) for our project planning, scrum management and issue tracking.
 
-* Node
+#### Development tools
 
-**External Tools / Services**
+**Android Studio:** We will use [Android Studio](http://developer.android.com/tools/studio/index.html) version 1.0.x. for the development of our Android application. We will use API level 21 and make use of the android v7 Support Library.
 
-* Hue Cloud
+**Atom (Optional):** We will use the [Atom](https://atom.io/) text editor for creating our documentation and to develop the Node.js code for our server. The use of Atom is optional and any text editor can be used that supports the [Editorconfig](http://editorconfig.org/) plugin.
 
-## Schedule
+#### Server
+
+We will use the [Node.js](http://nodejs.org/) platform to develop our server implementation.
+
+#### External Tools and Services
+
+**Hue Cloud:** For our cloud functionality we are dependant on access to the Hue Cloud, which we will be provided with through Philips.
+
+**Travis CI:** We will use the [Travis CI](https://travis-ci.org) testing server to test our application.
+
+### Schedule
 
 **Preparation and Planning:** Week 4 - Week 8 (19 Jan - 20 Feb)
 
@@ -200,11 +206,28 @@ Different for each system part:
 
 ## Resources
 
-* Hue Lights
-* Hue Bridge
-* Hue Cloud API access
-* Server in the Cloud
-* Test device
+The following are the key resources of the SociaLights system -
+
+**Hue Lights**
+
+The main component of SociaLights is the set of wireless LED light bulbs which can deliver any hue in the spectrum. 
+
+**Hue Bridge**
+
+The Hue bridge is an integral part of the Hue system and as the name says, acts as a bridge between our client app and the hue light bulbs.The bridge also enables remote control of the light bulbs over the Internet.
+
+**Hue Cloud API access**
+
+SociaLights will use a third party cloud service to communicate with the Hue light bulbs.
+
+
+**Server in the Cloud**
+
+Our android client will interface with a server side module developed using nodejs, which is used to fetch questions/answers for the quiz game.
+ 
+**Test device**
+
+As per the scope of this project, SociaLights game is developed for Android mobile devices.
 
 ## System overview
 
@@ -221,7 +244,7 @@ When a user enters a coffee room enabled with SociaLights, he can choose to:
 
 It is necessary to have at least two people in the game before it can start. A set of quiz questions is then fetched from the server and each team gets points based on the number of questions answered in a certain amount of time. Each of the two teams is represented by a color with the Hue lights, while the third light is used as a countdown timer for each question.
 
-## Interaction Details
+### Interaction Details
 
 **Scenario 1:**
 
@@ -281,7 +304,7 @@ It is necessary to have at least two people in the game before it can start. A s
 
 [TODO: Add diagram made by @harikasatharasi]
 
-## Technical Details
+### Technical Details
 
 **Notification when entering the room:** The App recognises a Bluetooth LE Beacon which is deployed in the room and activates the notification. *not in project scope, could be implemented later.*
 
@@ -307,35 +330,67 @@ It is necessary to have at least two people in the game before it can start. A s
 
 ### Functional Requirements
 
-* The User can install the Application on his smartphone.
-* The User can configure his name in the Application.
-* The User can turn on/off notifications.
-* The Application sends a notification to the User about the availability of SociaLights.
-* The User can see the list of available games while inside the coffee room.
-* The User can select the quiz game.
-* The User can join the game by pressing a button.
-* The User can leave the game by pressing a button.
-* The User can switch teams by pressing a button.
-* The User can configure the the LED colour for his team.
-* The Application displays a quiz question and possible answers.
-* The LED lights show the remaining time.
-* The Application displays feedback about correct/incorrect answers of the User.
-* The LED lights show different colours when a correct or wrong answer is submitted.
-* The Application keeps track of the team scores.
-* The Application displays the team scores.
-* The Application keeps track of individual points.
-* The LED lights switch off when there is no user playing the game.
+**Install the Application**
+
+The user should be able to install the SociaLights app easily and must also be able to configure his name in it. 
+
+**Send Notification about SociaLights**
+
+The application notifies the users about the availability of SociaLights when they enter a coffee room enabled with SociaLights. 
+
+**Turn on/off Notifications**
+
+Users must be able to turn on or off notifications while entering the coffee room.
+The application should navigate the user once he accepts the notification.
+
+**User Selects the Quiz Game**
+
+The user should be able to select the quiz game and read the instruction manual on how to play the game. 
+
+**Join the Game by pressing a button**
+
+The app should be user friendly and users must be able to join the game with a press of a button. The application should allow users to quit the game whenever they wish to. 
+
+**Create a Team**
+
+The user can create a team if there are no existing teams. He can send invites to others to join the game with him or wait for another person to join and play against him. The application should allow users to choose what he wants to do. 
+
+**Join Existing Team**
+
+If there is already an existing team, the user can join the same. The app should list the existing teams with the members in it. The user can select the team he wants to be in. Each team is represented by a bulb of certain color.
+
+**Play the Quiz Game**
+
+The application should allow users to start the game when teams are ready. It should list the questions and multiple choices.  The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time with the change of color. The lights will show different colors when user clicks a right or wrong answer. 
+
+**Switch Teams**
+
+The application should give flexibility for the users to switch teams if they want to. 
+
+**Configure LED colour**
+
+The application should allow users to change his team color to his/her own choice. If the color already exists for the opponent, then the application prompts user to select another color.
+
+**Track Team Scores**
+
+The application should keep track of the team score. 
+The light grows brighter with the increase in score. The application should display the score and probably cheer up the users to play hard. 
+
+**Switch Off**
+
+The LED lights must switch off automatically when there is no one playing the game. 
+
 
 ### Non-functional Requirements
 
 **Interoperability**
 
-* The supported OS for the mobile app is android. (minimum sdk version should be added).
+* The supported OS for the mobile app is android. (minimum sdk version should be added)
 
 **Performance**
 
-* The system should identify that a user has entered the room within 1 minute.
-* The system should send notification to the user within 1 minute.
+* The system should identify that a user has entered the room within 30 seconds.
+* The system should send notification to the user within 30 seconds.
 * The quiz game should start within 10 seconds after a user hits the play button.
 
 **Usability**
