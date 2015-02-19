@@ -130,10 +130,10 @@ Next to the documentation of the source code, we often write other documentation
 
 The following figure is a preliminary architectural design based on the general information we have about the Hue system. We used Google's basic drawing tool for this phase. It will be updated once we obtain the Hue toolkit.
 
-![alt text](https://github.com/mobi-led/mobi-led.github.io/blob/master/images/Hue_Net.png "System architecture")
+![System architecture](/images/Hue_Net.png)
 
 According to the current Phillips Hue API, we are obliged to host the Node server in the same network as the Hue Bridge. Therefore all the components mentioned in the above figure reside in the same local network.
-The Resources section contains the usage and description of the components needed for the SociaLight system.   
+The Resources section contains the usage and description of the components needed for the SociaLight system.
 
 ### Tools and Environment
 
@@ -199,7 +199,7 @@ The following are the key resources of the SociaLights system -
 
 **Hue Lights**
 
-The main component of SociaLights is the set of wireless LED light bulbs which can deliver any hue in the spectrum. 
+The main component of SociaLights is the set of wireless LED light bulbs which can deliver any hue in the spectrum.
 
 **Hue Bridge**
 
@@ -213,7 +213,7 @@ SociaLights will use a third party cloud service to communicate with the Hue lig
 **Server in the Cloud**
 
 Our android client will interface with a server side module developed using nodejs, which is used to fetch questions/answers for the quiz game.
- 
+
 **Test device**
 
 As per the scope of this project, SociaLights game is developed for Android mobile devices.
@@ -321,11 +321,11 @@ It is necessary to have at least two people in the game before it can start. A s
 
 **Install the Application**
 
-The user should be able to install the SociaLights app easily and must also be able to configure his name in it. 
+The user should be able to install the SociaLights app easily and must also be able to configure his name in it.
 
 **Send Notification about SociaLights**
 
-The application notifies the users about the availability of SociaLights when they enter a coffee room enabled with SociaLights. 
+The application notifies the users about the availability of SociaLights when they enter a coffee room enabled with SociaLights.
 
 **Turn on/off Notifications**
 
@@ -334,15 +334,15 @@ The application should navigate the user once he accepts the notification.
 
 **User Selects the Quiz Game**
 
-The user should be able to select the quiz game and read the instruction manual on how to play the game. 
+The user should be able to select the quiz game and read the instruction manual on how to play the game.
 
 **Join the Game by pressing a button**
 
-The app should be user friendly and users must be able to join the game with a press of a button. The application should allow users to quit the game whenever they wish to. 
+The app should be user friendly and users must be able to join the game with a press of a button. The application should allow users to quit the game whenever they wish to.
 
 **Create a Team**
 
-The user can create a team if there are no existing teams. He can send invites to others to join the game with him or wait for another person to join and play against him. The application should allow users to choose what he wants to do. 
+The user can create a team if there are no existing teams. He can send invites to others to join the game with him or wait for another person to join and play against him. The application should allow users to choose what he wants to do.
 
 **Join Existing Team**
 
@@ -350,11 +350,11 @@ If there is already an existing team, the user can join the same. The app should
 
 **Play the Quiz Game**
 
-The application should allow users to start the game when teams are ready. It should list the questions and multiple choices.  The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time with the change of color. The lights will show different colors when user clicks a right or wrong answer. 
+The application should allow users to start the game when teams are ready. It should list the questions and multiple choices.  The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time with the change of color. The lights will show different colors when user clicks a right or wrong answer.
 
 **Switch Teams**
 
-The application should give flexibility for the users to switch teams if they want to. 
+The application should give flexibility for the users to switch teams if they want to.
 
 **Configure LED colour**
 
@@ -362,12 +362,12 @@ The application should allow users to change his team color to his/her own choic
 
 **Track Team Scores**
 
-The application should keep track of the team score. 
-The light grows brighter with the increase in score. The application should display the score and probably cheer up the users to play hard. 
+The application should keep track of the team score.
+The light grows brighter with the increase in score. The application should display the score and probably cheer up the users to play hard.
 
 **Switch Off**
 
-The LED lights must switch off automatically when there is no one playing the game. 
+The LED lights must switch off automatically when there is no one playing the game.
 
 
 ### Non-functional Requirements
