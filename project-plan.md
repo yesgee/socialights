@@ -126,7 +126,17 @@ Next to the documentation of the source code, we often write other documentation
 
 ### Design
 
+### Architectural design
+
+The following figure is a preliminary architectural design based on the general information we have about the Hue system. It will be updated once we obtain the Hue toolkit.
+
+![alt text](https://github.com/mobi-led/mobi-led.github.io/blob/master/images/Hue_Net.png "System architecture")
+
+According to the current Phillips Hue API, we are obliged to host the Node server in the same network as the Hue Bridge. Therefore all the components mentioned in the above figure reside in the same network.
+
+
 > * Design (How architectural design and lower level design is done? Modeling tools used? Validation?)
+
 
 Different for each system part:
 
