@@ -6,9 +6,9 @@ permalink: /project-plan/
 
 ## Introduction
 
-In large companies and organisations employees often don't know many of their colleagues except for their direct co-workers. During their breaks, they get a cup of coffee and return to their office. This leaves the coffee rooms empty and unattractive and doesn't lead to any social interaction between co-workers. We plan to build an application that makes these coffee rooms more attractive by enabling employees to interact with the room and with each other in a playful way. This will increase social interaction and collaboration between co-workers.
+In large companies and organisations employees often don't know many of their colleagues except for their direct co-workers. During their breaks, they get a cup of coffee and return to their office. This leaves the coffee rooms empty and unattractive and doesn't lead to any social interaction between co-workers. We plan to build an application that makes these coffee rooms more attractive by enabling employees to interact with the room and with each other in a playful way. This will increase social interaction and collaboration between co-workers, which are desirable feats within a company.
 
-Our App will provide a quiz-based game that can be played with two teams in the same coffee room, but also between two teams in two separate coffee rooms (on different floors or office locations, for example). Participants will have to collaborate with each other to find the answers to the questions and the lights in the coffee room will provide feedback for the game, inviting other people in the room to also participate.
+Our App will provide a quiz-based game that can be played with two teams in the same coffee room, but also between two teams in two separate coffee rooms (on different floors or office locations, for example). Participants will have to collaborate with each other to find the answers to the questions and the lights in the coffee room will provide feedback for the game. This visual stimulation will tempt other people in the room to also participate.
 
 ## Team, Partners and other Stakeholders
 
@@ -312,7 +312,7 @@ It is necessary to have at least two people in the game before it can start. A s
 
 ### Functional Requirements
 
-**Install the Application:** The user can to install the SociaLights app easily and must also be able to configure his name in it.
+**Install the Application:** The user can install the SociaLights app easily and must also be able to configure his name in it.
 
 **Send Notification about SociaLights:** The application notifies the users about the availability of SociaLights when they enter a coffee room enabled with SociaLights.
 
@@ -327,14 +327,14 @@ The application should navigate the user once he accepts the notification.
 
 **Join Existing Team:** If there is already an existing team, the user can join the same. The app should list the existing teams with the members in it. The user can select the team he wants to be in. Each team is represented by a bulb of certain color.
 
-**Play the Quiz Game:** The application should allow users to start the game when teams are ready. It should list the questions and multiple choices.  The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time with the change of color. The lights will show different colors when user clicks a right or wrong answer.
+**Play the Quiz Game:** The application should allow users to start the game when teams are ready. It should list the questions and multiple choices.  The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time with the change of color. The lights will show a different color when a user clicks a right or wrong answer.
 
 **Switch Teams:** The application should give flexibility for the users to switch teams if they want to.
 
-**Configure LED colour:** The application should allow users to change his team color to his/her own choice. If the color already exists for the opponent, then the application prompts user to select another color.
+**Configure LED colour:** The application should allow users to change his team color to his/her own choice. If the color already exists for the opponent, then the application prompts the user to select another color.
 
 **Track Team Scores:** The application should keep track of the team score.
-The light grows brighter with the increase in score. The application should display the score and probably cheer up the users to play hard.
+The light grows brighter when the score increases. The application should display the score and the score should motivate the players to put in their best efforts.
 
 **Switch Off:** The LED lights must switch off automatically when there is no one playing the game.
 
@@ -348,7 +348,7 @@ The light grows brighter with the increase in score. The application should disp
 **Performance**
 
 * The system should identify that a user has entered the room within 30 seconds.
-* The system should send notification to the user within 30 seconds.
+* The system should send a notification to the user within 30 seconds after entering the coffee room.
 * The quiz game should start within 10 seconds after a user hits the play button.
 
 **Usability**
