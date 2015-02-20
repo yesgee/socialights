@@ -14,20 +14,20 @@ Our App will provide a quiz-based game that can be played with two teams in the 
 
 ### Gayathri Srinivaasan
 
-[![Gitter](https://img.shields.io/badge/gitter-@yesgee-green.svg?style=flat-square)](https://gitter.im/yesgee)
-[![Email](https://img.shields.io/badge/email-gayathri.srinivaasan@aalto.fi-blue.svg?style=flat-square)](mailto:gayathri.srinivaasan@aalto.fi)
+[![Gitter](https://img.shields.io/badge/gitter-@yesgee-green.svg?style=flat-square)](https://gitter.im/yesgee "Contact on gitter")
+[![Email](https://img.shields.io/badge/email-gayathri.srinivaasan@aalto.fi-blue.svg?style=flat-square)](mailto:gayathri.srinivaasan@aalto.fi "email")
 
 ### Harika Satharasi
 
-[![Gitter](https://img.shields.io/badge/gitter-@harikasatharasi-green.svg?style=flat-square)](https://gitter.im/harikasatharasi)
-[![Email](https://img.shields.io/badge/email-harika.satharasi@aalto.fi-blue.svg?style=flat-square)](mailto:harika.satharasi@aalto.fi)
+[![Gitter](https://img.shields.io/badge/gitter-@harikasatharasi-green.svg?style=flat-square)](https://gitter.im/harikasatharasi "Contact on gitter")
+[![Email](https://img.shields.io/badge/email-harika.satharasi@aalto.fi-blue.svg?style=flat-square)](mailto:harika.satharasi@aalto.fi "email")
 
 * Primary contact for **Testing**
 
 ### Hylke Visser
 
-[![Gitter](https://img.shields.io/badge/gitter-@htdvisser-green.svg?style=flat-square)](https://gitter.im/htdvisser)
-[![Email](https://img.shields.io/badge/email-hylke.visser@aalto.fi-blue.svg?style=flat-square)](mailto:hylke.visser@aalto.fi)
+[![Gitter](https://img.shields.io/badge/gitter-@htdvisser-green.svg?style=flat-square)](https://gitter.im/htdvisser "Contact on gitter")
+[![Email](https://img.shields.io/badge/email-hylke.visser@aalto.fi-blue.svg?style=flat-square)](mailto:hylke.visser@aalto.fi "email")
 
 * Project Manager
 * Primary contact for **Development**
@@ -35,8 +35,8 @@ Our App will provide a quiz-based game that can be played with two teams in the 
 
 ### Jan van de Kerkhof
 
-[![Gitter](https://img.shields.io/badge/gitter-@janvandekerkhof-green.svg?style=flat-square)](https://gitter.im/janvandekerkhof)
-[![Email](https://img.shields.io/badge/email-jan.vandekerkhof@aalto.fi-blue.svg?style=flat-square)](mailto:jan.vandekerkhof@aalto.fi)
+[![Gitter](https://img.shields.io/badge/gitter-@janvandekerkhof-green.svg?style=flat-square)](https://gitter.im/janvandekerkhof "Contact on gitter")
+[![Email](https://img.shields.io/badge/email-jan.vandekerkhof@aalto.fi-blue.svg?style=flat-square)](mailto:jan.vandekerkhof@aalto.fi "email")
 
 * Project Manager
 * Primary contact for **Reporting**
@@ -44,31 +44,31 @@ Our App will provide a quiz-based game that can be played with two teams in the 
 
 ### Samuel Balcha
 
-[![Gitter](https://img.shields.io/badge/gitter-@samuelbalcha-green.svg?style=flat-square)](https://gitter.im/samuelbalcha)
-[![Email](https://img.shields.io/badge/email-samuel.balcha@gmail.com-blue.svg?style=flat-square)](mailto:samuel.balcha@gmail.com)
+[![Gitter](https://img.shields.io/badge/gitter-@samuelbalcha-green.svg?style=flat-square)](https://gitter.im/samuelbalcha "Contact on gitter")
+[![Email](https://img.shields.io/badge/email-samuel.balcha@gmail.com-blue.svg?style=flat-square)](mailto:samuel.balcha@gmail.com "email")
 
 * Primary contact for **Documentation**
 
 ### Sowmya Ravidas
 
-[![Gitter](https://img.shields.io/badge/gitter-@sowmyaravidas-green.svg?style=flat-square)](https://gitter.im/sowmyaravidas)
-[![Email](https://img.shields.io/badge/email-sowmya.ravidas@aalto.fi-blue.svg?style=flat-square)](mailto:sowmya.ravidas@aalto.fi)
+[![Gitter](https://img.shields.io/badge/gitter-@sowmyaravidas-green.svg?style=flat-square)](https://gitter.im/sowmyaravidas "Contact on gitter")
+[![Email](https://img.shields.io/badge/email-sowmya.ravidas@aalto.fi-blue.svg?style=flat-square)](mailto:sowmya.ravidas@aalto.fi "email")
 
 * Primary contact for **Design**
 
 ### Sakari Luukkainen
 
-[![Email](https://img.shields.io/badge/email-sakari.luukkainen@aalto.fi-blue.svg?style=flat-square)](mailto:sakari.luukkainen@aalto.fi)
+[![Email](https://img.shields.io/badge/email-sakari.luukkainen@aalto.fi-blue.svg?style=flat-square)](mailto:sakari.luukkainen@aalto.fi "email")
 
 * Tutor
 
 ### Partner: Philips Lighting B.V. - Connected Lighting
 
-* [meethue.com](http://meethue.com/)
+* [meethue.com](http://meethue.com/ "Hue Website")
 
 ### Partner: Q42
 
-* [q42.com](http://q42.com/)
+* [q42.com](http://q42.com/ "Q42 Website")
 * The company that makes the software for the Hue Cloud.
 
 ## Goals and scope
@@ -100,7 +100,7 @@ In the project we will limit ourselves to building the mobile game and making it
 
 **Taiga:** Our project management tool is [Taiga](https://taiga.io/). Here, we manage our Backlog, User Stories, Tasks and Issues. User Stories are assigned to the responsible team member. This team member assigns the tasks within the User Story and is responsible for completion and integration of the User Story.
 
-**Git and Github:** We use [Git](http://git-scm.com/) for version control. Our repository is hosted on [Github](https://github.com/mobi-led/).
+**Git and Github:** We use [Git](http://git-scm.com/ "Git") for version control. Our repository is hosted on [Github](https://github.com/mobi-led/).
 
 **Branching Model:** The [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/) branching model is used, which means that features are built in *feature-branches*, which are merged in the *develop* branch. The *develop* branch should only contain stable code, this means that pull requests to *develop* have to be reviewed before a merge. The *master* branch contains production code and is managed by the *lead developers* only. Different versions of the software are represented as *tags*.
 
@@ -114,7 +114,7 @@ In the project we will limit ourselves to building the mobile game and making it
 
 **Documentation:** Source should contain a sufficient amount of documentation to help other team members understand the code. For our Android source code, we use [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html). For JavaScript development, [Docco](https://jashkenas.github.io/docco/) is used.
 
-**Code Conventions:** Android Source code should conform to the [Android Code Style](http://source.android.com/source/code-style.html). JavaScript code should conform to the [Google JavaScript Styleguide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml). A [jshint](http://jshint.com/) file is used to help developers write consistent code. Furthermore, an [editorconfig](http://editorconfig.org/) file will be available in the repository to make sure all editors other than Android Studio will use the same configuration.
+**Code Conventions:** Android Source code should conform to the [Android Code Style](http://source.android.com/source/code-style.html "Android Code Style"). JavaScript code should conform to the [Google JavaScript Styleguide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml "Google JavaScript Styleguide"). A [jshint](http://jshint.com/ "JSHint") file is used to help developers write consistent code. Furthermore, an [editorconfig](http://editorconfig.org/) file will be available in the repository to make sure all editors other than Android Studio will use the same configuration.
 
 <div style="page-break-after:always"></div>
 
@@ -124,7 +124,7 @@ In the project we will limit ourselves to building the mobile game and making it
 
 ### Documentation and Reporting
 
-Next to the documentation of the source code, we often write other documentation and reports like this Project Plan. These documents are written using Markdown and posted on our [webpage](https://mobi-led.github.io/). If the document has to be delivered to some of our stakeholders, the document is converted to PDF and emailed to the stakeholders.
+Next to the documentation of the source code, we often write other documentation and reports like this Project Plan. These documents are written using Markdown and posted on our [webpage](https://mobi-led.github.io/ "Mobi-Led Webpage"). If the document has to be delivered to some of our stakeholders, the document is converted to PDF and emailed to the stakeholders.
 
 ### Design
 
@@ -143,25 +143,25 @@ The Resources section contains the usage and description of the components neede
 
 #### Project tools
 
-**Git and Github:** We use [Git](http://git-scm.com/) for version control. Our repository is hosted on [Github](https://github.com/mobi-led/mobi-led).
+**Git and Github:** We use [Git](http://git-scm.com/ "Git") for version control. Our repository is hosted on [Github](https://github.com/mobi-led/mobi-led "Github").
 
-**Taiga:** We will use [Taiga](https://taiga.io/) for our project planning, scrum management and issue tracking.
+**Taiga:** We will use [Taiga](https://taiga.io/ "Taiga") for our project planning, scrum management and issue tracking.
 
 #### Development tools
 
-**Android Studio:** We will use [Android Studio](http://developer.android.com/tools/studio/index.html) version 1.0.x. for the development of our Android application. We will use API level 21 and make use of the android v7 Support Library.
+**Android Studio:** We will use [Android Studio](http://developer.android.com/tools/studio/index.html "Android Studio") version 1.0.x. for the development of our Android application. We will use API level 21 and make use of the android v7 Support Library.
 
-**Atom (Optional):** We will use the [Atom](https://atom.io/) text editor for creating our documentation and to develop the Node.js code for our server. The use of Atom is optional and any text editor can be used, as long as it supports the plugins we use.
+**Atom (Optional):** We will use the [Atom](https://atom.io/ "Atom") text editor for creating our documentation and to develop the Node.js code for our server. The use of Atom is optional and any text editor can be used, as long as it supports the plugins we use.
 
 #### Server
 
-We will use the [Node.js](http://nodejs.org/) platform for the implementation of our server.
+We will use the [Node.js](http://nodejs.org/ "Node.JS") platform for the implementation of our server.
 
 #### External Tools and Services
 
 **Hue Cloud:** For our cloud functionality we are dependent on access to the Hue Cloud, which we will be provided with through Philips.
 
-**Travis CI:** We will use the [Travis CI](https://travis-ci.org) testing server to test our application.
+**Travis CI:** We will use the [Travis CI](https://travis-ci.org "Travis CI") testing server to test our application.
 
 ### Schedule
 

@@ -58,6 +58,7 @@ $on-laptop:        800px;
     font-size: 10pt;
     font-family: "Source Sans Pro";
     font-weight: 400;
+    color: #000;
   }
 
   h1, h2, h3, h4, h5, h6,
@@ -112,5 +113,13 @@ $on-laptop:        800px;
   ul, ol {
     page-break-before: avoid;
     page-break-inside: avoid;
+  }
+
+  a[href] {
+    color: #000;
+  }
+
+  a[href]:not([title]):after {
+    content: " (" attr(href) ")";
   }
 }
