@@ -116,6 +116,8 @@ In the project we will limit ourselves to building the mobile game and making it
 
 **Code Conventions:** Android Source code should conform to the [Android Code Style](http://source.android.com/source/code-style.html). JavaScript code should conform to the [Google JavaScript Styleguide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml). A [jshint](http://jshint.com/) file is used to help developers write consistent code. Furthermore, an [editorconfig](http://editorconfig.org/) file will be available in the repository to make sure all editors other than Android Studio will use the same configuration.
 
+<div style="page-break-after:always"></div>
+
 **Code Reviews:** After completing a feature-branch, the assignee should create a *Pull Request* to the *develop* branch. Another developer is assigned to review this pull request. This developer has to review the source code, run the tests and then merge the feature into the *develop* branch.
 
 **Continuous Integration:** We use [Travis CI](https://travis-ci.org/) to continuously build and test our software.
@@ -134,6 +136,8 @@ The following figure is a preliminary architectural design based on the general 
 
 According to the current Phillips Hue API, we are obliged to host the Node server in the same network as the Hue Bridge. Therefore all the components mentioned in the above figure reside in the same local network.
 The Resources section contains the usage and description of the components needed for the SociaLight system.
+
+<div style="page-break-after:always"></div>
 
 ### Tools and Environment
 
@@ -222,13 +226,13 @@ It is necessary to have at least two people in the game before it can start. A s
 
 ### Interaction Details
 
-**Scenario 1:**
+#### Scenario 1:
 
 1. Bob enters the coffee room.
 2. Bob's phone shows a notification: *This room is SociaLights-enabled. Play a game?*
 3. Bob dismisses the notification, gets coffee and goes back to work.
 
-**Scenario 2:**
+#### Scenario 2:
 
 1. Alice enters the coffee room.
 2. Alice's phone shows a notification: *This room is SociaLights-enabled. Play a game?*
@@ -237,14 +241,14 @@ It is necessary to have at least two people in the game before it can start. A s
 5. Alice chooses "Pub Quiz".
 6. The App tells Alice to wait for another team to play against.
 
-**Scenario 3:**
+#### Scenario 3:
 
 1. Fred enters the coffee room.
 2. Fred's phone shows a notification: *This room is SociaLights-enabled. Play "Pub Quiz" with Alice?*
 3. Fred pushes the notification.
 4. The App starts the game.
 
-**Scenario 4:**
+#### Scenario 4:
 
 1. Charlie enters the coffee room.
 2. Charlie's phone shows a notification: *This room is SociaLights-enabled. Play "Pub Quiz" with Alice and Fred?*
@@ -253,7 +257,9 @@ It is necessary to have at least two people in the game before it can start. A s
 5. Charlie joins Fred's team.
 6. The App shows Charlie the game.
 
-**Scenario 5:**
+<div style="page-break-after:always"></div>
+
+#### Scenario 5:
 
 1. The system shows a question.
 2. The timing-light is pulsing green.
@@ -262,7 +268,7 @@ It is necessary to have at least two people in the game before it can start. A s
 5. The timing-light turns red.
 6. Neither team gets points for answering the question.
 
-**Scenario 6:**
+#### Scenario 6:
 
 1. The system shows a question.
 2. The timing-light is pulsing green.
@@ -270,7 +276,7 @@ It is necessary to have at least two people in the game before it can start. A s
 4. Alice selects the correct answer.
 5. The lights change to her colour, the App shows that this was the correct answer, Alice has won this round.
 
-**Scenario 7:**
+#### Scenario 7:
 
 1. The system shows a question.
 2. The timing-light is pulsing green.
