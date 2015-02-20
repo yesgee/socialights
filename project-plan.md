@@ -239,18 +239,18 @@ It is necessary to have at least two people in the game before it can start. A s
 3. Alice pushes the notification.
 4. The App shows the available games.
 5. Alice chooses "Pub Quiz".
-6. Alice is transferred to the game lobby
+6. Alice is transferred to the game lobby.
 7. The App tells Alice to wait for another team to play against.
-8. Alice chooses a team color while waiting for another team
+8. Alice chooses a team color while waiting for another team.
 
 #### Scenario 3:
 
 1. Fred enters the coffee room.
 2. Fred's phone shows a notification: *This room is SociaLights-enabled. Play "Pub Quiz" with Alice?*
 3. Fred pushes the notification.
-4. Fred is transferred to the game lobby
-5. Fred chooses a team color
-6. Fred and Alice indicate they are ready to play
+4. Fred is transferred to the game lobby.
+5. Fred chooses a team color.
+6. Fred and Alice indicate they are ready to play.
 4. The App starts the game.
 
 #### Scenario 4:
@@ -275,7 +275,7 @@ It is necessary to have at least two people in the game before it can start. A s
 
 1. The system shows a question.
 2. The timing-light is pulsing green.
-3. The two team lights indicate the number of points each team has
+3. The two team lights indicate the number of points each team has.
 3. Alice and Fred try to find the right answer.
 4. The timing-light is pulsing faster and becomes orange.
 5. The timing-light turns red.
@@ -285,7 +285,7 @@ It is necessary to have at least two people in the game before it can start. A s
 
 1. The system shows a question.
 2. The timing-light is pulsing green.
-3. The two team lights indicate the number of points each team has
+3. The two team lights indicate the number of points each team has.
 3. Alice and Fred try to find the right answer.
 4. Alice selects the correct answer.
 5. All lights change to Alices teams' colour, the App shows that this was the correct answer, Alice has won this round and gains points for her team.
@@ -303,8 +303,8 @@ It is necessary to have at least two people in the game before it can start. A s
 1. There are no more questions to answer for this game.
 2. Alice has the most points.
 3. All lights pulsate in the colour of Alices team.
-4. The App shows Alices team a victory animation.
-5. The App shows Freds team a losers animation.
+4. The App notifies Alices team of their victory.
+5. The App notifies Freds team of their loss.
 5. The App returns all players to the game lobby.
 6. The players get a chance to switch teams and play again, or they can close the App and get back to work.
 
