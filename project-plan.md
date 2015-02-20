@@ -10,7 +10,7 @@ In large companies and organisations employees often don't know many of their co
 
 Our App will provide a quiz-based game that can be played with two teams in the same coffee room, but also between two teams in two separate coffee rooms (on different floors or office locations, for example). Participants will have to collaborate with each other to find the answers to the questions and the lights in the coffee room will provide feedback for the game. This visual stimulation will tempt other people in the room to also participate.
 
-## Team, Partners and other Stakeholders
+## Team other Stakeholders
 
 ### Gayathri Srinivaasan
 
@@ -56,11 +56,9 @@ Our App will provide a quiz-based game that can be played with two teams in the 
 
 * Primary contact for **Design**
 
-### Sakari Luukkainen
+### Tutor: Sakari Luukkainen
 
 [![Email](https://img.shields.io/badge/email-sakari.luukkainen@aalto.fi-blue.svg?style=flat-square)](mailto:sakari.luukkainen@aalto.fi "email")
-
-* Tutor
 
 ### Partner: Philips Lighting B.V. - Connected Lighting
 
@@ -126,8 +124,6 @@ In the project we will limit ourselves to building the mobile game and making it
 
 Next to the documentation of the source code, we often write other documentation and reports like this Project Plan. These documents are written using Markdown and posted on our [webpage](https://mobi-led.github.io/ "Mobi-Led Webpage"). If the document has to be delivered to some of our stakeholders, the document is converted to PDF and emailed to the stakeholders.
 
-### Design
-
 ### Architectural design
 
 The following figure is a preliminary architectural design based on the general information we have about the Hue system. We used Google's basic drawing tool for this phase. It will be updated once we obtain the Hue toolkit.
@@ -141,13 +137,13 @@ The Resources section contains the usage and description of the components neede
 
 ### Tools and Environment
 
-#### Project tools
+#### Project Tools
 
 **Git and Github:** We use [Git](http://git-scm.com/ "Git") for version control. Our repository is hosted on [Github](https://github.com/mobi-led/mobi-led "Github").
 
 **Taiga:** We will use [Taiga](https://taiga.io/ "Taiga") for our project planning, scrum management and issue tracking.
 
-#### Development tools
+#### Development Tools
 
 **Android Studio:** We will use [Android Studio](http://developer.android.com/tools/studio/index.html "Android Studio") version 1.0.x. for the development of our Android application. We will use API level 21 and make use of the android v7 Support Library.
 
@@ -224,6 +220,10 @@ When a user enters a coffee room enabled with SociaLights, he can choose to:
 
 It is necessary to have at least two people in the game before it can start. A set of quiz questions is then fetched from the server and each team gets points based on the number of questions answered in a certain amount of time. Each of the two teams is represented by a color with the Hue lights, while the third light is used as a countdown timer for each question.
 
+### Interaction Flow
+
+![System architecture](/images/Process_Flow.svg)
+
 ### Interaction Details
 
 #### Scenario 1:
@@ -243,6 +243,8 @@ It is necessary to have at least two people in the game before it can start. A s
 7. The App tells Alice to wait for another team to play against.
 8. Alice chooses a team color while waiting for another team.
 
+<div style="page-break-after:always"></div>
+
 #### Scenario 3:
 
 1. Fred enters the coffee room.
@@ -260,8 +262,6 @@ It is necessary to have at least two people in the game before it can start. A s
 3. Charlie pushes the notification.
 4. The App assigns Charlie a team.
 5. Charlie joins the game in progress.
-
-<div style="page-break-after:always"></div>
 
 #### Scenario 5:
 
@@ -307,8 +307,6 @@ It is necessary to have at least two people in the game before it can start. A s
 5. The App notifies Freds team of their loss.
 5. The App returns all players to the game lobby.
 6. The players get a chance to switch teams and play again, or they can close the App and get back to work.
-
-![System architecture](/images/Process_Flow.svg)
 
 ### Technical Details
 
@@ -367,7 +365,6 @@ The light grows brighter when the score increases. The application should displa
 **Interoperability**
 
 * The supported OS for the mobile app is android.
-* *More OSes could be added later.*
 
 **Performance**
 
