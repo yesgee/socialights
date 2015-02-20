@@ -102,7 +102,7 @@ In the project we will limit ourselves to building the mobile game and making it
 
 **Git and Github:** We use [Git](http://git-scm.com/ "Git") for version control. Our repository is hosted on [Github](https://github.com/mobi-led/).
 
-**Branching Model:** The [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/) branching model is used, which means that features are built in *feature-branches*, which are merged in the *develop* branch. The *develop* branch should only contain stable code, this means that pull requests to *develop* have to be reviewed before a merge. The *master* branch contains production code and is managed by the *lead developers* only. Different versions of the software are represented as *tags*.
+**Branching Model:** The [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/) branching model is used, which means that features are built in *feature-branches*, which are merged in the *develop* branch. The *develop* branch should only contain stable code, this means that pull requests to *develop* have to be reviewed before a merge. The *master* branch contains production code and is managed by the *lead developers* only. Different *versions* of the software are represented as *tags*. This project uses [semantic versioning](http://semver.org/).
 
 **Commits:** Commits should always have a commit message describing the changes and preferably also mention the related issues. The first line of the commit message should be max. 50 characters, extra information can be added by inserting an empty line after the first line, and Markdown can be used.
 
