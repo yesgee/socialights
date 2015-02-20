@@ -53,6 +53,15 @@ $on-laptop:        800px;
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic);
 
+.print-only {
+  display: none;
+}
+
+.online-note {
+  margin-top: 20cm;
+  text-align: right;
+}
+
 @media print {
   body {
     font-size: 10pt;
@@ -70,6 +79,10 @@ $on-laptop:        800px;
 
   h1, h2 {
     font-weight: 700;
+  }
+
+  .print-only {
+    display: block;
   }
 
   .post-content {
@@ -121,5 +134,6 @@ $on-laptop:        800px;
 
   a[href]:not([title]):after {
     content: " (" attr(href) ")";
+    color: $brand-color;
   }
 }

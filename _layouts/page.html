@@ -5,6 +5,11 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
+    <p class="print-only online-note">
+      An up-to-date version of this document <br>
+      might be available on our webpage: <br>
+      <a href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" title="online">{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}</a>
+    </p>
   </header>
 
   <article class="post-content">
