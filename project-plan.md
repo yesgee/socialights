@@ -62,14 +62,14 @@ Our App will provide a quiz-based game that can be played with two teams in the 
 
 * Tutor
 
-### Partner: Philips (not confirmed)
+### Partner: Philips Lighting B.V. - Connected Lighting
 
 * [meethue.com](http://meethue.com/)
 
 ### Partner: Q42
 
 * [q42.com](http://q42.com/)
-* The company that builds the software for Philips Hue.
+* The company that makes the software for the Hue Cloud.
 
 ## Goals and scope
 
@@ -88,33 +88,33 @@ In the project we will limit ourselves to building the mobile game and making it
 
 **Gitter:** We use our [chatroom on Gitter](https://gitter.im/mobi-led/mobi-led) to communicate with the team.
 
-**2-Daily standups:** During weeks when a lot of development is done, we plan to use 2-daily standups (either in a short meeting, on Google Hangouts or on Gitter) to keep the team up to date on every member's individual progress.
+**2-Daily standups:** During the sprints, we plan to use 2-daily standups (either in a short meeting, on Google Hangouts or on Gitter) to keep the team up to date on every member's individual progress and issues.
 
-**Weekly meetings:** We use weekly meetings (every Tuesday) with the entire team. During these meetings we discuss problems we encounter, brainstorm about the project and define the project planning. Summaries of these meetings are posted on our [webpage](https://mobi-led.github.io/).
+**Weekly meetings:** We use weekly meetings (every Tuesday) with the entire team. During these meetings we discuss strategy, direction and we brainstorm about the project. Summaries of these meetings are posted on our [webpage](https://mobi-led.github.io/).
 
-**External contacts:** For external communication, we can be contacted on our email addresses (see above). We have a primary contact (or responsible team member) for different subjects, so external parties are in contact with the same person every time.
+**External parties:** External parties can contact the team on our email addresses (see above). We have a primary contact (or responsible team member) for different subjects, so external parties are in contact with the same person every time.
 
 **Webpage:** Our [webpage](https://mobi-led.github.io/) is used to post updates about the project.
 
 ### Development
 
-**Github Issues:** Development tasks and bugs will be created on the [Issues system on Github](https://github.com/mobi-led/mobi-led/issues) and assigned to a team member. This team member is responsible for the completion of the task.
+**Taiga:** Our project management tool is [Taiga](https://taiga.io/). Here, we manage our Backlog, User Stories, Tasks and Issues. User Stories are assigned to the responsible team member. This team member assigns the tasks within the User Story and is responsible for completion and integration of the User Story.
 
-**Git and Github:** We use [Git](http://git-scm.com/) for version control. Our repository is hosted on [Github](https://github.com/mobi-led/mobi-led).
+**Git and Github:** We use [Git](http://git-scm.com/) for version control. Our repository is hosted on [Github](https://github.com/mobi-led/).
 
-**Branching Model:** The [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/) branching model is used, which means that features are built in *feature-branches*, which are merged in the *develop* branch, which should only contain stable code. The *master* branch contains production code and is managed by the *lead developers* only. Different versions of the software are represented as *tags*.
+**Branching Model:** The [Git Flow](http://nvie.com/posts/a-successful-git-branching-model/) branching model is used, which means that features are built in *feature-branches*, which are merged in the *develop* branch. The *develop* branch should only contain stable code, this means that pull requests to *develop* have to be reviewed before a merge. The *master* branch contains production code and is managed by the *lead developers* only. Different versions of the software are represented as *tags*.
 
 **Commits:** Commits should always have a commit message describing the changes and preferably also mention the related issues. The first line of the commit message should be max. 50 characters, extra information can be added by inserting an empty line after the first line, and Markdown can be used.
 
 **Files to commit:** Commits should only contain relevant source code files. A ``.gitignore`` file will make sure developers don't commit build files and other irrelevant files.
 
-**Synchronisation:** Developers should always try to keep their branches up-to-date with the *develop* branch by *rebase*-ing often. When multiple developers are working on the same branch, they are required to coordinate with each other to avoid conflicting changes.
+**Synchronization:** Developers should always try to keep their branches up-to-date with the *develop* branch by *rebase*-ing often. When multiple developers are working in the same branch (which is not recommended), they are required to coordinate with each other to avoid conflicting changes.
 
-**Tests:** Every piece of code should be sufficiently tested. It is good practice to include both the functional code and the test cases for that source code in a commit.
+**Tests:** Every piece of code should be sufficiently tested. It is good practice to include both the functional code and the test cases for that source code in the same commit.
 
-**Documentation:** Source should contain a sufficient amount of documentation to help other team members understand the code. For our Android source code, we use [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html).
+**Documentation:** Source should contain a sufficient amount of documentation to help other team members understand the code. For our Android source code, we use [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html). For JavaScript development, [Docco](https://jashkenas.github.io/docco/) is used.
 
-**Code Conventions:** Android Source code should conform to the [Android Code Style](http://source.android.com/source/code-style.html). Furthermore, an [editorconfig](http://editorconfig.org/) file will be available in the repository to make sure all editors other than Android Studio will use the same configuration.
+**Code Conventions:** Android Source code should conform to the [Android Code Style](http://source.android.com/source/code-style.html). JavaScript code should conform to the [Google JavaScript Styleguide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml). A [jshint](http://jshint.com/) file is used to help developers write consistent code. Furthermore, an [editorconfig](http://editorconfig.org/) file will be available in the repository to make sure all editors other than Android Studio will use the same configuration.
 
 **Code Reviews:** After completing a feature-branch, the assignee should create a *Pull Request* to the *develop* branch. Another developer is assigned to review this pull request. This developer has to review the source code, run the tests and then merge the feature into the *develop* branch.
 
@@ -137,8 +137,6 @@ The Resources section contains the usage and description of the components neede
 
 ### Tools and Environment
 
-> * Tools (Summary of all tools used. Mention version numbers and availability information, if relevant to the project. Description of all development and test environments that are needed; both software and hardware environments.)
-
 #### Project tools
 
 **Git and Github:** We use [Git](http://git-scm.com/) for version control. Our repository is hosted on [Github](https://github.com/mobi-led/mobi-led).
@@ -149,15 +147,15 @@ The Resources section contains the usage and description of the components neede
 
 **Android Studio:** We will use [Android Studio](http://developer.android.com/tools/studio/index.html) version 1.0.x. for the development of our Android application. We will use API level 21 and make use of the android v7 Support Library.
 
-**Atom (Optional):** We will use the [Atom](https://atom.io/) text editor for creating our documentation and to develop the Node.js code for our server. The use of Atom is optional and any text editor can be used that supports the [Editorconfig](http://editorconfig.org/) plugin.
+**Atom (Optional):** We will use the [Atom](https://atom.io/) text editor for creating our documentation and to develop the Node.js code for our server. The use of Atom is optional and any text editor can be used, as long as it supports the plugins we use.
 
 #### Server
 
-We will use the [Node.js](http://nodejs.org/) platform to develop our server implementation.
+We will use the [Node.js](http://nodejs.org/) platform for the implementation of our server.
 
 #### External Tools and Services
 
-**Hue Cloud:** For our cloud functionality we are dependant on access to the Hue Cloud, which we will be provided with through Philips.
+**Hue Cloud:** For our cloud functionality we are dependent on access to the Hue Cloud, which we will be provided with through Philips.
 
 **Travis CI:** We will use the [Travis CI](https://travis-ci.org) testing server to test our application.
 
@@ -195,28 +193,17 @@ We will use the [Node.js](http://nodejs.org/) platform to develop our server imp
 
 ## Resources
 
-The following are the key resources of the SociaLights system -
+The following are the key resources of the SociaLights system:
 
-**Hue Lights**
+**Hue Lights:** The main component of SociaLights is the set of wireless LED light bulbs which can deliver any hue in the spectrum.
 
-The main component of SociaLights is the set of wireless LED light bulbs which can deliver any hue in the spectrum.
+**Hue Bridge:** The Hue bridge is an integral part of the Hue system and as the name says, acts as a bridge between our client app and the hue light bulbs.The bridge also enables remote control of the light bulbs over the Internet.
 
-**Hue Bridge**
+**Hue Cloud API access:** SociaLights will use a third party cloud service to communicate with the Hue light bulbs.
 
-The Hue bridge is an integral part of the Hue system and as the name says, acts as a bridge between our client app and the hue light bulbs.The bridge also enables remote control of the light bulbs over the Internet.
+**Server in the Cloud:** Our android client will interface with a server side module developed using nodejs, which is used to fetch questions/answers for the quiz game.
 
-**Hue Cloud API access**
-
-SociaLights will use a third party cloud service to communicate with the Hue light bulbs.
-
-
-**Server in the Cloud**
-
-Our android client will interface with a server side module developed using nodejs, which is used to fetch questions/answers for the quiz game.
-
-**Test device**
-
-As per the scope of this project, SociaLights game is developed for Android mobile devices.
+**Test device:** As per the scope of this project, SociaLights game is developed for Android mobile devices.
 
 ## System overview
 
@@ -289,9 +276,9 @@ It is necessary to have at least two people in the game before it can start. A s
 2. The timing-light is pulsing green.
 3. Alice and Fred try to find the right answer.
 4. Fred selects the wrong answer.
-5. The lights change to [...], the App shows the correct answer, Fred has lost this round.
+5. The lights show that the answer is incorrect, the App shows the correct answer, Fred has lost this round.
 
-[TODO: Add diagram made by @harikasatharasi]
+![System architecture](/images/Process_Flow.svg)
 
 ### Technical Details
 
@@ -319,62 +306,38 @@ It is necessary to have at least two people in the game before it can start. A s
 
 ### Functional Requirements
 
-**Install the Application**
+**Install the Application:** The user can to install the SociaLights app easily and must also be able to configure his name in it.
 
-The user should be able to install the SociaLights app easily and must also be able to configure his name in it.
+**Send Notification about SociaLights:** The application notifies the users about the availability of SociaLights when they enter a coffee room enabled with SociaLights.
 
-**Send Notification about SociaLights**
-
-The application notifies the users about the availability of SociaLights when they enter a coffee room enabled with SociaLights.
-
-**Turn on/off Notifications**
-
-Users must be able to turn on or off notifications while entering the coffee room.
+**Turn on/off Notifications:** Users must be able to turn on or off notifications while entering the coffee room.
 The application should navigate the user once he accepts the notification.
 
-**User Selects the Quiz Game**
+**User Selects the Quiz Game:** The user should be able to select the quiz game and read the instruction manual on how to play the game.
 
-The user should be able to select the quiz game and read the instruction manual on how to play the game.
+**Join the Game by pressing a button:** The app should be user friendly and users must be able to join the game with a press of a button. The application should allow users to quit the game whenever they wish to.
 
-**Join the Game by pressing a button**
+**Create a Team:** The user can create a team if there are no existing teams. He can send invites to others to join the game with him or wait for another person to join and play against him. The application should allow users to choose what he wants to do.
 
-The app should be user friendly and users must be able to join the game with a press of a button. The application should allow users to quit the game whenever they wish to.
+**Join Existing Team:** If there is already an existing team, the user can join the same. The app should list the existing teams with the members in it. The user can select the team he wants to be in. Each team is represented by a bulb of certain color.
 
-**Create a Team**
+**Play the Quiz Game:** The application should allow users to start the game when teams are ready. It should list the questions and multiple choices.  The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time with the change of color. The lights will show different colors when user clicks a right or wrong answer.
 
-The user can create a team if there are no existing teams. He can send invites to others to join the game with him or wait for another person to join and play against him. The application should allow users to choose what he wants to do.
+**Switch Teams:** The application should give flexibility for the users to switch teams if they want to.
 
-**Join Existing Team**
+**Configure LED colour:** The application should allow users to change his team color to his/her own choice. If the color already exists for the opponent, then the application prompts user to select another color.
 
-If there is already an existing team, the user can join the same. The app should list the existing teams with the members in it. The user can select the team he wants to be in. Each team is represented by a bulb of certain color.
-
-**Play the Quiz Game**
-
-The application should allow users to start the game when teams are ready. It should list the questions and multiple choices.  The questions will be loaded from the cloud and application also records the response. The feedback about the performance is given through the LED Lights in the room. A timer light will alert the user about the remaining time with the change of color. The lights will show different colors when user clicks a right or wrong answer.
-
-**Switch Teams**
-
-The application should give flexibility for the users to switch teams if they want to.
-
-**Configure LED colour**
-
-The application should allow users to change his team color to his/her own choice. If the color already exists for the opponent, then the application prompts user to select another color.
-
-**Track Team Scores**
-
-The application should keep track of the team score.
+**Track Team Scores:** The application should keep track of the team score.
 The light grows brighter with the increase in score. The application should display the score and probably cheer up the users to play hard.
 
-**Switch Off**
-
-The LED lights must switch off automatically when there is no one playing the game.
-
+**Switch Off:** The LED lights must switch off automatically when there is no one playing the game.
 
 ### Non-functional Requirements
 
 **Interoperability**
 
 * The supported OS for the mobile app is android.
+* *More OSes could be added later.*
 
 **Performance**
 
@@ -386,5 +349,3 @@ The LED lights must switch off automatically when there is no one playing the ga
 
 * The mobile app user interface is easy to understand.
 * The LED lights are lit in a manner that does not disturb people in the room.
-
-See [Google Docs](https://docs.google.com/spreadsheets/d/1TlKp4EfiT8U_naFl1jRu_1kfopJC-fWiy7DMPm6gAjc/edit#gid=0).
