@@ -314,9 +314,9 @@ It is necessary to have at least two people in the game before it can start. A s
 
 **Notification when entering the room:** The App recognises a Bluetooth LE Beacon which is deployed in the room and activates the notification. *not in project scope, could be implemented later.*
 
-**Available games list:** The app fetches the list of available games for this particular room from the server and displays them on the screen. *in our project we will only implement one game, with the possibility to add more game types later.*
-
 **Making teams:** The app fetches the game configuration from the server and displays a *lobby* where players can choose their team. *in our project it is only possible to make teams within one coffee room, in future versions it could be possible to play against a team in another coffee room.* It is possible to change teams by pressing a **switch teams** button. When teams are unbalanced, the app shows a warning about this. Each team should have at least one member. If the last member of the team leaves, all other players see the *lobby* and have to change teams.
+
+**Selecting game type:** In the *game lobby*, players are able to select which game they want to play. *By default, this is the game *Pub Quiz*.  In our project we will only implement one game, with the possibility to add more game types later.*
 
 **Starting the game:** When both teams have at least one player, the game can start. The server pushes the game state to the clients, and the clients communicate user actions directly with the server.
 
