@@ -1,0 +1,26 @@
+{
+  "bitwise": true,
+  "camelcase": true,
+  "curly": true,
+  "curly": true,
+  "esnext": true,
+  "immed": true,
+  "indent": 2,
+  "maxlen": 120,
+  "newcap": true,
+  "noarg": true,
+  "node": true,
+  "quotmark": "single",
+  "strict": true,
+  "trailing": true,
+  "undef": true,
+  "unused": "vars",
+  "globals": {
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false
+  }
+}
