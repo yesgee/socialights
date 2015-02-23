@@ -2,7 +2,10 @@
 
 process.env.NODE_ENV = 'test';
 
-var should = require('should');
+var chai = require('chai');
+var expect = chai.expect;
+var should = chai.should();
+
 var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
