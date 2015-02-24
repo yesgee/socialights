@@ -4,3 +4,7 @@ node_js:
   - "0.12"
   - "0.11"
   - "0.10"
+notifications:
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/a07ed1814913d3265923
