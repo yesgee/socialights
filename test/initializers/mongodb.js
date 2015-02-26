@@ -10,7 +10,7 @@ var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
 
-describe('actionhero Tests', function() {
+describe('Initializer: MongoDB', function() {
 
   before(function(done) {
     actionhero.start(function(err, a) {
