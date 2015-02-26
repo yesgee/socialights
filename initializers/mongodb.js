@@ -16,6 +16,11 @@ module.exports = {
     api.mongo.connection = mongoose.createConnection();
     api.mongo.db = null;
 
+    /**
+     * api.mongo.connect - Connect to the configured MonogDB server.
+     *
+     * @param function next callback (err, db)
+     */
     api.mongo.connect = function(next) {
       if (api.mongo.db !== null) {
         api.log('Already connected to MongoDB.', 'debug');
@@ -36,6 +41,11 @@ module.exports = {
       });
     };
 
+    /**
+     * api.mongo.disconnect - Disconnect from the MongoDB server.
+     *
+     * @param function next callback
+     */
     api.mongo.disconnect = function(next) {
       api.log('Disconnecting from MongoDB', 'debug');
       mongoose.disconnect(function(err) {
@@ -68,6 +78,9 @@ module.exports = {
     });
   },
 
+  /**
+   * start - This function is executed by ActionHero on startup.
+   */
   start: function(api, next) {
     if (api.config.mongodb.autoConnect) {
       api.mongo.connect(next);
@@ -76,6 +89,9 @@ module.exports = {
     }
   },
 
+  /**
+   * stop - This function is executed by ActionHero on shutdown.
+   */
   stop: function(api, next) {
     if (api.mongo.db !== null) {
       api.mongo.disconnect(next);
