@@ -22,7 +22,7 @@ exports.listUsers = {
           'id':'1',
           'type':'quiz'
         }
-    },{
+    }, {
         'id':'2',
         'name':'Alice',
         'room':
@@ -44,8 +44,7 @@ exports.listUsers = {
 
   run: function(api, connection, next) {
     api.models.User.find(function(err, results) {
-      if(err) {
-        connection.response.success = false;
+      if (err) {
         connection.response.error = err;
       } else {
         connection.response.success = true;
