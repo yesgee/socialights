@@ -16,6 +16,7 @@
   },
   "dependencies" : {
     "actionhero" : "10.0.4",
+    "mongoose"   : "^3.8.24",
     "ws"         : "latest",
     "grunt"      : "latest"
   },
