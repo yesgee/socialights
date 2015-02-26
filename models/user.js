@@ -5,7 +5,9 @@ var timestamps = require('mongoose-timestamp');
 
 // User Schema
 var userSchema = new Schema({
-  name: { type: String, required: true }
+  name: { type: String, required: true },
+  room: { type: Schema.Types.ObjectId, ref: 'Room' },
+  game: { type: Schema.Types.ObjectId, ref: 'Game' }
 });
 userSchema.plugin(timestamps);
 

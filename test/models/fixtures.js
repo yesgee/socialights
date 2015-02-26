@@ -45,3 +45,29 @@ module.exports.Question = function(data) {
     answers: answerList()
   });
 };
+
+module.exports.Team = function(data) {
+  data = data || {};
+  return merge({}, data, {
+    name: 'Team ' + faker.name.lastName(),
+    color: faker.internet.color()
+  });
+};
+
+module.exports.AskedQuestion = function(data) {
+  data = data || {};
+  var asked = faker.date.recent();
+  return merge({}, data, {
+    team: faker.random.number({ min:0, max:1 }),
+    askedAt: asked,
+    deadlineAt: new Date(asked.getTime() + 10 * 1000)
+  });
+};
+
+module.exports.Game = function(data) {
+  data = data || {};
+  return merge({}, data, {
+    gameType: 'quiz',
+    startedAt: new Date()
+  });
+};

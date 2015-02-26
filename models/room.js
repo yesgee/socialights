@@ -7,7 +7,9 @@ var timestamps = require('mongoose-timestamp');
 var roomSchema = new Schema({
   name: { type: String, required: true },
   location: { type: String, required: true },
-  gameTypes: [{ type: String, enum: ['quiz'] }]
+  gameTypes: [{ type: String, enum: ['quiz'] }],
+  users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  game: { type: Schema.Types.ObjectId, ref: 'Game' }
 });
 roomSchema.plugin(timestamps);
 
