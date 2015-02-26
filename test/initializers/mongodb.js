@@ -10,7 +10,7 @@ var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
 
-describe('actionhero Tests', function() {
+describe('Initializer: MongoDB', function() {
 
   before(function(done) {
     actionhero.start(function(err, a) {
@@ -25,10 +25,18 @@ describe('actionhero Tests', function() {
     });
   });
 
-  it('should have booted into the test env', function() {
-    process.env.NODE_ENV.should.equal('test');
-    api.env.should.equal('test');
-    should.exist(api.id);
+  it('should have created the mongo objects in the api', function() {
+    should.exist(api.mongo);
+    should.exist(api.mongo.connection);
+  });
+
+  it('should connect to the local mongoDB installation', function(next) {
+    api.mongo.connect(function(err, db) {
+      should.not.exist(err);
+      should.exist(db);
+      should.exist(api.mongo.db);
+      next();
+    });
   });
 
 });
