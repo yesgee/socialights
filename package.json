@@ -8,28 +8,31 @@
     "Samuel Balcha <samuel.balcha@gmail.com>",
     "Sowmya Ravidas <sowmya.ravidas@aalto.fi>"
   ],
-  "name"        : "socialights-server",
-  "description" : "SociaLights Server",
-  "version"     : "0.0.1-wip",
-  "engines"     : {
+  "name": "socialights-server",
+  "description": "SociaLights Server",
+  "version": "0.0.1-wip",
+  "engines": {
     "node": ">=0.10.0"
   },
-  "dependencies" : {
-    "actionhero" : "10.0.4",
-    "mongoose"   : "^3.8.24",
-    "ws"         : "latest",
-    "grunt"      : "latest"
+  "dependencies": {
+    "actionhero": "10.0.4",
+    "grunt": "latest",
+    "mongoose": "^3.8.24",
+    "mongoose-timestamp": "^0.4.0",
+    "mout": "^0.11.0",
+    "ws": "latest"
   },
-  "devDependencies" : {
-    "mocha"  : "latest",
-    "chai"   : "latest"
+  "devDependencies": {
+    "chai": "latest",
+    "faker": "^2.1.2",
+    "mocha": "latest"
   },
-  "scripts" : {
-    "help"         : "actionhero help",
-    "start"        : "actionhero start",
-    "actionhero"   : "actionhero",
-    "startCluster" : "actionhero startCluster",
-    "test"         : "mocha"
+  "scripts": {
+    "help": "actionhero help",
+    "start": "actionhero start",
+    "actionhero": "actionhero",
+    "startCluster": "actionhero startCluster",
+    "test": "mocha"
   },
   "private": true
 }
