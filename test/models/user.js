@@ -45,6 +45,7 @@ describe('Model: User', function() {
   it('should not be valid without a name', function(done) {
     var user = new api.models.User();
     user.validate(function(err) {
+      should.exist(err);
       err.should.have.property('errors');
       err.errors.should.have.property('name');
       done();

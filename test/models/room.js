@@ -45,6 +45,7 @@ describe('Model: Room', function() {
   it('should not be valid without a name or location', function(done) {
     var room = new api.models.Room();
     room.validate(function(err) {
+      should.exist(err);
       err.should.have.property('errors');
       err.errors.should.have.property('name');
       err.errors.should.have.property('location');
