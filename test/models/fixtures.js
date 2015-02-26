@@ -16,3 +16,28 @@ module.exports.Room = function(data) {
     gameTypes: ['quiz']
   });
 };
+
+module.exports.Answer = function(data) {
+  return deepFillIn({}, data, {
+    answer: faker.lorem.sentence() + '.',
+    correct: false,
+    feedback: faker.lorem.sentence() + '.'
+  });
+};
+
+var answerList = function() {
+  var list = [];
+  for (var i = 0; i < 4; i++) {
+    list.push(module.exports.Answer());
+  }
+  var correctIdx = Math.floor(Math.random() * 4);
+  list[correctIdx].correct = true;
+  return list;
+};
+
+module.exports.Question = function(data) {
+  return deepFillIn({}, data, {
+    question: faker.lorem.sentence() + '?',
+    answers: answerList()
+  });
+};
