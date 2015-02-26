@@ -1,7 +1,6 @@
 'use strict';
 
-
-exports.status = {
+exports.showGame = {
   name: 'showGame',
   description: 'I will return all information about a single game',
 
@@ -76,7 +75,15 @@ exports.status = {
     },
   },
   run: function(api, connection, next) {
-    connection.response.game = {};
-    next(connection, true);
+    api.models.Game.findById(connection.params.id, function(err, result){
+      if(err){
+        connection.response.success = false;
+        connection.response.error = err;
+      } else {
+        connection.response.success = true;
+        connection.response.game = result;
+      }
+      next(connection, true);
+    });
   }
 };

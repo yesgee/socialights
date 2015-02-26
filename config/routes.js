@@ -15,6 +15,7 @@ exports.default = {
         { path: '/games/:id', action: 'showGame'},
       ],
       post: [
+        { path: '/users', action: 'createUser'},
         { path: '/rooms/:room/addUser', action: 'addUserToRoom'},
         { path: '/games', action: 'createGame'},
         { path: '/games/:game/teams', action: 'createTeam'},
@@ -22,7 +23,7 @@ exports.default = {
         { path: '/games/:game/teams/:team/addUser', action: 'addUserToTeam'},
         { path: '/games/:game/switchTeams', action: 'switchUserBetweenTeams'},
         { path: '/games/:game/answerQuestion', action: 'answerQuestion'},
-        { path: '/games/:game/start', action: 'startGame'}
+        { path: '/games/:game/start', action: 'startGame'},
       ],
       delete: [
         { path: '/rooms/:room/removeUser', action: 'removeUserFromRoom'},

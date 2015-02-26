@@ -1,7 +1,6 @@
 'use strict';
 
-
-exports.status = {
+exports.answerQuestion = {
   name: 'answerQuestion',
   description: 'I will answer a question',
 

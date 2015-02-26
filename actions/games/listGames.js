@@ -1,7 +1,6 @@
 'use strict';
 
-
-exports.status = {
+exports.listGames = {
   name: 'listGames',
   description: 'I will return a list of all games',
 
@@ -72,7 +71,15 @@ exports.status = {
     ]
   },
   run: function(api, connection, next) {
-    connection.response.games = [];
-    next(connection, true);
+    api.models.Game.find(function(err, results) {
+      if(err) {
+        connection.response.success = false;
+        connection.response.error = err;
+      } else {
+        connection.response.success = true;
+        connection.response.games = results;
+      }
+      next(connection, true);
+    });
   }
 };

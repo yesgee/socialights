@@ -1,6 +1,5 @@
 'use strict';
 
-
 exports.status = {
   name: 'showUser',
   description: 'I will return all information about a single User',
@@ -33,7 +32,15 @@ exports.status = {
   },
 
 run: function(api, connection, next) {
-    connection.response.user = {};
+  api.models.User.findById(connection.params.id, function(err, result){
+    if(err){
+      connection.response.success = false;
+      connection.response.error = err;
+    } else {
+      connection.response.success = true;
+      connection.response.user = result;
+    }
     next(connection, true);
+  });
   }
 };

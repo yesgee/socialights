@@ -1,7 +1,6 @@
 'use strict';
 
-
-exports.status = {
+exports.showRoom = {
   name: 'showRoom',
   description: 'I will return all information about a single room',
 
@@ -34,7 +33,15 @@ exports.status = {
   },
 
   run: function(api, connection, next) {
-    connection.response.room = {};
-    next(connection, true);
+    api.models.Room.findById(connection.params.id, function(err, result){
+      if(err){
+        connection.response.success = false;
+        connection.response.error = err;
+      } else {
+        connection.response.success = true;
+        connection.response.user = result;
+      }
+      next(connection, true);
+    });
   }
 };

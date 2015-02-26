@@ -1,6 +1,5 @@
 'use strict';
 
-
 exports.status = {
   name: 'listRooms',
   description: 'I will return a list of all rooms',
@@ -48,7 +47,15 @@ exports.status = {
     ]
   },
   run: function(api, connection, next) {
-    connection.response.rooms = [];
-    next(connection, true);
+    api.models.Room.find(function(err, results) {
+      if(err) {
+        connection.response.success = false;
+        connection.response.error = err;
+      } else {
+        connection.response.success = true;
+        connection.response.users = results;
+      }
+      next(connection, true);
+    });
   }
 };

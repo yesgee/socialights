@@ -1,7 +1,6 @@
 'use strict';
 
-
-exports.status = {
+exports.createGame = {
   name: 'createGame',
   description: 'I will create a game',
 
@@ -23,7 +22,19 @@ exports.status = {
     }
   },
   run: function(api, connection, next) {
-    connection.response.status = 'OK';
-    next(connection, true);
+    var game = api.models.Game({
+      user: connection.params.user,
+      room: connection.params.room,
+      type: connection.params.type,
+    });
+    game.save(function(err){
+      if(err){
+        connection.response.success = false;
+        connection.response.error = err;
+      } else {
+        connection.response.success = true;
+      }
+      next(connection, true);
+    });
   }
 };

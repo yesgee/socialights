@@ -1,7 +1,6 @@
 'use strict';
 
-
-exports.status = {
+exports.showQuestion = {
   name: 'showQuestion',
   description: 'I will return all information about a single question',
 
@@ -41,7 +40,15 @@ exports.status = {
   },
 
   run: function(api, connection, next) {
-    connection.response.question = {};
-    next(connection, true);
+    api.models.Question.findById(connection.params.id, function(err, result){
+      if(err){
+        connection.response.success = false;
+        connection.response.error = err;
+      } else {
+        connection.response.success = true;
+        connection.response.user = result;
+      }
+      next(connection, true);
+    });
   }
 };

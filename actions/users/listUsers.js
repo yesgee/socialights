@@ -1,7 +1,6 @@
 'use strict';
 
-
-exports.status = {
+exports.listUsers = {
   name: 'listUsers',
   description: 'I will return a list of all users',
 
@@ -43,8 +42,16 @@ exports.status = {
     }]
   },
 
-run: function(api, connection, next) {
-    connection.response.users = [];
-    next(connection, true);
+  run: function(api, connection, next) {
+    api.models.User.find(function(err, results) {
+      if(err) {
+        connection.response.success = false;
+        connection.response.error = err;
+      } else {
+        connection.response.success = true;
+        connection.response.users = results;
+      }
+      next(connection, true);
+    });
   }
 };

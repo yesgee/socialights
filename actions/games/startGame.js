@@ -1,7 +1,6 @@
 'use strict';
 
-
-exports.status = {
+exports.startGame = {
   name: 'startGame',
   description: 'I will start a game',
 
