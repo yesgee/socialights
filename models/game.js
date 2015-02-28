@@ -19,6 +19,7 @@ var askedQuestionSchema = new Schema({
   askedAt: { type: Date, required: true },
   deadlineAt: { type: Date, required: true },
   answeredAt: { type: Date },
+  answeredBy: { type: Schema.Types.ObjectId, ref: 'User' },
   answer: { type: Number }
 });
 askedQuestionSchema.plugin(timestamps);
@@ -30,7 +31,7 @@ var gameSchema = new Schema({
   room: { type: Schema.Types.ObjectId, required: true, ref: 'Room' },
   users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   teams: [teamSchema],
-  questions: [askedQuestionSchema],
+  previousQuestions: [askedQuestionSchema], // Note: The last question in this array is the current question
   nextQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }]
 });
 gameSchema.plugin(timestamps);

@@ -66,4 +66,17 @@ describe('Model: Question', function() {
     });
   });
 
+  it('should not be valid when there is more than one correct answer', function(done) {
+    var question = new api.models.Question(randomQuestion());
+    question.answers[0].correct = true;
+    question.answers[1].correct = true;
+    question.validate(function(err) {
+      should.exist(err);
+      err.should.have.property('errors');
+      err.errors.should.not.have.property('question');
+      err.errors.should.have.property('answers');
+      done();
+    });
+  });
+
 });

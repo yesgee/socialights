@@ -113,7 +113,7 @@ describe('Model: Game', function() {
     });
 
     it('should validate a random askedQuestion', function(done) {
-      game.questions.push(randomAskedQuestion({ question: question }));
+      game.previousQuestions.push(randomAskedQuestion({ question: question }));
 
       game.validate(function(err) {
         should.not.exist(err);
@@ -122,13 +122,13 @@ describe('Model: Game', function() {
     });
 
     it('should not be valid when an askedQuestion has no question, team, askedAt or deadlineAt', function(done) {
-      game.questions.push({});
+      game.previousQuestions.push({});
       game.validate(function(err) {
         should.exist(err);
-        err.errors.should.have.property('questions.0.question');
-        err.errors.should.have.property('questions.0.team');
-        err.errors.should.have.property('questions.0.askedAt');
-        err.errors.should.have.property('questions.0.deadlineAt');
+        err.errors.should.have.property('previousQuestions.0.question');
+        err.errors.should.have.property('previousQuestions.0.team');
+        err.errors.should.have.property('previousQuestions.0.askedAt');
+        err.errors.should.have.property('previousQuestions.0.deadlineAt');
         done();
       });
     });
