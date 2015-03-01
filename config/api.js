@@ -41,6 +41,7 @@ exports.default = {
         'public':      [__dirname + '/../public'],
         'pid':         [__dirname + '/../pids'],
         'log':         [__dirname + '/../log'],
+        'model':       [__dirname + '/../models'],
         'server':      [__dirname + '/../servers'],
         'initializer': [__dirname + '/../initializers'],
         'plugin':      [__dirname + '/../node_modules']
