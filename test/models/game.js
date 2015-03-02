@@ -137,6 +137,38 @@ describe('Model: Game', function() {
 
   });
 
+  describe('#initializeTeams', function() {
+
+    it('should initialize two teams', function(done) {
+      var room = new api.models.Room(randomRoom());
+      var game = new api.models.Game(randomGame());
+      game.room = room;
+
+      game.teams.should.be.empty;
+
+      game.initializeTeams(function(err, result) {
+        should.not.exist(err);
+        game.teams.length.should.equal(2);
+        done();
+      });
+    });
+
+    it('should not initialize when already initialized', function(done) {
+      var room = new api.models.Room(randomRoom());
+      var game = new api.models.Game(randomGame());
+      game.room = room;
+
+      game.teams.push({ name: 'Green Team', color: '#00ff00', users: [], score: 0 });
+
+      game.initializeTeams(function(err, result) {
+        should.exist(err);
+        game.teams.length.should.equal(1);
+        done();
+      });
+    });
+
+  });
+
   describe('#userTeam', function() {
 
     var game;

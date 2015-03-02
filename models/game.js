@@ -40,6 +40,16 @@ gameSchema.plugin(timestamps);
 
 // Instance Methods
 
+gameSchema.methods.initializeTeams = function(callback) {
+  if (this.teams.length !== 0) {
+    callback('Error: Teams already initialized');
+  } else {
+    this.teams.push({ name: 'Red Team', color: '#ff0000', users: [], score: 0 });
+    this.teams.push({ name: 'Blue Team', color: '#0000ff', users: [], score: 0 });
+    this.save(callback);
+  }
+};
+
 gameSchema.methods.userTeam = function(user) {
   return findIndex(this.teams, function(team) {
     return findIndex(team.users, user._id) != -1;
