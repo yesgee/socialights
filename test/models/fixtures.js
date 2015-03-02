@@ -56,7 +56,7 @@ module.exports.Team = function(data) {
 
 module.exports.AskedQuestion = function(data) {
   data = data || {};
-  var asked = faker.date.recent();
+  var asked = new Date(faker.date.recent().getTime() - 1000 * 60); // At least one minute ago
   return merge({}, data, {
     team: faker.random.number({ min:0, max:1 }),
     askedAt: asked,

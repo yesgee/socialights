@@ -3,7 +3,10 @@
 var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
+var last = require('mout/array/last');
 var findIndex = require('mout/array/findIndex');
+var isFunction = require('mout/lang/isFunction');
+var sortBy = require('mout/array/sortBy');
 
 // Team Schema
 var teamSchema = new Schema({
@@ -25,6 +28,14 @@ var askedQuestionSchema = new Schema({
   answer: { type: Number }
 });
 askedQuestionSchema.plugin(timestamps);
+
+// Instance Methods
+
+askedQuestionSchema.methods.isOpen = function() {
+  var afterDeadline = this.deadlineAt.getTime() > (new Date()).getTime();
+  var answered = this.answer && this.answeredAt && this.answeredBy;
+  return afterDeadline || answered;
+};
 
 // Game Schema
 var gameSchema = new Schema({
@@ -54,6 +65,85 @@ gameSchema.methods.userTeam = function(user) {
   return findIndex(this.teams, function(team) {
     return findIndex(team.users, user._id) != -1;
   });
+};
+
+gameSchema.methods.addUserToTeam = function(user, teamIdx, callback) {
+  if (isFunction(teamIdx)) { callback = teamIdx; teamIdx = -1; }
+
+  if (this.userTeam(user) >= 0) {
+    callback('Error: This user is already in a team.');
+    return;
+  } else if (teamIdx < 0 || teamIdx > this.teams.length - 1) {
+    var teams = sortBy(this.teams, function(team) { return team.users.length; });
+    teams[0].users.addToSet(user._id);
+  } else {
+    this.teams[teamIdx].users.addToSet(user._id);
+  }
+
+  if (findIndex(this.users, user._id) < 0) {
+    this.users.addToSet(user._id);
+  }
+
+  this.save(callback);
+};
+
+gameSchema.methods.removeUserFromTeam = function(user, callback) {
+  var teamIdx = this.userTeam(user);
+  if (teamIdx < 0) {
+    callback('Error: This user is not in a team.');
+  } else {
+    this.teams[teamIdx].users.pull(user._id);
+    this.save(callback);
+  }
+};
+
+gameSchema.methods.switchTeam = function(user, callback) {
+  var oldTeamIdx = this.userTeam(user);
+  var newTeamIdx = (oldTeamIdx + 1) % this.teams.length;
+  if (oldTeamIdx < 0) {
+    callback('Error: This user is not in a team.');
+  } else {
+    this.teams[oldTeamIdx].users.pull(user._id);
+    this.teams[newTeamIdx].users.addToSet(user._id);
+    this.save(callback);
+  }
+};
+
+gameSchema.methods.askNextQuestion = function(callback) {
+  var lastAskedQuestion = last(this.previousQuestions);
+  if (lastAskedQuestion && lastAskedQuestion.isOpen()) {
+    callback('Error: The last question should be answered first.');
+  } else {
+    if (this.nextQuestions.length < 1) {
+      callback('Error: There is no next question.');
+    } else {
+      var now = new Date();
+
+      var nextTeam;
+      if (lastAskedQuestion) {
+        nextTeam = (lastAskedQuestion.team + 1) % this.teams.length;
+      } else {
+        nextTeam = 0;
+      }
+
+      var nextQuestion = {
+        question: this.nextQuestions.shift(),
+        team: nextTeam,
+        askedAt: now,
+        deadlineAt: new Date(now.getTime() + 10 * 1000)
+      };
+      this.previousQuestions.push(nextQuestion);
+      this.save(callback);
+    }
+  }
+};
+
+gameSchema.methods.question = function() {
+  return last(this.previousQuestions);
+};
+
+gameSchema.methods.answerQuestion = function(user, answer, callback) {
+
 };
 
 // Initialize the Model for global MongoDB
