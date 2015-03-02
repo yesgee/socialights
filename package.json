@@ -15,7 +15,7 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "actionhero": "10.0.4",
+    "actionhero": "10.1.0",
     "grunt": "latest",
     "mongoose": "^3.8.24",
     "mongoose-timestamp": "^0.4.0",
