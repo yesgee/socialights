@@ -5,27 +5,27 @@ var merge = require('mout/object/merge');
 
 module.exports.User = function(data) {
   data = data || {};
-  return merge({}, data, {
+  return merge({}, {
     name: faker.name.findName()
-  });
+  }, data);
 };
 
 module.exports.Room = function(data) {
   data = data || {};
-  return merge({}, data, {
+  return merge({}, {
     name: faker.address.city() + ' Room',
     location: faker.address.streetAddress(),
     gameTypes: ['quiz']
-  });
+  }, data);
 };
 
 module.exports.Answer = function(data) {
   data = data || {};
-  return merge({}, data, {
+  return merge({}, {
     answer: faker.lorem.sentence() + '.',
     correct: false,
     feedback: faker.lorem.sentence() + '.'
-  });
+  }, data);
 };
 
 var answerList = function() {
@@ -40,34 +40,34 @@ var answerList = function() {
 
 module.exports.Question = function(data) {
   data = data || {};
-  return merge({}, data, {
+  return merge({}, {
     question: faker.lorem.sentence() + '?',
     answers: answerList()
-  });
+  }, data);
 };
 
 module.exports.Team = function(data) {
   data = data || {};
-  return merge({}, data, {
+  return merge({}, {
     name: 'Team ' + faker.name.lastName(),
     color: faker.internet.color()
-  });
+  }, data);
 };
 
 module.exports.AskedQuestion = function(data) {
   data = data || {};
   var asked = new Date(faker.date.recent().getTime() - 1000 * 60); // At least one minute ago
-  return merge({}, data, {
+  return merge({}, {
     team: faker.random.number({ min:0, max:1 }),
     askedAt: asked,
     deadlineAt: new Date(asked.getTime() + 10 * 1000)
-  });
+  }, data);
 };
 
 module.exports.Game = function(data) {
   data = data || {};
-  return merge({}, data, {
+  return merge({}, {
     gameType: 'quiz',
     startedAt: new Date()
-  });
+  }, data);
 };
