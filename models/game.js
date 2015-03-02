@@ -3,7 +3,7 @@
 var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
-var indexOf = require('mout/array/indexOf');
+var findIndex = require('mout/array/findIndex');
 
 // Team Schema
 var teamSchema = new Schema({
@@ -41,8 +41,8 @@ gameSchema.plugin(timestamps);
 // Instance Methods
 
 gameSchema.methods.userTeam = function(user) {
-  return indexOf(this.teams, function(team) {
-    return indexOf(team.users, user._id) != -1;
+  return findIndex(this.teams, function(team) {
+    return findIndex(team.users, user._id) != -1;
   });
 };
 

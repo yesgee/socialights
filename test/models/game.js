@@ -1,5 +1,7 @@
 'use strict';
 
+/* jshint expr:true */
+
 process.env.NODE_ENV = 'test';
 
 var chai = require('chai');
@@ -95,7 +97,7 @@ describe('Model: Game', function() {
 
   });
 
-  describe('askedQuestions', function() {
+  describe('previousQuestions', function() {
 
     var game;
     var question;
@@ -131,6 +133,39 @@ describe('Model: Game', function() {
         err.errors.should.have.property('previousQuestions.0.deadlineAt');
         done();
       });
+    });
+
+  });
+
+  describe('#userTeam', function() {
+
+    var game;
+    var user;
+
+    beforeEach(function(done) {
+      var room = new api.models.Room(randomRoom());
+      game = new api.models.Game(randomGame());
+      game.room = room;
+
+      user = new api.models.User(require('./fixtures').User());
+
+      game.initializeTeams(function(err, result) {
+        done();
+      });
+    });
+
+    it('should return -1 for a non-playing user', function() {
+      game.userTeam(user).should.equal(-1);
+    });
+
+    it('should return 0 when the user is in team 0', function() {
+      game.teams[0].users.push(user._id);
+      game.userTeam(user).should.equal(0);
+    });
+
+    it('should return 0 when the user is in team 1', function() {
+      game.teams[1].users.push(user._id);
+      game.userTeam(user).should.equal(1);
     });
 
   });
