@@ -4,6 +4,7 @@ var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
 var filter = require('mout/array/filter');
+var find = require('mout/array/find');
 
 // Answer Schema
 var answerSchema = new Schema({
@@ -22,12 +23,8 @@ questionSchema.plugin(timestamps);
 
 // Instance Methods
 
-questionSchema.methods.checkAnswer = function(answerIdx, callback) {
-  if (answerIdx < 0 || answerIdx > this.answers.length - 1) {
-    callback('Error: This answer does not exist.');
-  } else {
-    callback(null, this.answers[answerIdx].correct);
-  }
+questionSchema.methods.correctAnswer = function() {
+  return find(this.answers, { correct: true });
 };
 
 // Validations
