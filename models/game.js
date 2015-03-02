@@ -3,6 +3,8 @@
 var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
+var indexOf = require('mout/array/indexOf');
+
 // Team Schema
 var teamSchema = new Schema({
   name: { type: String, required: true },
@@ -35,6 +37,14 @@ var gameSchema = new Schema({
   nextQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }]
 });
 gameSchema.plugin(timestamps);
+
+// Instance Methods
+
+gameSchema.methods.userTeam = function(user) {
+  return indexOf(this.teams, function(team) {
+    return indexOf(team.users, user._id) != -1;
+  });
+};
 
 // Initialize the Model for global MongoDB
 var initialize = function(api) {
