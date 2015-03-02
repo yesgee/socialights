@@ -25,16 +25,20 @@ var askedQuestionSchema = new Schema({
   deadlineAt: { type: Date, required: true },
   answeredAt: { type: Date },
   answeredBy: { type: Schema.Types.ObjectId, ref: 'User' },
-  answer: { type: Number }
+  answer: { type: Schema.Types.ObjectId }
 });
 askedQuestionSchema.plugin(timestamps);
 
 // Instance Methods
 
 askedQuestionSchema.methods.isOpen = function() {
-  var afterDeadline = this.deadlineAt.getTime() > (new Date()).getTime();
   var answered = this.answer && this.answeredAt && this.answeredBy;
-  return afterDeadline || answered;
+  return !answered && this.isInTime();
+};
+
+askedQuestionSchema.methods.isInTime = function() {
+  var now = this.answeredAt || new Date();
+  return now.getTime() <= this.deadlineAt.getTime();
 };
 
 // Game Schema
@@ -143,6 +147,26 @@ gameSchema.methods.question = function() {
 };
 
 gameSchema.methods.answerQuestion = function(user, answer, callback) {
+  var _this = this;
+  var answeredQuestion = this.question();
+
+  if (answeredQuestion.team !== this.userTeam(user)) {
+    callback('Error: Team ' + answeredQuestion.team + ' should answer this question.');
+  } else {
+    answeredQuestion.answer = answer;
+    answeredQuestion.answeredBy = user._id;
+    answeredQuestion.answeredAt = new Date();
+
+    this.model('Question').findOne(answeredQuestion.question, function(err, result) {
+      if (err) { return callback(err); }
+      var correct = result.correctAnswer()._id.toString() == answer.toString(); //TODO: Fix this.
+      answeredQuestion.answeredCorrectly = correct;
+      if (correct && answeredQuestion.isInTime()) {
+        _this.teams[answeredQuestion.team].score++;
+      }
+      _this.save(callback);
+    });
+  }
 
 };
 

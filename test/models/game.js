@@ -12,6 +12,8 @@ var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
 
+var find = require('mout/array/find');
+
 var randomRoom = require('./fixtures').Room;
 var randomGame = require('./fixtures').Game;
 var randomTeam = require('./fixtures').Team;
@@ -437,17 +439,100 @@ describe('Model: Game', function() {
 
   describe('#answerQuestion', function() {
 
-    it('should not allow an answer from the other team');
+    var game;
+    var user0;
+    var user1;
+    var question;
+    var askedQuestion;
 
-    it('should set the answeredAt, answeredBy and answer attributes of the current question.');
+    beforeEach(function(done) {
+      var room = new api.models.Room(randomRoom());
+      game = new api.models.Game(randomGame());
+      game.room = room;
 
-    it('should validate the question answer');
+      user0 = new api.models.User(require('./fixtures').User());
+      user1 = new api.models.User(require('./fixtures').User());
 
-    it('should give points for a correct answer');
+      question = api.models.Question(require('./fixtures').Question());
+      askedQuestion = require('./fixtures').AskedQuestion({ team: 0 });
 
-    it('should not give points for a late answer');
+      question.save(function(err, result) {
+        should.not.exist(err);
+        askedQuestion.question = result;
+        game.previousQuestions.push(askedQuestion);
+        game.initializeTeams(function(err, result) {
+          should.not.exist(err);
+          game.teams[0].users.push(user0);
+          game.teams[1].users.push(user1);
+          game.save(function(err, result) {
+            should.not.exist(err);
+            done();
+          });
+        });
+      });
 
-    it('should not give points for an incorrect answer');
+    });
+
+    it('should not allow an answer from the other team', function(done) {
+      game.answerQuestion(user1, 0, function(err, result) {
+        should.exist(err);
+        err.should.equal('Error: Team 0 should answer this question.');
+        done();
+      });
+    });
+
+    it('should set the answeredAt, answeredBy and answer attributes of the current question.', function(done) {
+      game.answerQuestion(user0, question.answers[0]._id, function(err, result) {
+        should.not.exist(err);
+        should.exist(game.question().answeredAt);
+        game.question().answeredAt.should.be.above(game.question().askedAt);
+        game.question().answeredBy.should.equal(user0._id);
+        game.question().answer.should.equal(question.answers[0]._id);
+        done();
+      });
+    });
+
+    it('should give points for a correct answer', function(done) {
+      var correctAnswer = find(question.answers, { correct: true });
+      game.previousQuestions[0].deadlineAt = new Date((new Date()).getTime() + 1000);
+      game.save(function(err, result) {
+        game.answerQuestion(user0, correctAnswer._id, function(err, result) {
+          should.not.exist(err);
+          should.exist(game.question().answeredCorrectly);
+          game.question().answeredCorrectly.should.be.true;
+          game.teams[0].score.should.equal(1);
+          done();
+        });
+      });
+    });
+
+    it('should not give points for a late answer', function(done) {
+      var correctAnswer = find(question.answers, { correct: true });
+      game.previousQuestions[0].deadlineAt = new Date((new Date()).getTime() - 10);
+      game.save(function(err, result) {
+        game.answerQuestion(user0, correctAnswer._id, function(err, result) {
+          should.not.exist(err);
+          should.exist(game.question().answeredCorrectly);
+          game.question().answeredCorrectly.should.be.true;
+          game.teams[0].score.should.equal(0);
+          done();
+        });
+      });
+    });
+
+    it('should not give points for an incorrect answer', function(done) {
+      var incorrectAnswer = find(question.answers, { correct: false });
+      game.previousQuestions[0].deadlineAt = new Date((new Date()).getTime() + 1000);
+      game.save(function(err, result) {
+        game.answerQuestion(user0, incorrectAnswer._id, function(err, result) {
+          should.not.exist(err);
+          should.exist(game.question().answeredCorrectly);
+          game.question().answeredCorrectly.should.be.false;
+          game.teams[0].score.should.equal(0);
+          done();
+        });
+      });
+    });
 
   });
 
