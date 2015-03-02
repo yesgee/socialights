@@ -1,5 +1,7 @@
 'use strict';
 
+/* jshint expr:true */
+
 process.env.NODE_ENV = 'test';
 
 var chai = require('chai');
@@ -77,6 +79,47 @@ describe('Model: Question', function() {
       err.errors.should.have.property('answers');
       done();
     });
+  });
+
+  describe('#checkAnswer', function() {
+    var question;
+
+    before(function() {
+      question = new api.models.Question(randomQuestion());
+      forEach(question.answers, function(val) { val.correct = false; });
+      question.answers[3].correct = true;
+    });
+
+    it('should throw an error for an index < 0', function(done) {
+      question.checkAnswer(-1, function(err, result) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should throw an error for an index > answer length', function(done) {
+      question.checkAnswer(4, function(err, result) {
+        should.exist(err);
+        done();
+      });
+    });
+
+    it('should return true for the correct answer', function(done) {
+      question.checkAnswer(3, function(err, result) {
+        should.not.exist(err);
+        result.should.be.true;
+        done();
+      });
+    });
+
+    it('should return false for an incorrect answer', function(done) {
+      question.checkAnswer(2, function(err, result) {
+        should.not.exist(err);
+        result.should.be.false;
+        done();
+      });
+    });
+
   });
 
 });

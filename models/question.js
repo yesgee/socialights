@@ -20,6 +20,16 @@ var questionSchema = new Schema({
 });
 questionSchema.plugin(timestamps);
 
+// Instance Methods
+
+questionSchema.methods.checkAnswer = function(answerIdx, callback) {
+  if (answerIdx < 0 || answerIdx > this.answers.length - 1) {
+    callback('Error: This answer does not exist.');
+  } else {
+    callback(null, this.answers[answerIdx].correct);
+  }
+};
+
 // Validations
 questionSchema.path('answers').validate(function(value) {
   return value.length >= 2;
