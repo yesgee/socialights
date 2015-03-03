@@ -10,45 +10,44 @@ exports.addUserToTeam = {
   inputs: {
     user: {
       required: true,
-      formatter: function(s){ return String(s); }
+      formatter: function(s) { return String(s); }
     },
     game: {
       required: true,
-      formatter: function(s){ return String(s); }
+      formatter: function(s) { return String(s); }
     },
     team: {
       required: true,
-      formatter: function(n){ return parseInt(n); }
+      formatter: function(n) { return parseInt(n); }
     },
   },
 
   run: function(api, connection, next) {
-    var userId = connection.params.user;
-    var gameId = connection.params.game;
-    var teamId = connection.params.team;
-    api.models.Game.findById(gameId, function(err, game){
-      if(err)
-      {
-        connection.response.success = false;
+    var userId = new api.mongo.ObjectID(connection.params.user);
+    var gameId = new api.mongo.ObjectID(connection.params.game);
+    var teamIdx = connection.params.team;
+
+    api.models.Game.findById(gameId, function(err, game) {
+      if (err) {
         connection.response.error = err;
         next(connection, true);
+      } else if (game === null) {
+        connection.response.error = 'Error: Game with this id was not found.';
+        next(connection, true);
       } else {
-        api.models.User.findById(userId, function(err2, user){
-          if(err2)
-          {
-            connection.response.success = false;
-            connection.response.error = err2;
+        api.models.User.findById(userId, function(err, user) {
+          if (err) {
+            connection.response.error = err;
             next(connection, true);
-          } else{
-            game.teams[teamId].users.push(user);
-            game.save(function(err3){
-              if(err3)
-              {
+          } else if (user === null) {
+            connection.response.error = 'Error: User with this id was not found.';
+            next(connection, true);
+          } else {
+            game.addUserToTeam(user, teamIdx, function(err, response) {
+              if (err) {
                 connection.response.success = false;
-                connection.response.error = err3;
-              }
-              else
-              {
+                connection.response.error = err;
+              } else {
                 connection.response.success = true;
               }
               next(connection, true);
