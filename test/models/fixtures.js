@@ -10,15 +10,6 @@ module.exports.User = function(data) {
   }, data);
 };
 
-module.exports.Room = function(data) {
-  data = data || {};
-  return merge({}, {
-    name: faker.address.city() + ' Room',
-    location: faker.address.streetAddress(),
-    gameTypes: ['quiz']
-  }, data);
-};
-
 module.exports.Answer = function(data) {
   data = data || {};
   return merge({}, {
@@ -67,7 +58,6 @@ module.exports.AskedQuestion = function(data) {
 module.exports.Game = function(data) {
   data = data || {};
   return merge({}, {
-    gameType: 'quiz',
     startedAt: new Date()
   }, data);
 };

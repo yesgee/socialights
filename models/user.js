@@ -6,25 +6,24 @@ var timestamps = require('mongoose-timestamp');
 // User Schema
 var userSchema = new Schema({
   name: { type: String, required: true },
-  room: { type: Schema.Types.ObjectId, ref: 'Room' },
   game: { type: Schema.Types.ObjectId, ref: 'Game' }
 });
 userSchema.plugin(timestamps);
 
 // Instance Methods
 
-userSchema.methods.joinRoom = function(room, callback) {
+userSchema.methods.joinGame = function(game, callback) {
   var _this = this;
 
-  // Update the room in the user object and save
-  this.room = room;
+  // Update the game in the user object and save
+  this.game = game;
   this.save(function(err, result) {
     if (err) {
       callback(err);
     } else {
-      // Update the user array in the room object and save
-      room.users.addToSet(_this._id);
-      room.save(function(err, result) {
+      // Update the user array in the game object and save
+      game.users.addToSet(_this._id);
+      game.save(function(err, result) {
         if (err) {
           callback(err);
         } else {
@@ -33,32 +32,6 @@ userSchema.methods.joinRoom = function(room, callback) {
       });
     }
   });
-};
-
-userSchema.methods.joinGame = function(game, callback) {
-  var _this = this;
-
-  if (!this.room) {
-    callback('Error: User is not in a room.');
-  } else {
-    // Update the game in the user object and save
-    this.game = game;
-    this.save(function(err, result) {
-      if (err) {
-        callback(err);
-      } else {
-        // Update the user array in the game object and save
-        game.users.addToSet(_this._id);
-        game.save(function(err, result) {
-          if (err) {
-            callback(err);
-          } else {
-            callback(null, _this);
-          }
-        });
-      }
-    });
-  }
 };
 
 userSchema.methods.getGame = function(callback) {
@@ -153,42 +126,6 @@ userSchema.methods.leaveGame = function(callback) {
       });
     }
   });
-};
-
-userSchema.methods.leaveRoom = function(callback) {
-  var _this = this;
-
-  var leave = function() {
-    _this.populate('room', function(err, result) {
-      var room = _this.room;
-
-      // Update the room in the user object and save
-      _this.room = null;
-      _this.save(function(err, result) {
-        if (err) {
-          callback(err);
-        } else {
-          // Update the user array in the room object and save
-          room.users.pull(_this._id);
-          room.save(function(err, result) {
-            if (err) {
-              callback(err);
-            } else {
-              callback(null, _this);
-            }
-          });
-        }
-      });
-    });
-  };
-
-  // Leave the game first, if present
-  if (this.game) {
-    this.leaveGame(leave);
-  } else {
-    leave();
-  }
-
 };
 
 // Initialize the Model for global MongoDB
