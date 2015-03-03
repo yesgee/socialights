@@ -13,9 +13,7 @@ var actionhero = new actionheroPrototype();
 var api;
 
 var randomGame = require('../../models/fixtures').Game;
-var randomRoom = require('../../models/fixtures').Room;
 var randomUser = require('../../models/fixtures').User;
-var gameType = randomGame().gameType;
 
 describe('Action: addUserToGame', function() {
 
@@ -40,53 +38,59 @@ describe('Action: addUserToGame', function() {
     });
   });
 
-  it('should add a user to a game', function(done){
+  var user;
+  var game;
 
-    var user = api.models.User(randomUser());
-    user.save(function(err) {
-      should.not.exist(err);
-      var room = api.models.Room(randomRoom());
-      room.save(function(err) {
-        should.not.exist(err);
-        var game = api.models.Game({
-          room: room.id,
-          user: user.id,
-          gameType: gameType
-        });
-        game.save(function(err){
-          should.not.exist(err);
-        });
+  beforeEach(function(done) {
+    user = api.models.User(randomUser());
+    user.save(function(err, result) {
+      game = api.models.Game(randomGame());
+      game.save(function(err, result) {
+        done();
       });
     });
-
-
-
   });
 
   it('should return an error for a non-existing game', function(done) {
-    var user = api.models.User(randomUser());
-    user.save(function(err) {
-      should.not.exist(err);
-      api.specHelper.runAction('addUserToGame', { user: user.id
-        .toString(), game: new api.mongo.ObjectID().toString() }, function(response) {
-        should.exist(response.error);
-        should.not.exist(response.success);
-        response.error.should.equal('Error: Game with this id was not found.');
-        done();
-      });
+    api.specHelper.runAction('addUserToGame', {
+      user: user.id.toString(),
+      game: new api.mongo.ObjectID().toString()
+    }, function(response) {
+      should.exist(response.error);
+      should.not.exist(response.success);
+      response.error.should.equal('Error: Game with this id was not found.');
+      done();
     });
   });
 
   it('should return an error for a non-existing user', function(done) {
-    var game = api.models.Game(randomGame());
-    game.save(function(err) {
-      should.not.exist(err);
-      api.specHelper.runAction('addUserToGame', { user: new api.mongo.ObjectID()
-        .toString(), game: game.id }, function(response) {
-        should.exist(response.error);
-        should.not.exist(response.success);
-        response.error.should.equal('Error: User with this id was not found.');
-        done();
+    api.specHelper.runAction('addUserToGame', {
+      user: new api.mongo.ObjectID().toString(),
+      game: game.id.toString()
+    }, function(response) {
+      should.exist(response.error);
+      should.not.exist(response.success);
+      response.error.should.equal('Error: User with this id was not found.');
+      done();
+    });
+  });
+
+  it('should add the user to a game', function(done) {
+    api.specHelper.runAction('addUserToGame', {
+      user: user.id.toString(),
+      game: game.id.toString()
+    }, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.success);
+
+      api.models.User.findById(user._id, function(err, result) {
+        should.exist(result.game);
+        result.game.toString().should.equal(game._id.toString()); //TODO: Fix this
+
+        api.models.Game.findById(game._id, function(err, result) {
+          result.users.should.include(user._id);
+          done();
+        });
       });
     });
   });

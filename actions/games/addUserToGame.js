@@ -10,44 +10,39 @@ exports.addUserToGame = {
   inputs: {
     user: {
       required: true,
-      formatter: function(s){ return String(s); }
+      formatter: function(s) { return String(s); }
     },
     game: {
       required: true,
-      formatter: function(s){ return String(s); }
+      formatter: function(s) { return String(s); }
     },
   },
 
   run: function(api, connection, next) {
-    var userId = connection.params.user;
-    var gameId = connection.params.game;
-    api.models.Game.findById(gameId, function(err, game){
-      if(err)
-      {
+    var userId = new api.mongo.ObjectID(connection.params.user);
+    var gameId = new api.mongo.ObjectID(connection.params.game);
+
+    api.models.Game.findById(gameId, function(err, game) {
+      if (err) {
         connection.response.error = err;
         next(connection, true);
-      } else if(game === null)
-      {
+      } else if (game === null) {
         connection.response.error = 'Error: Game with this id was not found.';
+        next(connection, true);
       } else {
-        api.models.User.findById(userId, function(err, user){
-          if(err)
-          {
+        api.models.User.findById(userId, function(err, user) {
+          if (err) {
             connection.response.error = err;
             next(connection, true);
-          } else if(user === null)
-          {
+          } else if (user === null) {
             connection.response.error = 'Error: User with this id was not found.';
+            next(connection, true);
           } else {
-            game.users.push(user);
-            game.save(function(err){
-              if(err)
-              {
+            user.joinGame(game, function(err, result) {
+              if (err) {
                 connection.response.success = false;
                 connection.response.error = err;
-              }
-              else
-              {
+              } else {
                 connection.response.success = true;
               }
               next(connection, true);
