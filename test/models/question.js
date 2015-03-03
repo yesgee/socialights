@@ -1,5 +1,7 @@
 'use strict';
 
+/* jshint expr:true */
+
 process.env.NODE_ENV = 'test';
 
 var chai = require('chai');
@@ -77,6 +79,15 @@ describe('Model: Question', function() {
       err.errors.should.have.property('answers');
       done();
     });
+  });
+
+  it('#correctAnswer should return the correct answer', function(done) {
+    var question = new api.models.Question(randomQuestion());
+    forEach(question.answers, function(val) { val.correct = false; });
+    question.answers[3].correct = true;
+
+    question.correctAnswer().should.equal(question.answers[3]);
+    done();
   });
 
 });
