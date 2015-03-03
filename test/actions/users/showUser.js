@@ -55,8 +55,7 @@ describe('Action: showUser', function() {
   it('should return an existing user', function(done) {
     var user = new api.models.User(randomUser());
     user.save(function(err) {
-      should.not.exist(err);
-      api.specHelper.runAction('showUser', { id: user.id }, function(response) {
+      api.specHelper.runAction('showUser', { id: user._id.toString() }, function(response) {
         should.not.exist(response.error);
         should.exist(response.success);
         should.exist(response.user);

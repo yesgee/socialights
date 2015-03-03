@@ -15,14 +15,15 @@ exports.deleteUser = {
   },
 
   run: function(api, connection, next) {
-    api.models.User.findOneAndRemove(connection.params.id).exec(function(err, result) {
+    var userId = new api.mongo.ObjectID(connection.params.id);
+
+    api.models.User.findByIdAndRemove(userId, function(err, result) {
       if (err) {
         connection.response.error = err;
       } else if (result === null) {
         connection.response.error = 'Error: User with this id was not found.';
       } else {
         connection.response.success = true;
-        connection.response.user = result;
       }
       next(connection, true);
     });
