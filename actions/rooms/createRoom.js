@@ -1,11 +1,12 @@
 'use strict';
 
-exports.showRoom = {
-  name: 'showRoom',
-  description: 'I will return all information about a single room',
+exports.createRoom = {
+  name: 'createRoom',
+  description: 'I will create a Room',
 
   outputExample:{
-    'room': {
+    succes: true,
+    room: {
       'id': '1',
       'name': 'EIT Amazingly Awesomely Common Room',
       'location': 'Open Innovation House',
@@ -26,18 +27,24 @@ exports.showRoom = {
     }
   },
   inputs: {
-    id: {
+    name: {
       required: true,
-      formatter: function(s){ return String(s); }
+      formatter: function(s) { return String(s); }
     },
+    location: {
+      required: true,
+      formatter: function(s) { return String(s); }
+    }
   },
 
   run: function(api, connection, next) {
-    api.models.Room.findById(connection.params.id, function(err, result){
-      if(err){
+    var room = api.models.Room({
+      name: connection.params.name,
+      location: connection.params.location
+    });
+    room.save(function(err, result) {
+      if (err) {
         connection.response.error = err;
-      } else if (result === null){
-        connection.response.error = 'Error: Room with this id was not found.';
       } else {
         connection.response.success = true;
         connection.response.room = result;

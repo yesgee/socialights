@@ -1,8 +1,8 @@
 'use strict';
 
-exports.showQuestion = {
-  name: 'showQuestion',
-  description: 'I will return all information about a single question',
+exports.createQuestion = {
+  name: 'createQuestion',
+  description: 'I will create a Room',
 
   outputExample:{
     'question': {
@@ -33,18 +33,23 @@ exports.showQuestion = {
     }
   },
   inputs: {
-    id: {
+    question: {
       required: true,
       formatter: function(s){ return String(s); }
+    },
+    answers: {
+      required: true
     },
   },
 
   run: function(api, connection, next) {
-    api.models.Question.findById(connection.params.id, function(err, result){
-      if(err){
+    var question = api.models.Question({
+      question: connection.params.question,
+      answers: connection.params.answers
+    });
+    question.save(function(err, result) {
+      if (err) {
         connection.response.error = err;
-      } else if (result === null) {
-        connection.response.error = 'Error: Question with this id was not found.';
       } else {
         connection.response.success = true;
         connection.response.question = result;

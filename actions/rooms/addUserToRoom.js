@@ -5,7 +5,7 @@ exports.status = {
   description: 'I will add a user to a room',
 
   outputExample:{
-    'status':'OK'
+    'success': true
   },
   inputs: {
     user: {
@@ -24,22 +24,27 @@ exports.status = {
     api.models.Room.findById(roomId, function(err, room){
       if(err)
       {
-        connection.response.success = false;
         connection.response.error = err;
         next(connection, true);
+      } else if(room === null)
+      {
+        connection.response.error = 'Error: Room with this id was not found.';
+        next(connection, true);
       } else {
-        api.models.User.findById(userId, function(err2, user){
-          if(err2)
+        api.models.User.findById(userId, function(err, user){
+          if(err)
           {
-            connection.response.error = err2;
-            connection.response.success = false;
+            connection.response.error = err;
+          } else if(user === null)
+          {
+            connection.response.error = 'Error: User with this id was not found.';
           } else{
             connection.response.success = true;
             room.users.push(user);
-            room.save(function(err3){
-              if(err3)
+            room.save(function(err){
+              if(err)
               {
-                connection.response.error = err3;
+                connection.response.error = err;
                 connection.response.success = false;
               }
               else

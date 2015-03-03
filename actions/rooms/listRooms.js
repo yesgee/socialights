@@ -53,7 +53,7 @@ exports.status = {
         connection.response.error = err;
       } else {
         connection.response.success = true;
-        connection.response.users = results;
+        connection.response.rooms = results;
       }
       next(connection, true);
     });

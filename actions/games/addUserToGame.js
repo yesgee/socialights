@@ -24,23 +24,27 @@ exports.addUserToGame = {
     api.models.Game.findById(gameId, function(err, game){
       if(err)
       {
-        connection.response.success = false;
         connection.response.error = err;
         next(connection, true);
+      } else if(game === null)
+      {
+        connection.response.error = 'Error: Game with this id was not found.';
       } else {
-        api.models.User.findById(userId, function(err2, user){
-          if(err2)
+        api.models.User.findById(userId, function(err, user){
+          if(err)
           {
-            connection.response.error = err2;
-            connection.response.success = false;
+            connection.response.error = err;
             next(connection, true);
-          } else{
+          } else if(user === null)
+          {
+            connection.response.error = 'Error: User with this id was not found.';
+          } else {
             game.users.push(user);
-            game.save(function(err3){
-              if(err3)
+            game.save(function(err){
+              if(err)
               {
                 connection.response.success = false;
-                connection.response.error = err3;
+                connection.response.error = err;
               }
               else
               {

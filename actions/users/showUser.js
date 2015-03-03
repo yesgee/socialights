@@ -32,7 +32,7 @@ exports.status = {
   },
 
   run: function(api, connection, next) {
-    api.models.User.findOne(connection.params.id).exec(function(err, result) {
+    api.models.User.findById(connection.params.id, function(err, result) {
       if (err) {
         connection.response.error = err;
       } else if (result === null) {

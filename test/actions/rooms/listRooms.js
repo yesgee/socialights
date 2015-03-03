@@ -12,6 +12,8 @@ var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
 
+var randomRoom = require('../../models/fixtures').Room;
+
 describe('Action: listRooms', function() {
 
   before(function(done) {
@@ -32,8 +34,28 @@ describe('Action: listRooms', function() {
     });
   });
 
-  it('should return an empty array when there are no rooms');
+  it('should return an empty array when there are no rooms', function(done) {
+    api.specHelper.runAction('listRooms', { }, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.success);
+      should.exist(response.rooms);
+      response.rooms.should.be.empty;
+      done();
+    });
+  });
 
-  it('should return an array of existing rooms');
+  it('should return an array of existing rooms', function(done) {
+    var room = new api.models.Room(randomRoom());
+    room.save(function(err) {
+      should.not.exist(err);
+      api.specHelper.runAction('listRooms', { }, function(response) {
+        should.not.exist(response.error);
+        should.exist(response.success);
+        should.exist(response.rooms);
+        response.rooms[0].name.should.equal(room.name);
+        done();
+      });
+    });
+  });
 
 });
