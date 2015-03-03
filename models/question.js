@@ -4,6 +4,7 @@ var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
 var filter = require('mout/array/filter');
+var find = require('mout/array/find');
 
 // Answer Schema
 var answerSchema = new Schema({
@@ -19,6 +20,12 @@ var questionSchema = new Schema({
   answers: [answerSchema]
 });
 questionSchema.plugin(timestamps);
+
+// Instance Methods
+
+questionSchema.methods.correctAnswer = function() {
+  return find(this.answers, { correct: true });
+};
 
 // Validations
 questionSchema.path('answers').validate(function(value) {
