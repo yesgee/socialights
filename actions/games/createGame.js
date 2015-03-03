@@ -1,30 +1,5 @@
 'use strict';
 
-var saveGame = function(api, connection, next, game){
-  api.models.Room.findById(connection.params.room, function(err, room){
-    if(err)
-    {
-      connection.response.error = err;
-      next(connection, true);
-    } else if(room === null)
-    {
-      connection.response.error = 'Error: Room with this id was not found.';
-      next(connection, true);
-    } else {
-      game.save(function(err, result){
-        if(err){
-          connection.response.success = false;
-          connection.response.error = err;
-        } else {
-          connection.response.success = true;
-          connection.response.game = result;
-        }
-        next(connection, true);
-      });
-    }
-  });
-};
-
 exports.createGame = {
   name: 'createGame',
   description: 'I will create a game',
@@ -96,46 +71,45 @@ exports.createGame = {
   inputs: {
     user: {
       required: false,
-      formatter: function(s){ return String(s); }
-    },
-    room: {
-      required: true,
-      formatter: function(s){ return String(s); }
-    },
-    gameType: {
-      required: true,
-      formatter: function(s){ return String(s); }
+      formatter: function(s) { return String(s); }
     }
   },
   run: function(api, connection, next) {
-    var game = api.models.Game({
-      users: [],
-      room: connection.params.room,
-      gameType: connection.params.gameType,
+    var game = api.models.Game();
+    game.save(function(err, result) {
+      if (err) {
+        connection.response.success = false;
+        connection.response.error = err;
+        next(connection, true);
+      } else {
+        if (connection.params.user) {
+          var userId = new api.mongo.ObjectID(connection.params.user);
+          api.models.User.findById(userId, function(err, user) {
+            if (err) {
+              connection.response.error = err;
+              next(connection, true);
+            } else if (user === null) {
+              connection.response.error = 'Error: User with this id was not found.';
+              next(connection, true);
+            } else {
+              user.joinGame(game, function(err, result) {
+                if (err) {
+                  connection.response.success = false;
+                  connection.response.error = err;
+                } else {
+                  connection.response.success = true;
+                  connection.response.game = game;
+                }
+                next(connection, true);
+              });
+            }
+          });
+        } else {
+          connection.response.success = true;
+          connection.response.game = game;
+          next(connection, true);
+        }
+      }
     });
-    if(connection.params.user !== 'undefined')
-    {
-      console.log(connection.params.user);
-      api.models.User.findById(connection.params.user, function(err, user){
-        if(err)
-        {
-          connection.response.error = err;
-          next(connection, true);
-        } else if(user === null)
-        {
-          connection.response.error = 'Error: User with this id was not found.';
-          next(connection, true);
-        }
-        else
-        {
-          console.log('found user');
-          game.users.push(user.id);
-          saveGame(api, connection, next, game);
-        }
-      });
-    } else
-    {
-      saveGame(api, connection, next, game);
-    }
   }
 };
