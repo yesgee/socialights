@@ -36,13 +36,8 @@ exports.default = {
 
 exports.test = {
   redis: function(api) {
-    var redispackage = 'fakeredis';
-    if (process.env.FAKEREDIS === 'false') {
-      redispackage = 'redis';
-    }
-
     return {
-      package: redispackage,
+      package: 'redis',
       host: '127.0.0.1',
       port: 6379,
       password: null,

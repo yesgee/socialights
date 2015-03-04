@@ -43,9 +43,7 @@ askedQuestionSchema.methods.isInTime = function() {
 
 // Game Schema
 var gameSchema = new Schema({
-  gameType: { type: String, required: true, enum: ['quiz'] },
   startedAt: { type: Date },
-  room: { type: Schema.Types.ObjectId, required: true, ref: 'Room' },
   users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   teams: [teamSchema],
   previousQuestions: [askedQuestionSchema], // Note: The last question in this array is the current question

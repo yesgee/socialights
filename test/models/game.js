@@ -14,7 +14,6 @@ var api;
 
 var find = require('mout/array/find');
 
-var randomRoom = require('./fixtures').Room;
 var randomGame = require('./fixtures').Game;
 var randomTeam = require('./fixtures').Team;
 var randomQuestion = require('./fixtures').Question;
@@ -43,23 +42,10 @@ describe('Model: Game', function() {
   });
 
   it('should validate a random game', function(done) {
-    var room = new api.models.Room(randomRoom());
     var game = new api.models.Game(randomGame());
-    game.room = room;
 
     game.validate(function(err) {
       should.not.exist(err);
-      done();
-    });
-  });
-
-  it('should not be valid without a gameType and room', function(done) {
-    var game = new api.models.Game();
-    game.validate(function(err) {
-      should.exist(err);
-      err.should.have.property('errors');
-      err.errors.should.have.property('gameType');
-      err.errors.should.have.property('room');
       done();
     });
   });
@@ -69,9 +55,7 @@ describe('Model: Game', function() {
     var game;
 
     beforeEach(function() {
-      var room = new api.models.Room(randomRoom());
       game = new api.models.Game(randomGame());
-      game.room = room;
     });
 
     afterEach(function() {
@@ -105,9 +89,7 @@ describe('Model: Game', function() {
     var question;
 
     beforeEach(function() {
-      var room = new api.models.Room(randomRoom());
       game = new api.models.Game(randomGame());
-      game.room = room;
 
       question = new api.models.Question(randomQuestion());
     });
@@ -142,9 +124,7 @@ describe('Model: Game', function() {
   describe('#initializeTeams', function() {
 
     it('should initialize two teams', function(done) {
-      var room = new api.models.Room(randomRoom());
       var game = new api.models.Game(randomGame());
-      game.room = room;
 
       game.teams.should.be.empty;
 
@@ -156,9 +136,7 @@ describe('Model: Game', function() {
     });
 
     it('should not initialize when already initialized', function(done) {
-      var room = new api.models.Room(randomRoom());
       var game = new api.models.Game(randomGame());
-      game.room = room;
 
       game.teams.push({ name: 'Green Team', color: '#00ff00', users: [], score: 0 });
 
@@ -177,9 +155,7 @@ describe('Model: Game', function() {
     var user;
 
     beforeEach(function(done) {
-      var room = new api.models.Room(randomRoom());
       game = new api.models.Game(randomGame());
-      game.room = room;
 
       user = new api.models.User(require('./fixtures').User());
 
@@ -210,9 +186,7 @@ describe('Model: Game', function() {
     var user;
 
     beforeEach(function(done) {
-      var room = new api.models.Room(randomRoom());
       game = new api.models.Game(randomGame());
-      game.room = room;
 
       user = new api.models.User(require('./fixtures').User());
 
@@ -263,9 +237,7 @@ describe('Model: Game', function() {
     var user;
 
     beforeEach(function(done) {
-      var room = new api.models.Room(randomRoom());
       game = new api.models.Game(randomGame());
-      game.room = room;
 
       user = new api.models.User(require('./fixtures').User());
 
@@ -300,9 +272,7 @@ describe('Model: Game', function() {
     var user;
 
     beforeEach(function(done) {
-      var room = new api.models.Room(randomRoom());
       game = new api.models.Game(randomGame());
-      game.room = room;
 
       user = new api.models.User(require('./fixtures').User());
 
@@ -348,9 +318,7 @@ describe('Model: Game', function() {
     var question;
 
     beforeEach(function(done) {
-      var room = new api.models.Room(randomRoom());
       game = new api.models.Game(randomGame());
-      game.room = room;
 
       user = new api.models.User(require('./fixtures').User());
 
@@ -446,9 +414,7 @@ describe('Model: Game', function() {
     var askedQuestion;
 
     beforeEach(function(done) {
-      var room = new api.models.Room(randomRoom());
       game = new api.models.Game(randomGame());
-      game.room = room;
 
       user0 = new api.models.User(require('./fixtures').User());
       user1 = new api.models.User(require('./fixtures').User());
