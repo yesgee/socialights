@@ -23,12 +23,9 @@ public class GameStartActivityTest extends ActivityInstrumentationTestCase2<Game
     public void setUp() throws Exception{
         super.setUp();
 
-
         mainActivity = getActivity();
 
         testButton = (Button)mainActivity.findViewById(R.id.test_button);
-
-
     }
 
     //Garbage collection
@@ -38,9 +35,7 @@ public class GameStartActivityTest extends ActivityInstrumentationTestCase2<Game
     }
 
     public void testRun(){
-
-        assertEquals(testButton.getText().toString(), "Test");
-
+        assertEquals(testButton.getText().toString(), "Test ");
     }
 
 
