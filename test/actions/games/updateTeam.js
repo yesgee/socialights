@@ -5,12 +5,14 @@
 process.env.NODE_ENV = 'test';
 
 var chai = require('chai');
-var expect = chai.expect;
 var should = chai.should();
 
 var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
+
+var randomGame = require('../../models/fixtures').Game;
+var randomUser = require('../../models/fixtures').User;
 
 describe('Action: updateTeam', function() {
 
@@ -18,9 +20,12 @@ describe('Action: updateTeam', function() {
     actionhero.start(function(err, a) {
       api = a;
       api.mongo.connect(function(err, db) {
-        // Remove all existing games
-        api.mongo.db.collection('games').remove(function() {
-          done();
+        // Remove all existing users
+        api.mongo.db.collection('users').remove(function() {
+          // Remove all existing games
+          api.mongo.db.collection('games').remove(function() {
+            done();
+          });
         });
       });
     });
@@ -32,6 +37,68 @@ describe('Action: updateTeam', function() {
     });
   });
 
-  it('TODO');
+  var game;
+  var teamIdx = 0;
+  var newTeamName = 'Team awesomely';
+  var newTeamColor = '#ffffff';
+  beforeEach(function(done) {
+    game = api.models.Game(randomGame());
+    game.save(function(err, result) {
+      game.initializeTeams(function(err, result) {
+        done();
+      });
+    });
+  });
 
+  it('should return an error for a non-existing game', function(done) {
+    api.specHelper.runAction('updateTeam', {
+      game: new api.mongo.ObjectID().toString(),
+      team: 0
+    }, function(response) {
+      should.exist(response.error);
+      should.not.exist(response.success);
+      response.error.should.equal('Error: Game with this id was not found.');
+      done();
+    });
+  });
+
+  it('should return an error for a non-existing team', function(done) {
+    api.specHelper.runAction('updateTeam', {
+      game: game.id.toString(),
+      team: 2
+    }, function(response) {
+      should.exist(response.error);
+      should.not.exist(response.success);
+      response.error.should.equal('Error: Team index out of range.');
+      done();
+    });
+  });
+
+  it('should update the name of an existing team', function(done) {
+    api.specHelper.runAction('updateTeam', {
+      game: game.id.toString(),
+      team: teamIdx,
+      name: newTeamName
+    }, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.success);
+      should.exist(response.teams);
+      response.teams[teamIdx].name.should.equal(newTeamName);
+      done();
+    });
+  });
+
+  it('should update the color of an existing team', function(done) {
+    api.specHelper.runAction('updateTeam', {
+      game: game.id.toString(),
+      team: teamIdx,
+      color: newTeamColor
+    }, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.success);
+      should.exist(response.teams);
+      response.teams[teamIdx].color.should.equal(newTeamColor);
+      done();
+    });
+  });
 });

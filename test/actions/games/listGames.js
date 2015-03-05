@@ -12,6 +12,8 @@ var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
 
+var randomGame = require('../../models/fixtures').Game;
+
 describe('Action: listGames', function() {
 
   before(function(done) {
@@ -31,9 +33,28 @@ describe('Action: listGames', function() {
       done();
     });
   });
+  it('should return an empty array when there are no games', function(done) {
+    api.specHelper.runAction('listGames', { }, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.success);
+      should.exist(response.games);
+      response.games.should.be.empty;
+      done();
+    });
+  });
 
-  it('should return an empty array when there are no games');
-
-  it('should return an array of existing games');
+  it('should return an array of existing games', function(done) {
+    var game = new api.models.Game(randomGame());
+    game.save(function(err) {
+      should.not.exist(err);
+      api.specHelper.runAction('listGames', { }, function(response) {
+        should.not.exist(response.error);
+        should.exist(response.success);
+        should.exist(response.games);
+        response.games[0].id.should.equal(game.id);
+        done();
+      });
+    });
+  });
 
 });

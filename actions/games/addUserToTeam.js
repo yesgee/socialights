@@ -5,7 +5,7 @@ exports.addUserToTeam = {
   description: 'I will add a user to a team',
 
   outputExample:{
-    'status':'OK'
+    'succes':true
   },
   inputs: {
     user: {

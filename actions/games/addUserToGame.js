@@ -5,7 +5,7 @@ exports.addUserToGame = {
   description: 'I will add a user to a game',
 
   outputExample:{
-    'status':'OK'
+    'succes':true
   },
   inputs: {
     user: {

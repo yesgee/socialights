@@ -7,24 +7,24 @@ exports.listGames = {
   outputExample:{
     'games': [
       {
-        'id': '1',
+        '_id': '1',
         'type': 'quiz',
         'started_at': '2015-02-23T13:13:01.479Z',
         'room':
         {
-          'id':'1',
+          '_id':'1',
           'name': 'EIT Amazingly Awesomely Common Room',
           'currentGame':{
-            'id':'1',
+            '_id':'1',
             'type':'quiz'
           }
         },
         'users': [
           {
-            'id':'1',
+            '_id':'1',
             'name':'Bob',
-          },{
-            'id':'2',
+          }, {
+            '_id':'2',
             'name':'Alice',
           }
         ],
@@ -34,7 +34,7 @@ exports.listGames = {
             'color': '#ff0000',
             'users': [
               {
-                'id':'1',
+                '_id':'1',
                 'name':'Bob',
               }
             ],
@@ -45,7 +45,7 @@ exports.listGames = {
             'color': '#0000ff',
             'users': [
               {
-                'id':'2',
+                '_id':'2',
                 'name':'Alice',
               }
             ],
@@ -54,7 +54,7 @@ exports.listGames = {
         ],
         'currentQuestion': {
           'question': {
-            'id': '1',
+            '_id': '1',
             'question': 'Is this the question?',
             'answers': [
               'No.',
@@ -72,7 +72,7 @@ exports.listGames = {
   },
   run: function(api, connection, next) {
     api.models.Game.find(function(err, results) {
-      if(err) {
+      if (err) {
         connection.response.success = false;
         connection.response.error = err;
       } else {

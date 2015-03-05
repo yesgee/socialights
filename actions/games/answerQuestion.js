@@ -1,26 +1,33 @@
 'use strict';
 
-exports.removeUserFromTeam = {
-  name: 'removeUserFromTeam',
-  description: 'I will remove a user from a team',
+exports.answerQuestion = {
+  name: 'answerQuestion',
+  description: 'I will answer a question',
 
   outputExample:{
-    'success': true
+    'valid':true,
+    'points':100
   },
   inputs: {
+    game: {
+      required: true,
+      formatter: function(s) { return String(s); }
+    },
     user: {
       required: true,
       formatter: function(s) { return String(s); }
     },
-    game: {
+    answer: {
       required: true,
-      formatter: function(s) { return String(s); }
+      formatter: function(n) { return parseInt(n); }
     }
   },
 
   run: function(api, connection, next) {
-    var gameId = connection.params.game;
-    var userId = connection.params.user;
+    var userId = new api.mongo.ObjectID(connection.params.user);
+    var gameId = new api.mongo.ObjectID(connection.params.game);
+    var answer = connection.params.answer;
+
     api.models.Game.findById(gameId, function(err, game) {
       if (err) {
         connection.response.error = err;
@@ -37,7 +44,7 @@ exports.removeUserFromTeam = {
             connection.response.error = 'Error: User with this id was not found.';
             next(connection, true);
           } else {
-            user.leaveTeam(function(err) {
+            game.answerQuestion(user, answer, function(err, result) {
               if (err) {
                 connection.response.success = false;
                 connection.response.error = err;

@@ -34,6 +34,14 @@ describe('Action: showUser', function() {
     });
   });
 
+  var user;
+  beforeEach(function(done) {
+    user = new api.models.User(randomUser());
+    user.save(function(err) {
+      done();
+    });
+  });
+
   it('should require a user ID', function(done) {
     api.specHelper.runAction('showUser', {}, function(response) {
       should.exist(response.error);
@@ -53,15 +61,12 @@ describe('Action: showUser', function() {
   });
 
   it('should return an existing user', function(done) {
-    var user = new api.models.User(randomUser());
-    user.save(function(err) {
-      api.specHelper.runAction('showUser', { id: user._id.toString() }, function(response) {
-        should.not.exist(response.error);
-        should.exist(response.success);
-        should.exist(response.user);
-        response.user.name.should.equal(user.name);
-        done();
-      });
+    api.specHelper.runAction('showUser', { id: user._id.toString() }, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.success);
+      should.exist(response.user);
+      response.user.name.should.equal(user.name);
+      done();
     });
   });
 

@@ -6,24 +6,15 @@ exports.showGame = {
 
   outputExample:{
     'game': {
-      'id': '1',
+      '_id': '1',
       'type': 'quiz',
       'started_at': '2015-02-23T13:13:01.479Z',
-      'room':
-      {
-        'id':'1',
-        'name': 'EIT Amazingly Awesomely Common Room',
-        'currentGame':{
-          'id':'1',
-          'type':'quiz'
-        }
-      },
       'users': [
         {
-          'id':'1',
+          '_id':'1',
           'name':'Bob',
-        },{
-          'id':'2',
+        }, {
+          '_id':'2',
           'name':'Alice',
         }
       ],
@@ -33,7 +24,7 @@ exports.showGame = {
           'color': '#ff0000',
           'users': [
             {
-              'id':'1',
+              '_id':'1',
               'name':'Bob',
             }
           ],
@@ -44,7 +35,7 @@ exports.showGame = {
           'color': '#0000ff',
           'users': [
             {
-              'id':'2',
+              '_id':'2',
               'name':'Alice',
             }
           ],
@@ -53,7 +44,7 @@ exports.showGame = {
       ],
       'currentQuestion': {
         'question': {
-          'id': '1',
+          '_id': '1',
           'question': 'Is this the question?',
           'answers': [
             'No.',
@@ -71,14 +62,17 @@ exports.showGame = {
   inputs: {
     id: {
       required: true,
-      formatter: function(s){ return String(s); }
+      formatter: function(s) { return String(s); }
     },
   },
   run: function(api, connection, next) {
-    api.models.Game.findById(connection.params.id, function(err, result){
-      if(err){
-        connection.response.success = false;
+    var gameId = new api.mongo.ObjectID(connection.params.id);
+
+    api.models.Game.findById(gameId, function(err, result) {
+      if (err) {
         connection.response.error = err;
+      } else if (result === null) {
+        connection.response.error = 'Error: Game with this id was not found.';
       } else {
         connection.response.success = true;
         connection.response.game = result;

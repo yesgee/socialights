@@ -1,11 +1,11 @@
 'use strict';
 
-exports.deleteUser = {
-  name: 'deleteUser',
-  description: 'I will delete a User',
+exports.deleteGame = {
+  name: 'deleteGame',
+  description: 'I will delete a game',
 
   outputExample:{
-    'succes': true
+    'succes':true
   },
   inputs: {
     id: {
@@ -15,13 +15,13 @@ exports.deleteUser = {
   },
 
   run: function(api, connection, next) {
-    var userId = new api.mongo.ObjectID(connection.params.id);
+    var gameId = new api.mongo.ObjectID(connection.params.id);
 
-    api.models.User.findByIdAndRemove(userId, function(err, result) {
+    api.models.Game.findByIdAndRemove(gameId, function(err, result) {
       if (err) {
         connection.response.error = err;
       } else if (result === null) {
-        connection.response.error = 'Error: User with this id was not found.';
+        connection.response.error = 'Error: Game with this id was not found.';
       } else {
         connection.response.success = true;
       }

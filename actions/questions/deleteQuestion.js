@@ -5,7 +5,7 @@ exports.deleteQuestion = {
   description: 'I will delete a question',
 
   outputExample:{
-    succes: true
+    'succes':true
   },
   inputs: {
     id: {

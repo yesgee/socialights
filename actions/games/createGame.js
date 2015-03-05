@@ -5,25 +5,16 @@ exports.createGame = {
   description: 'I will create a game',
 
   outputExample:{
-    game: {
-      'id': '1',
+    'game': {
+      '_id': '1',
       'gameType': 'quiz',
       'started_at': '2015-02-23T13:13:01.479Z',
-      'room':
-      {
-        'id':'1',
-        'name': 'EIT Amazingly Awesomely Common Room',
-        'currentGame':{
-          'id':'1',
-          'type':'quiz'
-        }
-      },
       'users': [
         {
-          'id':'1',
+          '_id':'1',
           'name':'Bob',
-        },{
-          'id':'2',
+        }, {
+          '_id':'2',
           'name':'Alice',
         }
       ],
@@ -33,7 +24,7 @@ exports.createGame = {
           'color': '#ff0000',
           'users': [
             {
-              'id':'1',
+              '_id':'1',
               'name':'Bob',
             }
           ],
@@ -44,7 +35,7 @@ exports.createGame = {
           'color': '#0000ff',
           'users': [
             {
-              'id':'2',
+              '_id':'2',
               'name':'Alice',
             }
           ],
@@ -53,7 +44,7 @@ exports.createGame = {
       ],
       'currentQuestion': {
         'question': {
-          'id': '1',
+          '_id': '1',
           'question': 'Is this the question?',
           'answers': [
             'No.',

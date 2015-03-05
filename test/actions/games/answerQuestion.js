@@ -5,15 +5,17 @@
 process.env.NODE_ENV = 'test';
 
 var chai = require('chai');
+var expect = chai.expect;
 var should = chai.should();
 
 var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
 
+var randomGame = require('../../models/fixtures').Game;
 var randomUser = require('../../models/fixtures').User;
 
-describe('Action: updateUser', function() {
+describe('Action: answerQuestion', function() {
 
   before(function(done) {
     actionhero.start(function(err, a) {
@@ -21,7 +23,10 @@ describe('Action: updateUser', function() {
       api.mongo.connect(function(err, db) {
         // Remove all existing users
         api.mongo.db.collection('users').remove(function() {
-          done();
+          // Remove all existing games
+          api.mongo.db.collection('games').remove(function() {
+            done();
+          });
         });
       });
     });
@@ -34,26 +39,35 @@ describe('Action: updateUser', function() {
   });
 
   var user;
-  var newUserName;
+  var game;
+
   beforeEach(function(done) {
-    user = new api.models.User(randomUser());
-    newUserName = new api.models.User(randomUser()).name;
-    user.save(function(err) {
-      done();
+    user = api.models.User(randomUser());
+    user.save(function(err, result) {
+      game = api.models.Game(randomGame());
+      game.save(function(err, result) {
+        done();
+      });
     });
   });
 
-  it('should require a user ID', function(done) {
-    api.specHelper.runAction('updateUser', {}, function(response) {
+  it('should return an error for a non-existing game', function(done) {
+    api.specHelper.runAction('answerQuestion', {
+      user: user.id.toString(),
+      game: new api.mongo.ObjectID().toString()
+    }, function(response) {
       should.exist(response.error);
       should.not.exist(response.success);
-      response.error.should.equal('Error: id is a required parameter for this action');
+      response.error.should.equal('Error: Game with this id was not found.');
       done();
     });
   });
 
   it('should return an error for a non-existing user', function(done) {
-    api.specHelper.runAction('updateUser', { id: new api.mongo.ObjectID().toString() }, function(response) {
+    api.specHelper.runAction('answerQuestion', {
+      user: new api.mongo.ObjectID().toString(),
+      game: game.id.toString()
+    }, function(response) {
       should.exist(response.error);
       should.not.exist(response.success);
       response.error.should.equal('Error: User with this id was not found.');
@@ -61,15 +75,5 @@ describe('Action: updateUser', function() {
     });
   });
 
-  it('should update an existing user', function(done) {
-    api.specHelper.runAction('updateUser', { id: user._id.toString(), name: newUserName}, function(response) {
-      should.not.exist(response.error);
-      should.exist(response.success);
-      should.exist(response.user);
-      response.user.name.should.not.equal(user.name);
-      response.user.name.should.equal(newUserName);
-      done();
-    });
-  });
 
 });

@@ -7,10 +7,10 @@ exports.createUser = {
   description: 'I will create a User',
 
   outputExample:{
-    succes: true,
-    user: {
-      _id: '54ef42e82c8ede007cebed2c',
-      name: 'Bob'
+    'succes': true,
+    'user': {
+      '_id': '54ef42e82c8ede007cebed2c',
+      'name': 'Bob'
     }
   },
   inputs: {

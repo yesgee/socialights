@@ -6,20 +6,11 @@ exports.status = {
 
   outputExample:{
     'user':{
-        'id':'1',
+        '_id':'1',
         'name':'Bob',
-        'room':
-        {
-          'id':'2',
-          'name': 'EIT Amazingly Awesomely Common Room',
-          'currentGame':{
-            'id':'1',
-            'type':'quiz'
-          }
-        },
         'game':
         {
-          'id':'1',
+          '_id':'1',
           'type':'quiz'
         }
     }

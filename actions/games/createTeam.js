@@ -5,7 +5,7 @@ exports.createTeam = {
   description: 'I will create a team in a certain game',
 
   outputExample:{
-    'status':'OK'
+    'succes':true
   },
   inputs: {
     user: {

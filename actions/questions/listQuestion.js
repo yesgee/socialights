@@ -7,7 +7,7 @@ exports.status = {
   outputExample:{
     'question': [
       {
-        'id': '1',
+        '_id': '1',
         'question': 'Is this the question?',
         'answers': [
           {
@@ -36,7 +36,7 @@ exports.status = {
   },
   run: function(api, connection, next) {
     api.models.Question.find(function(err, results) {
-      if(err) {
+      if (err) {
         connection.response.success = false;
         connection.response.error = err;
       } else {

@@ -6,7 +6,7 @@ exports.createQuestion = {
 
   outputExample:{
     'question': {
-      'id': '1',
+      '_id': '1',
       'question': 'Is this the question?',
       'answers': [
         {
@@ -35,7 +35,7 @@ exports.createQuestion = {
   inputs: {
     question: {
       required: true,
-      formatter: function(s){ return String(s); }
+      formatter: function(s) { return String(s); }
     },
     answers: {
       required: true
