@@ -111,6 +111,11 @@ gameSchema.methods.switchTeam = function(user, callback) {
   }
 };
 
+gameSchema.methods.start = function(callback) {
+  this.startedAt = new Date();
+  this.save(callback);
+};
+
 gameSchema.methods.askNextQuestion = function(callback) {
   var lastAskedQuestion = last(this.previousQuestions);
   if (lastAskedQuestion && lastAskedQuestion.isOpen()) {

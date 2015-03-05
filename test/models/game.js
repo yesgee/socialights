@@ -311,6 +311,21 @@ describe('Model: Game', function() {
 
   });
 
+  describe('#start', function() {
+
+    it('should start the game', function(done) {
+      var game = new api.models.Game(randomGame());
+
+      game.startedAt.should.be.falsey;
+
+      game.start(function(err, result) {
+        should.not.exist(err);
+        game.startedAt.should.be.truethy;
+        done();
+      });
+    });
+
+  });
   describe('#askNextQuestion', function() {
 
     var game;
