@@ -1,25 +1,31 @@
 package io.github.mobi_led.socialights.models;
 
+
 public class Answer {
 
-   private String answer;
-   private boolean correct;
-   private String feedback;
 
-    public String getAnswer() {
-        return answer;
+    private String answerString;
+    private boolean isCorrect;
+    private String feedback;
+
+    public Answer(String answerString, boolean isCorrect){
+        this.answerString = answerString;
+        this.isCorrect = isCorrect;
+    }
+    public String getAnswerString() {
+        return answerString;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setAnswerString(String answerString) {
+        this.answerString = answerString;
     }
 
     public boolean isCorrect() {
-        return correct;
+        return isCorrect;
     }
 
-    public void setCorrect(boolean correct) {
-        this.correct = correct;
+    public void setCorrect(boolean isCorrect) {
+        this.isCorrect = isCorrect;
     }
 
     public String getFeedback() {
@@ -29,4 +35,7 @@ public class Answer {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
+
+
+
 }

@@ -7,8 +7,13 @@ public class Question {
     private String question;
     private List<Answer> answers;
 
+    public Question(String question, List<Answer> answers){
+        this.question = question;
+        this.answers = answers;
+    }
+
     public String getQuestion() {
-        return question;
+        return this.question;
     }
 
     public void setQuestion(String question) {
@@ -16,7 +21,7 @@ public class Question {
     }
 
     public List<Answer> getAnswers() {
-        return answers;
+        return this.answers;
     }
 
     public void setAnswers(List<Answer> answers) {

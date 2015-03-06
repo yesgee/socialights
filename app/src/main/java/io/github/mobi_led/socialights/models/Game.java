@@ -5,32 +5,31 @@ import java.util.List;
 
 public class Game {
 
+    private Date startedAt;
+    private List<Team> teams;
+    private List<User> users; // Users in the Room
 
-    private Date StartedAt;
-    private List<Team> Teams;
-    private List<User> Users; // Users in the Room
+    public Game(List<Team> teams, List<User>users, Date startedAt){
 
-    public Date getStartedAt() {
-        return StartedAt;
+        this.teams = teams;
+        this.users = users;
+        this.startedAt = startedAt;
+
     }
 
-    public void setStartedAt(Date startedAt) {
-        StartedAt = startedAt;
+    public Date getStartedAt() {
+        return this.startedAt;
     }
 
     public List<Team> getTeams() {
-        return Teams;
-    }
-
-    public void setTeams(List<Team> teams) {
-        Teams = teams;
+        return this.teams;
     }
 
     public List<User> getUsers() {
-        return Users;
+        return this.users;
     }
 
     public void setUsers(List<User> users) {
-        Users = users;
+        this.users = users;
     }
 }

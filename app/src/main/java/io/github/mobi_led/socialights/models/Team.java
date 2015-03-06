@@ -4,6 +4,17 @@ import java.util.List;
 
 public class Team {
 
+    private String name;
+    private String color;
+    private List<User> users; //Users playing the game
+    private int score;
+
+    public Team(String name, String color, List<User> users){
+        this.name = name;
+        this.color = color;
+        this.users = users;
+    }
+
     public String getName() {
         return name;
     }
@@ -35,10 +46,5 @@ public class Team {
     public void setScore(int score) {
         this.score = score;
     }
-
-    private String name;
-    private String color;
-    private List<User> users; //Users playing the game
-    private int score;
 
 }

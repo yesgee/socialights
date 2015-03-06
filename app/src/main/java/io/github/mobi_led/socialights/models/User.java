@@ -2,6 +2,12 @@ package io.github.mobi_led.socialights.models;
 
 public class User {
 
+    private String name;
+
+    public User(String name){
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
@@ -10,15 +16,4 @@ public class User {
         this.name = name;
     }
 
-    public Game getGame() {
-        return game;
-    }
-
-    public void setGame(Game game) {
-        this.game = game;
-    }
-
-    private String name;
-
-    private Game game;
 }
