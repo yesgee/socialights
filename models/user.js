@@ -38,13 +38,7 @@ userSchema.methods.getGame = function(callback) {
   if (!this.game) {
     callback('Error: User is not in a game.');
   } else {
-    this.populate({ path: 'game', model: 'Game' }, function(err, result) {
-      if (err) {
-        callback(err);
-      } else {
-        callback(null, result.game);
-      }
-    });
+    this.model('Game').findOne(this.game, callback);
   }
 };
 
