@@ -21,11 +21,11 @@ var questionSchema = new Schema({
 });
 questionSchema.plugin(timestamps);
 
-// Instance Methods
+// Virtuals
 
-questionSchema.methods.correctAnswer = function() {
+questionSchema.virtual('correctAnswer').get(function() {
   return find(this.answers, { correct: true });
-};
+});
 
 // Validations
 questionSchema.path('answers').validate(function(value) {
