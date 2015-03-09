@@ -83,7 +83,7 @@ describe('Model: User', function() {
       user.joinGame(game, function(err, result) {
         should.not.exist(err);
         game.users.should.not.be.empty;
-        game.users.should.include(user.id);
+        game.users.should.include(user._id);
         done();
       });
     });
