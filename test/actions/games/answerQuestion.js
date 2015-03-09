@@ -69,7 +69,8 @@ describe('Action: answerQuestion', function() {
   it('should return an error for a non-existing game', function(done) {
     api.specHelper.runAction('answerQuestion', {
       user: user.id,
-      game: new api.mongo.ObjectID().toString()
+      game: new api.mongo.ObjectID().toString(),
+      answer: 0
     }, function(response) {
       should.exist(response.error);
       should.not.exist(response.success);
@@ -81,7 +82,8 @@ describe('Action: answerQuestion', function() {
   it('should return an error for a non-existing user', function(done) {
     api.specHelper.runAction('answerQuestion', {
       user: new api.mongo.ObjectID().toString(),
-      game: game.id
+      game: game.id,
+      answer: 0
     }, function(response) {
       should.exist(response.error);
       should.not.exist(response.success);
