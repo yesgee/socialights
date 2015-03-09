@@ -14,6 +14,7 @@ var api;
 
 var randomGame = require('../../models/fixtures').Game;
 var randomUser = require('../../models/fixtures').User;
+var randomQuestion = require('../../models/fixtures').Question;
 
 describe('Action: answerQuestion', function() {
 
@@ -40,13 +41,27 @@ describe('Action: answerQuestion', function() {
 
   var user;
   var game;
+  var question;
+  var correctIdx;
+  var incorrectIdx;
 
   beforeEach(function(done) {
     user = api.models.User(randomUser());
     user.save(function(err, result) {
       game = api.models.Game(randomGame());
       game.save(function(err, result) {
-        done();
+        game.initializeTeams(function(err, result) {
+          user.joinGame(game, function(err, result) {
+            user.joinTeam(0, function(err, result) {
+              question = api.models.Question(randomQuestion());
+              question.save(function(err, result) {
+                correctIdx = question.correctAnswer;
+                incorrectIdx = correctIdx === 0 ? 1 : 0;
+                done();
+              });
+            });
+          });
+        });
       });
     });
   });
@@ -75,5 +90,30 @@ describe('Action: answerQuestion', function() {
     });
   });
 
+  it('should return positive for the right answer', function(done) {
+    api.specHelper.runAction('answerQuestion', {
+      user: user.id.toString(),
+      game: game.id.toString(),
+      answer: correctIdx
+    }, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.correct);
+      response.correct.should.equal(true);
+      done();
+    });
+  });
+
+  it('should return negative for the wrong answer', function(done) {
+    api.specHelper.runAction('answerQuestion', {
+      user: user.id.toString(),
+      game: game.id.toString(),
+      answer: incorrectIdx
+    }, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.correct);
+      response.correct.should.equal(false);
+      done();
+    });
+  });
 
 });
