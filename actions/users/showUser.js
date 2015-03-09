@@ -1,20 +1,18 @@
 'use strict';
 
-exports.status = {
+exports.showUser = {
   name: 'showUser',
   description: 'I will return all information about a single User',
 
-  outputExample:{
-    'user':{
-        '_id':'1',
-        'name':'Bob',
-        'game':
-        {
-          '_id':'1',
-          'type':'quiz'
-        }
+  outputExample: {
+    'user': {
+      id: '54fda3cadb3aba3500b8cde1',
+      _id: '54fda3cadb3aba3500b8cde1',
+      name: 'Emil Schiller',
+      game: { _id: '...' }
     }
   },
+
   inputs: {
     id: {
       required: true,
@@ -25,16 +23,24 @@ exports.status = {
   run: function(api, connection, next) {
     var userId = new api.mongo.ObjectID(connection.params.id);
 
-    api.models.User.findById(userId, function(err, result) {
+    api.models.User.findById(userId, function(err, user) {
       if (err) {
         connection.response.error = err;
-      } else if (result === null) {
+        next(connection, true);
+      } else if (user === null) {
         connection.response.error = 'Error: User with this id was not found.';
+        next(connection, true);
       } else {
-        connection.response.success = true;
-        connection.response.user = result;
+        user.getFullJSON(function(err, result) {
+          if (err) {
+            connection.response.error = err;
+          } else {
+            connection.response.success = true;
+            connection.response.user = result;
+          }
+          next(connection, true);
+        });
       }
-      next(connection, true);
     });
   }
 };

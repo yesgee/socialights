@@ -7,6 +7,7 @@ exports.deleteUser = {
   outputExample:{
     'succes': true
   },
+
   inputs: {
     id: {
       required: true,

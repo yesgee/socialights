@@ -7,10 +7,13 @@ exports.updateUser = {
   outputExample:{
     'succes': true,
     'user': {
-      '_id': '54ef42e82c8ede007cebed2c',
-      'name': 'Bob'
+      id: '54fda3cadb3aba3500b8cde1',
+      _id: '54fda3cadb3aba3500b8cde1',
+      name: 'Emile Schiller',
+      game: { _id: '...' }
     }
   },
+
   inputs:{
     id: {
       required: true,
@@ -38,11 +41,18 @@ exports.updateUser = {
         user.save(function(err, result) {
           if (err) {
             connection.response.error = err;
+            next(connection, true);
           } else {
-            connection.response.success = true;
-            connection.response.user = result;
+            user.getFullJSON(function(err, result) {
+              if (err) {
+                connection.response.error = err;
+              } else {
+                connection.response.success = true;
+                connection.response.user = result;
+              }
+              next(connection, true);
+            });
           }
-          next(connection, true);
         });
       }
     });
