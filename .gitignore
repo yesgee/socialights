@@ -6,6 +6,7 @@ log/*
 cache/*
 coverage/*
 node_modules/*
+public/bower_components/*
 public/javascript/socialightsClient.js
 public/javascript/socialightsClient.min.js
 
