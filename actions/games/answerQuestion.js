@@ -5,8 +5,7 @@ exports.answerQuestion = {
   description: 'I will answer a question',
 
   outputExample:{
-    'valid':true,
-    'points':100
+    'correct':true,
   },
   inputs: {
     game: {
@@ -49,7 +48,8 @@ exports.answerQuestion = {
                 connection.response.success = false;
                 connection.response.error = err;
               } else {
-                connection.response.success = true;
+                console.log(result);
+                connection.response.correct = result.answeredCorrectly;
               }
               next(connection, true);
             });
