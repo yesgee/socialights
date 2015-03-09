@@ -4,9 +4,10 @@ exports.updateQuestion = {
   name: 'updateQuestion',
   description: 'I will create a Room',
 
-  outputExample:{
+  outputExample: {
     'question': {
-      '_id': '1',
+      'id': '54fda3cadb3aba3500b8cdf0',
+      '_id': '54fda3cadb3aba3500b8cdf0',
       'question': 'Is this the question?',
       'answers': [
         {
@@ -32,6 +33,7 @@ exports.updateQuestion = {
       ]
     }
   },
+
   inputs: {
     id: {
       required: true,
@@ -65,11 +67,18 @@ exports.updateQuestion = {
         question.save(function(err, result) {
           if (err) {
             connection.response.error = err;
+            next(connection, true);
           } else {
-            connection.response.success = true;
-            connection.response.question = result;
+            question.getFullJSON(function(err, result) {
+              if (err) {
+                connection.response.error = err;
+              } else {
+                connection.response.success = true;
+                connection.response.question = result;
+              }
+              next(connection, true);
+            });
           }
-          next(connection, true);
         });
       }
     });

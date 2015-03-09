@@ -4,9 +4,10 @@ exports.deleteQuestion = {
   name: 'deleteQuestion',
   description: 'I will delete a question',
 
-  outputExample:{
-    'succes':true
+  outputExample: {
+    succes: true
   },
+
   inputs: {
     id: {
       required: true,

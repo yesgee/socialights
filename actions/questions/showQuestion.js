@@ -4,9 +4,10 @@ exports.showQuestion = {
   name: 'showQuestion',
   description: 'I will return all information about a single question',
 
-  outputExample:{
+  outputExample: {
     'question': {
-      '_id': '1',
+      'id': '54fda3cadb3aba3500b8cdf0',
+      '_id': '54fda3cadb3aba3500b8cdf0',
       'question': 'Is this the question?',
       'answers': [
         {
@@ -32,6 +33,7 @@ exports.showQuestion = {
       ]
     }
   },
+
   inputs: {
     id: {
       required: true,
@@ -40,16 +42,24 @@ exports.showQuestion = {
   },
 
   run: function(api, connection, next) {
-    api.models.Question.findById(connection.params.id, function(err, result) {
+    api.models.Question.findById(connection.params.id, function(err, question) {
       if (err) {
         connection.response.error = err;
-      } else if (result === null) {
+        next(connection, true);
+      } else if (question === null) {
         connection.response.error = 'Error: Question with this id was not found.';
+        next(connection, true);
       } else {
-        connection.response.success = true;
-        connection.response.question = result;
+        question.getFullJSON(function(err, result) {
+          if (err) {
+            connection.response.error = err;
+          } else {
+            connection.response.success = true;
+            connection.response.question = result;
+          }
+          next(connection, true);
+        });
       }
-      next(connection, true);
     });
   }
 };
