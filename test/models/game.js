@@ -389,15 +389,12 @@ describe('Model: Game', function() {
       game.nextQuestions.push(question);
 
       game.askNextQuestion(function(err, result) {
-        game.question(function(err, res) {
-          should.not.exist(err);
-          res.question.should.equal(question._id);
-          should.exist(res.askedAt);
-          should.exist(res.deadlineAt);
-          res.deadlineAt.getTime().should.be.above(res.askedAt.getTime());
-          should.exist(res.team);
-          res.team.should.be.below(game.teams.length);
-        });
+        game.question.question.should.equal(question._id);
+        should.exist(game.question.askedAt);
+        should.exist(game.question.deadlineAt);
+        game.question.deadlineAt.getTime().should.be.above(game.question.askedAt.getTime());
+        should.exist(game.question.team);
+        game.question.team.should.be.below(game.teams.length);
         done();
       });
     });
@@ -411,9 +408,7 @@ describe('Model: Game', function() {
       game.nextQuestions.push(question);
 
       game.askNextQuestion(function(err, result) {
-        game.question(function(err, res) {
-          res.team.should.equal(1);
-        });
+        game.question.team.should.equal(1);
         done();
       });
     });
@@ -465,10 +460,13 @@ describe('Model: Game', function() {
     it('should set the answeredAt, answeredBy and answer attributes of the current question.', function(done) {
       game.answerQuestion(user0, question.answers[0]._id, function(err, result) {
         should.not.exist(err);
-        should.exist(game.question().answeredAt);
-        game.question().answeredAt.should.be.above(game.question().askedAt);
-        game.question().answeredBy.should.equal(user0._id);
-        game.question().answer.should.equal(question.answers[0]._id);
+
+        result.should.equal(game.question);
+
+        should.exist(game.question.answeredAt);
+        game.question.answeredAt.should.be.above(game.question.askedAt);
+        game.question.answeredBy.should.equal(user0._id);
+        game.question.answer.should.equal(question.answers[0]._id);
         done();
       });
     });
@@ -479,8 +477,8 @@ describe('Model: Game', function() {
       game.save(function(err, result) {
         game.answerQuestion(user0, correctAnswer._id, function(err, result) {
           should.not.exist(err);
-          should.exist(game.question().answeredCorrectly);
-          game.question().answeredCorrectly.should.be.true;
+          should.exist(game.question.answeredCorrectly);
+          game.question.answeredCorrectly.should.be.true;
           game.teams[0].score.should.equal(1);
           done();
         });
@@ -493,8 +491,8 @@ describe('Model: Game', function() {
       game.save(function(err, result) {
         game.answerQuestion(user0, correctAnswer._id, function(err, result) {
           should.not.exist(err);
-          should.exist(game.question().answeredCorrectly);
-          game.question().answeredCorrectly.should.be.true;
+          should.exist(game.question.answeredCorrectly);
+          game.question.answeredCorrectly.should.be.true;
           game.teams[0].score.should.equal(0);
           done();
         });
@@ -507,8 +505,8 @@ describe('Model: Game', function() {
       game.save(function(err, result) {
         game.answerQuestion(user0, incorrectAnswer._id, function(err, result) {
           should.not.exist(err);
-          should.exist(game.question().answeredCorrectly);
-          game.question().answeredCorrectly.should.be.false;
+          should.exist(game.question.answeredCorrectly);
+          game.question.answeredCorrectly.should.be.false;
           game.teams[0].score.should.equal(0);
           done();
         });

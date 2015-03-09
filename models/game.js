@@ -51,6 +51,12 @@ var gameSchema = new Schema({
 });
 gameSchema.plugin(timestamps);
 
+// Virtuals
+
+gameSchema.virtual('question').get(function() {
+  return last(this.previousQuestions);
+});
+
 // Instance Methods
 
 gameSchema.methods.initializeTeams = function(callback) {
@@ -145,13 +151,9 @@ gameSchema.methods.askNextQuestion = function(callback) {
   }
 };
 
-gameSchema.methods.question = function() {
-  return last(this.previousQuestions);
-};
-
 gameSchema.methods.answerQuestion = function(user, answer, callback) {
   var _this = this;
-  var answeredQuestion = this.question();
+  var answeredQuestion = this.question;
 
   if (answeredQuestion.team !== this.userTeam(user)) {
     callback('Error: Team ' + answeredQuestion.team + ' should answer this question.');
@@ -167,7 +169,10 @@ gameSchema.methods.answerQuestion = function(user, answer, callback) {
       if (correct && answeredQuestion.isInTime()) {
         _this.teams[answeredQuestion.team].score++;
       }
-      _this.save(callback);
+      _this.save(function(err, result) {
+        if (err) { return callback(err); }
+        callback(null, answeredQuestion);
+      });
     });
   }
 
