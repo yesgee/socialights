@@ -27,6 +27,10 @@ questionSchema.virtual('correctAnswer').get(function() {
   return find(this.answers, { correct: true });
 });
 
+questionSchema.methods.getFullJSON = function(callback) {
+  callback(null, this.toJSON({ virtuals: true }));
+};
+
 // Validations
 questionSchema.path('answers').validate(function(value) {
   return value.length >= 2;

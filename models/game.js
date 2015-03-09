@@ -178,6 +178,17 @@ gameSchema.methods.answerQuestion = function(user, answer, callback) {
 
 };
 
+gameSchema.methods.getFullJSON = function(callback) {
+  var _this = this;
+  this.populate('nextQuestions previousQuestions teams users', function(err, result) {
+    if (err) { return callback(err); }
+    _this.model('User').populate(_this.teams, { path: 'users' }, function(err, result) {
+      if (err) { return callback(err); }
+      callback(null, _this.toJSON({ virtuals: true }));
+    });
+  });
+};
+
 // Initialize the Model for global MongoDB
 var initialize = function(api) {
   return api.mongo.connection.model('Game', gameSchema);
