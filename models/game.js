@@ -25,7 +25,8 @@ var askedQuestionSchema = new Schema({
   deadlineAt: { type: Date, required: true },
   answeredAt: { type: Date },
   answeredBy: { type: Schema.Types.ObjectId, ref: 'User' },
-  answer: { type: Schema.Types.ObjectId }
+  answer: { type: Schema.Types.ObjectId },
+  answeredCorrectly: { type: Boolean }
 });
 askedQuestionSchema.plugin(timestamps);
 
@@ -151,20 +152,20 @@ gameSchema.methods.askNextQuestion = function(callback) {
   }
 };
 
-gameSchema.methods.answerQuestion = function(user, answer, callback) {
+gameSchema.methods.answerQuestion = function(user, answerId, callback) {
   var _this = this;
   var answeredQuestion = this.question;
 
   if (answeredQuestion.team !== this.userTeam(user)) {
     callback('Error: Team ' + answeredQuestion.team + ' should answer this question.');
   } else {
-    answeredQuestion.answer = answer;
+    answeredQuestion.answer = answerId;
     answeredQuestion.answeredBy = user._id;
     answeredQuestion.answeredAt = new Date();
 
     this.model('Question').findOne(answeredQuestion.question, function(err, result) {
       if (err) { return callback(err); }
-      var correct = result.correctAnswer.id == answer.toString(); //TODO: Fix this.
+      var correct = result.correctAnswer.id == answerId.toString(); //TODO: Fix this.
       answeredQuestion.answeredCorrectly = correct;
       if (correct && answeredQuestion.isInTime()) {
         _this.teams[answeredQuestion.team].score++;

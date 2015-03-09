@@ -12,9 +12,12 @@ var actionheroPrototype = require('actionhero').actionheroPrototype;
 var actionhero = new actionheroPrototype();
 var api;
 
+var find = require('mout/array/find');
+
 var randomGame = require('../../models/fixtures').Game;
 var randomUser = require('../../models/fixtures').User;
 var randomQuestion = require('../../models/fixtures').Question;
+var randomAskedQuestion = require('../../models/fixtures').AskedQuestion;
 
 describe('Action: answerQuestion', function() {
 
@@ -42,21 +45,22 @@ describe('Action: answerQuestion', function() {
   var user;
   var game;
   var question;
-  var correctIdx;
-  var incorrectIdx;
+  var correctId;
+  var incorrectId;
 
   beforeEach(function(done) {
     user = api.models.User(randomUser());
     user.save(function(err, result) {
       game = api.models.Game(randomGame());
-      game.save(function(err, result) {
-        game.initializeTeams(function(err, result) {
-          user.joinGame(game, function(err, result) {
-            user.joinTeam(0, function(err, result) {
-              question = api.models.Question(randomQuestion());
-              question.save(function(err, result) {
-                correctIdx = question.correctAnswer;
-                incorrectIdx = correctIdx === 0 ? 1 : 0;
+      game.initializeTeams(function(err, result) {
+        user.joinGame(game, function(err, result) {
+          user.joinTeam(0, function(err, result) {
+            question = api.models.Question(randomQuestion());
+            question.save(function(err, result) {
+              correctId = find(question.answers, { correct: true }).id;
+              incorrectId = find(question.answers, { correct: false }).id;
+              game.previousQuestions.push(randomAskedQuestion({ question: question, team: 0 }));
+              game.save(function(err, result) {
                 done();
               });
             });
@@ -70,7 +74,7 @@ describe('Action: answerQuestion', function() {
     api.specHelper.runAction('answerQuestion', {
       user: user.id,
       game: new api.mongo.ObjectID().toString(),
-      answer: 0
+      answer: '54fdc92b7361040a3e340c7f'
     }, function(response) {
       should.exist(response.error);
       should.not.exist(response.success);
@@ -83,7 +87,7 @@ describe('Action: answerQuestion', function() {
     api.specHelper.runAction('answerQuestion', {
       user: new api.mongo.ObjectID().toString(),
       game: game.id,
-      answer: 0
+      answer: '54fdc92b7361040a3e340c7f'
     }, function(response) {
       should.exist(response.error);
       should.not.exist(response.success);
@@ -94,26 +98,26 @@ describe('Action: answerQuestion', function() {
 
   it('should return positive for the right answer', function(done) {
     api.specHelper.runAction('answerQuestion', {
-      user: user.id.toString(),
-      game: game.id.toString(),
-      answer: correctIdx
+      user: user.id,
+      game: game.id,
+      answer: correctId
     }, function(response) {
       should.not.exist(response.error);
-      should.exist(response.correct);
-      response.correct.should.equal(true);
+      should.exist(response.game.question.answeredCorrectly);
+      response.game.question.answeredCorrectly.should.equal(true);
       done();
     });
   });
 
   it('should return negative for the wrong answer', function(done) {
     api.specHelper.runAction('answerQuestion', {
-      user: user.id.toString(),
-      game: game.id.toString(),
-      answer: incorrectIdx
+      user: user.id,
+      game: game.id,
+      answer: incorrectId
     }, function(response) {
       should.not.exist(response.error);
-      should.exist(response.correct);
-      response.correct.should.equal(false);
+      should.exist(response.game.question.answeredCorrectly);
+      response.game.question.answeredCorrectly.should.equal(false);
       done();
     });
   });

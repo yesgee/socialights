@@ -18,14 +18,14 @@ exports.answerQuestion = {
     },
     answer: {
       required: true,
-      formatter: function(n) { return parseInt(n); }
+      formatter: function(s) { return String(s); }
     }
   },
 
   run: function(api, connection, next) {
     var userId = new api.mongo.ObjectID(connection.params.user);
     var gameId = new api.mongo.ObjectID(connection.params.game);
-    var answer = connection.params.answer;
+    var answerId = new api.mongo.ObjectID(connection.params.answer);
 
     api.models.Game.findById(gameId, function(err, game) {
       if (err) {
@@ -43,15 +43,21 @@ exports.answerQuestion = {
             connection.response.error = 'Error: User with this id was not found.';
             next(connection, true);
           } else {
-            game.answerQuestion(user, answer, function(err, result) {
+            game.answerQuestion(user, answerId, function(err, result) {
               if (err) {
-                connection.response.success = false;
                 connection.response.error = err;
+                next(connection, true);
               } else {
-                console.log(result);
-                connection.response.correct = result.answeredCorrectly;
+                game.getFullJSON(function(err, result) {
+                  if (err) {
+                    connection.response.error = err;
+                  } else {
+                    connection.response.success = true;
+                    connection.response.game = result;
+                  }
+                  next(connection, true);
+                });
               }
-              next(connection, true);
             });
           }
         });
