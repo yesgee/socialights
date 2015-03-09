@@ -62,7 +62,7 @@ describe('Action: updateUser', function() {
   });
 
   it('should update an existing user', function(done) {
-    api.specHelper.runAction('updateUser', { id: user._id.toString(), name: newUserName}, function(response) {
+    api.specHelper.runAction('updateUser', { id: user.id, name: newUserName}, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
       should.exist(response.user);

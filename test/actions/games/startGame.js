@@ -61,7 +61,7 @@ describe('Action: startGame', function() {
   });
 
   it('should start an existing game', function(done) {
-    api.specHelper.runAction('startGame', { id: game._id.toString() }, function(response) {
+    api.specHelper.runAction('startGame', { id: game.id }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
 

@@ -58,7 +58,7 @@ describe('Action: removeUserFromTeam', function() {
 
   it('should return an error for a non-existing game', function(done) {
     api.specHelper.runAction('removeUserFromTeam', {
-      user: user.id.toString(),
+      user: user.id,
       game: new api.mongo.ObjectID().toString(),
       team: 0
     }, function(response) {
@@ -72,7 +72,7 @@ describe('Action: removeUserFromTeam', function() {
   it('should return an error for a non-existing user', function(done) {
     api.specHelper.runAction('removeUserFromTeam', {
       user: new api.mongo.ObjectID().toString(),
-      game: game.id.toString(),
+      game: game.id,
       team: 0
     }, function(response) {
       should.exist(response.error);
@@ -84,8 +84,8 @@ describe('Action: removeUserFromTeam', function() {
 
   it('should remove the user from the team', function(done) {
     api.specHelper.runAction('removeUserFromTeam', {
-      user: user.id.toString(),
-      game: game.id.toString(),
+      user: user.id,
+      game: game.id,
       team: teamIdx
     }, function(response) {
       should.not.exist(response.error);

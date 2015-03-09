@@ -72,7 +72,7 @@ describe('Action: createGame', function() {
 
   it('should create a game with a user and save it to the database', function(done) {
     api.specHelper.runAction('createGame', {
-      user: user._id.toString()
+      user: user.id
     }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);

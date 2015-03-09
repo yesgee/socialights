@@ -61,7 +61,7 @@ describe('Action: showGame', function() {
   });
 
   it('should return an existing game', function(done) {
-    api.specHelper.runAction('showGame', { id: game._id.toString() }, function(response) {
+    api.specHelper.runAction('showGame', { id: game.id }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
       should.exist(response.game);

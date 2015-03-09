@@ -55,7 +55,7 @@ describe('Action: deleteGame', function() {
   it('should delete an existing game', function(done) {
     var game = new api.models.Game(randomGame());
     game.save(function(err, result) {
-      api.specHelper.runAction('deleteGame', { id: game._id.toString() }, function(response) {
+      api.specHelper.runAction('deleteGame', { id: game.id }, function(response) {
         should.not.exist(response.error);
         should.exist(response.success);
         done();

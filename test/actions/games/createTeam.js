@@ -67,7 +67,7 @@ describe('Action: createTeam', function() {
   it('should return an error for a non-existing user', function(done) {
     api.specHelper.runAction('createTeam', {
       user: new api.mongo.ObjectID().toString(),
-      game: game._id.toString(),
+      game: game.id,
       teamName: 'Blue Team',
       teamColor: '#0000ff'
     }, function(response) {
@@ -80,7 +80,7 @@ describe('Action: createTeam', function() {
 
   it('should create a team without a user and save it to the database', function(done) {
     api.specHelper.runAction('createTeam', {
-      game: game._id.toString(),
+      game: game.id,
       teamName: 'Blue Team',
       teamColor: '#0000ff'
     }, function(response) {
@@ -103,8 +103,8 @@ describe('Action: createTeam', function() {
 
   it('should create a team with a user and save it to the database', function(done) {
     api.specHelper.runAction('createTeam', {
-      game: game._id.toString(),
-      user: user._id.toString(),
+      game: game.id,
+      user: user.id,
       teamName: 'Blue Team',
       teamColor: '#0000ff'
     }, function(response) {

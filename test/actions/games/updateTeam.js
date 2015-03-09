@@ -64,7 +64,7 @@ describe('Action: updateTeam', function() {
 
   it('should return an error for a non-existing team', function(done) {
     api.specHelper.runAction('updateTeam', {
-      game: game.id.toString(),
+      game: game.id,
       team: 2
     }, function(response) {
       should.exist(response.error);
@@ -76,7 +76,7 @@ describe('Action: updateTeam', function() {
 
   it('should update the name of an existing team', function(done) {
     api.specHelper.runAction('updateTeam', {
-      game: game.id.toString(),
+      game: game.id,
       team: teamIdx,
       name: newTeamName
     }, function(response) {
@@ -90,7 +90,7 @@ describe('Action: updateTeam', function() {
 
   it('should update the color of an existing team', function(done) {
     api.specHelper.runAction('updateTeam', {
-      game: game.id.toString(),
+      game: game.id,
       team: teamIdx,
       color: newTeamColor
     }, function(response) {

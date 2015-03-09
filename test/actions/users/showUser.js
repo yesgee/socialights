@@ -61,7 +61,7 @@ describe('Action: showUser', function() {
   });
 
   it('should return an existing user', function(done) {
-    api.specHelper.runAction('showUser', { id: user._id.toString() }, function(response) {
+    api.specHelper.runAction('showUser', { id: user.id }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
       should.exist(response.user);

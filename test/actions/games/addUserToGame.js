@@ -53,7 +53,7 @@ describe('Action: addUserToGame', function() {
 
   it('should return an error for a non-existing game', function(done) {
     api.specHelper.runAction('addUserToGame', {
-      user: user.id.toString(),
+      user: user.id,
       game: new api.mongo.ObjectID().toString()
     }, function(response) {
       should.exist(response.error);
@@ -66,7 +66,7 @@ describe('Action: addUserToGame', function() {
   it('should return an error for a non-existing user', function(done) {
     api.specHelper.runAction('addUserToGame', {
       user: new api.mongo.ObjectID().toString(),
-      game: game.id.toString()
+      game: game.id
     }, function(response) {
       should.exist(response.error);
       should.not.exist(response.success);
@@ -77,15 +77,15 @@ describe('Action: addUserToGame', function() {
 
   it('should add the user to a game', function(done) {
     api.specHelper.runAction('addUserToGame', {
-      user: user.id.toString(),
-      game: game.id.toString()
+      user: user.id,
+      game: game.id
     }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
 
       api.models.User.findById(user._id, function(err, result) {
         should.exist(result.game);
-        result.game.toString().should.equal(game._id.toString()); //TODO: Fix this
+        result.game.toString().should.equal(game.id); //TODO: Fix this
 
         api.models.Game.findById(game._id, function(err, result) {
           result.users.should.include(user._id);

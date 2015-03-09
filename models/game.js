@@ -164,7 +164,7 @@ gameSchema.methods.answerQuestion = function(user, answer, callback) {
 
     this.model('Question').findOne(answeredQuestion.question, function(err, result) {
       if (err) { return callback(err); }
-      var correct = result.correctAnswer._id.toString() == answer.toString(); //TODO: Fix this.
+      var correct = result.correctAnswer.id == answer.toString(); //TODO: Fix this.
       answeredQuestion.answeredCorrectly = correct;
       if (correct && answeredQuestion.isInTime()) {
         _this.teams[answeredQuestion.team].score++;

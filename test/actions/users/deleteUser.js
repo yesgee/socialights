@@ -55,7 +55,7 @@ describe('Action: deleteUser', function() {
   it('should delete an existing user', function(done) {
     var user = new api.models.User(randomUser());
     user.save(function(err, result) {
-      api.specHelper.runAction('deleteUser', { id: user._id.toString() }, function(response) {
+      api.specHelper.runAction('deleteUser', { id: user.id }, function(response) {
         should.not.exist(response.error);
         should.exist(response.success);
         done();

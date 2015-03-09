@@ -55,7 +55,7 @@ describe('Action: addUserToTeam', function() {
 
   it('should return an error for a non-existing game', function(done) {
     api.specHelper.runAction('addUserToTeam', {
-      user: user.id.toString(),
+      user: user.id,
       game: new api.mongo.ObjectID().toString(),
       team: 0
     }, function(response) {
@@ -69,7 +69,7 @@ describe('Action: addUserToTeam', function() {
   it('should return an error for a non-existing user', function(done) {
     api.specHelper.runAction('addUserToTeam', {
       user: new api.mongo.ObjectID().toString(),
-      game: game.id.toString(),
+      game: game.id,
       team: 0
     }, function(response) {
       should.exist(response.error);
@@ -81,8 +81,8 @@ describe('Action: addUserToTeam', function() {
 
   it('should add the user to a game', function(done) {
     api.specHelper.runAction('addUserToTeam', {
-      user: user.id.toString(),
-      game: game.id.toString(),
+      user: user.id,
+      game: game.id,
       team: 0
     }, function(response) {
       should.not.exist(response.error);
