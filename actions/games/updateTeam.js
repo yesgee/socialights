@@ -7,65 +7,50 @@ exports.updateTeam = {
   outputExample: require('./sample_output.json'),
 
   inputs: {
+    user: {
+      required: false,
+      model: 'User',
+      formatter: function(s) { return String(s); }
+    },
     game: {
       required: true,
+      model: 'Game',
       formatter: function(s) { return String(s); }
     },
     team: {
       required: true,
       formatter: function(n) { return parseInt(n); }
     },
-    color: {
-      required: false,
-      formatter: function(s) { return String(s); }
-    },
     name: {
       required: false,
       formatter: function(s) { return String(s); }
     },
+    color: {
+      required: false,
+      formatter: function(s) { return String(s); }
+    }
   },
 
   run: function(api, connection, next) {
-    var gameId = new api.mongo.ObjectID(connection.params.game);
-    var name = connection.params.name;
-    var color = connection.params.color;
     var teamIdx = connection.params.team;
-    api.models.Game.findById(gameId, function(err, game) {
-      if (err) {
-        connection.response.error = err;
-        next(connection, true);
-      } else if (game === null) {
-        connection.response.error = 'Error: Game with this id was not found.';
-        next(connection, true);
-      } else {
-        if (teamIdx >= game.teams.length) {
-          connection.response.error = 'Error: Team index out of range.';
-          next(connection, true);
-        }
-        if (name) {
-          game.teams[teamIdx].name = name;
-        }
-        if (color) {
-          game.teams[teamIdx].color = color;
-        }
-        game.save(function(err, result) {
-          if (err) {
-            connection.response.error = err;
-            next(connection, true);
-          } else {
-            connection.response.success = true;
-            game.getFullJSON(function(err, result) {
-              if (err) {
-                connection.response.error = err;
-              } else {
-                connection.response.success = true;
-                connection.response.game = result;
-              }
-              next(connection, true);
-            });
-          }
-        });
-      }
+
+    if (teamIdx >= connection.models.game.teams.length) {
+      connection.response.error = 'Error: Team index out of range.';
+      next(connection, true);
+      return;
+    }
+
+    if (connection.params.name) {
+      connection.models.game.teams[teamIdx].set('name', connection.params.name);
+    }
+
+    if (connection.params.color) {
+      connection.models.game.teams[teamIdx].set('color', connection.params.color);
+    }
+
+    connection.models.game.save(function(err, result) {
+      if (err) { return connection.handleModelError(err, next); }
+      connection.renderModel('game', connection.models.game, connection, next);
     });
   }
 };

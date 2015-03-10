@@ -54,8 +54,8 @@ describe('Action: createTeam', function() {
   it('should return an error for a non-existing game', function(done) {
     api.specHelper.runAction('createTeam', {
       game: new api.mongo.ObjectID().toString(),
-      teamName: 'Team 404',
-      teamColor: '#ff0000'
+      name: 'Team 404',
+      color: '#ff0000'
     }, function(response) {
       should.exist(response.error);
       should.not.exist(response.success);
@@ -64,25 +64,11 @@ describe('Action: createTeam', function() {
     });
   });
 
-  it('should return an error for a non-existing user', function(done) {
-    api.specHelper.runAction('createTeam', {
-      user: new api.mongo.ObjectID().toString(),
-      game: game.id,
-      teamName: 'Blue Team',
-      teamColor: '#0000ff'
-    }, function(response) {
-      should.exist(response.error);
-      should.not.exist(response.success);
-      response.error.should.equal('Error: User with this id was not found.');
-      done();
-    });
-  });
-
   it('should create a team without a user and save it to the database', function(done) {
     api.specHelper.runAction('createTeam', {
       game: game.id,
-      teamName: 'Blue Team',
-      teamColor: '#0000ff'
+      name: 'Blue Team',
+      color: '#0000ff'
     }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
@@ -105,8 +91,8 @@ describe('Action: createTeam', function() {
     api.specHelper.runAction('createTeam', {
       game: game.id,
       user: user.id,
-      teamName: 'Blue Team',
-      teamColor: '#0000ff'
+      name: 'Blue Team',
+      color: '#0000ff'
     }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);

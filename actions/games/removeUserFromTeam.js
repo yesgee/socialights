@@ -9,52 +9,20 @@ exports.removeUserFromTeam = {
   inputs: {
     user: {
       required: true,
+      model: 'User',
       formatter: function(s) { return String(s); }
     },
     game: {
       required: true,
+      model: 'Game',
       formatter: function(s) { return String(s); }
     }
   },
 
   run: function(api, connection, next) {
-    var gameId = connection.params.game;
-    var userId = connection.params.user;
-    api.models.Game.findById(gameId, function(err, game) {
-      if (err) {
-        connection.response.error = err;
-        next(connection, true);
-      } else if (game === null) {
-        connection.response.error = 'Error: Game with this id was not found.';
-        next(connection, true);
-      } else {
-        api.models.User.findById(userId, function(err, user) {
-          if (err) {
-            connection.response.error = err;
-            next(connection, true);
-          } else if (user === null) {
-            connection.response.error = 'Error: User with this id was not found.';
-            next(connection, true);
-          } else {
-            user.leaveTeam(function(err) {
-              if (err) {
-                connection.response.error = err;
-                next(connection, true);
-              } else {
-                game.getFullJSON(function(err, result) {
-                  if (err) {
-                    connection.response.error = err;
-                  } else {
-                    connection.response.success = true;
-                    connection.response.game = result;
-                  }
-                  next(connection, true);
-                });
-              }
-            });
-          }
-        });
-      }
+    connection.models.user.leaveTeam(function(err) {
+      if (err) { return connection.handleModelError(err, next); }
+      connection.renderModel('game', connection.models.game, connection, next);
     });
   }
 };
