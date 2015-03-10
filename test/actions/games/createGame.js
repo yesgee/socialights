@@ -44,17 +44,6 @@ describe('Action: createGame', function() {
     });
   });
 
-  it('should return an error for a non-existing user', function(done) {
-    api.specHelper.runAction('createGame', {
-      user: new api.mongo.ObjectID().toString()
-    }, function(response) {
-      should.exist(response.error);
-      should.not.exist(response.success);
-      response.error.should.equal('Error: User with this id was not found.');
-      done();
-    });
-  });
-
   it('should create a game without a user and save it to the database', function(done) {
     api.specHelper.runAction('createGame', {}, function(response) {
       should.not.exist(response.error);

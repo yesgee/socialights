@@ -9,6 +9,7 @@ exports.updateQuestion = {
   inputs: {
     id: {
       required: true,
+      model: 'Question',
       formatter: function(s) { return String(s); }
     },
     question: {
@@ -21,38 +22,17 @@ exports.updateQuestion = {
   },
 
   run: function(api, connection, next) {
-    api.models.Question.findById(connection.params.id, function(err, question) {
-      if (err) {
-        connection.response.error = err;
-        next(connection, true);
-      } else if (question === null) {
-        connection.response.error = 'Error: Question with this id was not found.';
-        next(connection, true);
-      } else {
-        if (connection.params.question) {
-          question.question = connection.params.question;
-        }
-        if (connection.params.answers) {
-          question.answers = [];
-          question.answers = connection.params.answers;
-        }
-        question.save(function(err, result) {
-          if (err) {
-            connection.response.error = err;
-            next(connection, true);
-          } else {
-            question.getFullJSON(function(err, result) {
-              if (err) {
-                connection.response.error = err;
-              } else {
-                connection.response.success = true;
-                connection.response.question = result;
-              }
-              next(connection, true);
-            });
-          }
-        });
-      }
+    if (connection.params.question) {
+      connection.models.question.set('question', connection.params.question);
+    }
+
+    if (connection.params.answers) {
+      connection.models.question.set('answers', connection.params.answers);
+    }
+
+    connection.models.question.save(function(err, question) {
+      if (err) { return connection.handleModelError(err, next); }
+      connection.renderModel('question', question, connection, next);
     });
   }
 };

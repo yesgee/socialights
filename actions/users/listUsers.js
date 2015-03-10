@@ -15,14 +15,13 @@ exports.listUsers = {
 
   run: function(api, connection, next) {
     api.models.User.find(function(err, users) {
-      if (err) {
-        connection.response.error = err;
-      } else {
-        connection.response.success = true;
-        connection.response.users = map(users, function(user) {
-          return pick(user.toJSON({ virtuals: true }), ['id', '_id', 'name']);
-        });
-      }
+      if (err) { return connection.handleModelError(err, next); }
+
+      connection.response.success = true;
+      connection.response.users = map(users, function(user) {
+        return pick(user.toJSON({ virtuals: true }), ['id', 'name']);
+      });
+
       next(connection, true);
     });
   }

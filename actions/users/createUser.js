@@ -17,22 +17,10 @@ exports.createUser = {
 
   run: function(api, connection, next) {
     var user = api.models.User(pick(connection.params, ['name']));
-    user.save(function(err, user) {
-      if (err) {
-        connection.response.error = err;
-        next(connection, true);
-      } else {
-        user.getFullJSON(function(err, result) {
-          if (err) {
-            connection.response.error = err;
-          } else {
-            connection.response.success = true;
-            connection.response.user = result;
-          }
-          next(connection, true);
-        });
-      }
 
+    user.save(function(err, user) {
+      if (err) { return connection.handleModelError(err, next); }
+      connection.renderModel('user', user, connection, next);
     });
   }
 };
