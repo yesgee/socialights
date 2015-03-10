@@ -77,14 +77,12 @@ describe('Action: createGame', function() {
       should.not.exist(response.error);
       should.exist(response.success);
       should.exist(response.game);
-
       response.game.users.should.not.be.empty;
-      response.game.users.should.include(user._id);
-
-      api.models.Game.findOne(response.game._id).exec(function(err, result) {
+      response.game.users[0].id.should.equal(user.id);
+      api.models.Game.findById(response.game._id).populate('users').exec(function(err, result) {
         should.not.exist(err);
         result.users.should.not.be.empty;
-        result.users.should.include(user._id);
+        result.users[0].id.should.equal(user.id);
         done();
       });
     });

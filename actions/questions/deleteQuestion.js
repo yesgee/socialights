@@ -23,7 +23,6 @@ exports.deleteQuestion = {
         connection.response.error = 'Error: Question with this id was not found.';
       } else {
         connection.response.success = true;
-        connection.response.question = result;
       }
       next(connection, true);
     });

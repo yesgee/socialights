@@ -5,6 +5,7 @@ exports.createGame = {
   description: 'I will create a game',
 
   outputExample:{
+    'success': true,
     'game': {
       '_id': '1',
       'gameType': 'quiz',
@@ -85,20 +86,32 @@ exports.createGame = {
             } else {
               user.joinGame(game, function(err, result) {
                 if (err) {
-                  connection.response.success = false;
                   connection.response.error = err;
+                  next(connection, true);
                 } else {
-                  connection.response.success = true;
-                  connection.response.game = game;
+                  game.getFullJSON(function(err, result) {
+                    if (err) {
+                      connection.response.error = err;
+                    } else {
+                      connection.response.success = true;
+                      connection.response.game = result;
+                    }
+                    next(connection, true);
+                  });
                 }
-                next(connection, true);
               });
             }
           });
         } else {
-          connection.response.success = true;
-          connection.response.game = game;
-          next(connection, true);
+          game.getFullJSON(function(err, result) {
+            if (err) {
+              connection.response.error = err;
+            } else {
+              connection.response.success = true;
+              connection.response.game = result;
+            }
+            next(connection, true);
+          });
         }
       }
     });

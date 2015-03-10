@@ -82,8 +82,8 @@ describe('Action: updateTeam', function() {
     }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
-      should.exist(response.teams);
-      response.teams[teamIdx].name.should.equal(newTeamName);
+      should.exist(response.game.teams);
+      response.game.teams[teamIdx].name.should.equal(newTeamName);
       done();
     });
   });
@@ -96,8 +96,8 @@ describe('Action: updateTeam', function() {
     }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
-      should.exist(response.teams);
-      response.teams[teamIdx].color.should.equal(newTeamColor);
+      should.exist(response.game.teams);
+      response.game.teams[teamIdx].color.should.equal(newTeamColor);
       done();
     });
   });

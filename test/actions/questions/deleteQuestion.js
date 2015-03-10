@@ -59,8 +59,6 @@ describe('Action: deleteQuestion', function() {
       api.specHelper.runAction('deleteQuestion', { id: question.id }, function(response) {
         should.not.exist(response.error);
         should.exist(response.success);
-        should.exist(response.question);
-        response.question.question.should.equal(question.question);
         done();
       });
     });
