@@ -4,17 +4,9 @@ exports.updateUser = {
   name: 'updateUser',
   description: 'I will update a User',
 
-  outputExample:{
-    'succes': true,
-    'user': {
-      id: '54fda3cadb3aba3500b8cde1',
-      _id: '54fda3cadb3aba3500b8cde1',
-      name: 'Emile Schiller',
-      game: { _id: '...' }
-    }
-  },
+  outputExample: require('./sample_output.json'),
 
-  inputs:{
+  inputs: {
     id: {
       required: true,
       formatter: function(s) { return String(s); }

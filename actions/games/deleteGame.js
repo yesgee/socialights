@@ -5,8 +5,9 @@ exports.deleteGame = {
   description: 'I will delete a game',
 
   outputExample:{
-    'succes':true
+    succes: true
   },
+
   inputs: {
     id: {
       required: true,

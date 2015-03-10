@@ -9,13 +9,10 @@ exports.listQuestions = {
 
   outputExample:{
     'questions': [
-      {
-        'id': '54fda3cadb3aba3500b8cdf0',
-        '_id': '54fda3cadb3aba3500b8cdf0',
-        'question': 'Is this the question?'
-      }
+      require('./sample_output.json').question
     ]
   },
+
   run: function(api, connection, next) {
     api.models.Question.find(function(err, questions) {
       if (err) {

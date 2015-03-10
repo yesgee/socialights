@@ -6,14 +6,7 @@ exports.createUser = {
   name: 'createUser',
   description: 'I will create a User',
 
-  outputExample:{
-    'succes': true,
-    'user': {
-      name: 'Bob',
-      _id: '54fdbfba385c8f942de1b57e',
-      id: '54fdbfba385c8f942de1b57e'
-    }
-  },
+  outputExample: require('./sample_output.json'),
 
   inputs: {
     name: {

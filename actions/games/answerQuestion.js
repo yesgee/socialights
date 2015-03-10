@@ -4,9 +4,8 @@ exports.answerQuestion = {
   name: 'answerQuestion',
   description: 'I will answer a question',
 
-  outputExample:{
-    'correct':true,
-  },
+  outputExample: require('./sample_output.json'),
+
   inputs: {
     game: {
       required: true,

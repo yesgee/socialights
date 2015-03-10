@@ -16,7 +16,9 @@ exports.deleteQuestion = {
   },
 
   run: function(api, connection, next) {
-    api.models.Question.findOneAndRemove(connection.params.id).exec(function(err, result) {
+    var questionId = new api.mongo.ObjectID(connection.params.id);
+
+    api.models.Question.findByIdAndRemove(questionId, function(err, result) {
       if (err) {
         connection.response.error = err;
       } else if (result === null) {
