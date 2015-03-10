@@ -9,29 +9,12 @@ exports.showQuestion = {
   inputs: {
     id: {
       required: true,
+      model: 'Question',
       formatter: function(s) { return String(s); }
     },
   },
 
   run: function(api, connection, next) {
-    api.models.Question.findById(connection.params.id, function(err, question) {
-      if (err) {
-        connection.response.error = err;
-        next(connection, true);
-      } else if (question === null) {
-        connection.response.error = 'Error: Question with this id was not found.';
-        next(connection, true);
-      } else {
-        question.getFullJSON(function(err, result) {
-          if (err) {
-            connection.response.error = err;
-          } else {
-            connection.response.success = true;
-            connection.response.question = result;
-          }
-          next(connection, true);
-        });
-      }
-    });
+    connection.renderModel('question', connection.models.question, connection, next);
   }
 };

@@ -65,6 +65,8 @@ module.exports = {
                 callback();
               } else if (options.required) {
                 callback('Error: ' + options.modelName + ' with this id was not found.');
+              } else {
+                callback();
               }
             });
           } catch (e) {

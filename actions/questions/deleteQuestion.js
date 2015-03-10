@@ -11,21 +11,15 @@ exports.deleteQuestion = {
   inputs: {
     id: {
       required: true,
+      model: 'Question',
       formatter: function(s) { return String(s); }
     }
   },
 
   run: function(api, connection, next) {
-    var questionId = new api.mongo.ObjectID(connection.params.id);
-
-    api.models.Question.findByIdAndRemove(questionId, function(err, result) {
-      if (err) {
-        connection.response.error = err;
-      } else if (result === null) {
-        connection.response.error = 'Error: Question with this id was not found.';
-      } else {
-        connection.response.success = true;
-      }
+    connection.models.question.remove(function(err, question) {
+      if (err) { return connection.handleModelError(err, next); }
+      connection.response.success = true;
       next(connection, true);
     });
   }
