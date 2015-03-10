@@ -4,6 +4,35 @@ exports.default = {
   routes: function(api) {
     return {
 
+      get: [
+        { path: '/users', action: 'listUsers'},
+        { path: '/users/:id', action: 'showUser'},
+        { path: '/rooms', action: 'listRooms'},
+        { path: '/rooms/:id', action: 'showRoom'},
+        { path: '/rooms/search/:query', action: 'searchRooms'},
+        { path: '/question/:id', action: 'showQuestion'},
+        { path: '/games', action: 'listGames'},
+        { path: '/games/:id', action: 'showGame'},
+      ],
+      post: [
+        { path: '/users', action: 'createUser'},
+        { path: '/rooms/:room/addUser', action: 'addUserToRoom'},
+        { path: '/games', action: 'createGame'},
+        { path: '/games/:game/teams', action: 'createTeam'},
+        { path: '/games/:game/addUser', action: 'addUserToGame'},
+        { path: '/games/:game/teams/:team/addUser', action: 'addUserToTeam'},
+        { path: '/games/:game/switchTeams', action: 'switchUserBetweenTeams'},
+        { path: '/games/:game/answerQuestion', action: 'answerQuestion'},
+        { path: '/games/:game/start', action: 'startGame'},
+      ],
+      delete: [
+        { path: '/rooms/:room/removeUser', action: 'removeUserFromRoom'},
+        { path: '/games/:game/removeUser', action: 'removeUserFromGame'},
+        { path: '/games/:game/teams/:team/removeUser', action: 'removeUserFromTeam'}
+      ],
+      put: [
+      ]
+
       /* ---------------------
       routes.js
 

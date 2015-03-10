@@ -21,10 +21,14 @@ var questionSchema = new Schema({
 });
 questionSchema.plugin(timestamps);
 
-// Instance Methods
+// Virtuals
 
-questionSchema.methods.correctAnswer = function() {
+questionSchema.virtual('correctAnswer').get(function() {
   return find(this.answers, { correct: true });
+});
+
+questionSchema.methods.getFullJSON = function(callback) {
+  callback(null, this.toJSON({ virtuals: true }));
 };
 
 // Validations

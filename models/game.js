@@ -3,6 +3,8 @@
 var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
+var async = require('async');
+
 var last = require('mout/array/last');
 var findIndex = require('mout/array/findIndex');
 var isFunction = require('mout/lang/isFunction');
@@ -25,7 +27,8 @@ var askedQuestionSchema = new Schema({
   deadlineAt: { type: Date, required: true },
   answeredAt: { type: Date },
   answeredBy: { type: Schema.Types.ObjectId, ref: 'User' },
-  answer: { type: Schema.Types.ObjectId }
+  answer: { type: Schema.Types.ObjectId },
+  answeredCorrectly: { type: Boolean }
 });
 askedQuestionSchema.plugin(timestamps);
 
@@ -50,6 +53,12 @@ var gameSchema = new Schema({
   nextQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }]
 });
 gameSchema.plugin(timestamps);
+
+// Virtuals
+
+gameSchema.virtual('question').get(function() {
+  return last(this.previousQuestions);
+});
 
 // Instance Methods
 
@@ -111,6 +120,11 @@ gameSchema.methods.switchTeam = function(user, callback) {
   }
 };
 
+gameSchema.methods.start = function(callback) {
+  this.startedAt = new Date();
+  this.save(callback);
+};
+
 gameSchema.methods.askNextQuestion = function(callback) {
   var lastAskedQuestion = last(this.previousQuestions);
   if (lastAskedQuestion && lastAskedQuestion.isOpen()) {
@@ -140,32 +154,56 @@ gameSchema.methods.askNextQuestion = function(callback) {
   }
 };
 
-gameSchema.methods.question = function() {
-  return last(this.previousQuestions);
-};
-
-gameSchema.methods.answerQuestion = function(user, answer, callback) {
+gameSchema.methods.answerQuestion = function(user, answerId, callback) {
   var _this = this;
-  var answeredQuestion = this.question();
+  var answeredQuestion = this.question;
 
   if (answeredQuestion.team !== this.userTeam(user)) {
     callback('Error: Team ' + answeredQuestion.team + ' should answer this question.');
   } else {
-    answeredQuestion.answer = answer;
+    answeredQuestion.answer = answerId;
     answeredQuestion.answeredBy = user._id;
     answeredQuestion.answeredAt = new Date();
 
     this.model('Question').findOne(answeredQuestion.question, function(err, result) {
       if (err) { return callback(err); }
-      var correct = result.correctAnswer()._id.toString() == answer.toString(); //TODO: Fix this.
+      var correct = result.correctAnswer.id == answerId.toString(); //TODO: Fix this.
       answeredQuestion.answeredCorrectly = correct;
       if (correct && answeredQuestion.isInTime()) {
         _this.teams[answeredQuestion.team].score++;
       }
-      _this.save(callback);
+      _this.save(function(err, result) {
+        if (err) { return callback(err); }
+        callback(null, answeredQuestion);
+      });
     });
   }
 
+};
+
+gameSchema.methods.getFullJSON = function(callback) {
+  var _this = this;
+  this.populate('nextQuestions question previousQuestions teams users', function(err, result) {
+    if (err) { return callback(err); }
+
+    var populateUser = function(cb) {
+      _this.model('User').populate(_this.teams, { path: 'users' }, cb);
+    };
+
+    var populateQuestion = function(cb) {
+      _this.model('Question').populate(_this.question, { path: 'question' }, cb);
+    };
+
+    var populatePreviousQuestions = function(cb) {
+      _this.model('Question').populate(_this.previousQuestions, { path: 'question' }, cb);
+    };
+
+    async.parallel([populateUser, populateQuestion, populatePreviousQuestions], function(err, results) {
+      if (err) { return callback(err); }
+      callback(null, _this.toJSON({ virtuals: true }));
+    });
+
+  });
 };
 
 // Initialize the Model for global MongoDB

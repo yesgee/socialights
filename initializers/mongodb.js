@@ -16,6 +16,9 @@ module.exports = {
     api.mongo.connection = mongoose.createConnection();
     api.mongo.db = null;
 
+    // Expose ObjectID
+    api.mongo.ObjectID = mongoose.mongo.BSONPure.ObjectID; // TODO: Find out if (faster) BSONNative can be used.
+
     /**
      * api.mongo.connect - Connect to the configured MonogDB server.
      *

@@ -82,11 +82,9 @@ describe('Model: User', function() {
     it('should add the user to the game\'s users attribute', function(done) {
       user.joinGame(game, function(err, result) {
         should.not.exist(err);
-        game.populate('users', function() {
-          game.users.should.not.be.empty;
-          game.users[0].id.should.equal(user.id);
-          done();
-        });
+        game.users.should.not.be.empty;
+        game.users.should.include(user._id);
+        done();
       });
     });
 

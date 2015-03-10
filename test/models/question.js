@@ -86,7 +86,7 @@ describe('Model: Question', function() {
     forEach(question.answers, function(val) { val.correct = false; });
     question.answers[3].correct = true;
 
-    question.correctAnswer().should.equal(question.answers[3]);
+    question.correctAnswer.should.equal(question.answers[3]);
     done();
   });
 
