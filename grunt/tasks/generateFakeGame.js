@@ -44,6 +44,18 @@ module.exports = function(grunt) {
             grunt.log.writeln('Pushed Team members.');
             async.parallel([saveGame, saveUsers], function(err, results) {
               grunt.log.writeln('Game ID: ' + game.id);
+              grunt.log.writeln('Questions:');
+              forEach(questions, function(question) {
+                grunt.log.writeln('  ' + question.id + ' ' + question.question);
+              });
+              grunt.log.writeln('Team 0:');
+              grunt.log.writeln('  ' + users[0].id + ' ' + users[0].name);
+              grunt.log.writeln('  ' + users[1].id + ' ' + users[1].name);
+              grunt.log.writeln('Team 1:');
+              grunt.log.writeln('  ' + users[2].id + ' ' + users[2].name);
+              grunt.log.writeln('  ' + users[3].id + ' ' + users[3].name);
+              grunt.log.writeln('Without Team:');
+              grunt.log.writeln('  ' + users[4].id + ' ' + users[4].name);
               grunt.log.writeln('All done. Have fun!');
               done();
             });
