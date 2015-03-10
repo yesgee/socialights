@@ -137,9 +137,11 @@ nextQuestions: [
 
 # Android Development
 
-* Sekeleton (done)
-* Testing (in progress)
+* Skeleton (done)
+* Testing setup (done)
 * DTO's (in progress)
+* Mocking API (done)
+* HTTP Client (in progress)
 * UI (in progress)
 * Communication with Server (todo)
 
@@ -149,8 +151,6 @@ nextQuestions: [
 
 ## Timeline
 
-* **Week 11 (9 Mar)**
-  * **Team:** Eighth meeting (10 Mar, 13:00)
 * **Week 12 (16 Mar)**
   * **Team:** Ninth meeting (17 Mar, 13:00) *Unavailable: Hylke*
   * **Course:** Mobile ecosystems lecture
