@@ -9,6 +9,7 @@ exports.updateUser = {
   inputs: {
     id: {
       required: true,
+      model: 'User',
       formatter: function(s) { return String(s); }
     },
     name: {
@@ -18,35 +19,13 @@ exports.updateUser = {
   },
 
   run: function(api, connection, next) {
-    var userId = new api.mongo.ObjectID(connection.params.id);
-    api.models.User.findById(userId, function(err, user) {
-      if (err) {
-        connection.response.error = err;
-        next(connection, true);
-      } else if (user === null) {
-        connection.response.error = 'Error: User with this id was not found.';
-        next(connection, true);
-      } else {
-        if (connection.params.name !== null) {
-          user.name = connection.params.name;
-        }
-        user.save(function(err, result) {
-          if (err) {
-            connection.response.error = err;
-            next(connection, true);
-          } else {
-            user.getFullJSON(function(err, result) {
-              if (err) {
-                connection.response.error = err;
-              } else {
-                connection.response.success = true;
-                connection.response.user = result;
-              }
-              next(connection, true);
-            });
-          }
-        });
-      }
+    if (connection.params.name) {
+      connection.models.user.set('name', connection.params.name);
+    }
+
+    connection.models.user.save(function(err, user) {
+      if (err) { return connection.handleModelError(err, next); }
+      connection.renderModel('user', user, connection, next);
     });
   }
 };
