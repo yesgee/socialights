@@ -33,7 +33,7 @@ questionSchema.methods.getFullJSON = function(callback) {
 
 // Validations
 questionSchema.path('answers').validate(function(value) {
-  return value.length >= 2;
+  return value && value.length >= 2;
 }, 'not enough answers');
 
 questionSchema.path('answers').validate(function(value) {
