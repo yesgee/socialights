@@ -1,0 +1,110 @@
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dip"
+        android:background="@drawable/background7"
+        android:weightSum="1">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lobbyhead"
+            android:text="Game lobby"
+            android:textSize="20pt"
+            android:textColor="#CCCCCC"
+            android:gravity="center"
+            android:layout_weight="0.09"
+            android:fontFamily="monospace"
+            android:background="@mipmap/apptheme_textfield_activated_holo_light"
+            android:backgroundTint="#b86e9a53" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="100dip"
+            android:text="Team Blue"
+            android:textColor="#C0C0C0"
+            android:textSize="15pt"
+            android:fontFamily="serif" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Join"
+            android:id="@+id/button2"
+            android:onClick="join_lobbyA"
+            android:background="#b86e9a53"
+            android:layout_gravity="right"
+            android:layout_weight="0.09"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:fontFamily="monospace" />
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            tools:listitem="@android:layout/simple_list_item_2"
+            android:background="#6d40b7ff">
+        </ListView>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="200dip"
+            android:gravity="center_vertical"
+            android:text="Team Orange"
+            android:singleLine="false"
+            android:textSize="15pt"
+            android:textColor="#C0C0C0"
+            android:fontFamily="serif" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Join"
+            android:id="@+id/btn_teamB"
+            android:onClick="join_lobbyB"
+            android:background="#b86e9a53"
+            android:layout_gravity="right"
+            android:textColor="#FFFFFF"
+            android:fontFamily="monospace"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:background="#70ff9100"
+            tools:listitem="@android:layout/simple_list_item_2">
+
+        </ListView>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="Quit"
+            android:id="@+id/button3"
+            android:background="#b86e9a53"
+            android:layout_weight="0.09"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:fontFamily="monospace" />
+
+    </LinearLayout>
+
+</ScrollView>

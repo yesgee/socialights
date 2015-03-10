@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">SociaLights</string>
+    <string name="title_activity_main">Socialights</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Socialights</string>
+    <string name="title_activity_lobby">Socialights</string>
+    <string name="edit_nickname">Set nickname!</string>
+    <string name="btn_start">Go</string>
+    <string name="str_next">Next</string>
+    <string name="title_activity_quizwindow">quizwindow</string>
+
 </resources>
