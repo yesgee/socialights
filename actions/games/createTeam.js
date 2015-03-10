@@ -9,79 +9,39 @@ exports.createTeam = {
   inputs: {
     user: {
       required: false,
+      model: 'User',
       formatter: function(s) { return String(s); }
     },
     game: {
       required: true,
+      model: 'Game',
       formatter: function(s) { return String(s); }
     },
-    teamName: {
+    name: {
       required: true,
       formatter: function(s) { return String(s); }
     },
-    teamColor: {
+    color: {
       required: true,
       formatter: function(s) { return String(s); }
     }
   },
   run: function(api, connection, next) {
 
-    var gameId = new api.mongo.ObjectID(connection.params.game);
-    var teamName = connection.params.teamName;
-    var teamColor = connection.params.teamColor;
-
     var team = {
-      name: teamName,
-      color: teamColor,
+      name: connection.params.name,
+      color: connection.params.color,
       users: []
     };
 
-    api.models.Game.findById(gameId, function(err, game) {
-      if (err) {
-        connection.response.error = err;
-        next(connection, true);
-      } else if (game === null) {
-        connection.response.error = 'Error: Game with this id was not found.';
-        next(connection, true);
-      } else {
-        var doCreateTeam = function(team) {
-          game.teams.push(team);
-          game.save(function(err, response) {
-            if (err) {
-              connection.response.error = err;
-              next(connection, true);
-            }  else {
-              game.getFullJSON(function(err, result) {
-                if (err) {
-                  connection.response.error = err;
-                } else {
-                  connection.response.success = true;
-                  connection.response.game = result;
-                }
-                next(connection, true);
-              });
-            }
-          });
-        };
+    if (connection.models.user) {
+      team.users.push(connection.models.user._id);
+    }
 
-        if (connection.params.user) {
-          var userId = new api.mongo.ObjectID(connection.params.user);
-          api.models.User.findById(userId, function(err, user) {
-            if (err) {
-              connection.response.error = err;
-              next(connection, true);
-            } else if (user === null) {
-              connection.response.error = 'Error: User with this id was not found.';
-              next(connection, true);
-            } else {
-              team.users.push(user._id);
-              doCreateTeam(team);
-            }
-          });
-        } else {
-          doCreateTeam(team);
-        }
-      }
+    connection.models.game.teams.push(team);
+    connection.models.game.save(function(err, result) {
+      if (err) { return connection.handleModelError(err, next); }
+      connection.renderModel('game', connection.models.game, connection, next);
     });
   }
 };
