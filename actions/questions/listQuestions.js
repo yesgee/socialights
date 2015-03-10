@@ -21,7 +21,7 @@ exports.listQuestions = {
       } else {
         connection.response.success = true;
         connection.response.questions = map(questions, function(question) {
-          return pick(question.toJSON(), ['id', '_id', 'question']);
+          return pick(question.toJSON({ virtuals: true }), ['id', '_id', 'question']);
         });
       }
       next(connection, true);
