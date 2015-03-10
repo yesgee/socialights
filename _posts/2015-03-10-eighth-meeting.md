@@ -135,7 +135,7 @@ nextQuestions: [
 ]
 {% endhighlight %}
 
-# Android Development
+## Android Development
 
 * Skeleton (done)
 * Testing setup (done)
@@ -144,6 +144,13 @@ nextQuestions: [
 * HTTP Client (in progress)
 * UI (in progress)
 * Communication with Server (todo)
+
+## Android UI
+
+![Login Screen](/images/login.png)
+![Lobby Screen](/images/lobby.png)
+![Quiz Screen](/images/quiz.png)
+
 
 ## Notable changes
 
