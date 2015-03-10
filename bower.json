@@ -13,7 +13,9 @@
   "license": "MIT",
   "dependencies": {
     "angularjs": "~1.3.14",
-    "bootstrap": "~3.3.2"
+    "bootstrap": "~3.3.2",
+    "angular-mocks": "1.3.x",
+    "jquery": "~2.1.1"
   },
   "private": true
 }
