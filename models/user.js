@@ -124,10 +124,7 @@ userSchema.methods.leaveGame = function(callback) {
 
 userSchema.methods.getFullJSON = function(callback) {
   var _this = this;
-  this.populate('game', function(err, result) {
-    if (err) { return callback(err); }
-    callback(null, _this.toJSON({ virtuals: true }));
-  });
+  callback(null, _this.toJSON({ virtuals: true }));
 };
 
 // Initialize the Model for global MongoDB

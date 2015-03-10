@@ -1,9 +1,7 @@
 {
   "user": {
     "name": "Emil Schiller",
-    "game": {
-      "id": "54fda3cadb3aba3500b8cdff"
-    },
+    "game": "54fda3cadb3aba3500b8cdff",
     "id": "54fda3cadb3aba3500b8cde1"
   }
 }
