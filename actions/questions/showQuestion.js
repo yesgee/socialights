@@ -4,35 +4,7 @@ exports.showQuestion = {
   name: 'showQuestion',
   description: 'I will return all information about a single question',
 
-  outputExample: {
-    'question': {
-      'id': '54fda3cadb3aba3500b8cdf0',
-      '_id': '54fda3cadb3aba3500b8cdf0',
-      'question': 'Is this the question?',
-      'answers': [
-        {
-          'answer':'No.',
-          'correct': false,
-          'feedback': 'Come on, it\'s not so hard!'
-        },
-        {
-          'answer':'Yes.',
-          'correct': true,
-          'feedback': 'Looks like you understand how this works.'
-        },
-        {
-          'answer':'Banana.',
-          'correct': false,
-          'feedback': 'Wtf? Seriously?'
-        },
-        {
-          'answer':'It depends.',
-          'correct': false,
-          'feedback': 'Maybe you should get some coffee...'
-        }
-      ]
-    }
-  },
+  outputExample: require('./sample_output.json'),
 
   inputs: {
     id: {

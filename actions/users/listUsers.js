@@ -7,10 +7,9 @@ exports.listUsers = {
   name: 'listUsers',
   description: 'I will return a list of all users',
 
-  outputExample:{
+  outputExample: {
     'users':[
-      { 'id':'54fda3cadb3aba3500b8cde6', '_id':'54fda3cadb3aba3500b8cde6', 'name':'Bob' },
-      { 'id':'54fda3cadb3aba3500b8cdeb', '_id':'54fda3cadb3aba3500b8cdeb', 'name':'Alice' }
+      require('./sample_output.json').user
     ]
   },
 

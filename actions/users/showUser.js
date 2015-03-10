@@ -4,14 +4,7 @@ exports.showUser = {
   name: 'showUser',
   description: 'I will return all information about a single User',
 
-  outputExample: {
-    'user': {
-      id: '54fda3cadb3aba3500b8cde1',
-      _id: '54fda3cadb3aba3500b8cde1',
-      name: 'Emil Schiller',
-      game: { _id: '...' }
-    }
-  },
+  outputExample: require('./sample_output.json'),
 
   inputs: {
     id: {

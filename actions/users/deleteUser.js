@@ -4,8 +4,8 @@ exports.deleteUser = {
   name: 'deleteUser',
   description: 'I will delete a User',
 
-  outputExample:{
-    'succes': true
+  outputExample: {
+    succes: true
   },
 
   inputs: {
