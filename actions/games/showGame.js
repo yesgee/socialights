@@ -9,23 +9,12 @@ exports.showGame = {
   inputs: {
     id: {
       required: true,
+      model: 'Game',
       formatter: function(s) { return String(s); }
     },
   },
 
   run: function(api, connection, next) {
-    var gameId = new api.mongo.ObjectID(connection.params.id);
-
-    api.models.Game.findById(gameId, function(err, result) {
-      if (err) {
-        connection.response.error = err;
-      } else if (result === null) {
-        connection.response.error = 'Error: Game with this id was not found.';
-      } else {
-        connection.response.success = true;
-        connection.response.game = result;
-      }
-      next(connection, true);
-    });
+    connection.renderModel('game', connection.models.game, connection, next);
   }
 };

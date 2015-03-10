@@ -9,57 +9,25 @@ exports.createGame = {
   inputs: {
     user: {
       required: false,
+      model: 'User',
       formatter: function(s) { return String(s); }
     }
   },
 
   run: function(api, connection, next) {
     var game = api.models.Game();
-    game.save(function(err, result) {
-      if (err) {
-        connection.response.success = false;
-        connection.response.error = err;
-        next(connection, true);
+
+    game.save(function(err, game) {
+      if (err) { return connection.handleModelError(err, next); }
+
+      if (connection.models.user) {
+        connection.models.user.joinGame(game, function(err, result) {
+          if (err) { return connection.handleModelError(err, next); }
+
+          connection.renderModel('game', game, connection, next);
+        });
       } else {
-        if (connection.params.user) {
-          var userId = new api.mongo.ObjectID(connection.params.user);
-          api.models.User.findById(userId, function(err, user) {
-            if (err) {
-              connection.response.error = err;
-              next(connection, true);
-            } else if (user === null) {
-              connection.response.error = 'Error: User with this id was not found.';
-              next(connection, true);
-            } else {
-              user.joinGame(game, function(err, result) {
-                if (err) {
-                  connection.response.error = err;
-                  next(connection, true);
-                } else {
-                  game.getFullJSON(function(err, result) {
-                    if (err) {
-                      connection.response.error = err;
-                    } else {
-                      connection.response.success = true;
-                      connection.response.game = result;
-                    }
-                    next(connection, true);
-                  });
-                }
-              });
-            }
-          });
-        } else {
-          game.getFullJSON(function(err, result) {
-            if (err) {
-              connection.response.error = err;
-            } else {
-              connection.response.success = true;
-              connection.response.game = result;
-            }
-            next(connection, true);
-          });
-        }
+        connection.renderModel('game', game, connection, next);
       }
     });
   }
