@@ -20,7 +20,7 @@ exports.listUsers = {
       } else {
         connection.response.success = true;
         connection.response.users = map(users, function(user) {
-          return pick(user.toJSON(), ['id', '_id', 'name']);
+          return pick(user.toJSON({ virtuals: true }), ['id', '_id', 'name']);
         });
       }
       next(connection, true);
