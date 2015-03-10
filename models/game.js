@@ -3,6 +3,8 @@
 var Schema = require('mongoose').Schema;
 var timestamps = require('mongoose-timestamp');
 
+var async = require('async');
+
 var last = require('mout/array/last');
 var findIndex = require('mout/array/findIndex');
 var isFunction = require('mout/lang/isFunction');
@@ -181,12 +183,26 @@ gameSchema.methods.answerQuestion = function(user, answerId, callback) {
 
 gameSchema.methods.getFullJSON = function(callback) {
   var _this = this;
-  this.populate('nextQuestions previousQuestions teams users', function(err, result) {
+  this.populate('nextQuestions question previousQuestions teams users', function(err, result) {
     if (err) { return callback(err); }
-    _this.model('User').populate(_this.teams, { path: 'users' }, function(err, result) {
+
+    var populateUser = function(cb) {
+      _this.model('User').populate(_this.teams, { path: 'users' }, cb);
+    };
+
+    var populateQuestion = function(cb) {
+      _this.model('Question').populate(_this.question, { path: 'question' }, cb);
+    };
+
+    var populatePreviousQuestions = function(cb) {
+      _this.model('Question').populate(_this.previousQuestions, { path: 'question' }, cb);
+    };
+
+    async.parallel([populateUser, populateQuestion, populatePreviousQuestions], function(err, results) {
       if (err) { return callback(err); }
       callback(null, _this.toJSON({ virtuals: true }));
     });
+
   });
 };
 
