@@ -1,15 +1,30 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="adminApp">
 <head>
   <meta charset="utf-8">
   <title>My HTML File</title>
   <link rel="stylesheet" href="app/bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="app/css/app.css">
-  <script src="app/bower_components/angularjs/angular.js"></script>
+  <script src="/javascript/sociaLightsClient.js"></script>
+  <script src="/app/bower_components/jquery/dist/jquery.js"></script>
+  <script src="/app/bower_components/angularjs/angular.js"></script>
+  <script src="/app/bower_components/angular-route/angular-route.js"></script>
+  <script src="/app/bower_components/angular-resource/angular-resource.js"></script>
+  <script src="/app/js/controllers.js"></script>
+  <script src="/app/js/app.js"></script>
+  <script src="/app/js/services.js"></script>
+  <script src="/app/js/controllers.js"></script>
 </head>
-<body>
-
-  <p>Nothing here {{'yet' + '!'}}</p>
-
+<body >
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#/admin/users">Users</a></li>
+        <li><a href="#/admin/games">Games</a></li>
+        <li><a href="#/admin/questions">Questions</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div ng-view></div>
 </body>
 </html>

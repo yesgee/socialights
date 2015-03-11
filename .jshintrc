@@ -13,7 +13,7 @@
   "quotmark": "single",
   "strict": true,
   "trailing": true,
-  "undef": true,
+  "undef": false,
   "unused": "vars",
   "globals": {
     "describe": false,

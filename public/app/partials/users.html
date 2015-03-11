@@ -1,0 +1,11 @@
+
+<ul>
+  <li ng-repeat="user in users" ng-click="selectUser(user)">
+    <span>{{user.name}}</span>
+    <button ng-click="deleteUser(user._id)">Remove User</button>
+  </li>
+</ul>
+<input type="text" ng-model="selectedUser.name"/>
+<button ng-click="saveUser()">Save User</button>
+<button ng-click="resetUser()">Reset</button>
+<button ng-click="addUser()">Add new</button>
