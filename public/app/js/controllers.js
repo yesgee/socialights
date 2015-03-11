@@ -68,6 +68,10 @@ adminControllers.controller('UserListCtrl', ['$scope', function($scope) {
     }
   };
 
+  $scope.currentUser = function(user) {
+    return $scope.selectedUser && $scope.selectedUser._id === user._id;
+  };
+
   $scope.addUser = function() {
     var user = jQuery.extend({}, $scope.selectedUser);
     delete user._id;
