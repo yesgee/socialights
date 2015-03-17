@@ -13,18 +13,20 @@
         android:background="@drawable/background7"
         android:weightSum="1">
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lobbyhead"
             android:text="Game lobby"
-            android:textSize="20pt"
+            android:textSize="10pt"
             android:textColor="#CCCCCC"
             android:gravity="center"
             android:layout_weight="0.09"
             android:fontFamily="monospace"
             android:background="@mipmap/apptheme_textfield_activated_holo_light"
-            android:backgroundTint="#b86e9a53" />
+            android:backgroundTint="#b8759a78"
+            android:textColorHighlight="#9545a87c"
+            android:textColorHint="#b86e9a53" />
 
         <TextView
             android:layout_width="match_parent"
@@ -33,21 +35,9 @@
             android:layout_marginTop="100dip"
             android:text="Team Blue"
             android:textColor="#C0C0C0"
-            android:textSize="15pt"
-            android:fontFamily="serif" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Join"
-            android:id="@+id/button2"
-            android:onClick="join_lobbyA"
-            android:background="#b86e9a53"
-            android:layout_gravity="right"
-            android:layout_weight="0.09"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:fontFamily="monospace" />
+            android:textSize="8pt"
+            android:fontFamily="serif"
+            android:typeface="monospace" />
 
         <ListView
             android:id="@+id/listView1"
@@ -55,9 +45,24 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dip"
             tools:listitem="@android:layout/simple_list_item_2"
-            android:background="#6d40b7ff">
+            style="@style/Base.Widget.AppCompat.ListView.DropDown"
+            android:background="#ff67baff">
         </ListView>
 
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Join"
+            android:id="@+id/btn_teamA"
+            android:layout_marginTop="4dip"
+            android:onClick="join_lobbyA"
+            android:background="#b86e9a53"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.09"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:fontFamily="monospace" />
 
         <TextView
             android:layout_width="match_parent"
@@ -66,9 +71,21 @@
             android:gravity="center_vertical"
             android:text="Team Orange"
             android:singleLine="false"
-            android:textSize="15pt"
+            android:textSize="8pt"
             android:textColor="#C0C0C0"
-            android:fontFamily="serif" />
+            android:fontFamily="serif"
+            android:typeface="monospace" />
+
+        <ListView
+            android:id="@+id/listView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:background="#70ff9100"
+            tools:listitem="@android:layout/simple_list_item_2"
+            style="@style/Widget.AppCompat.ListView.DropDown">
+
+        </ListView>
 
         <Button
             android:layout_width="wrap_content"
@@ -77,29 +94,20 @@
             android:id="@+id/btn_teamB"
             android:onClick="join_lobbyB"
             android:background="#b86e9a53"
-            android:layout_gravity="right"
+            android:layout_marginTop="3dip"
+            android:layout_gravity="center_horizontal"
             android:textColor="#FFFFFF"
             android:fontFamily="monospace"
             android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/listView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:background="#70ff9100"
-            tools:listitem="@android:layout/simple_list_item_2">
-
-        </ListView>
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="20pt"
+            android:layout_marginLeft="60pt"
             android:text="Quit"
             android:id="@+id/button3"
             android:background="#b86e9a53"
-            android:layout_weight="0.09"
             android:layout_gravity="center_horizontal"
             android:textColor="#FFFFFF"
             android:textStyle="bold"

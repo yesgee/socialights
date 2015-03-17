@@ -30,7 +30,7 @@ public class lobby extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         /** Reference to the button of the layout main.xml */
-        Button btnA = (Button) findViewById(R.id.btn_teamA);
+        Button btnA = (Button) findViewById(R.id.btn_teamB);
 
         setContentView(R.layout.activity_lobby);
     }

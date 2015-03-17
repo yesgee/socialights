@@ -9,25 +9,24 @@
     android:orientation="horizontal"
     android:background="@drawable/background2">
 
+
     <EditText
         android:id="@+id/id_nickname"
-        android:layout_width="100pt"
-
-        android:layout_height="@android:dimen/notification_large_icon_height"
-
-        android:hint="@string/edit_nickname"
-        android:backgroundTint="#b86e9a53"
-        android:background="@mipmap/apptheme_textfield_activated_holo_light"
-        android:textColor="#ffffffff"
-        android:textIsSelectable="true"
-        android:textColorHint="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Set Nickname"
         android:textSize="10pt"
-        android:layout_marginBottom="113dp"
-        android:layout_above="@+id/button"
+        android:textColor="#CCCCCC"
+        android:layout_weight="0.09"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
+        android:layout_above="@+id/button"
+        android:layout_marginBottom="100dp"
         android:fontFamily="monospace"
-        android:visibility="visible" />
+        android:background="@mipmap/apptheme_textfield_activated_holo_light"
+        android:backgroundTint="#b86e9a53" />
+
+
 
     <Button
         android:layout_width="wrap_content"

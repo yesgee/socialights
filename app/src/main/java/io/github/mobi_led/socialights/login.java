@@ -42,6 +42,7 @@ public class login extends ActionBarActivity {
 
     public void sendMessage_lobby(View view) {
 
+
         Intent intent = new Intent(this, lobby.class);
         EditText avatar = (EditText) findViewById(R.id.id_nickname);
         intent.putExtra("avatar", avatar.getText().toString());
