@@ -7,9 +7,21 @@
     tools:context="io.github.mobi_led.socialights.GameStartActivity">
 
     <Button
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/test_button"
         android:text="Test"
-        />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="testClick"/>
+    <TextView
+        android:id="@+id/show_error"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dip"
+        android:textColor="#e30000"
+        android:textStyle="bold"
+        android:layout_below="@+id/test_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

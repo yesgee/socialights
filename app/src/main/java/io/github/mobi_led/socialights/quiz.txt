@@ -1,0 +1,22 @@
+{
+	"Game":
+	{
+	   "startedAt": "20130310 12:45:30",
+       "users": [ ],
+       "teams":
+       [
+           {
+            "name": "Team A",
+            "color": "blue",
+            "users": [],
+            "score": 20
+           },
+           {
+            "name": "Team B",
+            "color": "yellow",
+            "users": [],
+            "score": 26
+           }
+       ]
+    }
+}

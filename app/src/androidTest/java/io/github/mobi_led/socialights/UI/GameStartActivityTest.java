@@ -35,5 +35,4 @@ public class GameStartActivityTest extends ActivityInstrumentationTestCase2<Game
         assertEquals(testButton.getText().toString(), "Test");
     }
 
-
 }
