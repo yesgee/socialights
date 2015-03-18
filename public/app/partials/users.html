@@ -3,7 +3,7 @@
   <li ng-repeat="user in users" ng-click="selectUser(user)" class="list-group-item"
     ng-class="{'list-group-item-info': currentUser(user)}">
     <span>{{user.name}}</span>
-    <button ng-click="deleteUser(user._id)" class="removeButton btn btn-default">
+    <button ng-click="deleteUser(user.id)" class="removeButton btn btn-default">
       <span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-left:-5px;"></span>
     </button>
   </li>

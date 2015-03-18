@@ -20,6 +20,10 @@ adminApp.config(['$routeProvider',
         templateUrl: 'app/partials/games.html',
         controller: 'GameListCtrl'
       }).
+      when('/admin/questions', {
+        templateUrl: 'app/partials/questions.html',
+        controller: 'QuestionListCtrl'
+      }).
       otherwise({
         redirectTo: '/admin/users'
       });

@@ -1,0 +1,52 @@
+
+<ul class="list-group col-md-4 leftPanel">
+  <li ng-repeat="question in questions" ng-click="selectQuestion(question)" class="col-md-12  list-group-item"
+    ng-class="{'list-group-item-info': currentQuestion(question)}">
+    <div class="col-md-10">
+    <span >{{question.question}}</span>
+    </div>
+    <div class="col-md-2">
+    <button ng-click="deleteQuestion(question.id)" class="removeButton  btn btn-default">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-left:-5px;"></span>
+    </button>
+    </div>
+  </li>
+</ul>
+<form class="form-horizontal col-md-8 rightPanel">
+  <div class="form-group">
+
+    <div>
+      <div class="col-sm-2">
+        <label for="inputQuestion" class="col-sm-12 control-label">Question</label>
+      </div>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="inputQuestion" placeholder="Question" ng-model="selectedQuestion.question">
+      </div>
+      <div class="col-sm-1">
+        <label class="control-label">y/n?</label>
+      </div>
+    </div>
+    <div class="col-sm-12" style="height:20px"></div>
+      <div ng-repeat="answer in selectedQuestion.answers"  >
+        <div class="col-sm-2">
+          <label class="col-sm-12 control-label">Answer</label>
+          <label class="col-sm-12 control-label">Feedback</label>
+        </div>
+        <div class="col-sm-9" >
+          <input type="text" class="form-control" placeholder="Answer" ng-model="answer.answer">
+          <input type="text" class="form-control" placeholder="Feedback" ng-model="answer.feedback">
+        </div>
+        <div class="col-sm-1">
+          <input type="radio" name="answerRadio" ng-model="answer.correct" ng-value="true" />
+        </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-default" ng-click="saveQuestion()">Save Question</button>
+      <button class="btn btn-default" ng-click="addQuestion()">Add new</button>
+      <button class="btn btn-default" ng-click="resetQuestion()">Reset</button>
+      <button class="btn btn-default" ng-click="clearSelectedQuestion()">Clear</button>
+    </div>
+  </div>
+</form>

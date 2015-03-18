@@ -13,6 +13,7 @@ body { padding-top: 70px; }
   margin-top: -5px;
   width:30px;
   margin-right: -5px;
+  padding-right:20px;
 }
 
 .leftPanel {
@@ -22,3 +23,7 @@ body { padding-top: 70px; }
 .rightPanel {
   padding-right:40px;
 }
+
+/*.col-sm-10, .col-sm-1, .col-sm-2, .col-sm-11{
+  padding-bottom:20px;
+}*/
