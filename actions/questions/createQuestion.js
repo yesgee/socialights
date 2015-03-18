@@ -14,7 +14,7 @@ exports.createQuestion = {
       formatter: function(s) { return String(s); }
     },
     answers: {
-      required: false,
+      required: true,
       formatter: function(ans) {
         if (typeof ans === 'string') {
           return JSON.parse(ans);
