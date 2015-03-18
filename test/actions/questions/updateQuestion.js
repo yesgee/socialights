@@ -75,7 +75,10 @@ describe('Action: updateQuestion', function() {
   });
 
   it('should update the answers of an existing question', function(done) {
-    api.specHelper.runAction('updateQuestion', { id: question.id, answers: newAnswers }, function(response) {
+    api.specHelper.runAction('updateQuestion', {
+      id: question.id,
+      answers: JSON.stringify(newAnswers)
+      }, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
       should.exist(response.question);
