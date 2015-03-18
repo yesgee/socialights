@@ -17,7 +17,14 @@ exports.updateQuestion = {
       formatter: function(s) { return String(s); }
     },
     answers: {
-      required: false
+      required: false,
+      formatter: function(ans) {
+        if (typeof ans === 'string') {
+          return JSON.parse(ans);
+        } else {
+          return ans;
+        }
+      }
     },
   },
 
