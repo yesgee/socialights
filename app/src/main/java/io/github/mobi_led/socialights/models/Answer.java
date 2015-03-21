@@ -7,11 +7,17 @@ public class Answer {
     private String answerString;
     private boolean isCorrect;
     private String feedback;
+    private String id;
 
-    public Answer(String answerString, boolean isCorrect){
+    public Answer(){
+
+    }
+
+    public Answer(String answerString, boolean isCorrect, String id){
         this.answerString = answerString;
         this.isCorrect = isCorrect;
     }
+
     public String getAnswerString() {
         return answerString;
     }
@@ -35,6 +41,14 @@ public class Answer {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 
 
 

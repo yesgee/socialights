@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizActivity" >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:background="@drawable/background2">
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quiz"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20pt"
+            android:textColor="#ffe8e7ff"
+            android:fontFamily="monospace"
+            android:background="@mipmap/apptheme_textfield_activated_holo_light"
+            android:backgroundTint="#b86e9a53" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="1) Sample question fetched from server"
+            android:id="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="#b86e9a53"
+            android:textColor="#FFFFFF"
+            android:layout_above="@+id/radio2"
+            android:layout_below="@+id/textView1"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_weight="0.04" ></RadioGroup>
+
+
+        <RadioButton
+            android:id="@+id/radio2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RadioButton"
+            android:textStyle="bold|italic"
+            android:textSize="10pt"
+            android:layout_marginTop="24dp"
+            android:checked="true"
+            android:textColor="#b86e9a53"
+            android:layout_above="@+id/radio0"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="74dp"
+            android:buttonTint="#ff53ff95"></RadioButton>
+
+
+        <RadioButton
+            android:id="@+id/radio1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RadioButton"
+            android:textSize="10pt"
+            android:textColor="#b86e9a53"
+            android:textStyle="bold|italic"
+            android:layout_marginBottom="133dp"
+            android:buttonTint="#ff53ff95"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <RadioButton
+            android:id="@+id/radio0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RadioButton"
+            android:layout_above="@+id/radio1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="85dp"
+            android:textStyle="bold|italic"
+            android:textColor="#b86e9a53"
+            android:textSize="10pt"
+            android:buttonTint="#ff53ff95" />
+
+
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_next"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp"
+        android:background="#b86e9a53"
+        android:textColor="#FFFFFF"
+        android:fontFamily="monospace"
+        android:textStyle="bold"
+        android:visibility="visible"></Button>
+</RelativeLayout>

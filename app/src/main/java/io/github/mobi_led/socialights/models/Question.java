@@ -6,8 +6,14 @@ public class Question {
 
     private String question;
     private List<Answer> answers;
+    private Answer correctAnswer;
+    private String id;
 
-    public Question(String question, List<Answer> answers){
+    public Question(){
+
+    }
+
+    public Question(String question, List<Answer> answers, Answer correctAnswer, String id){
         this.question = question;
         this.answers = answers;
     }
@@ -27,4 +33,21 @@ public class Question {
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
+
+    public Answer getCorrectAnswer() {
+        return this.correctAnswer;
+    }
+
+    public void setCorrectAnswer(Answer correctAnswer) {
+        this.correctAnswer = correctAnswer;
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
 }

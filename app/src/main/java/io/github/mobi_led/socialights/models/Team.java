@@ -8,11 +8,17 @@ public class Team {
     private String color;
     private List<User> users; //Users playing the game
     private int score;
+    private String id;
 
-    public Team(String name, String color, List<User> users){
+    public Team(){
+
+    }
+
+    public Team(String name, String color, List<User> users, String id){
         this.name = name;
         this.color = color;
         this.users = users;
+        this.id = id;
     }
 
     public String getName() {
@@ -47,4 +53,35 @@ public class Team {
         this.score = score;
     }
 
+    public User getUser(String name){
+
+        for(User user : this.users)
+            if(user.getName().equals(name))
+                return user;
+
+        return null;
+    }
+
+    public int addUser(User newUser){
+
+        User checkUser = getUser(newUser.getName());
+
+        if(checkUser != null)
+            return 0;
+
+        this.users.add(newUser);
+        return 1;
+    }
+
+    public boolean containsUserByName(String name){
+
+        return getUser(name) != null ? true : false;
+    }
+
+    public String getId(){
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
 }

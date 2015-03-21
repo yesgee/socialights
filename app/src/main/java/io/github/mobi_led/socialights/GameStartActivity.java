@@ -1,5 +1,6 @@
 package io.github.mobi_led.socialights;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,21 +17,24 @@ import io.github.mobi_led.socialights.controllers.RestApi;
 import io.github.mobi_led.socialights.models.Game;
 
 public class GameStartActivity extends ActionBarActivity {
- TextView errorMsg;
+
+    private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_game_start);
-        errorMsg = (TextView)findViewById(R.id.show_error);
-
+        setContentView(R.layout.activity_main);
     }
 
-    public void testClick(View view){
+    public void startPlayingGame(View view){
+
         try {
             getGameObject();
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("game", game);
+            startActivity(intent);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -47,11 +51,10 @@ public class GameStartActivity extends ActionBarActivity {
 
                 if (statusCode == 200) {
 
-                    Game game;
                     game = GameRestClient.getGame(response);
 
                     if(game != null){
-                        Toast.makeText(getApplicationContext(),"Yeps", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Connection Success!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
