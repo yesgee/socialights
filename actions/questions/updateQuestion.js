@@ -17,7 +17,14 @@ exports.updateQuestion = {
       formatter: function(s) { return String(s); }
     },
     answers: {
-      required: false
+      required: false,
+      formatter: function(ans) {
+        if (typeof ans === 'string') {
+          return JSON.parse(ans);
+        } else {
+          return ans;
+        }
+      }
     },
   },
 
@@ -27,7 +34,7 @@ exports.updateQuestion = {
     }
 
     if (connection.params.answers) {
-      connection.models.question.set('answers', JSON.parse(connection.params.answers));
+      connection.models.question.set('answers', connection.params.answers);
     }
 
     connection.models.question.save(function(err, question) {
