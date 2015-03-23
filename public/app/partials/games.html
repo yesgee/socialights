@@ -1,0 +1,26 @@
+
+<ul class="list-group col-md-4 leftPanel">
+  <li ng-repeat="game in games" ng-click="selectGame(game)" class="list-group-item"
+    ng-class="{'list-group-item-info': currentGame(game)}">
+    <span>{{game.id}}</span>
+    <button ng-click="deleteGame(game.id)" class="removeButton btn btn-default">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-left:-5px;"></span>
+    </button>
+  </li>
+</ul>
+<form class="form-horizontal col-md-8 rightPanel">
+  <div class="form-group">
+    <label for="inputName" class="col-sm-2 control-label">Started At</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="selectedGame.started_at">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-default" ng-click="saveGame()">Save Game</button>
+      <button class="btn btn-default" ng-click="addGame()">Add new</button>
+      <button class="btn btn-default" ng-click="resetGame()">Reset</button>
+      <button class="btn btn-default" ng-click="clearSelectedGame()">Clear</button>
+    </div>
+  </div>
+</form>
