@@ -5,6 +5,12 @@
 var adminControllers = angular.module('adminControllers', []);
 var client = new ActionheroClient();
 
+adminControllers.controller('HeaderController', ['$scope', '$location', function($scope, $location) {
+  $scope.isActive = function(viewLocation) {
+    return viewLocation === $location.path();
+  };
+}]);
+
 adminControllers.controller('UserListCtrl', ['$scope', function($scope) {
   $scope.users = [];
   $scope.user = {};
