@@ -10,17 +10,126 @@
 </ul>
 <form class="form-horizontal col-md-8 rightPanel">
   <div class="form-group">
-    <label for="inputName" class="col-sm-2 control-label">Started At</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="selectedGame.started_at">
+    <div class="container-fluid">
+      <label for="startedAt" class="col-sm-2 control-label">Started At</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="startedAt" ng-model="selectedGame.startedAt" readonly>
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-default" ng-click="startGame()">Start</button>
+      </div>
+    </div>
+    <div class="col-sm-12" style="height:20px;"></div>
+
+    <div ng-repeat="team in selectedGame.teams" class="container-fluid">
+      <div class="col-sm-2">
+        <label class="control-label" ng-style="{'color': team.color}">{{team.name}}</label>
+        <button class="btn btn-default editButton" ng-click="toggleTeamEdit(team)">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true" style="margin-left:-5px;"></span>
+        </button>
+      </div>
+      <div class="col-sm-8">
+          <div>
+            <ul class="list-group teamList" >
+              <li ng-repeat="user in team.users" ng-click="selectUser(user.id)" class="list-group-item"
+                ng-class="{'list-group-item-info': currentUser(user.id)}">
+                <span>{{user.name}}</span>
+                <button ng-click="removeUserFromTeam(user)" class="btn btn-default removeButton">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-left:-5px;"></span>
+                </button>
+              </li>
+            </ul>
+          </div>
+      </div>
+      <div class="col-sm-2 container fill-height">
+        <button class="btn btn-success" ng-click="toggleUserList(team)">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="col-sm-10 container-fluid">
+      </div>
+      <div class="col-sm-1">
+        <button class="btn btn-primary swapButton" ng-click="switchUserBetweenTeams()"
+        ng-class="{'hidden': team.id === selectedGame.teams[1].id}">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-12" style="height:20px;"></div>
+
+    <div class="container-fluid" ng-class="{'hidden': !selectedGame}">
+      <label for="nextQuestions" class="col-sm-2 control-label">Next Questions</label>
+      <ul class="list-group col-sm-8">
+        <li ng-repeat="question in selectedGame.nextQuestions" class="list-group-item">
+          <span>{{question.question}}</span>
+        </li>
+      </ul>
+      <div class="col-sm-2 container-fluid"></div>
+    </div>
+    <div class="container-fluid" ng-class="{'hidden': !selectedGame}">
+      <label for="previousQuestions" class="col-sm-2 control-label">Previous Questions</label>
+      <ul class="list-group col-sm-8">
+        <li ng-repeat="question in selectedGame.previousQuestions" class="list-group-item">
+          <span>{{question.question}}</span>
+        </li>
+      </ul>
+    </div>
     </div>
   </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button class="btn btn-default" ng-click="saveGame()">Save Game</button>
-      <button class="btn btn-default" ng-click="addGame()">Add new</button>
-      <button class="btn btn-default" ng-click="resetGame()">Reset</button>
-      <button class="btn btn-default" ng-click="clearSelectedGame()">Clear</button>
-    </div>
-  </div>
+
+
+  <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Add user to {{currentTeam.name}}</h4>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group" >
+            <li ng-repeat="user in allUsers" class="list-group-item"
+              ng-class="{'list-group-item-info': currentUser(user)}">
+              <span>{{user.name}}</span>
+              <button ng-click="addUserToTeam(user)" class="btn btn-default removeButton">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true" style="margin-left:-5px;"></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Edit details of team {{currentTeam.name}}</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="teamName" class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="teamName" ng-model="currentTeam.name" />
+              </div>
+              <label for="color" class="col-sm-2 control-label">Color</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="teamName" ng-model="currentTeam.color" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-6 container-fluid"></div>
+              <div class="col-sm-6">
+                <button class="btn btn-primary" ng-click="saveTeam()">Save Team</button>
+                <button class="btn btn-default" ng-click="cancelTeam()">Cancel</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
 </form>

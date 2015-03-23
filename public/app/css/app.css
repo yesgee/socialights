@@ -7,6 +7,12 @@ body { padding-top: 70px; }
   padding-right:15px;
 }
 
+.fill-height {
+  min-height: 100%;
+  height:auto !important; /* cross-browser */
+  height: 100%;
+}
+
 .removeButton {
   float:right;
   height:30px;
@@ -16,12 +22,34 @@ body { padding-top: 70px; }
   padding-right:20px;
 }
 
+.editButton {
+  height:30px;
+  width:30px;
+  font-size:15px;
+  float:right;
+}
+
+.teamList {
+  margin-bottom:0px !important;
+}
+
 .leftPanel {
   padding-left:40px;
 }
 
 .rightPanel {
   padding-right:40px;
+}
+
+.hidden {
+  visibility: collapse;
+}
+
+.swapButton {
+  float:left;
+  margin-bottom:10px;
+  margin-top:10px;
+  bottom:1px;
 }
 
 /*.col-sm-10, .col-sm-1, .col-sm-2, .col-sm-11{
