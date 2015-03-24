@@ -33,6 +33,10 @@ body { padding-top: 70px; }
   margin-bottom:0px !important;
 }
 
+#teamColor {
+  margin-top:5px;
+  margin-left:5px;
+}
 .leftPanel {
   padding-left:40px;
 }

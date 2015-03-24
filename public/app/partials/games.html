@@ -8,7 +8,7 @@
     </button>
   </li>
 </ul>
-<form class="form-horizontal col-md-8 rightPanel">
+<form class="form-horizontal col-md-8 rightPanel" ng-class="{'hidden': !selectedGame}">
   <div class="form-group">
     <div class="container-fluid">
       <label for="startedAt" class="col-sm-2 control-label">Started At</label>
@@ -56,8 +56,16 @@
       </div>
     </div>
     <div class="col-sm-12" style="height:20px;"></div>
-
-    <div class="container-fluid" ng-class="{'hidden': !selectedGame}">
+    <div class="container-fluid">
+      <label for="question" class="col-sm-2 control-label">Question</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="question" ng-model="selectedGame.question" readonly>
+      </div>
+      <div class="col-sm-2 container-fluid">
+      </div>
+    </div>
+    <div class="col-sm-12" style="height:20px;"></div>
+    <div class="container-fluid">
       <label for="nextQuestions" class="col-sm-2 control-label">Next Questions</label>
       <ul class="list-group col-sm-8">
         <li ng-repeat="question in selectedGame.nextQuestions" class="list-group-item">
@@ -66,7 +74,7 @@
       </ul>
       <div class="col-sm-2 container-fluid"></div>
     </div>
-    <div class="container-fluid" ng-class="{'hidden': !selectedGame}">
+    <div class="container-fluid">
       <label for="previousQuestions" class="col-sm-2 control-label">Previous Questions</label>
       <ul class="list-group col-sm-8">
         <li ng-repeat="question in selectedGame.previousQuestions" class="list-group-item">
@@ -116,7 +124,7 @@
               </div>
               <label for="color" class="col-sm-2 control-label">Color</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="teamName" ng-model="currentTeam.color" />
+                <input type="color" id="teamColor" ng-model="currentTeam.color" />
               </div>
             </div>
             <div class="form-group">

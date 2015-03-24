@@ -31,12 +31,12 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
   };
 
   $scope.saveTeam = function() {
-
+    var color = $scope.currentTeam.color.substr(1);
     client.action('updateTeam', {
       game: $scope.selectedGame.id,
       team: $scope.selectedGame.teams.indexOf($scope.currentTeam),
       name: $scope.currentTeam.name,
-      color: $scope.currentTeam.color
+      color: color
     }, function(err, data) {
       if (data.error) {
         alert(data.error);
@@ -46,6 +46,10 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
         $scope.getGames();
       }
     });
+  };
+  $scope.cancelTeam = function() {
+    $('#teamModal').modal('hide');
+    $scope.currentTeam = {};
   };
 
   $scope.switchUserBetweenTeams = function() {
@@ -68,7 +72,7 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
         client.action('addUserToTeam', {
           user: user.id,
           game: $scope.selectedGame.id,
-          team: $scope.currentTeam.id
+          team: $scope.selectedGame.teams.indexOf($scope.currentTeam)
           }, function(err, data) {
             if (data.error) {
               console.log(data.error);
