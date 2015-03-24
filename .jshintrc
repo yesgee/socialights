@@ -13,7 +13,7 @@
   "quotmark": "single",
   "strict": true,
   "trailing": true,
-  "undef": true,
+  "undef": false,
   "unused": "vars",
   "globals": {
     "describe": false,
@@ -21,6 +21,9 @@
     "before": false,
     "beforeEach": false,
     "after": false,
-    "afterEach": false
+    "afterEach": false,
+    "$": false,
+    "client": false,
+    "angular": false
   }
 }

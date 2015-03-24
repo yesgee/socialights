@@ -1,0 +1,23 @@
+{
+  "name": "socialights-server",
+  "version": "0.0.1-wip",
+  "homepage": "https://github.com/mobi-led/socialights-server",
+  "authors": [
+    "Gayathri Srinivaasan <gayathri.srinivaasan@aalto.fi>",
+    "Harika Satharasi <harika.satharasi@aalto.fi>",
+    "Hylke Visser <htdvisser@gmail.com>",
+    "Jan van de Kerkhof <jan.vandekerkhof@aalto.fi>",
+    "Samuel Balcha <samuel.balcha@gmail.com>",
+    "Sowmya Ravidas <sowmya.ravidas@aalto.fi>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angularjs": "~1.3.14",
+    "bootstrap": "~3.3.2",
+    "angular-mocks": "1.3.x",
+    "jquery": "~2.1.1",
+    "angular-route": "1.3.x",
+    "angular-resource": "1.3.x"
+  },
+  "private": true
+}

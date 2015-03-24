@@ -27,7 +27,13 @@ exports.updateTeam = {
     },
     color: {
       required: false,
-      formatter: function(s) { return String(s); }
+      formatter: function(s) {
+        var color = String(s);
+        if (color[0] !== '#') {
+          color = '#' + color;
+        }
+        return color;
+      }
     }
   },
 

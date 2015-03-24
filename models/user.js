@@ -89,7 +89,7 @@ userSchema.methods.switchTeam = function(callback) {
         if (err) {
           callback(err);
         } else {
-          callback(null, _this);
+          callback(null, game);
         }
       });
     }
