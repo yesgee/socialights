@@ -20,9 +20,9 @@ exports.switchUserBetweenTeams = {
   },
 
   run: function(api, connection, next) {
-    connection.models.user.switchTeam(function(err) {
+    connection.models.user.switchTeam(function(err, game) {
       if (err) { return connection.handleModelError(err, next); }
-      connection.renderModel('game', connection.models.game, connection, next);
+      connection.renderModel('game', game, connection, next);
     });
   }
 };
