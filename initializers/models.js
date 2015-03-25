@@ -1,5 +1,7 @@
 'use strict';
 
+var lpad = require('mout/string/lpad');
+
 module.exports = {
   loadPriority:  1010,
   startPriority: 1010,
@@ -9,6 +11,35 @@ module.exports = {
 
     api.schemas = {};
     api.models = {};
+
+    api.models.getRedisTime = function(cb) {
+      api.redis.client.time(function(err, time) {
+        if (err) { cb(err); } else {
+          // Format to be consistent with Date.getTime()
+          cb(null, Number(String(time[0]) + lpad(String(Math.round(time[1] / 1000)), 3, '0')));
+        }
+      });
+    };
+
+    api.models.setUpdated = function(model, doc, type) {
+      api.log(model + ' ' + doc.id + ' has been ' + type + 'd.', 'debug');
+
+      // Get current time in Redis
+      api.models.getRedisTime(function(err, time) {
+        if (err) {
+          api.log('Error: Could not get time from Redis', 'error');
+        } else {
+          var args = [
+            'updates',
+            time,
+            model.toLowerCase() + ':' + doc.id + ':' + type // User:5512654665ad5dad2f67381a:save
+          ];
+          api.redis.client.zadd(args, function(err, result) {
+            if (err) { api.log('error saving update to Redis', 'error'); }
+          });
+        }
+      });
+    };
 
     // Loading the model definition from a file
     api.models.loadFile = function(fullFilePath, reload) {
@@ -23,6 +54,15 @@ module.exports = {
 
       // Load the model
       var model = require(fullFilePath);
+
+      // Add model change hooks
+      model.schema.plugin(function(schema, options) {
+
+        schema.post('save', function(doc) { api.models.setUpdated(model.name, doc, 'save'); });
+
+        schema.post('remove', function(doc) { api.models.setUpdated(model.name, doc, 'remove'); });
+
+      });
 
       // Hook up to the API
       api.schemas[model.name] = model.schema;
