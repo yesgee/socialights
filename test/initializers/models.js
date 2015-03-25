@@ -63,7 +63,7 @@ describe('Initializer: Models', function() {
       user.name = 'Bob';
       user.save(function() {
         time = new Date();
-        setTimeout(function(){
+        setTimeout(function() {
           api.redis.client.zrangebyscore(['updates', '-inf', '+inf', 'WITHSCORES'], function(err, updates) {
             should.not.exist(err);
             updates.should.include('user:' + user.id + ':save');
