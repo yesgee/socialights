@@ -20,27 +20,29 @@ import io.github.mobi_led.socialights.models.User;
 public class GameRestClient {
 
 
-    public static Game getGame(JSONObject gameJson) {
+    public static Game getGame(JSONObject response) {
 
 
         try {
 
+          JSONObject gameJson = response.getJSONObject("game");
+
           String startedAt =  gameJson.getString("startedAt");
           String id = gameJson.getString("id");
-          JSONArray nextQuestions =  gameJson.getJSONArray("nextQuestions");
-          JSONArray previousQuestions =  gameJson.getJSONArray("previousQuestions");
+         // JSONArray nextQuestions =  gameJson.getJSONArray("nextQuestions");
+         // JSONArray previousQuestions =  gameJson.getJSONArray("previousQuestions");
           JSONArray teams =  gameJson.getJSONArray("teams");
           JSONArray users =  gameJson.getJSONArray("users");
+          JSONObject currentQuestion = gameJson.getJSONObject("question");
+          Question q = getQuestion(currentQuestion.getJSONObject("question"));
 
-          NextQuestions nq = new NextQuestions(getQuestions(nextQuestions));
-          PreviousQuestions pq = new PreviousQuestions(getQuestions(previousQuestions));
+         // NextQuestions nq = new NextQuestions(getQuestions(nextQuestions));
+         // PreviousQuestions pq = new PreviousQuestions(getQuestions(previousQuestions));
 
           return new Game(getTeams(teams),
                           getUsers(users),
                           Util.getDateTime(startedAt),
-                          id,
-                          nq,
-                          pq);
+                          id, q);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -102,7 +104,9 @@ public class GameRestClient {
         Question question = new Question();
         question.setId(questionJson.getString("id"));
         question.setQuestion(questionJson.getString("question"));
-        List<Answer> answerList = getAnswers(questionJson.getJSONArray("answers"));
+       // String ansStrin = questionJson.getString("answers");
+        JSONArray answersArr = questionJson.getJSONArray("answers");
+        List<Answer> answerList = getAnswers(answersArr);
         question.setAnswers(answerList);
         question.setCorrectAnswer(getAnswer(questionJson.getJSONObject("correctAnswer")));
         return question;

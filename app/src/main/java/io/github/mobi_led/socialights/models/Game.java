@@ -13,21 +13,23 @@ public class Game implements Serializable {
     private String id;
     private NextQuestions nextQuestions;
     private PreviousQuestions previousQuestions;
+    private Question currentQuestion;
     //  private List<Question> questions;
 
     public Game(){
 
     }
 
-    public Game(List<Team> teams, List<User> users, Date startedAt, String id,
-                NextQuestions nextQuestions, PreviousQuestions previousQuestions){
+    public Game(List<Team> teams, List<User> users, Date startedAt, String id, Question currentQuestion){
 
         this.teams = teams;
         this.users = users;
         this.startedAt = startedAt;
         this.id = id;
-        this.nextQuestions = nextQuestions;
-        this.previousQuestions = previousQuestions;
+        this.currentQuestion = currentQuestion;
+
+       // this.nextQuestions = nextQuestions;
+       // this.previousQuestions = previousQuestions;
     }
 
     public Date getStartedAt() {
@@ -72,6 +74,10 @@ public class Game implements Serializable {
     }
     public void setPreviousQuestions(PreviousQuestions previousQuestions){
         this.previousQuestions = previousQuestions;
+    }
+
+    public Question getCurrentQuestion() {
+        return currentQuestion;
     }
 
     /**

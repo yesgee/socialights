@@ -1,9 +1,10 @@
 package io.github.mobi_led.socialights.models;
 
 
+import java.io.Serializable;
 import java.util.List;
 
-public class NextQuestions {
+public class NextQuestions implements Serializable {
 
     public List<Question> getQuestions() {
         return questions;

@@ -21,3 +21,13 @@
     }
 }
 
+  RadioButton answer1 = (RadioButton)findViewById(R.id.answer1);
+        RadioButton answer2 = (RadioButton)findViewById(R.id.answer2);
+        RadioButton answer3 = (RadioButton)findViewById(R.id.answer3);
+        RadioButton answer4 = (RadioButton)findViewById(R.id.answer4);
+
+        answer1.setText(answerList.get(0).getAnswerString());
+        answer2.setText(answerList.get(1).getAnswerString());
+        answer3.setText(answerList.get(2).getAnswerString());
+        answer4.setText(answerList.get(3).getAnswerString());
+

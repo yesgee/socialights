@@ -30,8 +30,8 @@
             android:label="@string/title_activity_lobby" >
         </activity>
         <activity
-            android:name=".quizwindow"
-            android:label="@string/title_activity_quizwindow" >
+            android:name=".QuizActivity"
+            android:label="Socialights" >
         </activity>
     </application>
 </manifest>

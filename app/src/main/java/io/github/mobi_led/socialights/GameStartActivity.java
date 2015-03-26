@@ -1,9 +1,12 @@
 package io.github.mobi_led.socialights;
 
+import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,35 +19,46 @@ import io.github.mobi_led.socialights.controllers.GameRestClient;
 import io.github.mobi_led.socialights.controllers.RestApi;
 import io.github.mobi_led.socialights.models.Game;
 
-public class GameStartActivity extends ActionBarActivity {
+public class GameStartActivity extends Activity {
 
     private Game game;
+    private ImageButton startPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        startPlay = (ImageButton)findViewById(R.id.imageButton);
+        startPlay.setClickable(false);
+
+        try {
+            getGameObject();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void startPlayingGame(View view){
 
-        try {
-            getGameObject();
+        /**
+        LoginDialog loginDialog = LoginDialog.newInstance(game);
+        FragmentManager fm = getFragmentManager();
 
-            Intent intent = new Intent(this, LoginActivity.class);
-            intent.putExtra("game", game);
-            startActivity(intent);
+        loginDialog.show(fm, "lobby");
+         */
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.putExtra("game", game);
+        startActivity(intent);
     }
 
 
     public void getGameObject() throws JSONException {
 
         RestApi.get("socialights", null, new JsonHttpResponseHandler() {
+
+
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -54,10 +68,12 @@ public class GameStartActivity extends ActionBarActivity {
                     game = GameRestClient.getGame(response);
 
                     if(game != null){
+                        startPlay.setClickable(true);
                         Toast.makeText(getApplicationContext(),"Connection Success!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
+
 
         });
     }

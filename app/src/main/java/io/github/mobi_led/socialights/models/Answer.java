@@ -1,7 +1,9 @@
 package io.github.mobi_led.socialights.models;
 
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer  implements Serializable{
 
 
     private String answerString;

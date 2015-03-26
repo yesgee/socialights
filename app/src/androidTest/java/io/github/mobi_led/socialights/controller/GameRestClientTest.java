@@ -73,6 +73,7 @@ public class GameRestClientTest extends InstrumentationTestCase {
             gameJson.put("previousQuestions", nextQuestions); // Doesnot matter
             gameJson.put("teams", teamsArr.put(team));
             gameJson.put("users", new JSONArray().put(user));
+            gameJson.put("question", question);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -97,6 +98,7 @@ public class GameRestClientTest extends InstrumentationTestCase {
         assertEquals(game.getStartedAt(), Util.getDateTime("2015-03-10T11:46:45.527Z"));
     }
 
+    /**
     public void test_getNextQuestions(){
         Game game = GameRestClient.getGame(gameJson);
         NextQuestions nq = game.getNextQuestions();
@@ -118,7 +120,7 @@ public class GameRestClientTest extends InstrumentationTestCase {
         PreviousQuestions pq = game.getPreviousQuestions();
         assertNotNull(pq);
     }
-
+*/
     public void test_getTeams(){
 
         Game game = GameRestClient.getGame(gameJson);
@@ -152,5 +154,15 @@ public class GameRestClientTest extends InstrumentationTestCase {
 
         assertEquals(question.getCorrectAnswer().getId(), "54fed9a559bc53292be92ae6");
     }
+
+    public void test_getQuestion(){
+
+        Game game = GameRestClient.getGame(gameJson);
+
+        Question currentQuestion = game.getCurrentQuestion();
+
+        assertNotNull(currentQuestion);
+    }
+
 }
 
