@@ -16,16 +16,16 @@
   },
   "dependencies": {
     "actionhero": "10.1.0",
-    "async": "^0.9.0",
+    "async": "0.9.0",
     "grunt": "latest",
-    "mongoose": "^3.8.24",
-    "mongoose-timestamp": "^0.4.0",
-    "mout": "^0.11.0",
+    "mongoose": "3.8.25",
+    "mongoose-timestamp": "0.4.0",
+    "mout": "0.11.0",
     "ws": "latest"
   },
   "devDependencies": {
     "chai": "latest",
-    "faker": "^2.1.2",
+    "faker": "2.1.2",
     "mocha": "latest"
   },
   "scripts": {
