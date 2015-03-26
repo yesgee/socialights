@@ -21,8 +21,20 @@ module.exports = {
       });
     };
 
+    api.chatRoom.add('updates:models', function(created) {
+      api.log('ChatRoom updates:models created.', 'debug');
+    });
+
     api.models.setUpdated = function(model, doc, type) {
       api.log(model + ' ' + doc.id + ' has been ' + type + 'd.', 'debug');
+
+      api.chatRoom.broadcast({}, 'updates:models', {
+        model: model.toLowerCase(),
+        id: doc.id,
+        type: type
+      }, function(err) {
+        // Nothing to do here...
+      });
 
       // Get current time in Redis
       api.models.getRedisTime(function(err, time) {
