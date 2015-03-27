@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Button;
 
 import java.util.List;
 
@@ -23,43 +24,41 @@ public class QuizActivity extends Activity {
 
     private Question question;
     private RadioGroup answersRadioGroup;
+    private Button[] buttons = new Button[4];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiznew);
+        buttons = new Button[] {(Button) findViewById(R.id.button1),
+                (Button) findViewById(R.id.button2),
+                (Button) findViewById(R.id.button3),
+                (Button) findViewById(R.id.button4)};
+
         Intent quizz = getIntent();
         question = (Question)quizz.getSerializableExtra("question");
         String name = quizz.getStringExtra("name");
-
         TextView quizQuestion = (TextView)findViewById(R.id.txtQuestion);
         TextView nameTxt = (TextView)findViewById(R.id.txtWhichTeam);
         nameTxt.setText("Hello " + name + "!");
 
         quizQuestion.setText(question.getQuestion());
-        answersRadioGroup = (RadioGroup)findViewById(R.id.radioGroup1);
         List<Answer> answerList = question.getAnswers();
 
-        for (int i= 0; i < answersRadioGroup.getChildCount(); i++){
-
-           RadioButton btn = (RadioButton)answersRadioGroup.getChildAt(i);
+        for (int i= 0; i < answerList.size(); i++){
+           Button btn = buttons[i];
            Answer answer =  answerList.get(i);
-           btn.setText(answer.getAnswerString());
+           String answerText = answer.getAnswerString().length() > 20 ?
+                   answer.getAnswerString().substring(0, 19) : answer.getAnswerString();
+           btn.setText(answerText);
            btn.setTag(answer);
         }
     }
+    public void btnClick(View view) {
+        Answer userAnswer = (Answer) view.getTag();
+        String message = (userAnswer.isCorrect()) ?  "Correct answer!" : "Wrong answer" ;
 
-    public void nextBtnClick(View view ){
-
-      int checked = answersRadioGroup.getCheckedRadioButtonId();
-      View radioButton = answersRadioGroup.findViewById(checked);
-      int idx = answersRadioGroup.indexOfChild(radioButton);
-      RadioButton btn = (RadioButton)answersRadioGroup.getChildAt(idx);
-
-      Answer userAnswer = (Answer)btn.getTag();
-      String message = (userAnswer.isCorrect()) ?  "Correct answer!" : "Wrong answer" ;
-
-      Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
 }
