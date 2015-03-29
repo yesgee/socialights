@@ -2,6 +2,7 @@ package io.github.mobi_led.socialights;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -48,8 +49,9 @@ public class QuizActivity extends Activity {
         for (int i= 0; i < answerList.size(); i++){
            Button btn = buttons[i];
            Answer answer =  answerList.get(i);
-           String answerText = answer.getAnswerString().length() > 20 ?
-                   answer.getAnswerString().substring(0, 19) : answer.getAnswerString();
+//           String answerText = answer.getAnswerString().length() > 20 ?
+//                   answer.getAnswerString().substring(0, 19) : answer.getAnswerString();
+           String answerText=answer.getAnswerString();
            btn.setText(answerText);
            btn.setTag(answer);
         }
@@ -57,8 +59,42 @@ public class QuizActivity extends Activity {
     public void btnClick(View view) {
         Answer userAnswer = (Answer) view.getTag();
         String message = (userAnswer.isCorrect()) ?  "Correct answer!" : "Wrong answer" ;
+        if (userAnswer.isCorrect())
+        {
+            findViewById(view.getId()).setBackgroundColor(Color.rgb(0, 255, 0));
+        }
+        else
 
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+           findViewById(view.getId()).setBackgroundColor(Color.rgb(255, 0, 0));
+
+        switch(view.getId())
+        {
+            case (R.id.button1):
+               findViewById(R.id.button2).setEnabled(false);
+               findViewById(R.id.button3).setEnabled(false);
+               findViewById(R.id.button4).setEnabled(false);
+                break;
+
+            case (R.id.button2):
+                findViewById(R.id.button1).setEnabled(false);
+                findViewById(R.id.button3).setEnabled(false);
+                findViewById(R.id.button4).setEnabled(false);
+                break;
+
+            case (R.id.button3):
+                findViewById(R.id.button1).setEnabled(false);
+                findViewById(R.id.button2).setEnabled(false);
+                findViewById(R.id.button4).setEnabled(false);
+                break;
+
+            case (R.id.button4):
+                findViewById(R.id.button1).setEnabled(false);
+                findViewById(R.id.button2).setEnabled(false);
+                findViewById(R.id.button3).setEnabled(false);
+                break;
+        }
+
+
     }
 
 }
