@@ -5,17 +5,16 @@
     android:weightSum="100"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:background="@android:color/background_light"
+    android:background="#DEDEDC"
    >
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
-        android:text="Hey Sam!"
-        android:id="@+id/txtWhichTeam"
+        android:id="@+id/txtName"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000"
+        android:textColor="#8DA834"
         android:gravity="center|left"
         android:textStyle="normal"
         android:textSize="15dp" />
@@ -28,7 +27,6 @@
         android:layout_weight="20"
         android:gravity="center|center_vertical"
         android:text="ibero ex dolorem voluptatibus est ea in accusamus eos voluptatem?"
-
         android:id="@+id/txtQuestion"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#368DEB"

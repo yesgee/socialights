@@ -41,13 +41,6 @@ public class GameStartActivity extends Activity {
 
     public void startPlayingGame(View view){
 
-        /**
-        LoginDialog loginDialog = LoginDialog.newInstance(game);
-        FragmentManager fm = getFragmentManager();
-
-        loginDialog.show(fm, "lobby");
-         */
-
         Intent intent = new Intent(this, LoginActivity.class);
         intent.putExtra("game", game);
         startActivity(intent);
@@ -57,8 +50,6 @@ public class GameStartActivity extends Activity {
     public void getGameObject() throws JSONException {
 
         RestApi.get("socialights", null, new JsonHttpResponseHandler() {
-
-
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -73,7 +64,6 @@ public class GameStartActivity extends Activity {
                     }
                 }
             }
-
 
         });
     }

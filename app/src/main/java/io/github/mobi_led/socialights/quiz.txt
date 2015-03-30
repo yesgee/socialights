@@ -1,33 +1,27 @@
-{
-	"Game":
-	{
-	   "startedAt": "20130310 12:45:30",
-       "users": [ ],
-       "teams":
-       [
-           {
-            "name": "Team A",
-            "color": "blue",
-            "users": [],
-            "score": 20
-           },
-           {
-            "name": "Team B",
-            "color": "yellow",
-            "users": [],
-            "score": 26
-           }
-       ]
+ private void postGame(){
+
+
+        RequestParams params = new RequestParams();
+        params.put("game", game);
+
+        //post
+        RestApi.post("socialights", params, new JsonHttpResponseHandler(){
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+                if (statusCode == 200) {
+
+                    game = GameRestClient.getGame(response);
+
+                    if (game == null) {
+
+                        Toast.makeText(getApplicationContext(), "Connection Lost!", Toast.LENGTH_LONG).show();
+                    }
+
+                }
+            }
+
+        });
+
     }
-}
-
-  RadioButton answer1 = (RadioButton)findViewById(R.id.answer1);
-        RadioButton answer2 = (RadioButton)findViewById(R.id.answer2);
-        RadioButton answer3 = (RadioButton)findViewById(R.id.answer3);
-        RadioButton answer4 = (RadioButton)findViewById(R.id.answer4);
-
-        answer1.setText(answerList.get(0).getAnswerString());
-        answer2.setText(answerList.get(1).getAnswerString());
-        answer3.setText(answerList.get(2).getAnswerString());
-        answer4.setText(answerList.get(3).getAnswerString());
-

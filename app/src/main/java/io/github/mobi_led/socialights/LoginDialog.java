@@ -92,8 +92,6 @@ public class LoginDialog extends DialogFragment {
 
         });
 
-
-
         return view;
     }
 
@@ -102,9 +100,6 @@ public class LoginDialog extends DialogFragment {
         super.onActivityCreated(savedInstance);
         getDialog().getWindow().getAttributes().windowAnimations = R.style.dialog_animation;
     }
-
-
-
 
     public void createUserAndJoinTeam(int pos){
 
@@ -122,8 +117,7 @@ public class LoginDialog extends DialogFragment {
 
             team.addUser(user);
 
-
-            Intent quizIntent = new Intent(((GameStartActivity)getActivity()), QuizActivity.class);
+            Intent quizIntent = new Intent((getActivity()), QuizActivity.class);
             Question q = game.getCurrentQuestion();
             quizIntent.putExtra("question",q );
             startActivity(quizIntent);
@@ -138,9 +132,9 @@ public class LoginDialog extends DialogFragment {
         btnBlue.setClickable(active);
         btnRed.setClickable(active);
     }
-    private void showToastMessage(String message){
 
-        Toast.makeText((GameStartActivity)getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    private void showToastMessage(String message){
+        Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
 }

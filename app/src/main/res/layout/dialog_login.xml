@@ -34,7 +34,11 @@
         android:paddingLeft="10dp"
         android:textColor="#000"
         android:hint="Enter name"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:lines="1"
+        android:maxLines="1"
+        android:maxLength="20"
+        android:singleLine="true" />
 
 
     <LinearLayout
@@ -56,7 +60,7 @@
         android:textSize="15sp"
         android:background="@drawable/btnblueteam"
         android:text="Blue Team"
-        android:onClick="teamA_BtnClick"
+        android:onClick="btn_Click"
         />
 
     <TextView
@@ -79,9 +83,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:textSize="15sp"
-        android:background="@drawable/btnreadteam"
+        android:background="@drawable/btnredteam"
         android:text="Red Team"
-        android:onClick="teamB_BtnClick"
+        android:onClick="btn_Click"
 
         />
 

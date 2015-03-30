@@ -1,5 +1,6 @@
 package io.github.mobi_led.socialights;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -18,11 +19,12 @@ import io.github.mobi_led.socialights.models.Team;
 import io.github.mobi_led.socialights.models.User;
 
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends Activity {
 
     EditText nickName;
     Intent gameIntent;
     Game game;
+    Button [] buttons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,65 +36,42 @@ public class LoginActivity extends ActionBarActivity {
         gameIntent = getIntent();
         game = (Game)gameIntent.getSerializableExtra("game");
 
-        Button teamA_btn = (Button)findViewById(R.id.btnBlueTeam);
-        Button teamB_btn = (Button)findViewById(R.id.btnRedTeam);
+        buttons = new Button [] {(Button)findViewById(R.id.btnBlueTeam), (Button)findViewById(R.id.btnRedTeam)};
 
-       if(game != null && game.getTeams().size() > 1){
-           teamA_btn.setText("Join " + game.getTeams().get(0).getName());
-           teamB_btn.setText("Join " + game.getTeams().get(1).getName());
-       }
-
-    }
-
-    public void teamA_BtnClick(View view){
-      createUserAndJoinTeam(0);
-    }
-
-    public void teamB_BtnClick(View view){
-        createUserAndJoinTeam(1);
-    }
-
-    private boolean validNickName(String name){
-
-        if(name.isEmpty() || name == null) {
-            showToastMessage("Please enter your name");
-            return false;
+        for (int i = 0; i < game.getTeams().size(); i++) {
+            buttons[i].setText(game.getTeams().get(i).getName());
+            buttons[i].setTag(game.getTeams().get(i));
         }
-
-        return true;
     }
 
-    public void createUserAndJoinTeam(int pos){
+    public void btn_Click(View view){
 
         String name = nickName.getText().toString();
 
-        if(!validNickName(name)) return;
-
-        if(game != null && game.getTeams().get(pos) != null){
-
-            Team team = game.getTeams().get(pos);
-            User user = new User();
-
-            if(team.containsUserByName(name)){
-                showToastMessage("This name already exists in this team!");
-                return;
-            }
-
-            team.addUser(user);
-
-            Intent quizIntent = new Intent(this, QuizActivity.class);
-            Question q = game.getCurrentQuestion();
-            quizIntent.putExtra("question",q );
-            quizIntent.putExtra("name", name);
-            startActivity(quizIntent);
-            // send to Quizz Screen
-            // send json back to server
-
+        if(name.isEmpty() || name == null) {
+            showToastMessage("Please enter your name");
+            return;
         }
+
+        Team team = (Team) view.getTag();
+        User user = new User(name);
+
+        if(team.containsUserByName(name)){
+            showToastMessage("This name already exists in this team!");
+            return;
+        }
+
+        team.addUser(user);
+
+        Intent quizIntent = new Intent(this, QuizActivity.class);
+        Question q = game.getCurrentQuestion();
+        quizIntent.putExtra("game", game);
+        quizIntent.putExtra("question", q);
+        quizIntent.putExtra("name", name);
+        startActivity(quizIntent);
     }
 
     private void showToastMessage(String message){
-
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
