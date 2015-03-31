@@ -41,27 +41,21 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="40dp"
         android:layout_weight="20"
         android:gravity="center|center_vertical"
         android:text="ibero ex dolorem voluptatibus est ea in accusamus eos voluptatem?"
-
+        android:textAlignment="gravity"
         android:id="@+id/txtQuestion"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#368DEB"
         android:textSize="20dp" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="58"
-        android:minHeight="25dp"
-        android:minWidth="25dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="01dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal">
 
         <Space
@@ -102,10 +96,11 @@
     </LinearLayout>
 
 
+
          <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="01dp"
+            android:layout_marginTop="60dp"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true">
@@ -151,7 +146,7 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-    </RelativeLayout>
+
 
 
 </LinearLayout>

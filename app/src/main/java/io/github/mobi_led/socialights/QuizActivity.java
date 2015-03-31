@@ -55,8 +55,6 @@ public class QuizActivity extends Activity {
         for (int i= 0; i < answerList.size(); i++){
            Button btn = buttons[i];
            Answer answer =  answerList.get(i);
-//           String answerText = answer.getAnswerString().length() > 20 ?
-//                   answer.getAnswerString().substring(0, 19) : answer.getAnswerString();
            String answerText=answer.getAnswerString();
            btn.setText(answerText);
            btn.setTag(answer);

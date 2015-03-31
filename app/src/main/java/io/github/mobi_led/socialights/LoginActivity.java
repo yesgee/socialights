@@ -36,7 +36,7 @@ public class LoginActivity extends Activity {
         gameIntent = getIntent();
         game = (Game)gameIntent.getSerializableExtra("game");
 
-        buttons = new Button [] {(Button)findViewById(R.id.btnBlueTeam), (Button)findViewById(R.id.btnRedTeam)};
+        buttons = new Button [] {(Button)findViewById(R.id.btnRedTeam), (Button)findViewById(R.id.btnBlueTeam)};
 
         for (int i = 0; i < game.getTeams().size(); i++) {
             buttons[i].setText(game.getTeams().get(i).getName());
