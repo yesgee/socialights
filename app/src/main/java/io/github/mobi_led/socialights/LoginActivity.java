@@ -68,6 +68,7 @@ public class LoginActivity extends Activity {
         quizIntent.putExtra("game", game);
         quizIntent.putExtra("question", q);
         quizIntent.putExtra("name", name);
+        quizIntent.putExtra("team",team.getName());
         startActivity(quizIntent);
     }
 
