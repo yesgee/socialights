@@ -1,12 +1,14 @@
 'use strict';
 
 var Schema = require('mongoose').Schema;
+var random = require('mongoose-simple-random');
 var timestamps = require('mongoose-timestamp');
 
 var filter = require('mout/array/filter');
 var find = require('mout/array/find');
 
 // Answer Schema
+
 var answerSchema = new Schema({
   answer: { type: String, required: true },
   correct: { type: Boolean, required: true },
@@ -20,6 +22,7 @@ var questionSchema = new Schema({
   answers: [answerSchema]
 });
 questionSchema.plugin(timestamps);
+questionSchema.plugin(random);
 
 // Virtuals
 

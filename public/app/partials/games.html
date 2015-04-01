@@ -1,13 +1,18 @@
 
-<ul class="list-group col-md-4 leftPanel">
-  <li ng-repeat="game in games" ng-click="selectGame(game)" class="list-group-item"
-    ng-class="{'list-group-item-info': currentGame(game)}">
-    <span>{{game.id}}</span>
-    <button ng-click="deleteGame(game.id)" class="removeButton btn btn-default">
-      <span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-left:-5px;"></span>
-    </button>
-  </li>
-</ul>
+<div class="container col-md-4 leftPanel">
+  <ul class="list-group ">
+    <li ng-repeat="game in games" ng-click="selectGame(game)" class="list-group-item"
+      ng-class="{'list-group-item-info': currentGame(game)}">
+      <span>{{game.id}}</span>
+      <button ng-click="deleteGame(game.id, $event)" class="removeButton btn btn-default">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true" style="margin-left:-5px;"></span>
+      </button>
+    </li>
+  </ul>
+  <button class="btn btn-default" ng-click="createGame()">
+    <span>Create new</span>
+  </button>
+</div>
 <form class="form-horizontal col-md-8 rightPanel" ng-class="{'hidden': !selectedGame}">
   <div class="form-group">
     <div class="container-fluid">
@@ -62,6 +67,9 @@
         <input type="text" class="form-control" id="question" ng-model="selectedGame.question.question.question" readonly>
       </div>
       <div class="col-sm-2 container-fluid">
+        <button class="btn btn-primary" ng-click="askQuestion()">
+          <span>Ask next</span>
+        </button>
       </div>
     </div>
     <div class="col-sm-12" style="height:20px;"></div>

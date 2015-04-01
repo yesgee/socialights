@@ -36,6 +36,7 @@ describe('Action: createGame', function() {
   });
 
   var user;
+  var nrOfQuestions = 5;
 
   beforeEach(function(done) {
     user = api.models.User(randomUser());
@@ -44,13 +45,14 @@ describe('Action: createGame', function() {
     });
   });
 
-  it('should create a game without a user and save it to the database', function(done) {
+  it('should create a game without a user or nrOfQuestion and save it to the database', function(done) {
     api.specHelper.runAction('createGame', {}, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);
       should.exist(response.game);
 
       response.game.users.should.be.empty;
+      response.game.nextQuestions.should.not.be.empty;
 
       api.models.Game.findById(response.game._id, function(err, result) {
         should.not.exist(err);
@@ -68,10 +70,28 @@ describe('Action: createGame', function() {
       should.exist(response.game);
       response.game.users.should.not.be.empty;
       response.game.users[0].id.should.equal(user.id);
+      response.game.nextQuestions.should.not.be.empty;
       api.models.Game.findById(response.game._id).populate('users').exec(function(err, result) {
         should.not.exist(err);
         result.users.should.not.be.empty;
         result.users[0].id.should.equal(user.id);
+        done();
+      });
+    });
+  });
+
+  it('should create a game with a nrOfQuestions and save it to the database', function(done) {
+    api.specHelper.runAction('createGame', {nrOfQuestions:nrOfQuestions}, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.success);
+      should.exist(response.game);
+
+      response.game.users.should.be.empty;
+      response.game.nextQuestions.should.not.be.empty;
+      response.game.nextQuestions.length.should.equal(nrOfQuestions);
+
+      api.models.Game.findById(response.game._id, function(err, result) {
+        should.not.exist(err);
         done();
       });
     });

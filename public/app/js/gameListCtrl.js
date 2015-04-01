@@ -130,7 +130,7 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
 
   $scope.currentUser = function(userId) {
     return $scope.userId === userId;
-  }
+  };
 
   $scope.getGames = function() {
     client.action('listGames', {}, function(err, data) {
@@ -159,7 +159,11 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
     }
   };
 
-  $scope.deleteGame = function(gameId) {
+  $scope.deleteGame = function(gameId, event) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
     client.action('deleteGame', {id: gameId}, function(err, data) {
       if (data.error) {
         console.log(data.error);
@@ -194,6 +198,28 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
 
   $scope.currentGame = function(game) {
     return $scope.selectedGame && $scope.selectedGame.id === game.id;
+  };
+
+  $scope.askQuestion = function() {
+    client.action('askNextQuestion', {game: $scope.selectedGame.id}, function(err, data) {
+      if (err || data.error) {
+        console.log(err, data.error);
+      } else {
+        $scope.selectedGame = jQuery.extend(true, {}, data.game);
+        $scope.game = jQuery.extend(true, {}, data.game);
+        $scope.$digest();
+      }
+    });
+  };
+
+  $scope.createGame = function() {
+    client.action('createGame', function(err, data) {
+      if (err || data.error) {
+        console.log(err, data.error);
+      } else {
+        $scope.getGames();
+      }
+    });
   };
 
   $scope.addGame = function() {

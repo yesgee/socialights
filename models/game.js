@@ -128,7 +128,9 @@ gameSchema.methods.start = function(callback) {
 
 gameSchema.methods.askNextQuestion = function(callback) {
   var lastAskedQuestion = last(this.previousQuestions);
-  if (lastAskedQuestion && lastAskedQuestion.isOpen()) {
+  if (!this.startedAt) {
+    callback('Error: The game should be started first.');
+  } else if (lastAskedQuestion && lastAskedQuestion.isOpen()) {
     callback('Error: The last question should be answered first.');
   } else {
     if (this.nextQuestions.length < 1) {
