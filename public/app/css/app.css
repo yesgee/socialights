@@ -53,9 +53,10 @@ body { padding-top: 70px; }
 }
 
 .swapButton {
-  float:left;
+  float:right;
   margin-bottom:10px;
   margin-top:10px;
+  margin-right:40px;
   bottom:1px;
 }
 

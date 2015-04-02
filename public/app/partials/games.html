@@ -52,20 +52,20 @@
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </button>
       </div>
-      <div class="col-sm-10 container-fluid">
-      </div>
-      <div class="col-sm-1">
-        <button class="btn btn-primary swapButton" ng-click="switchUserBetweenTeams()"
-        ng-class="{'hidden': team.id === selectedGame.teams[1].id}">
-          <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
-        </button>
+      <div class="col-sm-12">
+        <div class="col-sm-7">
+          <button class="btn btn-primary swapButton" ng-click="switchUserBetweenTeams()"
+          ng-class="{'hidden': team.id === selectedGame.teams[1].id}">
+            <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+          </button>
+        </div>
       </div>
     </div>
     <div class="col-sm-12" style="height:20px;"></div>
-    <div class="alert alert-danger col-sm-12" role="alert" ng-class="{'hidden': !$scope.currentGame.finished}">
+    <div class="alert alert-success col-sm-12" role="alert" ng-class="{'hidden': !selectedGame.finished}">
       <span>This game has finished</span>
     </div>
-    <div class="alert alert-danger col-sm-12" role="alert" id="alert" ng-class="{'hidden': $scope.currentGame.finished}">
+    <div class="alert alert-danger col-sm-12" role="alert" id="alert" >
       <span id="alertMessage"></span>
     </div>
     <div class="container-fluid">
@@ -74,7 +74,7 @@
         <input type="text" class="form-control" id="question" ng-model="selectedGame.question.question.question" readonly>
       </div>
       <div class="col-sm-2 container-fluid">
-        <button class="btn btn-primary" ng-click="askQuestion()" ng-class="{'disabled': $scope.currentGame.finished}">
+        <button class="btn btn-primary" ng-click="askQuestion()" ng-class="{'disabled': selectedGame.finished}">
           <span>Ask next</span>
         </button>
       </div>
@@ -101,25 +101,32 @@
     </div>
 
 
-    <div class="col-sm-12" style="height:20px;"></div>
-    <div class="container-fluid">
+
+
+    <div class="container-fluid" style="margin-top:20px;">
       <label for="nextQuestions" class="col-sm-2 control-label">Next Questions</label>
-      <ul class="list-group col-sm-8">
-        <li ng-repeat="question in selectedGame.nextQuestions" class="list-group-item">
-          <span>{{question.question}}</span>
-        </li>
-      </ul>
+      <div class="col-sm-8">
+        <ul class="list-group">
+          <li ng-repeat="question in selectedGame.nextQuestions" class="list-group-item">
+            <span>{{question.question}}</span>
+          </li>
+        </ul>
+      </div>
+
       <div class="col-sm-2 container-fluid"></div>
     </div>
+
     <div class="container-fluid">
       <label for="previousQuestions" class="col-sm-2 control-label">Previous Questions</label>
-      <ul class="list-group col-sm-8">
-        <li ng-repeat="question in selectedGame.previousQuestions" class="list-group-item">
-          <span>{{question.question.question}}</span>
-        </li>
-      </ul>
+      <div class="col-sm-8">
+        <ul class="list-group ">
+          <li ng-repeat="question in selectedGame.previousQuestions" class="list-group-item">
+            <span>{{question.question.question}}</span>
+          </li>
+        </ul>
+      </div>
     </div>
-    </div>
+
   </div>
 
 

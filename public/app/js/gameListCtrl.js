@@ -168,8 +168,8 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
         } else {
           $scope.selectedGame = jQuery.extend(true, {}, data.game);
           $scope.game = jQuery.extend(true, {}, data.game);
-          console.log($scope.selectedGame.question);
           $scope.$digest();
+          console.log($scope.selectedGame);
         }
       });
     }
@@ -256,7 +256,7 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
       }, function(err, data) {
         $scope.selectedGame = jQuery.extend(true, {}, data.game);
         $scope.game = jQuery.extend(true, {}, data.game);
-        // console.log(data.game);
+        console.log(data.game);
         $scope.$digest();
       });
     }
