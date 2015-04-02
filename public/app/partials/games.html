@@ -32,6 +32,7 @@
         <button class="btn btn-default editButton" ng-click="toggleTeamEdit(team)">
           <span class="glyphicon glyphicon-edit" aria-hidden="true" style="margin-left:-5px;"></span>
         </button>
+        <label class="col-sm-12"><b>score: {{team.score}}</b></label>
       </div>
       <div class="col-sm-8">
           <div>
@@ -61,17 +62,45 @@
       </div>
     </div>
     <div class="col-sm-12" style="height:20px;"></div>
+    <div class="alert alert-danger col-sm-12" role="alert" ng-class="{'hidden': !$scope.currentGame.finished}">
+      <span>This game has finished</span>
+    </div>
+    <div class="alert alert-danger col-sm-12" role="alert" id="alert" ng-class="{'hidden': $scope.currentGame.finished}">
+      <span id="alertMessage"></span>
+    </div>
     <div class="container-fluid">
       <label for="question" class="col-sm-2 control-label">Question</label>
       <div class="col-sm-8">
         <input type="text" class="form-control" id="question" ng-model="selectedGame.question.question.question" readonly>
       </div>
       <div class="col-sm-2 container-fluid">
-        <button class="btn btn-primary" ng-click="askQuestion()">
+        <button class="btn btn-primary" ng-click="askQuestion()" ng-class="{'disabled': $scope.currentGame.finished}">
           <span>Ask next</span>
         </button>
       </div>
     </div>
+
+    <div class="container-fluid">
+      <label for="question" class="col-sm-2 control-label">Answers</label>
+      <div class="col-sm-8">
+        <div ng-repeat="answer in selectedGame.question.question.answers">
+          <button class="btn btn-default col-sm-12" style="margin-right:5px; margin-top:5px;"
+          ng-class="{'disabled': selectedGame.question.answeredAt,
+          'btn-danger': answeredWrong(answer),
+          'btn-success': answeredRight(answer)}"
+          ng-click="answerQuestion(answer)">
+            <span>{{answer.answer}}</span>
+          </button>
+          <span class="col-sm-12" ng-class="{'hidden': (!answeredWrong(answer) && !answeredRight(answer))}">
+            {{answer.feedback}}</span>
+        </div>
+      </div>
+      <div class="col-sm-2 container-fluid">
+
+      </div>
+    </div>
+
+
     <div class="col-sm-12" style="height:20px;"></div>
     <div class="container-fluid">
       <label for="nextQuestions" class="col-sm-2 control-label">Next Questions</label>

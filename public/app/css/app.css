@@ -37,6 +37,9 @@ body { padding-top: 70px; }
   margin-top:5px;
   margin-left:5px;
 }
+#alert {
+  padding-bottom:10px;
+}
 .leftPanel {
   padding-left:40px;
 }
@@ -46,7 +49,7 @@ body { padding-top: 70px; }
 }
 
 .hidden {
-  visibility: collapse;
+  visibility: hidden;
 }
 
 .swapButton {
