@@ -68,7 +68,7 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
   };
 
   $scope.switchUserBetweenTeams = function() {
-    // console.log($scope.userId);
+
     client.action('switchUserBetweenTeams', {user: $scope.userId, game: $scope.selectedGame.id}, function(err, data) {
       if (data.error) {
         console.log(data.error);
@@ -169,7 +169,6 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
           $scope.selectedGame = jQuery.extend(true, {}, data.game);
           $scope.game = jQuery.extend(true, {}, data.game);
           $scope.$digest();
-          console.log($scope.selectedGame);
         }
       });
     }
@@ -199,7 +198,7 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
   };
   $scope.saveGame = function() {
     if ($scope.selectedGame.id) {
-      // console.log($scope.selectedGame);
+
       client.action('updateGame', $scope.selectedGame, function(err, data) {
         if (data.error) {
           console.log(data.error);
@@ -224,7 +223,7 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
   };
 
   $scope.askQuestion = function() {
-    console.log($scope.selectedGame);
+
     if (!$scope.selectedGame.startedAt) {
       showAlert(startAlert);
     } else if ($scope.selectedGame.question && !$scope.selectedGame.question.answeredAt) {
@@ -256,7 +255,7 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
       }, function(err, data) {
         $scope.selectedGame = jQuery.extend(true, {}, data.game);
         $scope.game = jQuery.extend(true, {}, data.game);
-        console.log(data.game);
+
         $scope.$digest();
       });
     }

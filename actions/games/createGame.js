@@ -1,7 +1,6 @@
 'use strict';
 
 var map = require('mout/array/map');
-// var pick = require('mout/object/pick');
 
 exports.createGame = {
   name: 'createGame',
@@ -28,21 +27,14 @@ exports.createGame = {
 
     //insert random questions
     api.models.Question.findRandom({}, {}, {limit:nrOfQuestions}, function(err, result) {
-      if (err) {
-        connection.response.success = false;
-        connection.response.error = err;
-        next(connection, true);
-      }
-      // console.log(result);
+      if (err) { return connection.handleModelError(err, next); }
+
       game.nextQuestions = map(result, function(question) {
         return question.id;
       });
       game.initializeTeams(function(err, result) {
-        if (err) {
-          connection.response.success = false;
-          connection.response.error = err;
-          next(connection, true);
-        }
+        if (err) { return connection.handleModelError(err, next); }
+
         game.save(function(err, game) {
           if (err) { return connection.handleModelError(err, next); }
 
