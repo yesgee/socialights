@@ -7,6 +7,11 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
   $scope.currentTeam = {};
   $scope.userId = null;
 
+  var teamAlert = 'Initialize teams first!';
+  var startAlert = 'Start game first!';
+  var answerAlert = 'Answer question first!';
+  $('#alert').hide();
+
   $scope.getUsers = function() {
     client.action('listUsers', {}, function(err, data) {
       if (data.error) {
@@ -17,6 +22,15 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
       }
     });
   };
+
+  function showAlert(message) {
+    $('#alertMessage').text(message);
+    $('#alert').slideDown('slow', function() {
+      setTimeout(function() {
+        $('#alert').slideUp('slow');
+      }, 2000);
+    });
+  }
 
   $scope.getUsers();
 
@@ -47,13 +61,14 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
       }
     });
   };
+
   $scope.cancelTeam = function() {
     $('#teamModal').modal('hide');
     $scope.currentTeam = {};
   };
 
   $scope.switchUserBetweenTeams = function() {
-    console.log($scope.userId);
+
     client.action('switchUserBetweenTeams', {user: $scope.userId, game: $scope.selectedGame.id}, function(err, data) {
       if (data.error) {
         console.log(data.error);
@@ -122,15 +137,15 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
         }
       });
     }
-  }
+  };
 
   $scope.selectUser = function(userId) {
     $scope.userId = userId;
-  }
+  };
 
   $scope.currentUser = function(userId) {
     return $scope.userId === userId;
-  }
+  };
 
   $scope.getGames = function() {
     client.action('listGames', {}, function(err, data) {
@@ -159,7 +174,11 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
     }
   };
 
-  $scope.deleteGame = function(gameId) {
+  $scope.deleteGame = function(gameId, event) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
     client.action('deleteGame', {id: gameId}, function(err, data) {
       if (data.error) {
         console.log(data.error);
@@ -170,9 +189,16 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
     });
   };
 
+  $scope.answeredWrong = function(answer) {
+    return $scope.selectedGame.question.answer === answer.id && !$scope.selectedGame.question.answeredCorrectly;
+  };
+
+  $scope.answeredRight = function(answer) {
+    return $scope.selectedGame.question.answer === answer.id && $scope.selectedGame.question.answeredCorrectly;
+  };
   $scope.saveGame = function() {
     if ($scope.selectedGame.id) {
-      console.log($scope.selectedGame);
+
       client.action('updateGame', $scope.selectedGame, function(err, data) {
         if (data.error) {
           console.log(data.error);
@@ -194,6 +220,56 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
 
   $scope.currentGame = function(game) {
     return $scope.selectedGame && $scope.selectedGame.id === game.id;
+  };
+
+  $scope.askQuestion = function() {
+
+    if (!$scope.selectedGame.startedAt) {
+      showAlert(startAlert);
+    } else if ($scope.selectedGame.question && !$scope.selectedGame.question.answeredAt) {
+      showAlert(answerAlert);
+    } else {
+      client.action('askNextQuestion', {game: $scope.selectedGame.id}, function(err, data) {
+        if (err || data.error) {
+          console.log(err, data.error);
+        } else {
+          $scope.selectedGame = jQuery.extend(true, {}, data.game);
+          $scope.game = jQuery.extend(true, {}, data.game);
+          $scope.$digest();
+        }
+      });
+    }
+  };
+
+  $scope.answerQuestion = function(answer) {
+    var question = $scope.selectedGame.question;
+    var user;
+    if ($scope.selectedGame.teams[question.team].users.length === 0) {
+      showAlert(teamAlert);
+    } else {
+      user = $scope.selectedGame.teams[question.team].users[0].id;
+      client.action('answerQuestion', {
+        game: $scope.selectedGame.id,
+        user: user,
+        answer: answer.id
+      }, function(err, data) {
+        $scope.selectedGame = jQuery.extend(true, {}, data.game);
+        $scope.game = jQuery.extend(true, {}, data.game);
+
+        $scope.$digest();
+      });
+    }
+
+  };
+
+  $scope.createGame = function() {
+    client.action('createGame', function(err, data) {
+      if (err || data.error) {
+        console.log(err, data.error);
+      } else {
+        $scope.getGames();
+      }
+    });
   };
 
   $scope.addGame = function() {

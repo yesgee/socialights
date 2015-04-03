@@ -50,7 +50,8 @@ var gameSchema = new Schema({
   users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   teams: [teamSchema],
   previousQuestions: [askedQuestionSchema], // Note: The last question in this array is the current question
-  nextQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }]
+  nextQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  finished: {type: Boolean, default:false}
 });
 gameSchema.plugin(timestamps);
 
@@ -127,7 +128,9 @@ gameSchema.methods.start = function(callback) {
 
 gameSchema.methods.askNextQuestion = function(callback) {
   var lastAskedQuestion = last(this.previousQuestions);
-  if (lastAskedQuestion && lastAskedQuestion.isOpen()) {
+  if (!this.startedAt) {
+    callback('Error: The game should be started first.');
+  } else if (lastAskedQuestion && lastAskedQuestion.isOpen()) {
     callback('Error: The last question should be answered first.');
   } else {
     if (this.nextQuestions.length < 1) {
@@ -172,6 +175,7 @@ gameSchema.methods.answerQuestion = function(user, answerId, callback) {
       if (correct && answeredQuestion.isInTime()) {
         _this.teams[answeredQuestion.team].score++;
       }
+      _this.finished = _this.nextQuestions.length === 0;
       _this.save(function(err, result) {
         if (err) { return callback(err); }
         callback(null, answeredQuestion);
