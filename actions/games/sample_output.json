@@ -296,9 +296,9 @@
       "team": 1,
       "askedAt": "2015-03-10T11:52:43.708Z",
       "deadlineAt": "2015-03-10T11:52:53.708Z",
-      "id": "54fedb0b7f091cc22b9a45e0",
-      "finished": false
+      "id": "54fedb0b7f091cc22b9a45e0"
     },
+    "finished": false,
     "id": "54fed9a559bc53292be92af2"
   }
 }
