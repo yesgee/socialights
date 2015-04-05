@@ -11,11 +11,11 @@ before_install:
 before_script:
   - ./.ci/wait_for_emulator
   - adb shell input keyevent 82 &
-script: ./gradlew connectedAndroidTest
+script: ./gradlew client:connectedAndroidTest --info --stacktrace && ./gradlew app:connectedAndroidTest --info --stacktrace
 
 android:
   components:
-    - build-tools-21.1.1
+    - build-tools-21.1.2
     - android-21
     - sys-img-armeabi-v7a-android-21
     - android-19
