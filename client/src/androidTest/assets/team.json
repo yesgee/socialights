@@ -1,0 +1,29 @@
+{
+  "createdAt": "2015-03-24T14:57:50.544Z",
+  "updatedAt": "2015-03-24T14:57:50.544Z",
+  "name": "Red Team",
+  "color": "#ff0000",
+  "_id": "55117b6ef461f4df34290a27",
+  "score": 0,
+  "users": [
+    {
+      "_id": "55117b6ef461f4df34290a08",
+      "createdAt": "2015-03-24T14:57:50.509Z",
+      "updatedAt": "2015-03-24T14:57:50.562Z",
+      "name": "Brielle Wuckert",
+      "__v": 0,
+      "game": "55117b6ef461f4df34290a26",
+      "id": "55117b6ef461f4df34290a08"
+    },
+    {
+      "_id": "55117b6ef461f4df34290a09",
+      "createdAt": "2015-03-24T14:57:50.518Z",
+      "updatedAt": "2015-03-24T14:57:50.563Z",
+      "name": "Ms. Dawson Hintz",
+      "__v": 0,
+      "game": "55117b6ef461f4df34290a26",
+      "id": "55117b6ef461f4df34290a09"
+    }
+  ],
+  "id": "55117b6ef461f4df34290a27"
+}
