@@ -1,9 +1,12 @@
 sudo: false
 language: android
 env:
-  - ANDROID_TARGET=android-21 ANDROID_ABI=armeabi-v7a
-  - ANDROID_TARGET=android-19 ANDROID_ABI=armeabi-v7a
-  - ANDROID_TARGET=android-16 ANDROID_ABI=armeabi-v7a
+  - ANDROID_TARGET=android-21 ANDROID_ABI=armeabi-v7a SL_MODULE=client
+  - ANDROID_TARGET=android-19 ANDROID_ABI=armeabi-v7a SL_MODULE=client
+  - ANDROID_TARGET=android-16 ANDROID_ABI=armeabi-v7a SL_MODULE=client
+  - ANDROID_TARGET=android-21 ANDROID_ABI=armeabi-v7a SL_MODULE=app
+  - ANDROID_TARGET=android-19 ANDROID_ABI=armeabi-v7a SL_MODULE=app
+  - ANDROID_TARGET=android-16 ANDROID_ABI=armeabi-v7a SL_MODULE=app
 
 before_install:
   - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
@@ -11,7 +14,7 @@ before_install:
 before_script:
   - ./.ci/wait_for_emulator
   - adb shell input keyevent 82 &
-script: ./gradlew client:connectedAndroidTest --info --stacktrace && ./gradlew app:connectedAndroidTest --info --stacktrace
+script: ./gradlew $SL_MODULE:connectedAndroidTest --info --stacktrace
 
 android:
   components:
