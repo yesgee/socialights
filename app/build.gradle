@@ -22,5 +22,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'io.reactivex:rxandroid:0.24.0'
+    compile project(path: ':client')
     compile files('src/main/java/io/github/mobi_led/socialights/libs/android-async-http-1.4.6.jar')
 }
