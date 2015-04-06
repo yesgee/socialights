@@ -20,7 +20,7 @@ exports.removeUserFromTeam = {
   },
 
   run: function(api, connection, next) {
-    connection.models.user.leaveTeam(function(err) {
+    connection.models.game.removeUserFromTeam(connection.models.user, function(err) {
       if (err) { return connection.handleModelError(err, next); }
       connection.renderModel('game', connection.models.game, connection, next);
     });
