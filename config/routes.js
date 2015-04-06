@@ -26,7 +26,7 @@ exports.default = {
         { path: '/games/:game/switchTeams', action: 'switchUserBetweenTeams'},
         { path: '/games/:game/answerQuestion', action: 'answerQuestion'},
         { path: '/games/:game/askNextQuestion', action: 'askNextQuestion'},
-        { path: '/games/:game/start', action: 'startGame'},
+        { path: '/games/:id/start', action: 'startGame'},
       ],
 
       delete: [
