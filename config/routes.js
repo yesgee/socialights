@@ -33,8 +33,8 @@ exports.default = {
         { path: '/users/:id', action: 'deleteUser'},
         { path: '/questions/:id', action: 'deleteQuestion'},
         { path: '/games/:id', action: 'deleteGame'},
-        { path: '/games/:game/users/:user', action: 'deleteUserFromGame'},
-        { path: '/games/:game/teams/users/:user', action: 'deleteUserFromTeam'},
+        { path: '/games/:game/users/:user', action: 'removeUserFromGame'},
+        { path: '/games/:game/teams/users/:user', action: 'removeUserFromTeam'},
       ],
 
       put: [
