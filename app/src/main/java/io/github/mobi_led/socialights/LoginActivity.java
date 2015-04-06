@@ -2,17 +2,21 @@ package io.github.mobi_led.socialights;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.List;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import io.github.mobi_led.socialights.controllers.GameRestClient;
+import io.github.mobi_led.socialights.controllers.RestApi;
 import io.github.mobi_led.socialights.models.Game;
 import io.github.mobi_led.socialights.models.Question;
 import io.github.mobi_led.socialights.models.Team;
@@ -63,6 +67,10 @@ public class LoginActivity extends Activity {
 
         team.addUser(user);
 
+
+        // post to user
+        // POST DELETE /api/games/:game/teams/users/:user
+
         Intent quizIntent = new Intent(this, QuizActivity.class);
         Question q = game.getCurrentQuestion();
         quizIntent.putExtra("game", game);
@@ -75,11 +83,29 @@ public class LoginActivity extends Activity {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 
-    public void sendMessage_lobby(View view) {
+   private void postUser(User user){
+       RequestParams params = new RequestParams();
+       params.put("name", user.getName());
 
-        Intent intent = new Intent(this, LobbyActivity.class);
-        EditText avatar = (EditText) findViewById(R.id.id_nickname);
-        intent.putExtra("avatar", avatar.getText().toString());
-        startActivity(intent);
-    }
+       RestApi.post("users", params, new JsonHttpResponseHandler(){
+
+           @Override
+           public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
+               if (statusCode == 200) {
+
+                   try {
+                        // Get User id from server
+                       JSONObject userJ = response.getJSONObject("user");
+
+                   } catch (JSONException e) {
+                       e.printStackTrace();
+                   }
+
+
+               }
+           }
+
+       });
+   }
 }

@@ -1,13 +1,10 @@
 package io.github.mobi_led.socialights;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -49,7 +46,7 @@ public class GameStartActivity extends Activity {
 
     public void getGameObject() throws JSONException {
 
-        RestApi.get("socialights", null, new JsonHttpResponseHandler() {
+        RestApi.get("games/55117b6ef461f4df34290a26", null, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {

@@ -4,7 +4,7 @@ import com.loopj.android.http.*;
 
 public class RestApi {
 
-    private static final String BASE_URL = "http://demo9715429.mockable.io/";
+    private static final String BASE_URL = "http://hylkevisser.nl:8080/api/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

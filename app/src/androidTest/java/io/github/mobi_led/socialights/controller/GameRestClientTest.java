@@ -98,30 +98,7 @@ public class GameRestClientTest extends InstrumentationTestCase {
         assertEquals(game.getStartedAt(), Util.getDateTime("2015-03-10T11:46:45.527Z"));
     }
 
-    /**
-    public void test_getNextQuestions(){
-        Game game = GameRestClient.getGame(gameJson);
-        NextQuestions nq = game.getNextQuestions();
-
-        assertNotNull(nq);
-        assertEquals(nq.getQuestions().size(), 1);
-    }
-
-    public void test_getQuestions(){
-        Game game = GameRestClient.getGame(gameJson);
-        NextQuestions nq = game.getNextQuestions();
-        Question q = nq.getQuestions().get(0);
-
-        assertNotNull(q);
-    }
-
-    public void test_getPreviousQuestions(){
-        Game game = GameRestClient.getGame(gameJson);
-        PreviousQuestions pq = game.getPreviousQuestions();
-        assertNotNull(pq);
-    }
-*/
-    public void test_getTeams(){
+       public void test_getTeams(){
 
         Game game = GameRestClient.getGame(gameJson);
         List<Team> teams = game.getTeams();
