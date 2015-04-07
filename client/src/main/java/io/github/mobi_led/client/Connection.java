@@ -240,8 +240,20 @@ public class Connection implements Runnable {
             this.observable = AsyncSubject.create();
         }
 
+        public String toString() {
+            return "<Request:<" + this.message.substring(0, Math.min(25, this.message.length())) + ">>";
+        }
+
         public void resolve(JSONObject response) {
-            this.observable.onNext(response);
+            if (response.has("error")) {
+                String err = response.optString("error", "Unknown Server Error");
+                Log.w("Request", "resolve() - Request " + this.toString() + " error: " + err);
+                Exception exception = new Exception(err);
+                this.observable.onError(exception);
+            } else {
+                Log.i("Request", "resolve() - Request " + this.toString() + " Completed");
+                this.observable.onNext(response);
+            }
             this.observable.onCompleted();
         }
     }
