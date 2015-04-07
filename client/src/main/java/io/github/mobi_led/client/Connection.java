@@ -5,12 +5,10 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -37,29 +35,32 @@ public class Connection implements Runnable {
     private String host;
 
     private PrintWriter out;
+    private BufferedInputStream buf;
     private Scanner in;
 
     public Connection(String host) {
         this.host = host;
+        this.rawData = PublishSubject.create();
+        this.processResponses();
     }
 
     public void connect() throws IOException {
         Log.i("Connection", "connect() — Connecting");
         this.connection = new Socket(this.host, 5000);
+        this.messageCount = this.sendQueue.size();
         this.out = new PrintWriter(this.connection.getOutputStream(), true);
-        this.in = new Scanner(this.connection.getInputStream());
-        this.rawData = PublishSubject.create();
-        this.processResponses();
+        this.buf = new BufferedInputStream(this.connection.getInputStream());
+        this.in = new Scanner(buf);
     }
 
     public void disconnect() throws IOException {
         Log.i("Connection", "disconnect() — Disconnecting");
-        if (this.out != null)
-            this.out.println("exit");
-        if (this.connection != null)
-            this.connection.close();
-        if (this.rawData != null)
-            this.rawData.onCompleted();
+        if (this.connection.isConnected()) {
+            if (this.out != null)
+                this.out.println("exit");
+            if (this.connection != null)
+                this.connection.close();
+        }
     }
 
     private void send(String message) {
@@ -68,11 +69,10 @@ public class Connection implements Runnable {
 
     public Observable<JSONObject> call(String message) {
         this.messageCount++;
-        Request request = new Request(message);
-        Integer messageId = this.messageCount;
-        this.activeRequests.put(messageId, request);
-        Log.v("Connection", "Adding request " + messageId + " to the queue.");
+        Request request = new Request(message, this.messageCount);
+        this.activeRequests.put(this.messageCount, request);
         this.sendQueue.add(request);
+        Log.d("Connection", "Added Request " + this.messageCount + " to the queue.");
         return request.getObservable();
     }
 
@@ -193,30 +193,38 @@ public class Connection implements Runnable {
             String inLine;
             String outLine;
             Request request;
-            while (!Thread.currentThread().isInterrupted()) {
-                if (in.hasNextLine()) {
-                    Log.v("run()","HasNextIn");
-                    inLine = in.nextLine();
-                    Log.v("run()","GotNextIn");
-                    if (inLine != null) {
-                        try {
-                            Log.v("Connection", "run() - Received line " + inLine);
-                            JSONObject object = new JSONObject(inLine);
-                            this.rawData.onNext(object);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+
+            while (!Thread.currentThread().isInterrupted() && this.connection.isConnected()) {
+
+                if (this.buf.available() > 0) {
+                    if (in.hasNextLine()) {
+                        inLine = in.nextLine();
+                        if (inLine != null) {
+                            try {
+                                Log.v("Connection", "run() - Received line " + inLine);
+                                JSONObject object = new JSONObject(inLine);
+                                this.rawData.onNext(object);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }
 
                 request = sendQueue.poll();
                 if (request != null) {
-                    Log.v("run()","HasNextOut");
+                    Log.v("Connection", "processing out");
+
                     outLine = request.getMessage();
                     this.out.println(outLine);
                     Log.v("Connection", "run() - Sent line " + outLine);
                 }
             }
+
+            Log.d("Connection", "run() - Interrupted.");
+
+            this.disconnect();
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -229,8 +237,13 @@ public class Connection implements Runnable {
     }
 
     class Request {
+        private int id;
         private String message;
         private AsyncSubject<JSONObject> observable;
+
+        public int getId() {
+            return this.id;
+        }
 
         public String getMessage() {
             return this.message;
@@ -242,23 +255,24 @@ public class Connection implements Runnable {
                     .observeOn(AndroidSchedulers.mainThread());
         }
 
-        public Request(String message) {
+        public Request(String message, int id) {
             this.message = message;
+            this.id = id;
             this.observable = AsyncSubject.create();
         }
 
         public String toString() {
-            return "<Request:<" + this.message.substring(0, Math.min(25, this.message.length())) + ">>";
+            return "<Request:" + this.id + ">";
         }
 
         public void resolve(JSONObject response) {
             if (response.has("error")) {
                 String err = response.optString("error", "Unknown Server Error");
-                Log.w("Request", "resolve() - Request " + this.toString() + " error: " + err);
+                Log.w("Request", "resolve() - " + this.toString() + " error: " + err);
                 Exception exception = new Exception(err);
                 this.observable.onError(exception);
             } else {
-                Log.i("Request", "resolve() - Request " + this.toString() + " Completed");
+                Log.i("Request", "resolve() - " + this.toString() + " Completed");
                 this.observable.onNext(response);
             }
             this.observable.onCompleted();

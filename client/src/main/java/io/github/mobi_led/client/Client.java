@@ -221,9 +221,11 @@ public class Client extends Connection {
         if (instance == null) {
             Log.i("Client", "getInstance() — Creating new Client instance");
             instance = new Client(host);
+            instance.roomAdd("updates:models");
+        }
+        if (clientThread == null || !clientThread.isAlive() || clientThread.isInterrupted()) {
             clientThread = new Thread(instance);
             clientThread.start();
-            instance.roomAdd("updates:models");
         }
         return instance;
     }
