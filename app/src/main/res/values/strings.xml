@@ -9,7 +9,7 @@
     <string name="edit_nickname">Set nickname!</string>
     <string name="btn_start">Go</string>
     <string name="str_next">Next</string>
-    <string name="title_activity_quizwindow">quizwindow</string>
+    <string name="title_activity_quizwindow">Quiz window</string>
     <string name="main_userName_hint">Enter your name</string>
     <string name="main_startPlaying_text">Start Playing</string>
     <string name="main_startPlaying_loading">Registering…</string>

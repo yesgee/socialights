@@ -3,103 +3,99 @@ package io.github.mobi_led.socialights;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Button;
 
 import java.util.List;
 
-import io.github.mobi_led.socialights.models.Answer;
-import io.github.mobi_led.socialights.models.Game;
-import io.github.mobi_led.socialights.models.Question;
+import io.github.mobi_led.client.Client;
+import io.github.mobi_led.client.models.Game;
+import io.github.mobi_led.client.models.Answer;
+import io.github.mobi_led.client.models.Question;
+
+import io.github.mobi_led.client.models.User;
+import rx.functions.Action1;
+
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 public class QuizActivity extends Activity {
 
-    private Question question;
-    private RadioGroup answersRadioGroup;
+    private Game mGame;
     private Button[] buttons = new Button[4];
-    private Animation animScale=null;
+    private Animation animScale = null;
+    private TextView quizQuestion;
+    private Client client;
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiznew);
+        setContentView(R.layout.activity_quiz);
+        client = Client.getInstance();
+
         buttons = new Button[] {(Button) findViewById(R.id.button1),
                 (Button) findViewById(R.id.button2),
                 (Button) findViewById(R.id.button3),
                 (Button) findViewById(R.id.button4)};
 
-       animScale = AnimationUtils.loadAnimation(this, R.anim.button_scale);
+        animScale = AnimationUtils.loadAnimation(this, R.anim.button_scale);
         Intent quizz = getIntent();
 
-        question = (Question)quizz.getSerializableExtra("question");
-        String name = quizz.getStringExtra("name");
-        TextView quizQuestion = (TextView)findViewById(R.id.txtQuestion);
+        mGame = (Game)quizz.getSerializableExtra("game");
+        Question question = mGame.getQuestion().getQuestion();
+        user = (User)quizz.getSerializableExtra("user");
+        quizQuestion = (TextView)findViewById(R.id.txtQuestion);
 
         TextView nameTxt = (TextView)findViewById(R.id.txtWhichUser);
-        nameTxt.setText("Hello " + name + "!");
-        String team = quizz.getStringExtra("team");
+        nameTxt.setText("Hello " + user.getName() + "!");
+        int teamIdx = quizz.getIntExtra("teamIndex", 0);
         TextView teamTxt = (TextView)findViewById(R.id.txtWhichTeam);
-        teamTxt.setText( team );
+        teamTxt.setText(mGame.getTeams().get(teamIdx).getName());
+
+        setQuestion(question);
+    }
+
+    private void setQuestion(Question question) {
+
+        Log.v("Asking question", question.getId());
+        Toast.makeText(this, question.getId(), Toast.LENGTH_SHORT);
         quizQuestion.setText(question.getQuestion());
         List<Answer> answerList = question.getAnswers();
 
         for (int i= 0; i < answerList.size(); i++){
            Button btn = buttons[i];
            Answer answer =  answerList.get(i);
-           String answerText=answer.getAnswerString();
+           String answerText= answer.getAnswer();
            btn.setText(answerText);
            btn.setTag(answer);
         }
     }
+
     public void btnClick(View view) {
+
         Answer userAnswer = (Answer) view.getTag();
-        String message = (userAnswer.isCorrect()) ?  "Correct answer!" : "Wrong answer" ;
-        if (userAnswer.isCorrect())
-        {
-            findViewById(view.getId()).setBackgroundColor(Color.rgb(0, 255, 0));
-            view.startAnimation(animScale);
-        }
-        else
+        int feedbackColor = (userAnswer.getCorrect()) ? Color.rgb(0, 255, 0) : Color.rgb(255, 0, 0);
+        findViewById(view.getId()).setBackgroundColor(feedbackColor);
 
-           findViewById(view.getId()).setBackgroundColor(Color.rgb(255, 0, 0));
-
-        switch(view.getId())
-        {
-            case (R.id.button1):
-               findViewById(R.id.button2).setEnabled(false);
-               findViewById(R.id.button3).setEnabled(false);
-               findViewById(R.id.button4).setEnabled(false);
-                break;
-
-            case (R.id.button2):
-                findViewById(R.id.button1).setEnabled(false);
-                findViewById(R.id.button3).setEnabled(false);
-                findViewById(R.id.button4).setEnabled(false);
-                break;
-
-            case (R.id.button3):
-                findViewById(R.id.button1).setEnabled(false);
-                findViewById(R.id.button2).setEnabled(false);
-                findViewById(R.id.button4).setEnabled(false);
-                break;
-
-            case (R.id.button4):
-                findViewById(R.id.button1).setEnabled(false);
-                findViewById(R.id.button2).setEnabled(false);
-                findViewById(R.id.button3).setEnabled(false);
-                break;
+        for (int i = 0; i < buttons.length; i++) {
+           if(i != view.getId()) buttons[i].setEnabled(false);
+           view.startAnimation(animScale);
         }
 
-
+        //progressbar
+        client.answerQuestion(mGame.getId(), user.getId(), userAnswer.getId()).subscribe(new Action1<Game>() {
+            @Override
+            public void call(Game game) {
+                mGame = game;
+                setQuestion(game.getQuestion().getQuestion());
+            }
+        });
     }
 
 }

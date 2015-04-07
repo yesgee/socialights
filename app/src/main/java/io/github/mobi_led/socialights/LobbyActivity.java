@@ -2,12 +2,10 @@ package io.github.mobi_led.socialights;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import io.github.mobi_led.client.Client;
 import io.github.mobi_led.client.models.Game;
 import io.github.mobi_led.client.models.Team;
@@ -38,6 +36,8 @@ public class LobbyActivity extends ActionBarActivity implements TeamFragment.OnF
         team1 = TeamFragment.newInstance(currentGame.getTeams().get(0));
         team2 = TeamFragment.newInstance(currentGame.getTeams().get(1));
 
+
+
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -50,12 +50,19 @@ public class LobbyActivity extends ActionBarActivity implements TeamFragment.OnF
     @Override
     public void onJoinTeam(Team team) {
         if (team != null) {
-            int teamIndex = this.currentGame.getTeams().indexOf(team);
+
+           final int teamIndex = this.currentGame.getTeams().indexOf(team);
+            LobbyActivity currentActivity = this;
             client.addUserToTeam(currentGame.getId(), currentUser.getId(), teamIndex).subscribe(new Action1<Game>() {
                 @Override
                 public void call(Game game) {
                     Log.i("LobbyActivity", "onJoinTeam() - User joined team.");
-                    // TODO: Go to game
+
+                    Intent intent = new Intent(getBaseContext(), QuizActivity.class);
+                    intent.putExtra("user", currentUser);
+                    intent.putExtra("game", game);
+                    intent.putExtra("teamIndex", teamIndex);
+                    startActivity(intent);
                 }
             });
         }

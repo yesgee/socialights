@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.github.mobi_led.client.Client;
@@ -38,6 +39,7 @@ public class SelectGameActivity extends ActionBarActivity {
         loadGamesProgress.show();
 
         client.listGames().subscribe(new Action1<List<Game>>() {
+
             @Override
             public void call(List<Game> games) {
                 FragmentManager fragmentManager = getFragmentManager();
@@ -47,12 +49,13 @@ public class SelectGameActivity extends ActionBarActivity {
 
                      NewGameFragment fragment = new NewGameFragment();
                      fragmentTransaction.add(fragment, "NewGameFragment");
+                     fragmentTransaction.replace(R.id.frame, fragment);
 
                 } else {
 
-                     JoinGameFragment fragment = JoinGameFragment.newInstance(games.get(games.size() - 1), currentUser);
-                     fragmentTransaction.add(fragment, "JoinGameFragment");
-
+                    JoinGameFragment fragment = JoinGameFragment.newInstance(games.get(games.size() - 1), currentUser);
+                    fragmentTransaction.add(fragment, "JoinGameFragment");
+                    fragmentTransaction.replace(R.id.frame, fragment);
                 }
                 fragmentTransaction.commit();
                 loadGamesProgress.dismiss();

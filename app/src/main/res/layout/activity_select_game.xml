@@ -7,5 +7,9 @@
     tools:context="io.github.mobi_led.socialights.SelectGameActivity"
     android:id="@+id/select_game_layout">
 
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frame"
+    ></FrameLayout>
 </RelativeLayout>
