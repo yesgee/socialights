@@ -166,7 +166,7 @@ public class Client extends Connection {
     public Observable<Game> startGame(String gameId) {
         JSONObject params = new JSONObject();
         try {
-            params.put("game", gameId);
+            params.put("id", gameId);
         } catch (JSONException e) {
             e.printStackTrace();
         }
