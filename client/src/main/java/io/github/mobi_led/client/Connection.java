@@ -13,6 +13,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
@@ -36,7 +37,7 @@ public class Connection implements Runnable {
     private String host;
 
     private PrintWriter out;
-    private BufferedReader in;
+    private Scanner in;
 
     public Connection(String host) {
         this.host = host;
@@ -46,7 +47,7 @@ public class Connection implements Runnable {
         Log.i("Connection", "connect() — Connecting");
         this.connection = new Socket(this.host, 5000);
         this.out = new PrintWriter(this.connection.getOutputStream(), true);
-        this.in = new BufferedReader(new InputStreamReader(this.connection.getInputStream()));
+        this.in = new Scanner(this.connection.getInputStream());
         this.rawData = PublishSubject.create();
         this.processResponses();
     }
@@ -70,6 +71,7 @@ public class Connection implements Runnable {
         Request request = new Request(message);
         Integer messageId = this.messageCount;
         this.activeRequests.put(messageId, request);
+        Log.v("Connection", "Adding request " + messageId + " to the queue.");
         this.sendQueue.add(request);
         return request.getObservable();
     }
@@ -192,19 +194,24 @@ public class Connection implements Runnable {
             String outLine;
             Request request;
             while (!Thread.currentThread().isInterrupted()) {
-                inLine = in.readLine();
-                if (inLine != null) {
-                    try {
-                        Log.v("Connection", "run() - Received line " + inLine);
-                        JSONObject object = new JSONObject(inLine);
-                        this.rawData.onNext(object);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                if (in.hasNextLine()) {
+                    Log.v("run()","HasNextIn");
+                    inLine = in.nextLine();
+                    Log.v("run()","GotNextIn");
+                    if (inLine != null) {
+                        try {
+                            Log.v("Connection", "run() - Received line " + inLine);
+                            JSONObject object = new JSONObject(inLine);
+                            this.rawData.onNext(object);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
 
                 request = sendQueue.poll();
                 if (request != null) {
+                    Log.v("run()","HasNextOut");
                     outLine = request.getMessage();
                     this.out.println(outLine);
                     Log.v("Connection", "run() - Sent line " + outLine);

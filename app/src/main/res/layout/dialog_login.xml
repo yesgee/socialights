@@ -49,19 +49,20 @@
     android:orientation="vertical"
     >
 
-    <Button
-        android:layout_width="match_parent"
-        android:textColor="#ffffff"
-        android:layout_height="70dp"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/btnBlueTeam"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="15sp"
-        android:background="@drawable/btnblueteam"
-        android:text="Blue Team"
-        android:onClick="btn_Click"
-        />
+        <Button
+            android:layout_width="match_parent"
+            android:textColor="#ffffff"
+            android:layout_height="70dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/btnRedTeam"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="15sp"
+            android:background="@drawable/btnredteam"
+            android:text="Red Team"
+            android:onClick="btn_Click"
+
+            />
 
     <TextView
         android:layout_width="match_parent"
@@ -74,21 +75,20 @@
 
         />
 
-    <Button
-        android:layout_width="match_parent"
-        android:textColor="#ffffff"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:id="@+id/btnRedTeam"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textSize="15sp"
-        android:background="@drawable/btnredteam"
-        android:text="Red Team"
-        android:onClick="btn_Click"
 
-        />
-
+        <Button
+            android:layout_width="match_parent"
+            android:textColor="#ffffff"
+            android:layout_height="70dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/btnBlueTeam"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="15sp"
+            android:background="@drawable/btnblueteam"
+            android:text="Blue Team"
+            android:onClick="btn_Click"
+            />
 
 
  </LinearLayout>

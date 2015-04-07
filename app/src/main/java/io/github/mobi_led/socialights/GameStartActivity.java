@@ -12,13 +12,12 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import io.github.mobi_led.socialights.controllers.GameRestClient;
-import io.github.mobi_led.socialights.controllers.RestApi;
-import io.github.mobi_led.socialights.models.Game;
+import io.github.mobi_led.client.Client;
+import io.github.mobi_led.client.models.Game;
+import rx.Observable;
 
 public class GameStartActivity extends Activity {
 
-    private Game game;
     private ImageButton startPlay;
 
     @Override
@@ -27,23 +26,20 @@ public class GameStartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startPlay = (ImageButton)findViewById(R.id.imageButton);
-        startPlay.setClickable(false);
+       // startPlay.setClickable(false);
+            //getGameObject();
 
-        try {
-            getGameObject();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
     }
 
     public void startPlayingGame(View view){
 
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.putExtra("game", game);
+
+       // intent.putExtra("game", game);
         startActivity(intent);
     }
 
-
+/**
     public void getGameObject() throws JSONException {
 
         RestApi.get("games/55117b6ef461f4df34290a26", null, new JsonHttpResponseHandler() {
@@ -64,5 +60,5 @@ public class GameStartActivity extends Activity {
 
         });
     }
-
+*/
 }
