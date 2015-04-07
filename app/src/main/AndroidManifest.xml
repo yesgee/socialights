@@ -5,17 +5,15 @@
     <!-- allow network access -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SET_DEBUG_APP"></uses-permission>
-
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
         <activity
-            android:name=".GameStartActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +21,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
-        <activity
-            android:name=".LobbyActivity"
-            android:label="@string/title_activity_lobby" >
-        </activity>
-        <activity
-            android:name=".QuizActivity"
-            android:label="Socialights" >
+            android:name=".SelectGameActivity"
+            android:label="@string/title_activity_select_game"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.github.mobi_led.socialights.MainActivity" />
         </activity>
     </application>
+
 </manifest>
