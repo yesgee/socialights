@@ -1,118 +1,35 @@
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:fillViewport="true">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="io.github.mobi_led.socialights.LobbyActivity">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/team1"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"/>
+
+    <FrameLayout
+        android:id="@+id/team2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"/>
+
+    <Button
+        android:id="@+id/startGameButton"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dip"
-        android:background="@drawable/background7"
-        android:weightSum="1">
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:enabled="false"
+        android:text="@string/lobby_start_playing" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lobbyhead"
-            android:text="Game lobby"
-            android:textSize="10pt"
-            android:textColor="#CCCCCC"
-            android:gravity="center"
-            android:layout_weight="0.09"
-            android:fontFamily="monospace"
-            android:background="@mipmap/apptheme_textfield_activated_holo_light"
-            android:backgroundTint="#b8759a78"
-            android:textColorHighlight="#9545a87c"
-            android:textColorHint="#b86e9a53" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_marginTop="100dip"
-            android:text="Team Blue"
-            android:textColor="#C0C0C0"
-            android:textSize="8pt"
-            android:fontFamily="serif"
-            android:typeface="monospace" />
-
-        <ListView
-            android:id="@+id/listView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            tools:listitem="@android:layout/simple_list_item_2"
-            style="@style/Base.Widget.AppCompat.ListView.DropDown"
-            android:background="#ff67baff">
-        </ListView>
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Join"
-            android:id="@+id/btn_teamA"
-            android:layout_marginTop="4dip"
-            android:onClick="join_lobbyA"
-            android:background="#b86e9a53"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.09"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:fontFamily="monospace" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dip"
-            android:gravity="center_vertical"
-            android:text="Team Orange"
-            android:singleLine="false"
-            android:textSize="8pt"
-            android:textColor="#C0C0C0"
-            android:fontFamily="serif"
-            android:typeface="monospace" />
-
-        <ListView
-            android:id="@+id/listView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
-            android:background="#70ff9100"
-            tools:listitem="@android:layout/simple_list_item_2"
-            style="@style/Widget.AppCompat.ListView.DropDown">
-
-        </ListView>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Join"
-            android:id="@+id/btn_teamB"
-            android:onClick="join_lobbyB"
-            android:background="#b86e9a53"
-            android:layout_marginTop="3dip"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#FFFFFF"
-            android:fontFamily="monospace"
-            android:textStyle="bold" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20pt"
-            android:layout_marginLeft="60pt"
-            android:text="Quit"
-            android:id="@+id/button3"
-            android:background="#b86e9a53"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:fontFamily="monospace" />
-
-    </LinearLayout>
-
-</ScrollView>
+</LinearLayout>

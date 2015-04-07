@@ -22,11 +22,11 @@
         </activity>
         <activity
             android:name=".SelectGameActivity"
-            android:label="@string/title_activity_select_game"
-            android:parentActivityName=".MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="io.github.mobi_led.socialights.MainActivity" />
+            android:label="@string/title_activity_select_game" >
+        </activity>
+        <activity
+            android:name=".LobbyActivity"
+            android:label="@string/title_activity_lobby" >
         </activity>
     </application>
 
