@@ -42,12 +42,17 @@ public class SelectGameActivity extends ActionBarActivity {
             public void call(List<Game> games) {
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
                 if (games.size() == 0 || games.get(games.size() - 1).getFinished()) {
-                    // NewGameFragment fragment = new NewGameFragment();
-                    // fragmentTransaction.add(R.id.select_game_layout, fragment);
+
+                     NewGameFragment fragment = new NewGameFragment();
+                     fragmentTransaction.add(fragment, "NewGameFragment");
+
                 } else {
-                    // JoinGameFragment fragment = new JoinGameFragment();
-                    // fragmentTransaction.add(R.id.select_game_layout, fragment);
+
+                     JoinGameFragment fragment = JoinGameFragment.newInstance(games.get(games.size() - 1), currentUser);
+                     fragmentTransaction.add(fragment, "JoinGameFragment");
+
                 }
                 fragmentTransaction.commit();
                 loadGamesProgress.dismiss();
@@ -60,21 +65,6 @@ public class SelectGameActivity extends ActionBarActivity {
         final SelectGameActivity currentActivity = this;
 
         client.createGame(currentUser.getId(), nrOfQuestions).subscribe(new Action1<Game>() {
-            @Override
-            public void call(Game game) {
-                // Move to next screen
-                Intent intent = new Intent(currentActivity, LobbyActivity.class);
-                intent.putExtra("user", currentUser);
-                intent.putExtra("game", game);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void joinGame(Game game) {
-        final SelectGameActivity currentActivity = this;
-
-        client.addUserToGame(game.getId(), currentUser.getId()).subscribe(new Action1<Game>() {
             @Override
             public void call(Game game) {
                 // Move to next screen

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="20"
-        android:text="Join the Battle!"
+        android:text="Quiz with"
         android:id="@+id/txtBattle"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#368DEB"
@@ -23,22 +23,7 @@
         android:textSize="25dp"
       />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="20"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/txtName"
-        android:paddingLeft="10dp"
-        android:textColor="#000"
-        android:hint="Enter name"
-        android:layout_marginTop="10dp"
-        android:lines="1"
-        android:maxLines="1"
-        android:maxLength="20"
-        android:singleLine="true" />
+
 
 
     <LinearLayout
@@ -49,49 +34,31 @@
     android:orientation="vertical"
     >
 
-        <Button
-            android:layout_width="match_parent"
-            android:textColor="#ffffff"
-            android:layout_height="70dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/btnRedTeam"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textSize="15sp"
-            android:background="@drawable/btnredteam"
-            android:text="Red Team"
-            android:onClick="btn_Click"
+  <ListView
+      android:layout_width="fill_parent"
+      android:layout_height="0dp"
+      android:layout_weight="60"
+      android:id="@+id/userlistView"
+      >
 
-            />
+   </ListView>
 
-    <TextView
+
+
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:text="VS"
-        android:id="@+id/txtVS"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#368DEB"
-
-        />
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:textColor="#ffffff"
-            android:layout_height="70dp"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/btnBlueTeam"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:textSize="15sp"
-            android:background="@drawable/btnblueteam"
-            android:text="Blue Team"
-            android:onClick="btn_Click"
-            />
-
+        android:textColor="#ffffff"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/btnBlueTeam"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="15sp"
+        android:background="@drawable/btnblueteam"
+        android:text="Join"
+        android:onClick="btn_Click"
+    />
 
  </LinearLayout>
-
 
 </LinearLayout>
