@@ -3,9 +3,12 @@ package io.github.mobi_led.socialights;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Button;
@@ -32,6 +35,7 @@ public class QuizActivity extends Activity {
     private TextView quizQuestion;
     private Client client;
     private User user;
+    private ProgressBar progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +48,12 @@ public class QuizActivity extends Activity {
                 (Button) findViewById(R.id.button3),
                 (Button) findViewById(R.id.button4)};
 
+
         animScale = AnimationUtils.loadAnimation(this, R.anim.button_scale);
+        progress = (ProgressBar) findViewById(R.id.progressBar);
         Intent quizz = getIntent();
 
         mGame = (Game)quizz.getSerializableExtra("game");
-        Question question = mGame.getQuestion().getQuestion();
         user = (User)quizz.getSerializableExtra("user");
         quizQuestion = (TextView)findViewById(R.id.txtQuestion);
 
@@ -58,28 +63,13 @@ public class QuizActivity extends Activity {
         TextView teamTxt = (TextView)findViewById(R.id.txtWhichTeam);
         teamTxt.setText(mGame.getTeams().get(teamIdx).getName());
 
-        setQuestion(question);
-    }
-
-    private void setQuestion(Question question) {
-
-        Log.v("Asking question", question.getId());
-        Toast.makeText(this, question.getId(), Toast.LENGTH_SHORT);
-        quizQuestion.setText(question.getQuestion());
-        List<Answer> answerList = question.getAnswers();
-
-        for (int i= 0; i < answerList.size(); i++){
-           Button btn = buttons[i];
-           Answer answer =  answerList.get(i);
-           String answerText= answer.getAnswer();
-           btn.setText(answerText);
-           btn.setTag(answer);
-        }
+        setQuestionsThread(mGame);
     }
 
     public void btnClick(View view) {
 
         Answer userAnswer = (Answer) view.getTag();
+
         int feedbackColor = (userAnswer.getCorrect()) ? Color.rgb(0, 255, 0) : Color.rgb(255, 0, 0);
         findViewById(view.getId()).setBackgroundColor(feedbackColor);
 
@@ -88,14 +78,56 @@ public class QuizActivity extends Activity {
            view.startAnimation(animScale);
         }
 
-        //progressbar
+        progress.setVisibility(View.VISIBLE);
         client.answerQuestion(mGame.getId(), user.getId(), userAnswer.getId()).subscribe(new Action1<Game>() {
             @Override
             public void call(Game game) {
-                mGame = game;
-                setQuestion(game.getQuestion().getQuestion());
+                setQuestionsThread(game);
+                progress.setVisibility(View.INVISIBLE);
+            }
+        }, new Action1<Throwable>() {
+
+            @Override
+            public void call(Throwable throwable) {
+                Toast.makeText(getApplicationContext(),throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }
 
+    private void setQuestionsThread(final Game game) {
+        Log.i("QuizActivity", "setQuestionsThread " + game.getQuestion().getQuestion().getQuestion());
+
+        final Handler handler = new Handler();
+
+      //  if(mGame.getQuestion().getQuestion().getId() != game.getQuestion().getQuestion().getId())
+      //      mGame = game;
+
+        Runnable runnable = new Runnable() {
+
+            public void run() {
+
+                final Question question = game.getQuestion().getQuestion();
+                final List<Answer> answerList = question.getAnswers();
+
+                handler.post(new Runnable(){
+                    public void run() {
+                         quizQuestion.invalidate();
+                         quizQuestion.setText(question.getQuestion());
+
+                            for (int i= 0; i < answerList.size(); i++){
+                                Button btn = buttons[i];
+                                Answer answer =  answerList.get(i);
+                                String answerText= answer.getAnswer();
+                                btn.setEnabled(true);
+                                btn.setText(answerText);
+                                btn.setTag(answer);
+                                btn.setBackgroundColor(Color.parseColor("#EB9F3D"));
+                            }
+                        }
+
+                    });
+                }
+        };
+        new Thread(runnable).start();
+    }
 }
