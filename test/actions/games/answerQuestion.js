@@ -96,6 +96,19 @@ describe('Action: answerQuestion', function() {
     });
   });
 
+  it('should return an error for an invalid answer ID', function(done) {
+    api.specHelper.runAction('answerQuestion', {
+      user: user.id,
+      game: game.id,
+      answer: 'wtf'
+    }, function(response) {
+      should.exist(response.error);
+      should.not.exist(response.success);
+      response.error.should.equal('Error: Invalid Answer ID.');
+      done();
+    });
+  });
+
   it('should finish the game after answering the last question', function(done) {
     api.specHelper.runAction('answerQuestion', {
       user: user.id,

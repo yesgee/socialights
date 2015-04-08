@@ -31,6 +31,7 @@ module.exports = {
       // Render the Model
       connection.renderModel = function(propName, model, connection, next) {
         model.getFullJSON(function(err, model) {
+          /* istanbul ignore if */
           if (err) { return connection.handleModelError(err, next); }
 
           connection.response.success = true;
@@ -58,6 +59,7 @@ module.exports = {
             var objectId = api.mongo.ObjectID(connection.params[options.paramName].toString());
 
             api.models[options.modelName].findById(objectId, function(err, model) {
+              /* istanbul ignore if */
               if (err) { return connection.handleModelError(err, next); }
 
               if (model) {

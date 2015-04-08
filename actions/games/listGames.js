@@ -15,6 +15,7 @@ exports.listGames = {
 
   run: function(api, connection, next) {
     api.models.Game.find(function(err, games) {
+      /* istanbul ignore if */
       if (err) { return connection.handleModelError(err, next); }
 
       connection.response.success = true;

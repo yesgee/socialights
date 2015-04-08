@@ -15,6 +15,7 @@ exports.listUsers = {
 
   run: function(api, connection, next) {
     api.models.User.find(function(err, users) {
+      /* istanbul ignore if */
       if (err) { return connection.handleModelError(err, next); }
 
       connection.response.success = true;

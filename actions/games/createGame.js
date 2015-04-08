@@ -27,6 +27,7 @@ exports.createGame = {
 
     //insert random questions
     api.models.Question.findRandom({}, {}, {limit:nrOfQuestions}, function(err, result) {
+      /* istanbul ignore if */
       if (err) { return connection.handleModelError(err, next); }
 
       game.nextQuestions = map(result, function(question) {

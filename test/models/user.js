@@ -128,6 +128,28 @@ describe('Model: User', function() {
       });
     });
 
+    it('#leaveTeam should remove the user from a team', function(done) {
+      // TODO: Refactor this test
+
+      user.game = game;
+      game.users = [user];
+      game.teams[0].users = [user];
+
+      user.save(function(err) {
+        should.not.exist(err);
+        game.save(function(err) {
+          should.not.exist(err);
+          user.leaveTeam(function(err, result) {
+            should.not.exist(err);
+            user.getGame(function(err, game) {
+              game.teams[0].users.should.be.empty;
+              done();
+            });
+          });
+        });
+      });
+    });
+
     it('#switchTeam should require the user to be in the game before switching a team', function(done) {
       user.switchTeam(function(err, result) {
         should.exist(err);
@@ -149,6 +171,10 @@ describe('Model: User', function() {
       user.game = game;
 
       game.users = [user];
+      game.teams = [
+        { name: 'Red Team', color: '#ff0000', users: [], score: 0 },
+        { name: 'Blue Team', color: '#0000ff', users: [], score: 0 }
+      ];
 
       user.save(function(err, res) {
         should.not.exist(err);
@@ -172,6 +198,23 @@ describe('Model: User', function() {
         api.models.Game.findOne(game._id).exec(function(err, result) {
           result.users.should.be.empty;
           done();
+        });
+      });
+    });
+
+    it('should remove the user from his team', function(done) {
+      // TODO: Refactor this test
+
+      game.teams[0].users = [user];
+
+      game.save(function(err) {
+        should.not.exist(err);
+        user.leaveGame(function(err, result) {
+          should.not.exist(err);
+          api.models.Game.findOne(game._id).exec(function(err, game) {
+            game.teams[0].users.should.be.empty;
+            done();
+          });
         });
       });
     });

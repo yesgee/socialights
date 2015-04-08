@@ -35,8 +35,27 @@ describe('Action: createQuestion', function() {
     });
   });
 
-  it('should create a question and save it to the database', function(done){
+  it('should create a question and save it to the database (JSON)', function(done){
     var question = randomQuestion();
+    api.specHelper.runAction('createQuestion', question, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.success);
+      should.exist(response.question);
+      response.question.question.should.equal(question.question);
+      response.question.answers.length.should.equal(question.answers.length);
+      api.models.Question.findOne(response.question._id).exec(function(err, response) {
+        should.not.exist(err);
+        should.exist(response);
+        response.question.should.equal(question.question);
+        response.answers.length.should.equal(question.answers.length);
+        done();
+      });
+    });
+  });
+
+  it('should create a question and save it to the database (String)', function(done){
+    var question = randomQuestion();
+    question.answers = JSON.stringify(question.answers);
     api.specHelper.runAction('createQuestion', question, function(response) {
       should.not.exist(response.error);
       should.exist(response.success);

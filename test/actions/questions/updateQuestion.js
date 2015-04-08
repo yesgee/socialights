@@ -74,7 +74,20 @@ describe('Action: updateQuestion', function() {
     });
   });
 
-  it('should update the answers of an existing question', function(done) {
+  it('should update the answers of an existing question (JSON)', function(done) {
+    api.specHelper.runAction('updateQuestion', {
+      id: question.id,
+      answers: newAnswers
+      }, function(response) {
+      should.not.exist(response.error);
+      should.exist(response.success);
+      should.exist(response.question);
+      response.question.answers[0].answer.should.equal(newAnswers[0].answer);
+      done();
+    });
+  });
+
+  it('should update the answers of an existing question (String)', function(done) {
     api.specHelper.runAction('updateQuestion', {
       id: question.id,
       answers: JSON.stringify(newAnswers)

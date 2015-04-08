@@ -15,6 +15,7 @@ exports.listQuestions = {
 
   run: function(api, connection, next) {
     api.models.Question.find(function(err, questions) {
+      /* istanbul ignore if */
       if (err) {
         connection.response.success = false;
         connection.response.error = err;
