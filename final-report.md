@@ -38,11 +38,11 @@ We also limit ourselves to one coffee room here and there is scope to make it wo
 > Evaluation of the quality of the developed system based on achievement of the quality goals, quality metrics, group's opinion etc.
 > Known bugs, unfinished features, prospective development ideas.
 
-** Server **
+####Server
 
 Hylke and Jan can look into this
 
-** UI **
+####UI 
 
 * The User Interface is simple and user friendly. The application guides the user from the start of the game till the end.
 * The user is given the freedom to join any of the teams he likes to
@@ -51,22 +51,24 @@ Hylke and Jan can look into this
 Sowmya and Gayathri can add more points
 
 
-** Android-Server Connectivity **
+####Android-Server Connectivity 
+
 Samuel and Harika can look into this.
 
-** Hue lights **
+#### Hue lights 
 Hylke or Jan can fill up this
 
 ### Challenging Technological and Environment Aspects
 
-** Technological Aspects **
+####Technological Aspects 
+
 * To work with Hue lights and establish the connectivity with the server
-*
-Everyone can add things
+
+Everyone can add
 
 > List of all challenging technological and environment related aspects of the project that you want the tutor to consider when he evaluates the project's difficulty.
 
-** Environment Aspects **
+####Environment Aspects 
 * Coffee rooms and deploying it
 * Blinking lights in a manner that does not have a disturbing effect on the user
 
