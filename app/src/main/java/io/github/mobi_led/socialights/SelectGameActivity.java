@@ -6,9 +6,11 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +61,13 @@ public class SelectGameActivity extends ActionBarActivity {
                 }
                 fragmentTransaction.commit();
                 loadGamesProgress.dismiss();
+             }
+           }, new Action1<Throwable>() {
+
+            @Override
+            public void call(Throwable throwable) {
+                Log.e("SelectGameActivity", "onCreate() - Could not list Games: " + throwable.getMessage());
+                Toast.makeText(getApplicationContext(), "Could not list Games.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -68,13 +77,21 @@ public class SelectGameActivity extends ActionBarActivity {
         final SelectGameActivity currentActivity = this;
 
         client.createGame(currentUser.getId(), nrOfQuestions).subscribe(new Action1<Game>() {
-            @Override
-            public void call(Game game) {
+
+           @Override
+           public void call(Game game) {
                 // Move to next screen
                 Intent intent = new Intent(currentActivity, LobbyActivity.class);
                 intent.putExtra("user", currentUser);
                 intent.putExtra("game", game);
                 startActivity(intent);
+            }
+          }, new Action1<Throwable>() {
+
+            @Override
+            public void call(Throwable throwable) {
+                Log.e("SelectGameActivity", "createAndJoinNewGame() - Could not create Game: " + throwable.getMessage());
+                Toast.makeText(getApplicationContext(), "Could not create game.", Toast.LENGTH_SHORT).show();
             }
         });
     }

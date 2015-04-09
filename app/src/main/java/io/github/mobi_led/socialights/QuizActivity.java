@@ -20,6 +20,7 @@ import io.github.mobi_led.client.models.Game;
 import io.github.mobi_led.client.models.Answer;
 import io.github.mobi_led.client.models.Question;
 
+import io.github.mobi_led.client.models.Team;
 import io.github.mobi_led.client.models.User;
 import rx.functions.Action1;
 
@@ -36,10 +37,13 @@ public class QuizActivity extends Activity {
     private Client client;
     private User user;
     private ProgressBar progress;
+    private TextView teamTxt;
+    private int currentTeamIdx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_quiz);
         client = Client.getInstance();
 
@@ -59,11 +63,17 @@ public class QuizActivity extends Activity {
 
         TextView nameTxt = (TextView)findViewById(R.id.txtWhichUser);
         nameTxt.setText("Hello " + user.getName() + "!");
-        int teamIdx = quizz.getIntExtra("teamIndex", 0);
-        TextView teamTxt = (TextView)findViewById(R.id.txtWhichTeam);
-        teamTxt.setText(mGame.getTeams().get(teamIdx).getName());
+        currentTeamIdx = quizz.getIntExtra("teamIndex", 0);
+        teamTxt = (TextView)findViewById(R.id.txtWhichTeam);
+        Team currentTeam = mGame.getTeams().get(currentTeamIdx);
+        setTeamScore(currentTeam.getName() , currentTeam.getScore());
+
 
         setQuestionsThread(mGame);
+    }
+
+    private void setTeamScore(String name, int score){
+        teamTxt.setText(name + " | Score: " + score);
     }
 
     public void btnClick(View view) {
@@ -95,7 +105,14 @@ public class QuizActivity extends Activity {
     }
 
     private void setQuestionsThread(final Game game) {
-        Log.i("QuizActivity", "setQuestionsThread " + game.getQuestion().getQuestion().getQuestion());
+
+        if(game == null || game.getQuestion() == null || game.getQuestion().getQuestion() == null){
+           // No Question available
+            Toast.makeText(getApplication().getApplicationContext(),"setQuestionThread: No Question", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Log.i("QuizActivity", "setQuestionsThread ");
 
         final Handler handler = new Handler();
 
@@ -106,26 +123,34 @@ public class QuizActivity extends Activity {
 
             public void run() {
 
-                final Question question = game.getQuestion().getQuestion();
-                final List<Answer> answerList = question.getAnswers();
+              try{
 
-                handler.post(new Runnable(){
-                    public void run() {
-                         quizQuestion.invalidate();
-                         quizQuestion.setText(question.getQuestion());
+                  final Question question = game.getQuestion().getQuestion();
+                  final List<Answer> answerList = question.getAnswers();
 
-                            for (int i= 0; i < answerList.size(); i++){
-                                Button btn = buttons[i];
-                                Answer answer =  answerList.get(i);
-                                String answerText= answer.getAnswer();
-                                btn.setEnabled(true);
-                                btn.setText(answerText);
-                                btn.setTag(answer);
-                                btn.setBackgroundColor(Color.parseColor("#EB9F3D"));
-                            }
-                        }
+                  handler.post(new Runnable(){
+                      public void run() {
+                          quizQuestion.invalidate();
+                          quizQuestion.setText(question.getQuestion());
+                          Team team = game.getTeams().get(currentTeamIdx);
+                          setTeamScore(team.getName(), team.getScore());
 
-                    });
+                          for (int i= 0; i < answerList.size(); i++){
+                              Button btn = buttons[i];
+                              Answer answer =  answerList.get(i);
+                              String answerText= answer.getAnswer();
+                              btn.setEnabled(true);
+                              btn.setText(answerText);
+                              btn.setTag(answer);
+                              btn.setBackgroundColor(Color.parseColor("#EB9F3D"));
+                          }
+                      }
+                  });
+               }catch (Exception ex){
+                  Toast.makeText(getApplication().getApplicationContext(),
+                          "setQuestionThread " + ex.getMessage(), Toast.LENGTH_LONG).show();
+                  Log.i("QuizActivity", "setQuestionsThread " + ex.getMessage());
+              }
                 }
         };
         new Thread(runnable).start();

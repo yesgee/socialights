@@ -10,7 +10,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:orientation="horizontal">
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:background="#ffffd90c"
+        android:textAlignment="center"
+        android:padding="5dp"
+        android:alpha="50">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -18,7 +22,7 @@
         android:text="Hey Sam!"
         android:id="@+id/txtWhichUser"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000"
+        android:textColor="#ffffffff"
         android:gravity="center|left"
         android:textStyle="normal"
         android:textSize="15dp" >
@@ -30,7 +34,7 @@
             android:layout_weight="10"
             android:id="@+id/txtWhichTeam"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#000"
+            android:textColor="#FFFFFF"
             android:gravity="right"
             android:textStyle="normal"
             android:textSize="15dp" >
@@ -49,7 +53,8 @@
         android:id="@+id/txtQuestion"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#368DEB"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+         />
 
 
     <LinearLayout

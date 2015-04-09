@@ -6,12 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -60,6 +62,13 @@ public class JoinGameFragment extends ListFragment {
                          android.R.layout.simple_list_item_1, android.R.id.text1, names);
                  setListAdapter(adapter);
              }
+         }, new Action1<Throwable>() {
+
+             @Override
+             public void call(Throwable throwable) {
+                 Log.e("JoinGameFragment", "listUsers() - Could not list Users: " + throwable.getMessage());
+                 Toast.makeText(getActivity().getApplicationContext(), "Could list users.", Toast.LENGTH_SHORT).show();
+             }
          });
 
     }
@@ -91,6 +100,13 @@ public class JoinGameFragment extends ListFragment {
                 intent.putExtra("user", currentUser);
                 intent.putExtra("game", game);
                 startActivity(intent);
+            }
+        }, new Action1<Throwable>() {
+
+            @Override
+            public void call(Throwable throwable) {
+                Log.e("JoinGameFragment", "addUserToGame() - Could not add user to Game: " + throwable.getMessage());
+                Toast.makeText(getActivity().getApplicationContext(), "Could not add user to Game.", Toast.LENGTH_SHORT).show();
             }
         });
     }

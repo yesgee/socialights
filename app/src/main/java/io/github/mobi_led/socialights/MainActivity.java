@@ -17,7 +17,6 @@ public class MainActivity extends Activity {
 
     private EditText userName;
     private Button startPlaying;
-
     private Client client;
 
     @Override
@@ -41,6 +40,7 @@ public class MainActivity extends Activity {
         Log.i("GameStartActivity", "Registering User " + username);
 
         client.createUser(username).subscribe(new Action1<User>() {
+
             @Override
             public void call(User user) {
                 Log.i("GameStartActivity", "Registered User " + user.getId());
