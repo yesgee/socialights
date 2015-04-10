@@ -49,7 +49,7 @@ public class SelectGameActivity extends ActionBarActivity {
 
                 if (games.size() == 0 || games.get(games.size() - 1).getFinished()) {
 
-                     NewGameFragment fragment = new NewGameFragment();
+                     NewGameFragment fragment = NewGameFragment.newInstance(currentUser);
                      fragmentTransaction.add(fragment, "NewGameFragment");
                      fragmentTransaction.replace(R.id.frame, fragment);
 
@@ -73,28 +73,6 @@ public class SelectGameActivity extends ActionBarActivity {
 
     }
 
-    public void createAndJoinNewGame(int nrOfQuestions) {
-        final SelectGameActivity currentActivity = this;
-
-        client.createGame(currentUser.getId(), nrOfQuestions).subscribe(new Action1<Game>() {
-
-           @Override
-           public void call(Game game) {
-                // Move to next screen
-                Intent intent = new Intent(currentActivity, LobbyActivity.class);
-                intent.putExtra("user", currentUser);
-                intent.putExtra("game", game);
-                startActivity(intent);
-            }
-          }, new Action1<Throwable>() {
-
-            @Override
-            public void call(Throwable throwable) {
-                Log.e("SelectGameActivity", "createAndJoinNewGame() - Could not create Game: " + throwable.getMessage());
-                Toast.makeText(getApplicationContext(), "Could not create game.", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

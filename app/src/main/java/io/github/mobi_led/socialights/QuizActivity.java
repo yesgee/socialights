@@ -68,7 +68,6 @@ public class QuizActivity extends Activity {
         Team currentTeam = mGame.getTeams().get(currentTeamIdx);
         setTeamScore(currentTeam.getName() , currentTeam.getScore());
 
-
         setQuestionsThread(mGame);
     }
 
