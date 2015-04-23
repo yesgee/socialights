@@ -15,7 +15,6 @@ import io.github.mobi_led.client.models.Game;
 import io.github.mobi_led.client.models.Question;
 import io.github.mobi_led.client.models.User;
 import rx.Observable;
-import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func0;
 import rx.functions.Func1;
@@ -145,12 +144,14 @@ public class Client extends Connection {
             }).subscribe(new Action1<JSONObject>() {
                 @Override
                 public void call(JSONObject jsonObject) {
-                    fetch(game).subscribe(new Action1<Game>() {
-                        @Override
-                        public void call(Game game) {
-                            subject.onNext(game);
-                        }
-                    });
+                    if (subject.hasObservers()) {
+                        fetch(game).subscribe(new Action1<Game>() {
+                            @Override
+                            public void call(Game game) {
+                                subject.onNext(game);
+                            }
+                        });
+                    }
                 }
             });
 
@@ -177,12 +178,14 @@ public class Client extends Connection {
             }).subscribe(new Action1<JSONObject>() {
                 @Override
                 public void call(JSONObject jsonObject) {
-                    fetch(question).subscribe(new Action1<Question>() {
-                        @Override
-                        public void call(Question question) {
-                            subject.onNext(question);
-                        }
-                    });
+                    if (subject.hasObservers()) {
+                        fetch(question).subscribe(new Action1<Question>() {
+                            @Override
+                            public void call(Question question) {
+                                subject.onNext(question);
+                            }
+                        });
+                    }
                 }
             });
 
@@ -210,12 +213,14 @@ public class Client extends Connection {
             }).subscribe(new Action1<JSONObject>() {
                 @Override
                 public void call(JSONObject jsonObject) {
-                    fetch(user).subscribe(new Action1<User>() {
-                        @Override
-                        public void call(User user) {
-                            subject.onNext(user);
-                        }
-                    });
+                    if (subject.hasObservers()) {
+                        fetch(user).subscribe(new Action1<User>() {
+                            @Override
+                            public void call(User user) {
+                                subject.onNext(user);
+                            }
+                        });
+                    }
                 }
             });
 
