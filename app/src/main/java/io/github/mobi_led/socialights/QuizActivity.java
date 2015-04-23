@@ -92,15 +92,28 @@ public class QuizActivity extends Activity {
         client.answerQuestion(mGame.getId(), user.getId(), userAnswer.getId()).subscribe(new Action1<Game>() {
             @Override
             public void call(Game game) {
-                setQuestionsThread(game);
+
                 logQuestions(game.getPreviousQuestions());
-                progress.setVisibility(View.INVISIBLE);
+
             }
         }, new Action1<Throwable>() {
 
             @Override
             public void call(Throwable throwable) {
                 Toast.makeText(getApplicationContext(),throwable.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        client.askNextQuestion(mGame.getId()).subscribe(new Action1<Game>() {
+            @Override
+            public void call(Game game) {
+                setQuestionsThread(game);
+                progress.setVisibility(View.INVISIBLE);
+            }
+        }, new Action1<Throwable>() {
+            @Override
+            public void call(Throwable throwable) {
+               Toast.makeText(getApplicationContext(),throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

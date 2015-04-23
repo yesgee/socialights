@@ -61,15 +61,26 @@ public class NewGameFragment extends Fragment {
 
     public void createAndJoinNewGame(int nrOfQuestions) {
 
+
         client.createGame(currentUser.getId(), nrOfQuestions).subscribe(new Action1<Game>() {
 
             @Override
             public void call(Game game) {
                 // Move to next screen
-                Intent intent = new Intent(getActivity(), LobbyActivity.class);
-                intent.putExtra("user", currentUser);
-                intent.putExtra("game", game);
-                startActivity(intent);
+                client.startGame(game.getId()).subscribe(new Action1<Game>() {
+                    @Override
+                    public void call(Game game) {
+                        Intent intent = new Intent(getActivity(), LobbyActivity.class);
+                        intent.putExtra("user", currentUser);
+                        intent.putExtra("game", game);
+                        startActivity(intent);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Toast.makeText(getActivity().getApplicationContext(), "Could not start game.", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         }, new Action1<Throwable>() {
 
@@ -79,6 +90,8 @@ public class NewGameFragment extends Fragment {
                 Toast.makeText(getActivity().getApplicationContext(), "Could not create game.", Toast.LENGTH_SHORT).show();
             }
         });
+
+
     }
 
 }
