@@ -65,6 +65,7 @@ public class Connection implements Runnable {
 
     private void send(String message) {
         this.out.println(message);
+        this.out.flush();
     }
 
     public Observable<JSONObject> call(String message) {
@@ -216,7 +217,7 @@ public class Connection implements Runnable {
                     Log.v("Connection", "processing out");
 
                     outLine = request.getMessage();
-                    this.out.println(outLine);
+                    this.send(outLine);
                     Log.v("Connection", "run() - Sent line " + outLine);
                 }
             }
