@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import io.github.mobi_led.client.models.Base;
@@ -36,6 +37,21 @@ public class Client extends Connection {
         return this.action("showGame", params).map(modelMapper);
     }
 
+    public Observable<Game> fetch(final Game game) {
+        JSONObject params = new JSONObject();
+        try {
+            params.put("id", game.getId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ModelMapper<Game> modelMapper = new ModelMapper("game", new Func0() {
+            public Game call() {
+                return game;
+            }
+        });
+        return this.action("showGame", params).map(modelMapper);
+    }
+
     public Observable<Question> showQuestion(String id) {
         JSONObject params = new JSONObject();
         try {
@@ -44,6 +60,21 @@ public class Client extends Connection {
             e.printStackTrace();
         }
         ModelMapper<Question> modelMapper = new ModelMapper("question", this.questionGenerator);
+        return this.action("showQuestion", params).map(modelMapper);
+    }
+
+    public Observable<Question> fetch(final Question question) {
+        JSONObject params = new JSONObject();
+        try {
+            params.put("id", question.getId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ModelMapper<Question> modelMapper = new ModelMapper("question", new Func0() {
+            public Question call() {
+                return question;
+            }
+        });
         return this.action("showQuestion", params).map(modelMapper);
     }
 
@@ -56,6 +87,113 @@ public class Client extends Connection {
         }
         ModelMapper<User> modelMapper = new ModelMapper("user", this.userGenerator);
         return this.action("showUser", params).map(modelMapper);
+    }
+
+    public Observable<User> fetch(final User user) {
+        JSONObject params = new JSONObject();
+        try {
+            params.put("id", user.getId());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ModelMapper<User> modelMapper = new ModelMapper("user", new Func0() {
+            public User call() {
+                return user;
+            }
+        });
+        return this.action("showUser", params).map(modelMapper);
+    }
+
+    // Watching Models
+
+    public Observable<JSONObject> modelUpdates() {
+        return this.room("updates:models").map(new Func1<JSONObject, JSONObject>() {
+            @Override
+            public JSONObject call(JSONObject jsonObject) {
+                try {
+                    return jsonObject.getJSONObject("message");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }
+        });
+    }
+
+    private HashMap<String, Observable<Game>> gameObservables = new HashMap<>();
+    private HashMap<String, Observable<Question>> questionObservables = new HashMap<>();
+    private HashMap<String, Observable<User>> userObservables = new HashMap<>();
+
+    public Observable<Game> watch(final Game game) {
+        if (!gameObservables.containsKey(game.getId())) {
+            Observable<Game> observable = this.modelUpdates().filter(new Func1<JSONObject, Boolean>() {
+                @Override
+                public Boolean call(JSONObject item) {
+                    try {
+                        return item.has("model") && item.getString("model").equals("game") &&
+                               item.has("id") && item.getString("id").equals(game.getId());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    return false;
+                }
+            }).flatMap(new Func1<JSONObject, Observable<Game>>() {
+                @Override
+                public Observable<Game> call(JSONObject jsonObject) {
+                    return fetch(game);
+                }
+            });
+            gameObservables.put(game.getId(), observable);
+        }
+        return gameObservables.get(game.getId());
+    }
+
+    public Observable<Question> watch(final Question question) {
+        if (!questionObservables.containsKey(question.getId())) {
+            Observable<Question> observable = this.modelUpdates().filter(new Func1<JSONObject, Boolean>() {
+                @Override
+                public Boolean call(JSONObject item) {
+                    try {
+                        return item.has("model") && item.getString("model").equals("question") &&
+                               item.has("id") && item.getString("id").equals(question.getId());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    return false;
+                }
+            }).flatMap(new Func1<JSONObject, Observable<Question>>() {
+                @Override
+                public Observable<Question> call(JSONObject jsonObject) {
+                    return fetch(question);
+                }
+            });
+            questionObservables.put(question.getId(), observable);
+        }
+        return questionObservables.get(question.getId());
+    }
+
+    public Observable<User> watch(final User user) {
+        if (!userObservables.containsKey(user.getId())) {
+            Observable<User> observable = this.modelUpdates().filter(new Func1<JSONObject, Boolean>() {
+                @Override
+                public Boolean call(JSONObject item) {
+                    try {
+                        return item.has("model") && item.getString("model").equals("user") &&
+                               item.has("id") && item.getString("id").equals(user.getId());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    return false;
+                }
+            }).flatMap(new Func1<JSONObject, Observable<User>>() {
+                @Override
+                public Observable<User> call(JSONObject jsonObject) {
+                    return fetch(user);
+                }
+            });
+            userObservables.put(user.getId(), observable);
+        }
+        return userObservables.get(user.getId());
     }
 
     // List Actions
