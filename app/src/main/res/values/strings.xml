@@ -16,4 +16,5 @@
     <string name="main_startPlaying_error">Error</string>
     <string name="title_activity_select_game">Join Quiz</string>
     <string name="lobby_start_playing">Start Playing</string>
+    <string name="title_activity_game_finished">GameFinishedActivity</string>
 </resources>

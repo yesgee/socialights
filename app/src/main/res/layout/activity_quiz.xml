@@ -1,179 +1,129 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:weightSum="100"
-    android:minWidth="25px"
-    android:minHeight="25px"
     android:background="@android:color/background_light"
-   >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:orientation="horizontal"
-        android:background="#ffffd90c"
-        android:textAlignment="center"
-        android:padding="5dp"
-        android:alpha="50">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_weight="10"
-        android:text="Hey Sam!"
-        android:id="@+id/txtWhichUser"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ffffffff"
-        android:gravity="center|left"
-        android:textStyle="normal"
-        android:textSize="15dp" >
-
-        </TextView>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_weight="10"
-            android:id="@+id/txtWhichTeam"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#FFFFFF"
-            android:gravity="right"
-            android:textStyle="normal"
-            android:textSize="15dp" >
-
-        </TextView>
-
-</LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_weight="20"
-        android:gravity="center|center_vertical"
-        android:text="ibero ex dolorem voluptatibus est ea in accusamus eos voluptatem?"
-        android:textAlignment="gravity"
-        android:id="@+id/txtQuestion"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#368DEB"
-        android:textSize="20dp"
-         />
-
+    android:orientation="vertical"
+    tools:context="io.github.mobi_led.socialights.QuizActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:orientation="horizontal">
+        android:alpha="50"
+        android:background="#ffffd90c"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <Button
-            android:layout_width="90dp"
-            android:layout_height="146dp"
-
-            android:textSize="12sp"
-            android:text="Button 1"
-            android:textColor="#FFFFFF"
+        <TextView
+            android:id="@+id/txtWhichUser"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:id="@+id/button1"
-            android:onClick="btnClick"
-            android:layout_gravity="left"
-            android:background="@drawable/btn_answer"
-            android:textAlignment="gravity" />
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-        <Button
-            android:layout_width="90dp"
-            android:layout_height="146dp"
-            android:textSize="12sp"
-            android:text="Button 2"
+            android:gravity="center|left"
+            android:text="Hey There!"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffffff"
+            android:textSize="15dp"
+            android:textStyle="normal">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtWhichTeam"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
+            android:gravity="center|right"
+            android:text="Team"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#FFFFFF"
-            android:id="@+id/button2"
-            android:onClick="btnClick"
-            android:layout_gravity="right"
-            android:background="@drawable/btn_answer"
-            android:textAlignment="gravity" />
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:textSize="15dp"
+            android:textStyle="normal">
+
+        </TextView>
+
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/txtQuestionFor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Question for Team x:"
+        android:layout_gravity="center_horizontal" />
 
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
 
-         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true">
+        android:gravity="center|center_vertical"
+        android:text="Waiting for question..."
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#368DEB"
+        android:textSize="20dp" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-             <Button
-                 android:id="@+id/button3"
-                 android:onClick="btnClick"
-                 android:text="Button"
-                 android:textColor="#FFFFFF"
-                 android:textSize="12sp"
-                 android:layout_width="90dp"
-                 android:layout_height="146dp"
-                 android:layout_weight="1"
-                 android:background="@drawable/btn_answer"
-                 android:textAlignment="gravity"
-                 />
-
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-
-             <Button
-                android:layout_width="90dp"
-                android:layout_height="146dp"
-                android:text="Button 4"
-                android:textSize="12sp"
-                android:layout_weight="1"
-                android:id="@+id/button4"
-                 android:textColor="#FFFFFF"
-                android:onClick="btnClick"
-                android:layout_gravity="right"
-                android:background="@drawable/btn_answer"
-                android:textAlignment="gravity" />
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="40"
-        android:minHeight="25dp"
-        android:minWidth="25dp">
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/button1"
+            android:onClick="btnClick"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="Answer"
+            android:textAlignment="gravity"
+            android:layout_weight="1" />
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
-            android:layout_centerInParent="true"
-            android:background="@drawable/progressbarstyle"
-            android:indeterminate="true"
-            android:visibility="invisible" />
-    </RelativeLayout>
+        <Button
+            android:id="@+id/button2"
+            android:onClick="btnClick"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="Answer"
+            android:textAlignment="gravity"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button3"
+            android:onClick="btnClick"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="Answer"
+            android:textAlignment="gravity"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button4"
+            android:onClick="btnClick"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="Answer"
+            android:textAlignment="gravity"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </LinearLayout>
