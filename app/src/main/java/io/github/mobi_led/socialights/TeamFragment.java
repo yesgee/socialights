@@ -31,12 +31,11 @@ public class TeamFragment extends ListFragment {
     private Game currentGame;
     private User currentUser;
 
-    public static TeamFragment newInstance(Team team) {
+    public static TeamFragment newInstance(Team team, User currentUser) {
         TeamFragment fragment = new TeamFragment();
         Bundle args = new Bundle();
         args.putSerializable("team", team);
-       // args.putSerializable("game", currentGame);
-       // args.putSerializable("user", currentUser);
+        args.putSerializable("user", currentUser);
 
         fragment.setArguments(args);
         return fragment;
@@ -52,6 +51,7 @@ public class TeamFragment extends ListFragment {
 
         if (getArguments() != null) {
             team = (Team) getArguments().getSerializable("team");
+            currentUser = (User) getArguments().getSerializable("user");
         }
 
         final ArrayList<String> names = new ArrayList<String> ();
@@ -74,6 +74,10 @@ public class TeamFragment extends ListFragment {
         Button button = (Button) view.findViewById(R.id.joinTeam);
         teamName = (TextView)view.findViewById(R.id.teamName);
         teamName.setText(team.getName());
+
+        if (team.equals(currentUser.getTeam())) {
+            button.setText("Leave");
+        }
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

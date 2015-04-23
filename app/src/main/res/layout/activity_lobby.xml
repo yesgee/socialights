@@ -30,6 +30,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:enabled="false"
+        android:onClick="startGame"
         android:text="@string/lobby_start_playing" />
 
 </LinearLayout>
