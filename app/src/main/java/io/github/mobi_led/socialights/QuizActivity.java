@@ -16,6 +16,7 @@ import android.widget.Button;
 import java.util.List;
 
 import io.github.mobi_led.client.Client;
+import io.github.mobi_led.client.models.AskedQuestion;
 import io.github.mobi_led.client.models.Game;
 import io.github.mobi_led.client.models.Answer;
 import io.github.mobi_led.client.models.Question;
@@ -92,6 +93,7 @@ public class QuizActivity extends Activity {
             @Override
             public void call(Game game) {
                 setQuestionsThread(game);
+                logQuestions(game.getPreviousQuestions());
                 progress.setVisibility(View.INVISIBLE);
             }
         }, new Action1<Throwable>() {
@@ -101,6 +103,17 @@ public class QuizActivity extends Activity {
                 Toast.makeText(getApplicationContext(),throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void logQuestions(List<AskedQuestion> questions){
+          if(questions == null || questions.size() == 0)
+          {
+              Log.i("logQuestions ", "Nothing to log");
+              return;
+          }
+        for (int i = 0; i < questions.size(); i++) {
+          Log.i("logQuestions: " + i, questions.get(i).getAskedAt().toString());
+        }
     }
 
     private void setQuestionsThread(final Game game) {
