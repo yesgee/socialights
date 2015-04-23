@@ -15,8 +15,11 @@ import io.github.mobi_led.client.models.Game;
 import io.github.mobi_led.client.models.Question;
 import io.github.mobi_led.client.models.User;
 import rx.Observable;
+import rx.Subscriber;
+import rx.functions.Action1;
 import rx.functions.Func0;
 import rx.functions.Func1;
+import rx.subjects.PublishSubject;
 
 public class Client extends Connection {
 
@@ -126,72 +129,97 @@ public class Client extends Connection {
 
     public Observable<Game> watch(final Game game) {
         if (!gameObservables.containsKey(game.getId())) {
-            Observable<Game> observable = this.modelUpdates().filter(new Func1<JSONObject, Boolean>() {
+            final PublishSubject<Game> subject = PublishSubject.create();
+
+            this.modelUpdates().filter(new Func1<JSONObject, Boolean>() {
                 @Override
                 public Boolean call(JSONObject item) {
                     try {
                         return item.has("model") && item.getString("model").equals("game") &&
-                               item.has("id") && item.getString("id").equals(game.getId());
+                                item.has("id") && item.getString("id").equals(game.getId());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     return false;
                 }
-            }).flatMap(new Func1<JSONObject, Observable<Game>>() {
+            }).subscribe(new Action1<JSONObject>() {
                 @Override
-                public Observable<Game> call(JSONObject jsonObject) {
-                    return fetch(game);
+                public void call(JSONObject jsonObject) {
+                    fetch(game).subscribe(new Action1<Game>() {
+                        @Override
+                        public void call(Game game) {
+                            subject.onNext(game);
+                        }
+                    });
                 }
             });
-            gameObservables.put(game.getId(), observable);
+
+            gameObservables.put(game.getId(), subject);
         }
         return gameObservables.get(game.getId());
     }
 
     public Observable<Question> watch(final Question question) {
         if (!questionObservables.containsKey(question.getId())) {
-            Observable<Question> observable = this.modelUpdates().filter(new Func1<JSONObject, Boolean>() {
+            final PublishSubject<Question> subject = PublishSubject.create();
+
+            this.modelUpdates().filter(new Func1<JSONObject, Boolean>() {
                 @Override
                 public Boolean call(JSONObject item) {
                     try {
                         return item.has("model") && item.getString("model").equals("question") &&
-                               item.has("id") && item.getString("id").equals(question.getId());
+                                item.has("id") && item.getString("id").equals(question.getId());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     return false;
                 }
-            }).flatMap(new Func1<JSONObject, Observable<Question>>() {
+            }).subscribe(new Action1<JSONObject>() {
                 @Override
-                public Observable<Question> call(JSONObject jsonObject) {
-                    return fetch(question);
+                public void call(JSONObject jsonObject) {
+                    fetch(question).subscribe(new Action1<Question>() {
+                        @Override
+                        public void call(Question question) {
+                            subject.onNext(question);
+                        }
+                    });
                 }
             });
-            questionObservables.put(question.getId(), observable);
+
+            questionObservables.put(question.getId(), subject);
         }
         return questionObservables.get(question.getId());
     }
 
     public Observable<User> watch(final User user) {
         if (!userObservables.containsKey(user.getId())) {
-            Observable<User> observable = this.modelUpdates().filter(new Func1<JSONObject, Boolean>() {
+            final PublishSubject<User> subject = PublishSubject.create();
+
+            Log.i("Client", "New UserObservable...");
+            this.modelUpdates().filter(new Func1<JSONObject, Boolean>() {
                 @Override
                 public Boolean call(JSONObject item) {
                     try {
                         return item.has("model") && item.getString("model").equals("user") &&
-                               item.has("id") && item.getString("id").equals(user.getId());
+                                item.has("id") && item.getString("id").equals(user.getId());
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     return false;
                 }
-            }).flatMap(new Func1<JSONObject, Observable<User>>() {
+            }).subscribe(new Action1<JSONObject>() {
                 @Override
-                public Observable<User> call(JSONObject jsonObject) {
-                    return fetch(user);
+                public void call(JSONObject jsonObject) {
+                    fetch(user).subscribe(new Action1<User>() {
+                        @Override
+                        public void call(User user) {
+                            subject.onNext(user);
+                        }
+                    });
                 }
             });
-            userObservables.put(user.getId(), observable);
+
+            userObservables.put(user.getId(), subject);
         }
         return userObservables.get(user.getId());
     }
