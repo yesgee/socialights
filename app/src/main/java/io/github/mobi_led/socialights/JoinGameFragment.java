@@ -49,6 +49,16 @@ public class JoinGameFragment extends ListFragment {
             public void call(Game game) {
                 for (int i = 0; i < game.getUsers().size(); i++) {
                     names.add(game.getUsers().get(i).getName());
+
+                    // Go directly to lobby if already joined
+                    if (game.getUsers().get(i).getId().equals(currentUser.getId())) {
+                        // Move to next screen
+                        Intent intent = new Intent(getActivity(), LobbyActivity.class);
+                        intent.putExtra("user", currentUser);
+                        intent.putExtra("game", game);
+                        startActivity(intent);
+                        return;
+                    }
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
