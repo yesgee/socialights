@@ -7,6 +7,7 @@ public class User extends Base {
 
     private String name;
     private Game game;
+    private Team team;
 
     public String getName() {
         return this.name;
@@ -22,6 +23,14 @@ public class User extends Base {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public Team getTeam() {
+        return this.team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 
     public JSONObject toJSON() throws JSONException {
