@@ -32,6 +32,14 @@ angular.module('adminControllers').controller('QuestionListCtrl', ['$scope', fun
   $scope.clearSelectedQuestion();
   $scope.getQuestions();
 
+  $scope.selectAnswer = function(answer) {
+    var answers = $scope.selectedQuestion.answers;
+    for (var i = 0; i < answers.length; i++) {
+      answers[i].correct = answers[i] === answer;
+      console.log(answers[i].correct);
+    }
+  };
+
   $scope.selectQuestion = function(question) {
     if (!$scope.selectedQuestion || $scope.selectedQuestion.id !== question.id) {
       client.action('showQuestion', {id: question.id}, function(err, data) {

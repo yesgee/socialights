@@ -37,7 +37,7 @@
           <input type="text" class="form-control" placeholder="Feedback" ng-model="answer.feedback">
         </div>
         <div class="col-sm-1">
-          <input type="radio" name="answerRadio" ng-model="answer.correct" ng-value="true" />
+          <input type="radio" name="answerRadio" ng-model="answer.correct" ng-value="true" ng-click="selectAnswer(answer)" />
         </div>
     </div>
   </div>
