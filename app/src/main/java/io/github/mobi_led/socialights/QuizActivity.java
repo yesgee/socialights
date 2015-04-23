@@ -102,7 +102,6 @@ public class QuizActivity extends Activity {
                 } else {
                     correctly = "incorrectly";
                 }
-
                 questionForTxt.setText("Question answered " + correctly + " by " + team.getName() + ":");
             } else {
                 questionForTxt.setText("Question for " + team.getName() + ":");
@@ -139,12 +138,14 @@ public class QuizActivity extends Activity {
 
         Answer answer = (Answer) view.getTag();
 
-        client.answerQuestion(currentGame.getId(), currentUser.getId(), answer.getId()).subscribe(new Action1<Game>() {
-            @Override
-            public void call(Game game) {
+        if (currentGame.getQuestion().getAnswer() == null) {
+            client.answerQuestion(currentGame.getId(), currentUser.getId(), answer.getId()).subscribe(new Action1<Game>() {
+                @Override
+                public void call(Game game) {
 
-            }
-        });
+                }
+            });
+        }
 
     }
 
