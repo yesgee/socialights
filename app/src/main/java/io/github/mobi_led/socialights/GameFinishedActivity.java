@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
+import io.github.mobi_led.client.models.Game;
+import io.github.mobi_led.client.models.Team;
 import io.github.mobi_led.client.models.User;
 
 
@@ -20,6 +23,20 @@ public class GameFinishedActivity extends ActionBarActivity {
         setContentView(R.layout.activity_game_finished);
 
         currentUser = (User) getIntent().getExtras().get("user");
+        Game game = (Game)getIntent().getExtras().get("game");
+
+
+        for (int i = 0; i < game.getTeams().size(); i++) {
+            Team team = game.getTeams().get(i);
+            if(team.getName().equals("Red Team")){
+                TextView redScore = (TextView)findViewById(R.id.teamRedScore);
+                redScore.setText("Scored: " + team.getScore());
+            }
+            else{
+                TextView blueScore = (TextView)findViewById(R.id.teamBlueScore);
+                blueScore.setText("Scored: " + team.getScore());
+            }
+        }
     }
 
 
