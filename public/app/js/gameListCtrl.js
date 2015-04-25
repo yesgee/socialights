@@ -160,17 +160,28 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
 
   $scope.getGames();
 
+  var updateInterval;
+
   $scope.selectGame = function(game) {
     if (!$scope.selectedGame || $scope.selectedGame.id !== game.id) {
-      client.action('showGame', {id: game.id}, function(err, data) {
-        if (data.error) {
-          console.log(data.error);
-        } else {
-          $scope.selectedGame = jQuery.extend(true, {}, data.game);
-          $scope.game = jQuery.extend(true, {}, data.game);
-          $scope.$digest();
-        }
-      });
+      if (updateInterval) {
+        clearInterval(updateInterval);
+      }
+
+      var getGame = function() {
+        client.action('showGame', {id: game.id}, function(err, data) {
+          if (data.error) {
+            console.log(data.error);
+          } else {
+            $scope.selectedGame = jQuery.extend(true, {}, data.game);
+            $scope.game = jQuery.extend(true, {}, data.game);
+            $scope.$digest();
+          }
+        });
+      };
+      getGame();
+
+      updateInterval = setInterval(getGame, 2000);
     }
   };
 
@@ -226,7 +237,11 @@ angular.module('adminControllers').controller('GameListCtrl', ['$scope', functio
 
     if (!$scope.selectedGame.startedAt) {
       showAlert(startAlert);
-    } else if ($scope.selectedGame.question && !$scope.selectedGame.question.answeredAt) {
+    } else if (
+      $scope.selectedGame.question &&
+      !$scope.selectedGame.question.answeredAt &&
+      (new Date($scope.selectedGame.question.deadlineAt)).getTime() > (new Date()).getTime()
+    ) {
       showAlert(answerAlert);
     } else {
       client.action('askNextQuestion', {game: $scope.selectedGame.id}, function(err, data) {
