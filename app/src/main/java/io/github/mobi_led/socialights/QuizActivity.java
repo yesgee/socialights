@@ -104,7 +104,7 @@ public class QuizActivity extends Activity {
                             askedAt = currentQuestion.getAskedAt().getTime();
                             deadlineAt = currentQuestion.getDeadlineAt().getTime();
 
-                            if (askedAt <= now && deadlineAt > now) {
+                            if (askedAt <= now && deadlineAt > now && currentQuestion.getAnsweredAt() == null) {
                                 // Active Question
                                 long totalTime = deadlineAt - askedAt;
                                 long timeLeft = deadlineAt - now;
