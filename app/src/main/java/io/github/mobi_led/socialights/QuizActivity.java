@@ -3,6 +3,8 @@ package io.github.mobi_led.socialights;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -10,14 +12,19 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.concurrent.TimeUnit;
+
 import io.github.mobi_led.client.Client;
 import io.github.mobi_led.client.models.Answer;
 import io.github.mobi_led.client.models.AskedQuestion;
 import io.github.mobi_led.client.models.Game;
 import io.github.mobi_led.client.models.Team;
 import io.github.mobi_led.client.models.User;
+import rx.Observable;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public class QuizActivity extends Activity {
 
@@ -28,10 +35,12 @@ public class QuizActivity extends Activity {
     private Client client;
     private User currentUser;
     private ProgressBar progress;
+    private Handler handler = new Handler();
     private TextView teamTxt;
     private TextView nameTxt;
     private TextView questionForTxt;
     private int currentTeamIdx;
+    private Observable<Long> interval;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,9 @@ public class QuizActivity extends Activity {
         nameTxt = (TextView) findViewById(R.id.txtWhichUser);
         teamTxt = (TextView) findViewById(R.id.txtWhichTeam);
 
+        interval = Observable.interval(100l, TimeUnit.MILLISECONDS);
+        progress = (ProgressBar) findViewById(R.id.progressBar);
+
         currentUser = (User) getIntent().getExtras().get("user");
         currentGame = (Game) getIntent().getExtras().get("game");
         currentTeamIdx = getIntent().getExtras().getInt("teamIndex", 0);
@@ -59,6 +71,8 @@ public class QuizActivity extends Activity {
 
     private Subscription gameSubscription;
 
+    private Subscription progressSubscription;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -69,6 +83,42 @@ public class QuizActivity extends Activity {
                 onGameUpdate();
             }
         });
+
+        progressSubscription = interval
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Long>() {
+                    private long askedAt;
+                    private long deadlineAt;
+                    private long now;
+
+                    @Override
+                    public void call(Long aLong) {
+                        AskedQuestion currentQuestion = currentGame.getQuestion();
+
+                        if (currentQuestion != null) {
+                            Time n = new Time();
+                            n.setToNow();
+                            now = n.toMillis(true);
+
+                            askedAt = currentQuestion.getAskedAt().getTime();
+                            deadlineAt = currentQuestion.getDeadlineAt().getTime();
+
+                            if (askedAt <= now && deadlineAt > now) {
+                                // Active Question
+                                long totalTime = deadlineAt - askedAt;
+                                long timeLeft = deadlineAt - now;
+                                progress.setMax((int) totalTime);
+                                progress.setProgress((int) timeLeft);
+                            } else {
+                                progress.setMax(100);
+                                progress.setProgress(0);
+                            }
+                        }
+
+                    }
+                });
+
         onGameUpdate();
     }
 
@@ -76,6 +126,7 @@ public class QuizActivity extends Activity {
     protected void onPause() {
         super.onPause();
         gameSubscription.unsubscribe();
+        progressSubscription.unsubscribe();
     }
 
     protected void onGameUpdate() {
