@@ -1,17 +1,25 @@
 package io.github.mobi_led.socialights;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import io.github.mobi_led.client.models.User;
 
 
 public class GameFinishedActivity extends ActionBarActivity {
+
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_finished);
+
+        currentUser = (User) getIntent().getExtras().get("user");
     }
 
 
@@ -35,5 +43,11 @@ public class GameFinishedActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void newGame(View view) {
+        Intent intent = new Intent(this, SelectGameActivity.class);
+        intent.putExtra("user", currentUser);
+        startActivity(intent);
     }
 }

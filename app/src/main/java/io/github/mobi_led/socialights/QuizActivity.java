@@ -84,6 +84,7 @@ public class QuizActivity extends Activity {
         if (currentGame.getFinished()) {
             // Move to next screen
             Intent intent = new Intent(this, GameFinishedActivity.class);
+            intent.putExtra("user", currentUser);
             startActivity(intent);
         }
 
