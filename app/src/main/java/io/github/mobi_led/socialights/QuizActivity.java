@@ -2,6 +2,7 @@ package io.github.mobi_led.socialights;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.Time;
@@ -168,8 +169,6 @@ public class QuizActivity extends Activity {
             } else {
                 questionForTxt.setText("Question for " + team.getName() + ":");
             }
-
-
             questionTxt.setText(currentQuestion.getQuestion().getQuestion());
 
             for (int i = 0; i < 4; i++) {
@@ -177,15 +176,11 @@ public class QuizActivity extends Activity {
                 buttons[i].setText(a.getAnswer());
                 buttons[i].setTag(a);
                 buttons[i].setEnabled(currentQuestion.getTeam().equals(currentTeamIdx));
-                if (currentQuestion.getAnswer() != null && currentQuestion.getAnswer().equals(a)) {
-                    if (currentQuestion.getAnsweredCorrectly()) {
-                        // TODO: Set the color to correct
-                    } else {
-                        // TODO: Set the color to incorrect
-                    }
-                } else {
-                    // TODO: Reset the color to default
+                if((currentQuestion.getAnswer() != null && currentQuestion.getAnswer().equals(a))){
+                    int feedbackColor = currentQuestion.getAnsweredCorrectly() ? Color.rgb(0, 255, 0):Color.rgb(255, 0, 0);
+                    findViewById(buttons[i].getId()).setBackgroundColor(feedbackColor);
                 }
+                else findViewById(buttons[i].getId()).setBackgroundColor(android.R.drawable.btn_default);
             }
         } else {
             questionTxt.setText("Waiting for question...");
