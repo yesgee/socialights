@@ -132,11 +132,21 @@ public class QuizActivity extends Activity {
     protected void onGameUpdate() {
         Log.i("onGameUpdate", "Updated");
 
+        final QuizActivity activity = this;
+
         if (currentGame.getFinished()) {
-            // Move to next screen
-            Intent intent = new Intent(this, GameFinishedActivity.class);
-            intent.putExtra("user", currentUser);
-            startActivity(intent);
+            Observable.timer(1000l, TimeUnit.MILLISECONDS)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<Long>() {
+                        @Override
+                        public void call(Long aLong) {
+                            // Move to next screen
+                            Intent intent = new Intent(activity, GameFinishedActivity.class);
+                            intent.putExtra("user", currentUser);
+                            startActivity(intent);
+                        }
+                    });
         }
 
         Team currentTeam = currentGame.getTeams().get(currentTeamIdx);
