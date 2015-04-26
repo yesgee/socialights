@@ -138,7 +138,7 @@ Everyone can look into it
 > A short (1-2 pages) business model design based on the STOF framework. A description of STOF can be found from here: https://noppa.aalto.fi/noppa/kurssi/t-109.4300/luennot/T-109_4300_slides_3.pdf. Include a hypothetical deployment plan as well into this section (i.e., how you would launch your application).
 
 #### Service Design
-<to be expanded>
+
 * Usage in coffee rooms which enables user interaction.
 * An user friendly application.
 * Huge opportunity for the users to know each other who may not be direct co-workers.
