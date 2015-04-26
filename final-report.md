@@ -150,8 +150,7 @@ Everyone can look into it
 
 #### Organisation Design
 
-* Philips Hue: Provides Hue Api that allows the lights and server connectivity.
-* Cloud : Pushes questions to the game and updates the score.
+https://github.com/mobi-led/mobi-led.github.io/blob/master/images/organisation.jpg
 
 #### Finance Design
 
