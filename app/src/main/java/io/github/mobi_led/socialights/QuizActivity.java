@@ -112,8 +112,17 @@ public class QuizActivity extends Activity {
                                 progress.setMax((int) totalTime);
                                 progress.setProgress((int) timeLeft);
                             } else {
+                                // Inactive Question
                                 progress.setMax(100);
                                 progress.setProgress(0);
+                            }
+
+                            if (deadlineAt < now && currentQuestion.getAnsweredAt() == null) {
+                                for (int i = 0; i < 4; i++) {
+                                    buttons[i].setEnabled(false);
+                                    buttons[i].setBackgroundColor(Color.rgb(255, 0, 0));
+                                }
+                                questionForTxt.setText("Deadline expired.");
                             }
                         }
 
@@ -179,9 +188,9 @@ public class QuizActivity extends Activity {
                 buttons[i].setEnabled(currentQuestion.getTeam().equals(currentTeamIdx));
                 if((currentQuestion.getAnswer() != null && currentQuestion.getAnswer().equals(a))){
                     int feedbackColor = currentQuestion.getAnsweredCorrectly() ? Color.rgb(0, 255, 0):Color.rgb(255, 0, 0);
-                    findViewById(buttons[i].getId()).setBackgroundColor(feedbackColor);
+                    buttons[i].setBackgroundColor(feedbackColor);
                 }
-                else findViewById(buttons[i].getId()).setBackgroundColor(android.R.drawable.btn_default);
+                else buttons[i].setBackgroundColor(android.R.drawable.btn_default);
             }
         } else {
             questionTxt.setText("Waiting for question...");
