@@ -135,7 +135,8 @@ public class Client extends Connection {
                 public Boolean call(JSONObject item) {
                     try {
                         return item.has("model") && item.getString("model").equals("game") &&
-                                item.has("id") && item.getString("id").equals(game.getId());
+                                item.has("id") && item.getString("id").equals(game.getId()) &&
+                                item.has("type") && item.getString("type").equals("save");
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

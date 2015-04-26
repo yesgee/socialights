@@ -11,14 +11,25 @@
     tools:context="io.github.mobi_led.socialights.GameFinishedActivity">
 
     <TextView
-        android:id="@+id/textView"
+    android:id="@+id/textView"
+    android:layout_weight="10"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:text="Game Finished"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/scoreView"
         android:layout_weight="10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Game Finished"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="Score Board"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center" />
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -52,7 +63,8 @@
         android:layout_weight="10"
         android:layout_centerHorizontal="true"
         android:onClick="newGame"
-        android:text="New Game" />
+        android:text="New Game"
+        android:layout_gravity="center" />
 
 
 </LinearLayout>

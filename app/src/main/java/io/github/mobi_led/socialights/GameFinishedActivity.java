@@ -24,18 +24,12 @@ public class GameFinishedActivity extends ActionBarActivity {
 
         currentUser = (User) getIntent().getExtras().get("user");
         Game game = (Game)getIntent().getExtras().get("game");
-
+        TextView scoreViews [] = new TextView[]{(TextView)findViewById(R.id.teamRedScore) ,
+                                                (TextView)findViewById(R.id.teamBlueScore)};
 
         for (int i = 0; i < game.getTeams().size(); i++) {
             Team team = game.getTeams().get(i);
-            if(team.getName().equals("Red Team")){
-                TextView redScore = (TextView)findViewById(R.id.teamRedScore);
-                redScore.setText("Scored: " + team.getScore());
-            }
-            else{
-                TextView blueScore = (TextView)findViewById(R.id.teamBlueScore);
-                blueScore.setText("Scored: " + team.getScore());
-            }
+            scoreViews[i].setText(team.getName() + " : " + team.getScore());
         }
     }
 
