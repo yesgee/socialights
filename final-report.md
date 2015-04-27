@@ -135,7 +135,32 @@ Everyone must look into this
 
 > Experiences of the used practices and tools. Discussion of their suitability to your project. Which were the Top-3 or Top-X useful and useless ones?
 
-Everyone can look into it
+**Gitter:** Gitter is a great communication tool. Integrations with other tools make it a good place to get an overview of what's going on.
+
+**2-Daily standups:** This did not really work, as we had enough time to spread the work and update each other in our weekly meetings.
+
+**Weekly meetings:** Our weekly meetings were very useful. Sometimes we needed only 15 minutes to bring every team member up to date on the progress, but other times we spent more than an hour to make decisions about the future direction.
+
+**Webpage:** It was nice to have a place where we could upload notes from our meetings, for future reference.
+
+**Taiga:** In a small project like this, using project management tools leads to unnecessary overhead, which is why we abandoned Taiga already in an early stage.
+
+**Git and Github:** Git and Github are extremely powerful tools for team projects.
+
+**Branching Model:** The server-side of the application was developed using the Git-flow branching model. This allowed multiple team members to work separately on different parts of the server, without interfering too much with each other. This model unfortunately did not work for the Android part.
+
+> Android team should talk about this.
+
+**Code Reviews:** The branching model used in server-side development made it extremely easy to do code reviews. This makes sure that at least one pair of fresh eyes has seen the code, and that at least one other developer knows what's going on in the code.
+
+**Tests:** Test driven development is an approach that proved to be extremely powerful for server-side development. This unfortunately did not work for the Android part.
+
+> Android team should talk about this.
+
+**Continuous Integration:** By using Continuous Integration we were able to quickly detect and fix issues that were introduced by code rewrites. We think every project should use some form of CI. However, CI is very difficult to do correctly with an Android application.
+
+**Documentation:** It is quite difficult to decide what to document and what not. Large parts of our source code explain themselves, because of the simplicity of the code. However, we think that we should have written more documentation for methods. Also, we found out that it is difficult to write a client for a server when you don't know the architecture of the server. Probably in larger projects, using a tool like [Swagger](http://swagger.io/) could be a good idea.
+
 
 ## Preliminary business model
 
