@@ -80,7 +80,7 @@ The server is implemented in a way that is very scalable. The complete state is 
 
 The server-side of the application is thoroughly covered with unit tests, as can be seen from the image below. Using the Travis Continuous Integration system, this test suite is ran after every push to github.
 
-![Coverage Report](images/coverage.png)
+![Coverage Report](/images/coverage.png)
 
 ####UI
 
@@ -179,7 +179,7 @@ Everyone must look into this
 
 #### Organisation Design
 
-https://github.com/mobi-led/mobi-led.github.io/blob/master/images/organisation.jpg
+![Organisation](/images/organisation.jpg)
 
 #### Finance Design
 
