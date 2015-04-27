@@ -76,9 +76,13 @@ We also limit ourselves to one coffee room and there is scope to make it work be
 
 ####Server
 
-Hylke and Jan can look into this
+The server is implemented in a way that is very scalable. The complete state is stored the MongoDB database and in the Redis cache. This allows us to scale the server-side of the application by simply starting new processes.
 
-####UI 
+The server-side of the application is thoroughly covered with unit tests, as can be seen from the image below. Using the Travis Continuous Integration system, this test suite is ran after every push to github.
+
+![Coverage Report](images/coverage.png)
+
+####UI
 
 * The User Interface is easy to use and the application guides the user from the start till the end of the game.
 * The user is given the freedom to join any of the teams he likes to play with. 
