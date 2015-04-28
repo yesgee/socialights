@@ -8,9 +8,9 @@ permalink: /final-report/
 
 In large companies and organisations employees often don't know many of their colleagues except for their direct co-workers. During their breaks, they get a cup of coffee and return to their office. This leaves the coffee rooms empty and unattractive and doesn't lead to any social interaction between co-workers. We have developed an application that makes these coffee rooms more attractive by enabling employees to interact with the room and with each other in a playful way. This increases social interaction and collaboration between co-workers, which are desirable feats within a company.
 
-Our App provides a quiz-based game that interacts with the lights in the coffee room. Participants have to collaborate with each other to find the answers to the questions and the lights in the coffee room provide feedback for the game. This visual stimulation will tempt other people in the room to also participate.
+Our application provides a quiz-based game that interacts with the lights in the coffee room. Participants have to collaborate with each other to find the answers to the questions and the lights in the coffee room provide feedback for the game. This visual stimulation will tempt other people in the room to also participate.
 
-## Team 
+## Team
 
 ### Gayathri Srinivaasan
 
@@ -53,20 +53,20 @@ Our App provides a quiz-based game that interacts with the lights in the coffee 
 > Evaluating the achievement of the project goals. Discuss reasons if some goals were changed/not achieved.
 
 We developed an application that is able to bring colleagues together within a company and make them get to know and understand each other. With *SociaLights*, we strive to enhance social interaction between people and, by doing so, strengthen the social foundation of the companies that adopt *SociaLights*. We believe that a cooperative and playful game in the coffee room will lead to the development of social ties and cooporative skills that contribute to future (collaborative) problem solving capabilities of the company.
-We make the game combined with lights, into a *cool* gadget, such that young and vibrant companies will sooner be tempted to acquire the lights and the application. So far, we have build a quiz game and made it work for deployment in **one coffee room**. We have build the mobile (Android) application and a cloud-based game server. We depend on a third party service (Hue Cloud) to communicate with the Hue Lights.
+We make the game combined with lights, into a *cool* gadget, such that young and vibrant companies will sooner be tempted to acquire the lights and the application. So far, we have built a quiz game and made it work for deployment in **one coffee room**. We have build the mobile (Android) application and a cloud-based game server. We depend on a third party service (Hue Cloud) to communicate with the Hue Lights.
 
-### Acheived Goals 
+### Achieved Goals
 
-* We have build a quiz application on android platform that enables user to join a game and play
-* A quiz server that  generates the question and sends to the application
-* Hue lights are connected to the server and the feedback of the game is provided by the lights. 
+* We have built a quiz application on android platform that enables user to join a game and play.
+* A quiz server that  generates the questions, verifies the answers,keeps score and talks to the application
+* Hue lights are connected to the server and the feedback of the game is provided by the lights.
 
-### Scope for improvement 
+### Scope for improvement
 
  In the project, we implemented only the quiz game, but we also keep the possibility to add more game types later.
-We also limit ourselves to one coffee room and there is scope to make it work between multiple coffee rooms. 
+We also limit ourselves to one coffee room and there is scope to make it work between multiple coffee rooms.
 
-### Other results 
+### Other results
 > Discussion of all other project results, not included in the evaluated goals.
 
 ### Evaluation of quality of the system
@@ -78,56 +78,60 @@ We also limit ourselves to one coffee room and there is scope to make it work be
 
 The server is implemented in a way that is very scalable. The complete state is stored the MongoDB database and in the Redis cache. This allows us to scale the server-side of the application by simply starting new processes.
 
-The server-side of the application is thoroughly covered with unit tests, as can be seen from the image below. Using the Travis Continuous Integration system, this test suite is ran after every push to github.
+The server-side of the application is thoroughly covered with unit tests, as can be seen from the image below. Using the Travis Continuous Integration system, this test suite is run after every push to github.
 
 ![Coverage Report](/images/coverage.png)
 
-####UI
+####Android UI
 
-* The User Interface is easy to use and the application guides the user from the start till the end of the game.
-* The user is given the freedom to join any of the teams he likes to play with. 
-* The user also has the freedom to quit the game at point of time.
+* The User Interface is easy to use and the mobile app guides the user from the start till the end of the game.
+* The user can start a game when he wants and is free to join any of the teams he likes to play with.
+* Each team is assigned a *color*, indicated by a hue light and the third hue light is used as a countdown timer for each question.
+* The user is free to quit the game at any point of time.
 
 Sowmya and Gayathri can add more points
 
-####Android-Server Connectivity 
+####Android-Server Connectivity
 
 Samuel and Harika can look into this.
 
-#### Hue lights 
+#### Hue lights
 Hylke or Jan can fill up this
 
 ### Challenging Technological and Environment Aspects
 
-####Technological Aspects 
+####Technological Aspects
 
-* The application gets the questions from the server. 
-* To work with Hue lights and establish the connectivity with the server
+* The app pushes user/team information to the server and fetches game information from it.
+* The Hue lights are interfaced with the server via the Hue API.
 
 Everyone can add
 
 > List of all challenging technological and environment related aspects of the project that you want the tutor to consider when he evaluates the project's difficulty.
 
-####Environment Aspects 
-* Identifying Coffee rooms and deploying it
-* Blinking lights in a manner that does not have a disturbing effect on the user
+####Environment Aspects
+* Identifying Coffee rooms and making them Socialights enabled.
+* Using the lights in a manner that does not have a disturbing effect on the user.
 
 ## Metrics
 
 > Summary of used resources, quality metrics, software size etc. Some analysis of the figures compared to your previous projects or other similar projects.
+
+We should probably add the number of lines of code, no of resources, Bugs per line of code etc
 
 ### Resources
 
 * Hue Lights
 * Hue API
 * Test Device: Android Phone
-* 
+*
 
 #### Quality metrics
 
-* Number of Users the Game can support: 
-* No delay in answering the question and feedback from the light 
- 
+* Number of Users the Game can support and Scalability aspect.
+* No delay in answering the question and getting feedback from the lights.
+* The entire application along with the hue lights is user-friendly and easy to use.
+
 Everyone must look into this
 
 
@@ -168,19 +172,19 @@ Everyone must look into this
 
 #### Service Design
 
-SociaLights can be deployed in coffee rooms that makes the room more attractive and playful. The usage of led lights with this application will be appealing to the users. 
-This is an user-friendly application that spur an interaction between the colleagues or co-workers. Our Quiz application requires atleast two people to start a game initially. 
- Hence, it provides a huge oppurtunity to the users to know each other who may not be direct co-workers. Inturn, this creates a healthy working environment and relieves the work stress. 
+SociaLights can be deployed in coffee rooms that makes the room more attractive and playful. The usage of LED lights with this application will be appealing to the users.
+This is a user-friendly application that spurs an interaction between  colleagues or co-workers. Our Quiz application requires atleast two people to start a game initially.
+ Hence, it provides a huge opportunity to the users to know each other who may not be direct co-workers. In effect, this creates a healthy working environment and makes coffee breaks fun.
 
 
 #### Technology Design
 
 ![Technology Design](/images/MSP.jpg)
 
-Our android client will interface with the nodejs Server via TCP Sockets. The server is used to fetch questions and answers for the quiz game. 
-Since we use TCP sockets, our service is more efficient in terms of bandwidth. 
+Our android client will interface with the nodejs Server via TCP Sockets. The server is used to fetch questions and answers for the quiz game.
+Since we use TCP sockets, our service is more efficient in terms of bandwidth.
 
-The feedback of the game is provided by a set of wireless LED Hue light bulbs. Connectivity between the application and the hue light bulbs is provided by the Hue bridge which is an integral part of the Hue system. The bridge also enables remote control of the light bulbs over the Internet. Communication between socialights and the Hue lights is enabled by Hue API. 
+The feedback of the game is provided by a set of wireless LED Hue light bulbs. Connectivity between the application and the hue light bulbs is provided by the Hue bridge which is an integral part of the Hue system. The bridge also enables remote control of the light bulbs over the Internet. Communication between socialights and the Hue lights is enabled by Hue API.
 
 
 #### Organisation Design
@@ -191,7 +195,7 @@ The key players are game developers, Hue MNC, Application Users and the Cloud Pr
 
 #### Finance Design
 
-Sowmya and Harika will work on this. 
+Sowmya and Harika will work on this.
 
 
 ## Grade adjustment
