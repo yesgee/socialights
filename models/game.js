@@ -175,7 +175,7 @@ gameSchema.methods.answerQuestion = function(user, answerId, callback) {
       if (correct && answeredQuestion.isInTime()) {
         _this.teams[answeredQuestion.team].score++;
       }
-      _this.finished = _this.nextQuestions.length === 0;
+
       _this.save(function(err, result) {
         if (err) { return callback(err); }
         callback(null, answeredQuestion);

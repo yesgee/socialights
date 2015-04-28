@@ -44,8 +44,7 @@ exports.answerQuestion = {
         api.chatRoom.broadcast({}, 'room:demo', {
           cmdType: 'ANSWER',
           correct: result.answeredCorrectly,
-          teams: teams,
-          gameOver: connection.models.game.finished });
+          teams: teams });
 
         connection.renderModel('game', connection.models.game, connection, next);
       });

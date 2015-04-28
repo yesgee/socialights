@@ -21,14 +21,21 @@ exports.task = {
       if (game.nextQuestions.length > 0) {
         api.log('Asking next question.');
         game.askNextQuestion(function(e, g) {
-
+          api.chatRoom.broadcast({}, 'room:demo', {
+          cmdType: 'STARTCOUNTDOWN',
+          seconds:10,
+          team: game.question.team}
+          );
         });
-      } else if (!game.finished) {
-        api.log('Finishing game.');
-        game.finished = true;
-        game.save(function() {
+      } else {
+        api.chatRoom.broadcast({}, 'room:demo', {cmdType: 'GAMEOVER'});
+        if (!game.finished) {
+          api.log('Finishing game.');
+          game.finished = true;
+          game.save(function() {
 
-        });
+          });
+        }
       }
     };
 
@@ -37,10 +44,10 @@ exports.task = {
         if (game.startedAt && game.question) {
 
           // After Deadline
-          if (game.question.deadlineAt.getTime() + 1500 < (new Date()).getTime()) {
+          if (game.question.deadlineAt.getTime() + 3500 < (new Date()).getTime()) {
             nextQuestion(game);
           } else if (game.question.answeredAt) {
-            setTimeout(function() { nextQuestion(game); }, 1000);
+            setTimeout(function() { nextQuestion(game); }, 3000);
           }
 
         }
