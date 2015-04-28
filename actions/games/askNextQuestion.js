@@ -18,7 +18,14 @@ exports.askNextQuestion = {
     connection.models.game.askNextQuestion(function(err, result) {
       if (err) { return connection.handleModelError(err, next); }
 
+      api.chatRoom.broadcast({}, 'room:demo', {
+      cmdType: 'STARTCOUNTDOWN',
+      seconds:10,
+      team: connection.models.game.question.team}
+      );
+
       connection.renderModel('game', connection.models.game, connection, next);
+
     });
   }
 };

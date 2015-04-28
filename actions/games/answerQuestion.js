@@ -1,5 +1,7 @@
 'use strict';
 
+var map = require('mout/array/map');
+
 exports.answerQuestion = {
   name: 'answerQuestion',
   description: 'I will answer a question',
@@ -29,6 +31,21 @@ exports.answerQuestion = {
 
       connection.models.game.answerQuestion(connection.models.user, answerId, function(err, result) {
         if (err) { return connection.handleModelError(err, next); }
+
+        var teams = map(connection.models.game.teams, function(team) {
+          return {
+            score: team.score,
+            color: [
+              parseInt(team.color.substring(1, 3), 16),
+              parseInt(team.color.substring(3, 5), 16),
+              parseInt(team.color.substring(5, 7), 16),
+            ]};
+        });
+        api.chatRoom.broadcast({}, 'room:demo', {
+          cmdType: 'ANSWER',
+          correct: result.answeredCorrectly,
+          teams: teams,
+          gameOver: connection.models.game.finished });
 
         connection.renderModel('game', connection.models.game, connection, next);
       });

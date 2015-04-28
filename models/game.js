@@ -67,8 +67,8 @@ gameSchema.methods.initializeTeams = function(callback) {
   if (this.teams.length !== 0) {
     callback('Error: Teams already initialized');
   } else {
-    this.teams.push({ name: 'Red Team', color: '#ff0000', users: [], score: 0 });
-    this.teams.push({ name: 'Blue Team', color: '#0000ff', users: [], score: 0 });
+    this.teams.push({ name: 'Pink Team', color: '#FF6BE0', users: [], score: 0 });
+    this.teams.push({ name: 'Blue Team', color: '#5335FF', users: [], score: 0 });
     this.save(callback);
   }
 };

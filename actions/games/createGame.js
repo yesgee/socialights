@@ -27,7 +27,6 @@ exports.createGame = {
 
     //insert random questions
     api.models.Question.findRandom({}, {}, {limit:nrOfQuestions}, function(err, result) {
-      /* istanbul ignore if */
       if (err) { return connection.handleModelError(err, next); }
 
       game.nextQuestions = map(result, function(question) {
@@ -48,6 +47,22 @@ exports.createGame = {
           } else {
             connection.renderModel('game', game, connection, next);
           }
+          var teams = map(game.teams, function(team) {
+            return {
+              score: team.score,
+              color: [
+                parseInt(team.color.substring(1, 3), 16),
+                parseInt(team.color.substring(3, 5), 16),
+                parseInt(team.color.substring(5, 7), 16),
+              ]};
+          });
+          api.chatRoom.broadcast({},
+            'room:demo',
+            {cmdType: 'NEWGAME'});
+          api.chatRoom.broadcast({},
+            'room:demo',
+            {cmdType: 'SETSCORES',  teams: teams});
+
         });
       });
     });

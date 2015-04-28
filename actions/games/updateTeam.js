@@ -1,5 +1,7 @@
 'use strict';
 
+var map = require('mout/array/map');
+
 exports.updateTeam = {
   name: 'updateTeam',
   description: 'I will update a team',
@@ -57,6 +59,19 @@ exports.updateTeam = {
     connection.models.game.save(function(err, result) {
       if (err) { return connection.handleModelError(err, next); }
       connection.renderModel('game', connection.models.game, connection, next);
+
+      var teams = map(connection.models.game.teams, function(team) {
+        return {
+          score: team.score,
+          color: [
+            parseInt(team.color.substring(1, 3), 16),
+            parseInt(team.color.substring(3, 5), 16),
+            parseInt(team.color.substring(5, 7), 16),
+          ]};
+      });
+      api.chatRoom.broadcast({},
+        'room:demo',
+        {cmdType: 'SETSCORES',  teams: teams});
     });
   }
 };
