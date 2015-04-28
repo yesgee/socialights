@@ -20,7 +20,7 @@ exports.listGames = {
 
       connection.response.success = true;
       connection.response.games = map(games, function(game) {
-        return pick(game.toJSON({ virtuals: true }), ['id', 'startedAt']);
+        return pick(game.toJSON({ virtuals: true }), ['id', 'startedAt', 'finished']);
       });
 
       next(connection, true);
