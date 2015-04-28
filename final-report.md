@@ -168,15 +168,20 @@ Everyone must look into this
 
 #### Service Design
 
-* Usage in coffee rooms which enables user interaction.
-* An user friendly application.
-* Huge opportunity for the users to know each other who may not be direct co-workers.
-* Application provides the quiz game that can be played in two teams.
-* Feedback provided by Hue Lights.
-* Excellent experience for the users in the coffee room.
+SociaLights can be deployed in coffee rooms that makes the room more attractive and playful. The usage of led lights with this application will be appealing to the users. 
+This is an user-friendly application that spur an interaction between the colleagues or co-workers. Our Quiz application requires atleast two people to start a game initially. 
+ Hence, it provides a huge oppurtunity to the users to know each other who may not be direct co-workers. Inturn, this creates a healthy working environment and relieves the work stress. 
+
 
 #### Technology Design
+
 ![Technology Design](/images/MSP.jpg)
+
+Our android client will interface with the nodejs Server via TCP Sockets. The server is used to fetch questions and answers for the quiz game. 
+Since we use TCP sockets, our service is more efficient in terms of bandwidth. 
+
+The feedback of the game is provided by a set of wireless LED Hue light bulbs. Connectivity between the application and the hue light bulbs is provided by the Hue bridge which is an integral part of the Hue system. The bridge also enables remote control of the light bulbs over the Internet. Communication between socialights and the Hue lights is enabled by Hue API. 
+
 
 #### Organisation Design
 
