@@ -24,6 +24,7 @@ var minBrightness = 40;
 var answerFlickers = 4;
 var lengthOfFlicker = 1000;
 var currentTeams = null;
+var timeouts = [];
 
 var log = function(res) {
   console.log(res);
@@ -78,7 +79,7 @@ var setTeamScores = function(teams) {
   var max = teams[maxTeamIdx].score;
   var min = teams[minTeamIdx].score;
   var minBright = (maxBrightness - minBrightness) * (min / max) + minBrightness;
-  setTeamLight(minTeamIdx, teams[minTeamIdx].color, minBright);
+  setTeamLight(minTeamIdx, teams[minTeamIdx].color, max === 0 ? maxBrightness : minBright);
   setTeamLight(maxTeamIdx, teams[maxTeamIdx].color);
   var state = createState(); //set middle light to white
   state.rgb([255, 255, 255]);
@@ -92,9 +93,9 @@ var clearTimeouts = function() {
   }
 };
 
-var answer = function(correct) {
+var answer = function(correct, teams, over) {
   clearTimeouts();
-
+  if (!teams) {teams = currentTeams;}
   var state = createState();
   if (correct) {
     setAll(146, 100, 0); //green
@@ -110,9 +111,19 @@ var answer = function(correct) {
 
   timeouts.push(setTimeout(function() {
     if (currentTeams) {
-      setTeamScores(currentTeams);
+      setTeamScores(teams);
     }
   }, (answerFlickers + 1) * lengthOfFlicker));
+
+  if (over) { //set game over after 4 more secondssssss
+    timeouts.push(setTimeout(gameOver, (answerFlickers + 5) * lengthOfFlicker));
+  }
+};
+
+var turnOn = function() {
+  var state = createState();
+  state.on();
+  setLightState(0, state);
 };
 
 var gameOver = function() {
@@ -129,10 +140,16 @@ var reset = function() {
   setLightState(0, state);
 };
 
-var timeouts = [];
-
-var countDown = function(seconds) {
+var countDown = function(seconds, teamIdx) {
   clearTimeouts();
+  //set the team lights
+  var teamState = createState();
+  teamState.rgb(currentTeams[teamIdx].color);
+  teamState.bri(maxBrightness);
+  setLightState(1, teamState);
+  setLightState(3, teamState);
+
+  //set the countdown light
   var state = createState();
   state.rgb([0, 255, 0]);
   state.bri(maxBrightness);
@@ -200,10 +217,10 @@ var startServerConnection = function() {
           setTeamScores(teams);
           break;
         case 'ANSWER':
-          answer(msgBlock.message.correct);
+          answer(msgBlock.message.correct, msgBlock.message.teams);
           break;
         case 'STARTCOUNTDOWN':
-          countDown(msgBlock.message.seconds);
+          countDown(msgBlock.message.seconds, msgBlock.message.team);
           break;
         case 'GAMEOVER':
           gameOver();
@@ -333,5 +350,7 @@ Q
   .then(initializeAPI)
   .then(initializeLights)
   .then(startServerConnection)
+  .then(turnOn)
+  .then(gameOver)
   .fail(shutdown)
   .done();
