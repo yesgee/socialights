@@ -187,6 +187,8 @@ The feedback of the game is provided by a set of wireless LED Hue light bulbs. C
 
 ![Organisation](/images/organisation.jpg)
 
+The key players are game developers, Hue MNC, Application Users and the Cloud Providers. The game developers create the application and deploy it in the cloud. The Hue MNC provides the necessary API(HUE API) which connects the client application to the Hue LED lights. The Application users can then have an access to the app from the cloud provider. Once the user enters the socialights enabled room, he can start playing the quiz game.
+
 #### Finance Design
 
 Sowmya and Harika will work on this. 
