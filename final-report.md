@@ -101,8 +101,6 @@ Other user interface decisions made include to change the color of the answer bu
 
 In the above figures, the Red Team is able to see what the other team has answered and whether the answer is correct (green background) or not on the same screen. The second figure on the other hand shows enabled button texts, indicating the turn to answer is for the Red Team but also showing the team has answered incorrectly (red background).
 
-Sowmya and Gayathri can add more points
-
 ####Android-Server Connectivity
 
 The game used Socket programming in Java with TCP as the communication protocol. This was chosen over HTTP due to the reliability TCP provides. Moreover, socket model offered push to state changes from the server. Once the socket client opens a connection, the server is able to serve the game object in JSON format. Moreover, the communication between the client and server is made asynchronously offering a non blocking user interface. To achieve this, the Rx library is used, which provides subscribing to and publishing events and callbacks. The following code snippet shows the client subscribing for a startGame action.
@@ -237,8 +235,7 @@ The feedback of the game is provided by a set of wireless LED Hue light bulbs. C
 The key players are game developers, Hue MNC, Application Users and the Cloud Providers. The game developers create the application and deploy it in the cloud. The Hue MNC provides the necessary API(HUE API) which connects the client application to the Hue LED lights. The Application users can then have an access to the app from the cloud provider. Once the user enters the socialights enabled room, he can start playing the quiz game.
 
 #### Finance Design
-
-Sowmya and Harika will work on this.
+The game is offered on subscription bases for companies who want to improve communication among their employees. Companies will be charged monthly for each game they subscribe from SociaLight's service. The amount charged varies in the number of employees the company wants to give access, i.e 0-10 employees for the basic subscription and then a bit more fee for more number of employees.
 
 
 ## Grade adjustment
