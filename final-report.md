@@ -105,7 +105,7 @@ Sowmya and Gayathri can add more points
 
 ####Android-Server Connectivity
 
-The game used Socket programming in Java with TCP as the communication protocol. This was chosen over HTTP due to the reliability TCP provides. Once the socket client opens a connection, the server is able to serve the game object in JSON format. Moreover, the communication between the client and server is made asynchronously offering a non blocking user interface. To achieve this, the Rx library is used, which provides subscribing to and publishing events and callbacks. The following code snippet shows the client subscribing for a startGame action.
+The game used Socket programming in Java with TCP as the communication protocol. This was chosen over HTTP due to the reliability TCP provides. Moreover, socket model offered push to state changes from the server. Once the socket client opens a connection, the server is able to serve the game object in JSON format. Moreover, the communication between the client and server is made asynchronously offering a non blocking user interface. To achieve this, the Rx library is used, which provides subscribing to and publishing events and callbacks. The following code snippet shows the client subscribing for a startGame action.
 ```java
 client.startGame(game.getId()).subscribe(new Action1<Game>(){
       @Override
@@ -115,9 +115,6 @@ client.startGame(game.getId()).subscribe(new Action1<Game>(){
 });
 ```
 Excerpt 1. Subscription for a game start action.
-
-<b>Development</b><br/>
-The SociaLights android game was developed using Android Studio and Github as the code base. Team members worked on the different parts of the game and pushed code to the repository. Initially, the client code had unit tests written for most of it’s business logic. However, Travis (the Continuous Integration platform used in the project) kept on freezing upon starting the emulator for minor issues. Therefore, the unit tests were abandoned and quality assurance was made both by manual testing and using Jenkin’s test cases. To minimize the learning curve, the android development team also opted out from using Git flow and instead published code to the develop branch in most of the cases. This practice did not result in major setback, but it could be improved for future software development processes.
 
 
 #### Hue lights
@@ -197,6 +194,9 @@ Everyone must look into this
 **Git and Github:** Git and Github are extremely powerful tools for team projects.
 
 **Branching Model:** The server-side of the application was developed using the Git-flow branching model. This allowed multiple team members to work separately on different parts of the server, without interfering too much with each other. The development model for the android part is discussed in the Android connectivity section.
+
+The SociaLights android game was developed using Android Studio and Github as the code base. Team members worked on the different parts of the game and pushed code to the repository. The client code has unit tests written for most of it’s business logic. To minimize the learning curve, the android development team opted out from using Git flow and instead published code to the develop branch in most of the cases. This practice did not result in major setback, but it could be improved for future software development processes.
+
 
 **Code Reviews:** The branching model used in server-side development made it extremely easy to do code reviews. This makes sure that at least one pair of fresh eyes has seen the code, and that at least one other developer knows what's going on in the code.
 
