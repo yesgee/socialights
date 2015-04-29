@@ -53,7 +53,7 @@ Our application provides a quiz-based game that interacts with the lights in the
 > Evaluating the achievement of the project goals. Discuss reasons if some goals were changed/not achieved.
 
 We developed an application that is able to bring colleagues together within a company and make them get to know and understand each other. With *SociaLights*, we strive to enhance social interaction between people and, by doing so, strengthen the social foundation of the companies that adopt *SociaLights*. We believe that a cooperative and playful game in the coffee room will lead to the development of social ties and cooporative skills that contribute to future (collaborative) problem solving capabilities of the company.
-We make the game combined with lights, into a *cool* gadget, such that young and vibrant companies will sooner be tempted to acquire the lights and the application. So far, we have built a quiz game and made it work for deployment in **one coffee room**. We have build the mobile (Android) application and a cloud-based game server. We depend on a third party service (Hue Cloud) to communicate with the Hue Lights.
+We make the game combined with lights, into a *cool* gadget, such that young and vibrant companies will sooner be tempted to acquire the lights and the application. So far, we have built a quiz game and made it work for deployment in **one coffee room**. We have build the mobile (Android) application and a cloud-based game server. We do not depend on a third party service (Hue Cloud) to communicate with the Hue Lights.
 
 ### Achieved Goals
 
@@ -96,19 +96,19 @@ Sowmya and Gayathri can add more points
 Samuel and Harika can look into this.
 
 #### Hue lights
-* The Hue lights controller is able to connect to any SociaLights server and process commands
-* The Hue lights controller is stateless and memoryless and is therefore very easy and versatile in use
-* The Hue lights respond immediately to a command sent by the server
-* The Hue lights can respond to any event in the game flow
-    1. The lights can assign a color to each team
-    * The lights can show the team scores in terms of relative brightness
-    * The lights can count down on an asked question
-    * The two team lights show the color of the team that needs to answer the question on countdown
-    * The middle lights will flicker and slowly change color from green to red as the time runs out on countdown
-    * The countdown stops when a question is answered or when the time runs on out
-    * The lights flicker red on a wrongly answered question or when the countdown timer runs out
-    * The lights flicker green on a rightly answered question
-    * The lights show a color loop animation when no game is being played
+* The Hue lights controller is able to connect to any SociaLights server and process commands.
+* The Hue lights controller is stateless and memoryless and is therefore very easy and versatile in use.
+* The Hue lights respond immediately to a command sent by the server.
+* The Hue lights can respond to any event in the game flow.
+    1. The lights can assign a color to each team.
+    * The lights can show the team scores in terms of relative brightness.
+    * The lights can count down on an asked question.
+    * The two team lights show the color of the team that needs to answer the question on countdown.
+    * The middle light will flicker and slowly change color from green to red as the time runs out on countdown.
+    * The countdown stops when a question is answered or when the time runs on out.
+    * The lights flicker red on a wrongly answered question or when the countdown timer runs out.
+    * The lights flicker green on a rightly answered question.
+    * The lights show a color loop animation when no game is being played.
 
 We have achieved all the Hue lights functionality that we set out achieve in the initial project plan. Future prospects would be to make the system work for more teams and more lights and to develop some fancier animations to for instance detect when a user enters a room, when users are waiting to play and when a game starts and finishes.
 
@@ -118,7 +118,12 @@ We have achieved all the Hue lights functionality that we set out achieve in the
 ####Technological Aspects
 
 * The app pushes user/team information to the server and fetches game information from it.
+* The game state is consistent across the server and the application.
+* The game is customizable for any company.
+* The game flow can be controlled through the application or the server admin panel.
 * The Hue lights are interfaced with the server via the Hue API.
+* The Hue lights respond in real time to game events.
+* The Hue lights animations are created by individual, timed commands.
 
 Everyone can add
 
