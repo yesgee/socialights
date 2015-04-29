@@ -38,8 +38,7 @@ public class MainActivity extends Activity {
 
         SharedPreferences settings = getSharedPreferences("SociaLights", 0);
         String userId = settings.getString("userId", null);
-
-        startPlaying.setEnabled(false);
+        startPlaying.setEnabled(true);
 
         if (userId != null) {
             client.showUser(userId).subscribe(new Action1<User>() {
