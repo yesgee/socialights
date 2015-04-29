@@ -95,7 +95,7 @@ The SociaLights app is composed of several activities, each providing a simple u
 
 Other user interface decisions made include to change the color of the answer button to green or red depending on the correctness of an answer. The green color is used to show a correct answer while the later is used for a wrong answer. Below is two figures that show the concept clearly.
 
-![User interface feedback for correct and incorrect answer attempts.](/images/correct.png)
+<img src="/images/correct.png" alt="User interface feedback for correct and incorrect answer" style="width=100; height=150">
 ![User interface feedback for correct and incorrect answer attempts.](/images/incorrect.png)
 
 In the above figures, the Red Team is able to see what the other team has answered and whether the answer is correct (green background) or not on the same screen. The second figure on the other hand shows enabled button texts, indicating the turn to answer is for the Red Team but also showing the team has answered incorrectly (red background).
