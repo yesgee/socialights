@@ -105,14 +105,14 @@ Sowmya and Gayathri can add more points
 ####Android-Server Connectivity
 
 The game used Socket programming in Java with TCP as the communication protocol. This was chosen over HTTP due to the reliability TCP provides. Once the socket client opens a connection, the server is able to serve the game object in JSON format. Moreover, the communication between the client and server is made asynchronously offering a non blocking user interface. To achieve this, the Rx library is used, which provides subscribing to and publishing events and callbacks. The following code snippet shows the client subscribing for a startGame action.
-
+'''
 client.startGame(game.getId()).subscribe(new Action1<Game>(){
       @Override
       public void call(Game game) {
          //Start a new Intent and pass the game object
        }
 });
-
+'''
 Excerpt 1. Subscription for a game start action.
 
 Development
