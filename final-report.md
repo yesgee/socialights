@@ -198,8 +198,6 @@ Everyone must look into this
 
 **Branching Model:** The server-side of the application was developed using the Git-flow branching model. This allowed multiple team members to work separately on different parts of the server, without interfering too much with each other. The development model for the android part is discussed in the Android connectivity section.
 
-> Android team should talk about this.
-
 **Code Reviews:** The branching model used in server-side development made it extremely easy to do code reviews. This makes sure that at least one pair of fresh eyes has seen the code, and that at least one other developer knows what's going on in the code.
 
 **Tests:** Test driven development is an approach that proved to be extremely powerful for server-side development. This unfortunately did not work for the Android part.
