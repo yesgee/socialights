@@ -58,7 +58,7 @@ We make the game combined with lights, into a *cool* gadget, such that young and
 ### Achieved Goals
 
 * We have built a quiz application on android platform that enables user to join a game and play.
-* A quiz server that  generates the questions, verifies the answers,keeps score and talks to the application
+* A quiz server that  generates the questions, verifies the answers, keeps score and talks to the application.
 * Hue lights are connected to the server and the feedback of the game is provided by the lights.
 
 ### Scope for improvement
@@ -96,7 +96,22 @@ Sowmya and Gayathri can add more points
 Samuel and Harika can look into this.
 
 #### Hue lights
-Hylke or Jan can fill up this
+* The Hue lights controller is able to connect to any SociaLights server and process commands
+* The Hue lights controller is stateless and memoryless and is therefore very easy and versatile in use
+* The Hue lights respond immediately to a command sent by the server
+* The Hue lights can respond to any event in the game flow
+    1. The lights can assign a color to each team
+    * The lights can show the team scores in terms of relative brightness
+    * The lights can count down on an asked question
+    * The two team lights show the color of the team that needs to answer the question on countdown
+    * The middle lights will flicker and slowly change color from green to red as the time runs out on countdown
+    * The countdown stops when a question is answered or when the time runs on out
+    * The lights flicker red on a wrongly answered question or when the countdown timer runs out
+    * The lights flicker green on a rightly answered question
+    * The lights show a color loop animation when no game is being played
+
+We have achieved all the Hue lights functionality that we set out achieve in the initial project plan. Future prospects would be to make the system work for more teams and more lights and to develop some fancier animations to for instance detect when a user enters a room, when users are waiting to play and when a game starts and finishes.
+
 
 ### Challenging Technological and Environment Aspects
 
