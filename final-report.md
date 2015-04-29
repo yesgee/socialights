@@ -116,7 +116,7 @@ client.startGame(game.getId()).subscribe(new Action1<Game>(){
 ```
 Excerpt 1. Subscription for a game start action.
 
-<b>Development</b>
+<b>Development</b><br/>
 The SociaLights android game was developed using Android Studio and Github as the code base. Team members worked on the different parts of the game and pushed code to the repository. Initially, the client code had unit tests written for most of it’s business logic. However, Travis (the Continuous Integration platform used in the project) kept on freezing upon starting the emulator for minor issues. Therefore, the unit tests were abandoned and quality assurance was made both by manual testing and using Jenkin’s test cases. To minimize the learning curve, the android development team also opted out from using Git flow and instead published code to the develop branch in most of the cases. This practice did not result in major setback, but it could be improved for future software development processes.
 
 
