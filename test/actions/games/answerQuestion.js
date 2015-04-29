@@ -109,19 +109,6 @@ describe('Action: answerQuestion', function() {
     });
   });
 
-  it('should finish the game after answering the last question', function(done) {
-    api.specHelper.runAction('answerQuestion', {
-      user: user.id,
-      game: game.id,
-      answer: incorrectId
-    }, function(response) {
-      should.not.exist(response.error);
-      should.exist(response.game.question.answeredCorrectly);
-      response.game.finished.should.equal(true);
-      done();
-    });
-  });
-
   it('should return positive for the right answer', function(done) {
     api.specHelper.runAction('answerQuestion', {
       user: user.id,

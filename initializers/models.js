@@ -21,6 +21,7 @@ module.exports = {
       });
     };
 
+    api.chatRoom.add('room:demo');
     api.chatRoom.add('updates:models', function(created) {
       api.log('ChatRoom updates:models created.', 'debug');
     });
