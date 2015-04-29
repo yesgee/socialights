@@ -89,11 +89,35 @@ The server-side of the application is thoroughly covered with unit tests, as can
 * Each team is assigned a *color*, indicated by a hue light and the third hue light is used as a countdown timer for each question.
 * The user is free to quit the game at any point of time.
 
+The SociaLights app is composed of several activities, each providing a simple user interface presentation and an action to be performed. The game used native UI controls such as list, fragments and other common elements. The game provides the user a feedback on the UI without distracting user’s action. Currently, the game has a UI for registration and login, creating a new game with the desired number of quiz questions, a list of users who are in the game and which team they belong to, a quiz screen where the user could see if her opponents are answering correctly or not and finally the score board. For example, the following image depicts the experience of answering a quiz, where the yellow progress bar fades from yellow to grey indicating a ticking deadline for an answer.
+
+![Progress bar used to give feedback](/images/newprogress.png)
+
+Other user interface decisions made include to change the color of the answer button to green or red depending on the correctness of an answer. The green color is used to show a correct answer while the later is used for a wrong answer. Below is two figures that show the concept clearly.
+
+![User interface feedback for correct and incorrect answer attempts.](/images/correct.png)
+![User interface feedback for correct and incorrect answer attempts.](/images/incorrect.png)
+
+In the above figures, the Red Team is able to see what the other team has answered and whether the answer is correct (green background) or not on the same screen. The second figure on the other hand shows enabled button texts, indicating the turn to answer is for the Red Team but also showing the team has answered incorrectly (red background).
+
 Sowmya and Gayathri can add more points
 
 ####Android-Server Connectivity
 
-Samuel and Harika can look into this.
+The game used Socket programming in Java with TCP as the communication protocol. This was chosen over HTTP due to the reliability TCP provides. Once the socket client opens a connection, the server is able to serve the game object in JSON format. Moreover, the communication between the client and server is made asynchronously offering a non blocking user interface. To achieve this, the Rx library is used, which provides subscribing to and publishing events and callbacks. The following code snippet shows the client subscribing for a startGame action.
+
+client.startGame(game.getId()).subscribe(new Action1<Game>(){
+      @Override
+      public void call(Game game) {
+         //Start a new Intent and pass the game object
+       }
+});
+
+Excerpt 1. Subscription for a game start action.
+
+Development
+The SociaLights android game was developed using Android Studio and Github as the code base. Team members worked on the different parts of the game and pushed code to the repository. Initially, the client code had unit tests written for most of it’s business logic. However, Travis (the Continuous Integration platform used in the project) kept on freezing upon starting the emulator for minor issues. Therefore, the unit tests were abandoned and quality assurance was made both by manual testing and using Jenkin’s test cases. To minimize the learning curve, the android development team also opted out from using Git flow and instead published code to the develop branch in most of the cases. This practice did not result in major setback, but it could be improved for future software development processes.
+
 
 #### Hue lights
 * The Hue lights controller is able to connect to any SociaLights server and process commands.
@@ -171,7 +195,7 @@ Everyone must look into this
 
 **Git and Github:** Git and Github are extremely powerful tools for team projects.
 
-**Branching Model:** The server-side of the application was developed using the Git-flow branching model. This allowed multiple team members to work separately on different parts of the server, without interfering too much with each other. This model unfortunately did not work for the Android part.
+**Branching Model:** The server-side of the application was developed using the Git-flow branching model. This allowed multiple team members to work separately on different parts of the server, without interfering too much with each other. The development model for the android part is discussed in the Android connectivity section.
 
 > Android team should talk about this.
 
@@ -179,7 +203,7 @@ Everyone must look into this
 
 **Tests:** Test driven development is an approach that proved to be extremely powerful for server-side development. This unfortunately did not work for the Android part.
 
-> Android team should talk about this.
+
 
 **Continuous Integration:** By using Continuous Integration we were able to quickly detect and fix issues that were introduced by code rewrites. We think every project should use some form of CI. However, CI is very difficult to do correctly with an Android application.
 
