@@ -89,21 +89,21 @@ The server-side of the application is thoroughly covered with unit tests, as can
 * Each team is assigned a *color*, indicated by a hue light and the third hue light is used as a countdown timer for each question.
 * The user is free to quit the game at any point of time.
 
-The SociaLights app is composed of several activities, each providing a simple user interface presentation and an action to be performed. The game used native UI controls such as list, fragments and other common elements. The game provides the user a feedback on the UI without distracting user’s action. Currently, the game has a UI for registration and login, creating a new game with the desired number of quiz questions, a list of users who are in the game and which team they belong to, a quiz screen where the user could see if her opponents are answering correctly or not and finally the score board. For example, the following image depicts the experience of answering a quiz, where the yellow progress bar fades from yellow to grey indicating a ticking deadline for an answer.
+The SociaLights app is composed of several activities, each providing a simple user interface and an action to be performed. The game uses native UI controls such as list, fragments and other common elements. The game provides the user a feedback on the UI without distracting user’s action. Currently, the game has a UI for registration and login, creating a new game with the desired number of quiz questions, a list of users who are in the game and which team they belong to, a quiz screen where the users can see if their opponents are answering correctly or not and finally the score board. For example, the following image depicts the experience of answering a question, where the yellow progress bar slides from yellow to grey indicating a ticking deadline for an answer.
 
 <img src="/images/newprogress.png" alt="Progress bar used to give feedback" width="250" height="350">
 
-Other user interface decisions made include to change the color of the answer button to green or red depending on the correctness of an answer. The green color is used to show a correct answer while the later is used for a wrong answer. Below is two figures that show the concept clearly.
+Other interface aspects include the change of color of the answer button to green or red depending on the correctness of the provided answer. Green is used to show a correct answer while red is used for a wrong answer. Below are two figures that show the concept clearly.
 
 <img src="/images/correct.png" alt="User interface feedback for correct and incorrect answer" width="250" height="350">
 |
 <img src="/images/incorrect.png" alt="User interface feedback for correct and incorrect answer" width="250" height="350">
 
-In the above figures, the Red Team is able to see what the other team has answered and whether the answer is correct (green background) or not on the same screen. The second figure on the other hand shows enabled button texts, indicating the turn to answer is for the Red Team but also showing the team has answered incorrectly (red background).
+In the figures, the Red Team is able to see what the other team has answered and whether the answer is correct or not on the same screen. The second figure on the other hand shows enabled button texts, indicating the turn to answer is for the Red Team but also showing the team has answered incorrectly.
 
 ####Android-Server Connectivity
 
-The game used Socket programming in Java with TCP as the communication protocol. This was chosen over HTTP due to the reliability TCP provides. Moreover, socket model offered push to state changes from the server. Once the socket client opens a connection, the server is able to serve the game object in JSON format. Moreover, the communication between the client and server is made asynchronously offering a non blocking user interface. To achieve this, the Rx library is used, which provides subscribing to and publishing events and callbacks. The following code snippet shows the client subscribing for a startGame action.
+The game uses Socket programming in Java with TCP as the communication protocol. This was chosen over HTTP due to the reliability TCP provides. Moreover, the socket model offers pushing state changes from the server. Once the socket client opens a connection, the server is able to serve the game object in JSON format. Moreover, the communication between the client and server is made asynchronously, offering a non blocking user interface. To achieve this, the Rx library is used, which provides subscribing to and publishing events and callbacks. The following code snippet shows the client subscribing for a startGame action.
 ```java
 client.startGame(game.getId()).subscribe(new Action1<Game>(){
       @Override
@@ -214,8 +214,8 @@ The SociaLights android game was developed using Android Studio and Github as th
 #### Service Design
 
 SociaLights can be deployed in coffee rooms that makes the room more attractive and playful. The usage of LED lights with this application will be appealing to the users.
-This is a user-friendly application that spurs an interaction between  colleagues or co-workers. Our Quiz application requires atleast two people to start a game initially.
- Hence, it provides a huge opportunity to the users to know each other who may not be direct co-workers. In effect, this creates a healthy working environment and makes coffee breaks fun.
+This is a user-friendly application that spurs an interaction between  colleagues or co-workers. Our Quiz application requires at least two people to start a game initially.
+Hence, it provides a huge opportunity to the users to get to know each other who may not be direct co-workers. In effect, this creates a healthy working environment and makes coffee breaks fun.
 
 
 #### Technology Design
@@ -232,7 +232,7 @@ The feedback of the game is provided by a set of wireless LED Hue light bulbs. C
 
 ![Organisation](/images/organisation.jpg)
 
-The key players are game developers, Hue MNC, Application Users and the Cloud Providers. The game developers create the application and deploy it in the cloud. The Hue MNC provides the necessary API(HUE API) which connects the client application to the Hue LED lights. The Application users can then have an access to the app from the cloud provider. Once the user enters the socialights enabled room, he can start playing the quiz game.
+The key players are game developers, Hue MNC, Application Users and the Cloud Providers. The game developers create the application and deploy it in the cloud. The Hue MNC provides the necessary API(HUE API) which connects the client application to the Hue LED lights. The Application users can then have an access to the app from the cloud provider. Once the user enters the SociaLights enabled room, he can start playing the quiz game.
 
 #### Finance Design
 The game is offered on subscription bases for companies who want to improve communication among their employees. Companies will be charged monthly for each game they subscribe from SociaLight's service. The amount charged varies in the number of employees the company wants to give access, i.e 0-10 employees for the basic subscription and then a bit more fee for more number of employees.
