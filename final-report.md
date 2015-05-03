@@ -63,8 +63,7 @@ We make the game combined with lights, into a *cool* gadget, such that young and
 
 ### Scope for improvement
 
- In the project, we implemented only the quiz game, but we also keep the possibility to add more game types later.
-We also limit ourselves to one coffee room and there is scope to make it work between multiple coffee rooms.
+In the project, we implemented only the quiz game, but we kept the possibility open to add more game types later. We limited outselves to one coffee room, but as the game is very dynamically implemented, it can be easily adjusted to work with multiple coffee rooms.
 
 ### Other results
 > Discussion of all other project results, not included in the evaluated goals.
@@ -159,12 +158,15 @@ Everyone can add
 
 We should probably add the number of lines of code, no of resources, Bugs per line of code etc
 
+### Lines of code
+The written code for the server consists of 8281 lines of code in total. Out of these 8281 lines of code, 3221 lines are for testing purposes. So, almost 40% of all the code is written to ensure a safe and smooth development. This is also the reason that our code does not contain any known bugs, as the code is thoroughly tested.
+
+
 ### Resources
 
 * Hue Lights
 * Hue API
 * Test Device: Android Phone
-*
 
 #### Quality metrics
 
