@@ -170,7 +170,7 @@ The written code for the server consists of 8281 lines of code in total. Out of 
 
 #### Quality metrics
 
-* Number of Users the Game can support and Scalability aspect.
+* The game can support a large number of users and is scalable and flexible.
 * No delay in answering the question and getting feedback from the lights.
 * The entire application along with the hue lights is user-friendly and easy to use.
 
