@@ -82,13 +82,16 @@ The server-side of the application is thoroughly covered with unit tests, as can
 
 The SociaLights app is composed of several activities, each providing a simple user interface and an action to be performed. The game uses native UI controls such as list, fragments and other common elements. The game provides the user a feedback on the UI without distracting user’s action. Currently, the game has a UI for registration and login, creating a new game with the desired number of quiz questions, a list of users who are in the game and which team they belong to, a quiz screen where the users can see if their opponents are answering correctly or not and finally the score board. For example, the following image depicts the experience of answering a question, where the yellow progress bar slides from yellow to grey indicating a ticking deadline for an answer.
 
-<img src="/images/newprogress.png" alt="Progress bar used to give feedback" width="250" height="350">
+<div style="text-align: center; margin: 1cm auto;">
+<img src="/images/newprogress.png" alt="Progress bar used to give feedback" width="200">
+</div>
 
 Other interface aspects include the change of color of the answer button to green or red depending on the correctness of the provided answer. Green is used to show a correct answer while red is used for a wrong answer. Below are two figures that show the concept clearly.
 
-<img src="/images/correct.png" alt="User interface feedback for correct and incorrect answer" width="250">
-|
-<img src="/images/incorrect.png" alt="User interface feedback for correct and incorrect answer" width="250">
+<div style="text-align: center; margin: 1cm auto;">
+<img src="/images/correct.png" alt="User interface feedback for correct and incorrect answer" width="200" style="margin-right: 1cm;">
+<img src="/images/incorrect.png" alt="User interface feedback for correct and incorrect answer" width="200">
+</div>
 
 In the figures, the Red Team is able to see what the other team has answered and whether the answer is correct or not on the same screen. The second figure on the other hand shows enabled button texts, indicating the turn to answer is for the Red Team but also showing the team has answered incorrectly.
 
@@ -125,6 +128,7 @@ Excerpt 1. Subscription for a game start action.
 
 We have achieved all the Hue lights functionality that we set out achieve in the initial project plan. Future prospects would be to make the system work for more teams and more lights and to develop some fancier animations to for instance detect when a user enters a room, when users are waiting to play and when a game starts and finishes.
 
+<div style="page-break-after:always"></div>
 
 ### Challenging Technological and Environment Aspects
 
@@ -207,6 +211,7 @@ Since we use TCP sockets, our service is more efficient in terms of bandwidth.
 
 The feedback of the game is provided by a set of wireless LED Hue light bulbs. Connectivity between the application and the hue light bulbs is provided by the Hue bridge which is an integral part of the Hue system. The bridge also enables remote control of the light bulbs over the Internet. Communication between socialights and the Hue lights is enabled by Hue API.
 
+<div style="page-break-after:always"></div>
 
 #### Organisation Design
 
