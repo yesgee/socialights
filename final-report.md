@@ -50,8 +50,6 @@ Our application provides a quiz-based game that interacts with the lights in the
 
 ## Evaluation of the results
 
-> Evaluating the achievement of the project goals. Discuss reasons if some goals were changed/not achieved.
-
 We developed an application that is able to bring colleagues together within a company and make them get to know and understand each other. With *SociaLights*, we strive to enhance social interaction between people and, by doing so, strengthen the social foundation of the companies that adopt *SociaLights*. We believe that a cooperative and playful game in the coffee room will lead to the development of social ties and cooporative skills that contribute to future (collaborative) problem solving capabilities of the company.
 We make the game combined with lights, into a *cool* gadget, such that young and vibrant companies will sooner be tempted to acquire the lights and the application. So far, we have built a quiz game and made it work for deployment in **one coffee room**. We have build the mobile (Android) application and a cloud-based game server. We do not depend on a third party service (Hue Cloud) to communicate with the Hue Lights.
 
@@ -65,13 +63,7 @@ We make the game combined with lights, into a *cool* gadget, such that young and
 
 In the project, we implemented only the quiz game, but we kept the possibility open to add more game types later. We limited outselves to one coffee room, but as the game is very dynamically implemented, it can be easily adjusted to work with multiple coffee rooms.
 
-### Other results
-> Discussion of all other project results, not included in the evaluated goals.
-
 ### Evaluation of quality of the system
-
-> Evaluation of the quality of the developed system based on achievement of the quality goals, quality metrics, group's opinion etc.
-> Known bugs, unfinished features, prospective development ideas.
 
 ####Server
 
@@ -94,9 +86,9 @@ The SociaLights app is composed of several activities, each providing a simple u
 
 Other interface aspects include the change of color of the answer button to green or red depending on the correctness of the provided answer. Green is used to show a correct answer while red is used for a wrong answer. Below are two figures that show the concept clearly.
 
-<img src="/images/correct.png" alt="User interface feedback for correct and incorrect answer" width="250" height="350">
+<img src="/images/correct.png" alt="User interface feedback for correct and incorrect answer" width="250">
 |
-<img src="/images/incorrect.png" alt="User interface feedback for correct and incorrect answer" width="250" height="350">
+<img src="/images/incorrect.png" alt="User interface feedback for correct and incorrect answer" width="250">
 
 In the figures, the Red Team is able to see what the other team has answered and whether the answer is correct or not on the same screen. The second figure on the other hand shows enabled button texts, indicating the turn to answer is for the Red Team but also showing the team has answered incorrectly.
 
@@ -144,23 +136,14 @@ We have achieved all the Hue lights functionality that we set out achieve in the
 * The Hue lights respond in real time to game events.
 * The Hue lights animations are created by individual, timed commands.
 
-Everyone can add
-
-> List of all challenging technological and environment related aspects of the project that you want the tutor to consider when he evaluates the project's difficulty.
-
 ####Environment Aspects
 * Identifying Coffee rooms and making them Socialights enabled.
 * Using the lights in a manner that does not have a disturbing effect on the user.
 
 ## Metrics
 
-> Summary of used resources, quality metrics, software size etc. Some analysis of the figures compared to your previous projects or other similar projects.
-
-We should probably add the number of lines of code, no of resources, Bugs per line of code etc
-
 ### Lines of code
 The written code for the server consists of 8281 lines of code in total. Out of these 8281 lines of code, 3221 lines are for testing purposes. So, almost 40% of all the code is written to ensure a safe and smooth development. This is also the reason that our code does not contain any known bugs, as the code is thoroughly tested.
-
 
 ### Resources
 
@@ -174,12 +157,7 @@ The written code for the server consists of 8281 lines of code in total. Out of 
 * No delay in answering the question and getting feedback from the lights.
 * The entire application along with the hue lights is user-friendly and easy to use.
 
-Everyone must look into this
-
-
 ## Work practices and tools
-
-> Experiences of the used practices and tools. Discussion of their suitability to your project. Which were the Top-3 or Top-X useful and useless ones?
 
 **Gitter:** Gitter is a great communication tool. Integrations with other tools make it a good place to get an overview of what's going on.
 
@@ -211,8 +189,6 @@ The SociaLights android game was developed using Android Studio and Github as th
 
 ## Preliminary business model
 
-> A short (1-2 pages) business model design based on the STOF framework. A description of STOF can be found from here: https://noppa.aalto.fi/noppa/kurssi/t-109.4300/luennot/T-109_4300_slides_3.pdf. Include a hypothetical deployment plan as well into this section (i.e., how you would launch your application).
-
 #### Service Design
 
 SociaLights can be deployed in coffee rooms that makes the room more attractive and playful. The usage of LED lights with this application will be appealing to the users.
@@ -242,4 +218,4 @@ The game is offered on subscription bases for companies who want to improve comm
 
 ## Grade adjustment
 
-> At the end of the project each group member can evaluate each other's contribution, and propose personal increases and decreases of one grade (the sum of these must be zero). We recommend the group to have an open discussion within the group about the evaluations and make a combined proposal of changes either in this section or separately to the tutor. If this is not possible, each member can confidentially send their proposal to the tutor. Based on the proposal the course personnel may tune the personal grades by one. If all group members would get grade 5 without raises, proposed deductions are neglected. In addition, proposed grade changes won’t cause anyone to fail the course if the group’s grade was 1 or pass the course if the group’s grade was 0. Even if the group does not want to tune the grades, it is recommended that the group members internally give feedback to the other members of their success in their role: what was good, what good have been done better.
+We will not recommend grade adjustments for individual team members.
