@@ -1,0 +1,426 @@
+{
+  "_id": "55117b6ef461f4df34290a26",
+  "createdAt": "2015-03-24T14:57:50.544Z",
+  "updatedAt": "2015-03-24T15:05:00.700Z",
+  "startedAt": "2015-03-24T14:57:50.504Z",
+  "__v": 3,
+  "nextQuestions": [
+    {
+      "_id": "55117b6ef461f4df34290a17",
+      "createdAt": "2015-03-24T14:57:50.532Z",
+      "updatedAt": "2015-03-24T14:57:50.532Z",
+      "question": "aspernatur et ab adipisci sapiente eius atque molestiae nostrum pariatur?",
+      "__v": 0,
+      "answers": [
+        {
+          "createdAt": "2015-03-24T14:57:50.523Z",
+          "updatedAt": "2015-03-24T14:57:50.523Z",
+          "answer": "a reiciendis quidem maxime maiores veritatis qui ut sint laudantium.",
+          "correct": false,
+          "feedback": "quibusdam minima porro delectus vel officia molestiae.",
+          "_id": "55117b6ef461f4df34290a1b",
+          "id": "55117b6ef461f4df34290a1b"
+        },
+        {
+          "createdAt": "2015-03-24T14:57:50.523Z",
+          "updatedAt": "2015-03-24T14:57:50.523Z",
+          "answer": "similique saepe et deserunt.",
+          "correct": true,
+          "feedback": "eum ut beatae fugit alias aut quisquam illum ea unde.",
+          "_id": "55117b6ef461f4df34290a1a",
+          "id": "55117b6ef461f4df34290a1a"
+        },
+        {
+          "createdAt": "2015-03-24T14:57:50.523Z",
+          "updatedAt": "2015-03-24T14:57:50.523Z",
+          "answer": "repudiandae voluptatem et beatae.",
+          "correct": false,
+          "feedback": "cum quae tempora doloribus excepturi eum.",
+          "_id": "55117b6ef461f4df34290a19",
+          "id": "55117b6ef461f4df34290a19"
+        },
+        {
+          "createdAt": "2015-03-24T14:57:50.523Z",
+          "updatedAt": "2015-03-24T14:57:50.523Z",
+          "answer": "non facilis at sed.",
+          "correct": false,
+          "feedback": "sint nam ut cum laborum earum in dolore sint.",
+          "_id": "55117b6ef461f4df34290a18",
+          "id": "55117b6ef461f4df34290a18"
+        }
+      ],
+      "correctAnswer": {
+        "createdAt": "2015-03-24T14:57:50.523Z",
+        "updatedAt": "2015-03-24T14:57:50.523Z",
+        "answer": "similique saepe et deserunt.",
+        "correct": true,
+        "feedback": "eum ut beatae fugit alias aut quisquam illum ea unde.",
+        "_id": "55117b6ef461f4df34290a1a",
+        "id": "55117b6ef461f4df34290a1a"
+      },
+      "id": "55117b6ef461f4df34290a17"
+    },
+    {
+      "_id": "55117b6ef461f4df34290a1c",
+      "createdAt": "2015-03-24T14:57:50.535Z",
+      "updatedAt": "2015-03-24T14:57:50.535Z",
+      "question": "asperiores maxime tenetur in earum possimus cumque labore sunt?",
+      "__v": 0,
+      "answers": [
+        {
+          "createdAt": "2015-03-24T14:57:50.523Z",
+          "updatedAt": "2015-03-24T14:57:50.523Z",
+          "answer": "autem nam dolore occaecati accusantium ut ut id animi ratione.",
+          "correct": false,
+          "feedback": "non architecto aspernatur quia aut quo minima minus.",
+          "_id": "55117b6ef461f4df34290a20",
+          "id": "55117b6ef461f4df34290a20"
+        },
+        {
+          "createdAt": "2015-03-24T14:57:50.524Z",
+          "updatedAt": "2015-03-24T14:57:50.524Z",
+          "answer": "laboriosam quas sequi quis ut neque.",
+          "correct": true,
+          "feedback": "tempore nobis reprehenderit animi dignissimos.",
+          "_id": "55117b6ef461f4df34290a1f",
+          "id": "55117b6ef461f4df34290a1f"
+        },
+        {
+          "createdAt": "2015-03-24T14:57:50.524Z",
+          "updatedAt": "2015-03-24T14:57:50.524Z",
+          "answer": "sunt cumque sapiente.",
+          "correct": false,
+          "feedback": "eaque non voluptatem labore.",
+          "_id": "55117b6ef461f4df34290a1e",
+          "id": "55117b6ef461f4df34290a1e"
+        },
+        {
+          "createdAt": "2015-03-24T14:57:50.524Z",
+          "updatedAt": "2015-03-24T14:57:50.524Z",
+          "answer": "ut id sit  ipsam enim eos.",
+          "correct": false,
+          "feedback": "ut beatae repellendus ut eos facere.",
+          "_id": "55117b6ef461f4df34290a1d",
+          "id": "55117b6ef461f4df34290a1d"
+        }
+      ],
+      "correctAnswer": {
+        "createdAt": "2015-03-24T14:57:50.524Z",
+        "updatedAt": "2015-03-24T14:57:50.524Z",
+        "answer": "laboriosam quas sequi quis ut neque.",
+        "correct": true,
+        "feedback": "tempore nobis reprehenderit animi dignissimos.",
+        "_id": "55117b6ef461f4df34290a1f",
+        "id": "55117b6ef461f4df34290a1f"
+      },
+      "id": "55117b6ef461f4df34290a1c"
+    }
+  ],
+  "previousQuestions": [
+    {
+      "answeredCorrectly": false,
+      "answeredAt": "2015-03-24T15:04:03.969Z",
+      "answeredBy": "55117b6ef461f4df34290a08",
+      "answer": "55117b6ef461f4df34290a22",
+      "createdAt": "2015-03-24T14:58:43.159Z",
+      "updatedAt": "2015-03-24T15:05:00.698Z",
+      "question": {
+        "_id": "55117b6ef461f4df34290a0d",
+        "createdAt": "2015-03-24T14:57:50.527Z",
+        "updatedAt": "2015-03-24T14:57:50.527Z",
+        "question": "hic quis aut laborum?",
+        "__v": 0,
+        "answers": [
+          {
+            "createdAt": "2015-03-24T14:57:50.522Z",
+            "updatedAt": "2015-03-24T14:57:50.522Z",
+            "answer": "enim fugit nostrum autem voluptas architecto velit eos repudiandae.",
+            "correct": false,
+            "feedback": "esse ut cupiditate dolorum.",
+            "_id": "55117b6ef461f4df34290a11",
+            "id": "55117b6ef461f4df34290a11"
+          },
+          {
+            "createdAt": "2015-03-24T14:57:50.522Z",
+            "updatedAt": "2015-03-24T14:57:50.522Z",
+            "answer": "optio nobis quidem dicta.",
+            "correct": false,
+            "feedback": "velit nam pariatur aperiam laborum sint nobis accusamus.",
+            "_id": "55117b6ef461f4df34290a10",
+            "id": "55117b6ef461f4df34290a10"
+          },
+          {
+            "createdAt": "2015-03-24T14:57:50.522Z",
+            "updatedAt": "2015-03-24T14:57:50.522Z",
+            "answer": "voluptatem ratione possimus explicabo et dignissimos neque voluptas.",
+            "correct": true,
+            "feedback": "est consectetur id.",
+            "_id": "55117b6ef461f4df34290a0f",
+            "id": "55117b6ef461f4df34290a0f"
+          },
+          {
+            "createdAt": "2015-03-24T14:57:50.522Z",
+            "updatedAt": "2015-03-24T14:57:50.522Z",
+            "answer": "accusantium doloribus placeat.",
+            "correct": false,
+            "feedback": "velit quaerat inventore consequatur dolore.",
+            "_id": "55117b6ef461f4df34290a0e",
+            "id": "55117b6ef461f4df34290a0e"
+          }
+        ],
+        "correctAnswer": {
+          "createdAt": "2015-03-24T14:57:50.522Z",
+          "updatedAt": "2015-03-24T14:57:50.522Z",
+          "answer": "voluptatem ratione possimus explicabo et dignissimos neque voluptas.",
+          "correct": true,
+          "feedback": "est consectetur id.",
+          "_id": "55117b6ef461f4df34290a0f",
+          "id": "55117b6ef461f4df34290a0f"
+        },
+        "id": "55117b6ef461f4df34290a0d"
+      },
+      "team": 0,
+      "askedAt": "2015-03-24T14:58:43.143Z",
+      "deadlineAt": "2015-03-24T14:58:53.143Z",
+      "_id": "55117ba3da38720b351c8a79",
+      "id": "55117ba3da38720b351c8a79"
+    },
+    {
+      "createdAt": "2015-03-24T15:05:00.698Z",
+      "updatedAt": "2015-03-24T15:05:00.698Z",
+      "question": {
+        "_id": "55117b6ef461f4df34290a12",
+        "createdAt": "2015-03-24T14:57:50.531Z",
+        "updatedAt": "2015-03-24T14:57:50.531Z",
+        "question": "rerum similique cupiditate facere earum reiciendis nobis sed voluptates rem?",
+        "__v": 0,
+        "answers": [
+          {
+            "createdAt": "2015-03-24T14:57:50.522Z",
+            "updatedAt": "2015-03-24T14:57:50.522Z",
+            "answer": "reprehenderit sunt unde consequuntur recusandae officia.",
+            "correct": true,
+            "feedback": "dicta ut minus.",
+            "_id": "55117b6ef461f4df34290a16",
+            "id": "55117b6ef461f4df34290a16"
+          },
+          {
+            "createdAt": "2015-03-24T14:57:50.523Z",
+            "updatedAt": "2015-03-24T14:57:50.523Z",
+            "answer": "omnis quis consequatur dolorum exercitationem quaerat.",
+            "correct": false,
+            "feedback": "magnam soluta voluptatem odit placeat itaque dignissimos.",
+            "_id": "55117b6ef461f4df34290a15",
+            "id": "55117b6ef461f4df34290a15"
+          },
+          {
+            "createdAt": "2015-03-24T14:57:50.523Z",
+            "updatedAt": "2015-03-24T14:57:50.523Z",
+            "answer": "saepe et quis.",
+            "correct": false,
+            "feedback": "a eos explicabo cumque dolore cupiditate.",
+            "_id": "55117b6ef461f4df34290a14",
+            "id": "55117b6ef461f4df34290a14"
+          },
+          {
+            "createdAt": "2015-03-24T14:57:50.523Z",
+            "updatedAt": "2015-03-24T14:57:50.523Z",
+            "answer": "quae odit aut velit quia sunt consectetur.",
+            "correct": false,
+            "feedback": "ea ut rerum enim et consequatur dolore consequuntur.",
+            "_id": "55117b6ef461f4df34290a13",
+            "id": "55117b6ef461f4df34290a13"
+          }
+        ],
+        "correctAnswer": {
+          "createdAt": "2015-03-24T14:57:50.522Z",
+          "updatedAt": "2015-03-24T14:57:50.522Z",
+          "answer": "reprehenderit sunt unde consequuntur recusandae officia.",
+          "correct": true,
+          "feedback": "dicta ut minus.",
+          "_id": "55117b6ef461f4df34290a16",
+          "id": "55117b6ef461f4df34290a16"
+        },
+        "id": "55117b6ef461f4df34290a12"
+      },
+      "team": 1,
+      "askedAt": "2015-03-24T15:05:00.686Z",
+      "deadlineAt": "2015-03-24T15:05:10.686Z",
+      "_id": "55117d1cda38720b351c8a7a",
+      "id": "55117d1cda38720b351c8a7a"
+    }
+  ],
+  "teams": [
+    {
+      "createdAt": "2015-03-24T14:57:50.544Z",
+      "updatedAt": "2015-03-24T14:57:50.544Z",
+      "name": "Red Team",
+      "color": "#ff0000",
+      "_id": "55117b6ef461f4df34290a27",
+      "score": 0,
+      "users": [
+        {
+          "_id": "55117b6ef461f4df34290a08",
+          "createdAt": "2015-03-24T14:57:50.509Z",
+          "updatedAt": "2015-03-24T14:57:50.562Z",
+          "name": "Brielle Wuckert",
+          "__v": 0,
+          "game": "55117b6ef461f4df34290a26",
+          "id": "55117b6ef461f4df34290a08"
+        },
+        {
+          "_id": "55117b6ef461f4df34290a09",
+          "createdAt": "2015-03-24T14:57:50.518Z",
+          "updatedAt": "2015-03-24T14:57:50.563Z",
+          "name": "Ms. Dawson Hintz",
+          "__v": 0,
+          "game": "55117b6ef461f4df34290a26",
+          "id": "55117b6ef461f4df34290a09"
+        }
+      ],
+      "id": "55117b6ef461f4df34290a27"
+    },
+    {
+      "createdAt": "2015-03-24T14:57:50.544Z",
+      "updatedAt": "2015-03-24T14:57:50.544Z",
+      "name": "Blue Team",
+      "color": "#0000ff",
+      "_id": "55117b6ef461f4df34290a28",
+      "score": 0,
+      "users": [
+        {
+          "_id": "55117b6ef461f4df34290a0a",
+          "createdAt": "2015-03-24T14:57:50.519Z",
+          "updatedAt": "2015-03-27T12:13:48.780Z",
+          "name": "Frank the Tankt",
+          "__v": 0,
+          "game": "55117b6ef461f4df34290a26",
+          "id": "55117b6ef461f4df34290a0a"
+        },
+        {
+          "_id": "55117b6ef461f4df34290a0b",
+          "createdAt": "2015-03-24T14:57:50.520Z",
+          "updatedAt": "2015-03-24T14:57:50.564Z",
+          "name": "Gillian Boyer",
+          "__v": 0,
+          "game": "55117b6ef461f4df34290a26",
+          "id": "55117b6ef461f4df34290a0b"
+        }
+      ],
+      "id": "55117b6ef461f4df34290a28"
+    }
+  ],
+  "users": [
+    {
+      "_id": "55117b6ef461f4df34290a08",
+      "createdAt": "2015-03-24T14:57:50.509Z",
+      "updatedAt": "2015-03-24T14:57:50.562Z",
+      "name": "Brielle Wuckert",
+      "__v": 0,
+      "game": "55117b6ef461f4df34290a26",
+      "id": "55117b6ef461f4df34290a08"
+    },
+    {
+      "_id": "55117b6ef461f4df34290a09",
+      "createdAt": "2015-03-24T14:57:50.518Z",
+      "updatedAt": "2015-03-24T14:57:50.563Z",
+      "name": "Ms. Dawson Hintz",
+      "__v": 0,
+      "game": "55117b6ef461f4df34290a26",
+      "id": "55117b6ef461f4df34290a09"
+    },
+    {
+      "_id": "55117b6ef461f4df34290a0a",
+      "createdAt": "2015-03-24T14:57:50.519Z",
+      "updatedAt": "2015-03-27T12:13:48.780Z",
+      "name": "Frank the Tankt",
+      "__v": 0,
+      "game": "55117b6ef461f4df34290a26",
+      "id": "55117b6ef461f4df34290a0a"
+    },
+    {
+      "_id": "55117b6ef461f4df34290a0b",
+      "createdAt": "2015-03-24T14:57:50.520Z",
+      "updatedAt": "2015-03-24T14:57:50.564Z",
+      "name": "Gillian Boyer",
+      "__v": 0,
+      "game": "55117b6ef461f4df34290a26",
+      "id": "55117b6ef461f4df34290a0b"
+    },
+    {
+      "_id": "55117b6ef461f4df34290a0c",
+      "createdAt": "2015-03-24T14:57:50.521Z",
+      "updatedAt": "2015-03-24T14:57:50.565Z",
+      "name": "Triston Windler",
+      "__v": 0,
+      "game": "55117b6ef461f4df34290a26",
+      "id": "55117b6ef461f4df34290a0c"
+    }
+  ],
+  "question": {
+    "createdAt": "2015-03-24T15:05:00.698Z",
+    "updatedAt": "2015-03-24T15:05:00.698Z",
+    "question": {
+      "_id": "55117b6ef461f4df34290a12",
+      "createdAt": "2015-03-24T14:57:50.531Z",
+      "updatedAt": "2015-03-24T14:57:50.531Z",
+      "question": "rerum similique cupiditate facere earum reiciendis nobis sed voluptates rem?",
+      "__v": 0,
+      "answers": [
+        {
+          "createdAt": "2015-03-24T14:57:50.522Z",
+          "updatedAt": "2015-03-24T14:57:50.522Z",
+          "answer": "reprehenderit sunt unde consequuntur recusandae officia.",
+          "correct": true,
+          "feedback": "dicta ut minus.",
+          "_id": "55117b6ef461f4df34290a16",
+          "id": "55117b6ef461f4df34290a16"
+        },
+        {
+          "createdAt": "2015-03-24T14:57:50.523Z",
+          "updatedAt": "2015-03-24T14:57:50.523Z",
+          "answer": "omnis quis consequatur dolorum exercitationem quaerat.",
+          "correct": false,
+          "feedback": "magnam soluta voluptatem odit placeat itaque dignissimos.",
+          "_id": "55117b6ef461f4df34290a15",
+          "id": "55117b6ef461f4df34290a15"
+        },
+        {
+          "createdAt": "2015-03-24T14:57:50.523Z",
+          "updatedAt": "2015-03-24T14:57:50.523Z",
+          "answer": "saepe et quis.",
+          "correct": false,
+          "feedback": "a eos explicabo cumque dolore cupiditate.",
+          "_id": "55117b6ef461f4df34290a14",
+          "id": "55117b6ef461f4df34290a14"
+        },
+        {
+          "createdAt": "2015-03-24T14:57:50.523Z",
+          "updatedAt": "2015-03-24T14:57:50.523Z",
+          "answer": "quae odit aut velit quia sunt consectetur.",
+          "correct": false,
+          "feedback": "ea ut rerum enim et consequatur dolore consequuntur.",
+          "_id": "55117b6ef461f4df34290a13",
+          "id": "55117b6ef461f4df34290a13"
+        }
+      ],
+      "correctAnswer": {
+        "createdAt": "2015-03-24T14:57:50.522Z",
+        "updatedAt": "2015-03-24T14:57:50.522Z",
+        "answer": "reprehenderit sunt unde consequuntur recusandae officia.",
+        "correct": true,
+        "feedback": "dicta ut minus.",
+        "_id": "55117b6ef461f4df34290a16",
+        "id": "55117b6ef461f4df34290a16"
+      },
+      "id": "55117b6ef461f4df34290a12"
+    },
+    "team": 1,
+    "askedAt": "2015-03-24T15:05:00.686Z",
+    "deadlineAt": "2015-03-24T15:05:10.686Z",
+    "_id": "55117d1cda38720b351c8a7a",
+    "id": "55117d1cda38720b351c8a7a"
+  },
+  "finished": false,
+  "id": "55117b6ef461f4df34290a26"
+}

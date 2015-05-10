@@ -1,0 +1,136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/background_light"
+    android:orientation="vertical"
+    tools:context="io.github.mobi_led.socialights.QuizActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:alpha="50"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:background="#333">
+
+        <TextView
+            android:id="@+id/txtWhichUser"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center|left"
+            android:text="Hey There!"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffffff"
+            android:textSize="15dp"
+            android:textStyle="normal">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/txtWhichTeam"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:gravity="center|right"
+            android:text="Team"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp"
+            android:textStyle="normal">
+
+        </TextView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtQuestionFor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Question for Team x:"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/txtQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+        android:gravity="center|center_vertical"
+        android:text="Waiting for question..."
+        android:textAlignment="gravity"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#368DEB"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button1"
+            android:onClick="btnClick"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="Answer"
+            android:textAlignment="gravity"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button2"
+            android:onClick="btnClick"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="Answer"
+            android:textAlignment="gravity"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button3"
+            android:onClick="btnClick"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="Answer"
+            android:textAlignment="gravity"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/button4"
+            android:onClick="btnClick"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="Answer"
+            android:textAlignment="gravity"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="fill_parent"
+        android:layout_height="16dp"
+        android:id="@+id/progressBar"
+        android:layout_gravity="center_horizontal"
+        style="@android:style/Widget.ProgressBar.Horizontal" />
+
+</LinearLayout>
