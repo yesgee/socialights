@@ -1,0 +1,39 @@
+{
+  "author": "Mobi-Led",
+  "contributors": [
+    "Gayathri Srinivaasan <gayathri.srinivaasan@aalto.fi>",
+    "Harika Satharasi <harika.satharasi@aalto.fi>",
+    "Hylke Visser <htdvisser@gmail.com>",
+    "Jan van de Kerkhof <jan.vandekerkhof@aalto.fi>",
+    "Samuel Balcha <samuel.balcha@gmail.com>",
+    "Sowmya Ravidas <sowmya.ravidas@aalto.fi>"
+  ],
+  "name": "socialights-hue-controller",
+  "description": "SociaLights Hue Controller",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mobi-led/socialights-hue-controller.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mobi-led/socialights-hue-controller/issues"
+  },
+  "homepage": "https://github.com/mobi-led/socialights-hue-controller",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "actionhero-client": "^4.0.0",
+    "progress": "^1.1.8",
+    "node-hue-api": "^1.0.5",
+    "q": "^1.2.0",
+    "q-retry": "^0.1.5"
+  },
+  "devDependencies": {},
+  "main": "controller.js",
+  "scripts": {
+    "start": "node controller.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true
+}
