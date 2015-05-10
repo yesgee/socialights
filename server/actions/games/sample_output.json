@@ -1,0 +1,304 @@
+{
+  "game": {
+    "startedAt": "2015-03-10T11:46:45.527Z",
+    "nextQuestions": [
+      {
+        "question": "vel ratione et animi quidem similique consequatur eos odit voluptate?",
+        "answers": [
+          {
+            "answer": "tenetur quisquam quae explicabo molestiae et molestiae consequatur.",
+            "correct": false,
+            "feedback": "fugit necessitatibus quod quisquam facilis molestias recusandae.",
+            "id": "54fed9a559bc53292be92ae7"
+          },
+          {
+            "answer": "itaque voluptatem necessitatibus qui vel qui beatae in.",
+            "correct": true,
+            "feedback": "quisquam repellat enim nesciunt fugiat sed dolor omnis repellendus laboriosam.",
+            "id": "54fed9a559bc53292be92ae6"
+          },
+          {
+            "answer": "nihil quidem accusantium sequi laudantium.",
+            "correct": false,
+            "feedback": "hic pariatur velit.",
+            "id": "54fed9a559bc53292be92ae5"
+          },
+          {
+            "answer": "rerum qui vel cupiditate ratione et veritatis odit labore.",
+            "correct": false,
+            "feedback": "aspernatur unde saepe.",
+            "id": "54fed9a559bc53292be92ae4"
+          }
+        ],
+        "correctAnswer": {
+          "answer": "itaque voluptatem necessitatibus qui vel qui beatae in.",
+          "correct": true,
+          "feedback": "quisquam repellat enim nesciunt fugiat sed dolor omnis repellendus laboriosam.",
+          "id": "54fed9a559bc53292be92ae6"
+        },
+        "id": "54fed9a559bc53292be92ae3"
+      },
+      {
+        "question": "occaecati distinctio natus ipsam?",
+        "answers": [
+          {
+            "answer": "animi minus aut tempora saepe suscipit facilis.",
+            "correct": true,
+            "feedback": "sequi rerum nihil.",
+            "id": "54fed9a559bc53292be92aec"
+          },
+          {
+            "answer": "dolorem est ut nisi dicta sint et molestiae.",
+            "correct": false,
+            "feedback": "doloremque et iste.",
+            "id": "54fed9a559bc53292be92aeb"
+          },
+          {
+            "answer": "quisquam est facilis aut molestiae provident ducimus sint.",
+            "correct": false,
+            "feedback": "nam autem explicabo incidunt accusantium aliquid perspiciatis.",
+            "id": "54fed9a559bc53292be92aea"
+          },
+          {
+            "answer": "doloremque deserunt aut dolore esse nisi doloribus dolores repellat.",
+            "correct": false,
+            "feedback": "laboriosam tempora possimus quod provident consequatur eum saepe ipsum neque.",
+            "id": "54fed9a559bc53292be92ae9"
+          }
+        ],
+        "correctAnswer": {
+          "answer": "animi minus aut tempora saepe suscipit facilis.",
+          "correct": true,
+          "feedback": "sequi rerum nihil.",
+          "id": "54fed9a559bc53292be92aec"
+        },
+        "id": "54fed9a559bc53292be92ae8"
+      },
+      {
+        "question": "porro facere cum voluptas nihil provident repellendus?",
+        "answers": [
+          {
+            "answer": "hic rerum nulla magnam voluptates unde sit tempore sed.",
+            "correct": true,
+            "feedback": "et omnis ducimus temporibus nihil veniam et.",
+            "id": "54fed9a559bc53292be92af1"
+          },
+          {
+            "answer": "sit fugiat fugit dolores qui rem eligendi.",
+            "correct": false,
+            "feedback": "repellendus fuga ipsam et ab molestias fugit nisi odio.",
+            "id": "54fed9a559bc53292be92af0"
+          },
+          {
+            "answer": "non sed officiis est.",
+            "correct": false,
+            "feedback": "qui similique ad pariatur perspiciatis.",
+            "id": "54fed9a559bc53292be92aef"
+          },
+          {
+            "answer": "occaecati sit temporibus.",
+            "correct": false,
+            "feedback": "voluptatem et excepturi beatae voluptates iste velit expedita aut fugiat.",
+            "id": "54fed9a559bc53292be92aee"
+          }
+        ],
+        "correctAnswer": {
+          "answer": "hic rerum nulla magnam voluptates unde sit tempore sed.",
+          "correct": true,
+          "feedback": "et omnis ducimus temporibus nihil veniam et.",
+          "id": "54fed9a559bc53292be92af1"
+        },
+        "id": "54fed9a559bc53292be92aed"
+      }
+    ],
+    "previousQuestions": [
+      {
+        "question": {
+          "question": "molestiae fugit quis ut mollitia debitis facere maiores consequuntur?",
+          "answers": [
+            {
+              "answer": "tempora ut repellat consequatur laudantium sed labore reiciendis dolor delectus.",
+              "correct": true,
+              "feedback": "doloremque aliquam nulla aut quod.",
+              "id": "54fed9a559bc53292be92add"
+            },
+            {
+              "answer": "nostrum similique eum assumenda et dolor quo ipsum.",
+              "correct": false,
+              "feedback": "et id esse quam quia dolores dolor natus quod.",
+              "id": "54fed9a559bc53292be92adc"
+            },
+            {
+              "answer": "laudantium quas ipsum tempora aut accusamus exercitationem consectetur consequatur quis.",
+              "correct": false,
+              "feedback": "debitis sed reiciendis dignissimos sed ad iusto assumenda ut.",
+              "id": "54fed9a559bc53292be92adb"
+            },
+            {
+              "answer": "sit reiciendis cumque iusto iure aut.",
+              "correct": false,
+              "feedback": "nemo nesciunt consequatur omnis maxime.",
+              "id": "54fed9a559bc53292be92ada"
+            }
+          ],
+          "correctAnswer": {
+            "answer": "tempora ut repellat consequatur laudantium sed labore reiciendis dolor delectus.",
+            "correct": true,
+            "feedback": "doloremque aliquam nulla aut quod.",
+            "id": "54fed9a559bc53292be92add"
+          },
+          "id": "54fed9a559bc53292be92ad9"
+        },
+        "team": 0,
+        "askedAt": "2015-03-10T11:47:52.461Z",
+        "deadlineAt": "2015-03-10T11:48:02.461Z",
+        "answer": "54fed9a559bc53292be92add",
+        "answeredAt": "2015-03-10T11:51:30.631Z",
+        "answeredCorrectly": true,
+        "id": "54fed9e8bffad1602b20fece"
+      },
+      {
+        "question": {
+          "question": "libero ex dolorem voluptatibus est ea in accusamus eos voluptatem?",
+          "answers": [
+            {
+              "answer": "illo quo aut voluptatum tempore.",
+              "correct": true,
+              "feedback": "earum illo occaecati aliquam enim praesentium qui.",
+              "id": "54fed9a559bc53292be92ae2"
+            },
+            {
+              "answer": "cum inventore explicabo velit ab et at.",
+              "correct": false,
+              "feedback": "et tenetur qui.",
+              "id": "54fed9a559bc53292be92ae1"
+            },
+            {
+              "answer": "sint maiores perferendis.",
+              "correct": false,
+              "feedback": "itaque dolorem quod eligendi dolores ex est repellendus consectetur aut.",
+              "id": "54fed9a559bc53292be92ae0"
+            },
+            {
+              "answer": "autem reiciendis earum impedit laudantium aut temporibus commodi praesentium.",
+              "correct": false,
+              "feedback": "qui dolor in officiis magni tempora ut a in reprehenderit.",
+              "id": "54fed9a559bc53292be92adf"
+            }
+          ],
+          "correctAnswer": {
+            "answer": "illo quo aut voluptatum tempore.",
+            "correct": true,
+            "feedback": "earum illo occaecati aliquam enim praesentium qui.",
+            "id": "54fed9a559bc53292be92ae2"
+          },
+          "id": "54fed9a559bc53292be92ade"
+        },
+        "team": 1,
+        "askedAt": "2015-03-10T11:52:43.708Z",
+        "deadlineAt": "2015-03-10T11:52:53.708Z",
+        "id": "54fedb0b7f091cc22b9a45e0"
+      }
+    ],
+    "teams": [
+      {
+        "name": "Red Team",
+        "color": "#ff0000",
+        "score": 0,
+        "users": [
+          {
+            "name": "Adeline Harber",
+            "id": "54fed9a559bc53292be92ad4"
+          },
+          {
+            "name": "Morgan Kuhlman",
+            "id": "54fed9a559bc53292be92ad5"
+          }
+        ],
+        "id": "54fed9a559bc53292be92af3"
+      },
+      {
+        "name": "Blue Team",
+        "color": "#0000ff",
+        "score": 0,
+        "users": [
+          {
+            "name": "Maurice Swift",
+            "id": "54fed9a559bc53292be92ad6"
+          },
+          {
+            "name": "Freda Hermiston V",
+            "id": "54fed9a559bc53292be92ad7"
+          }
+        ],
+        "id": "54fed9a559bc53292be92af4"
+      }
+    ],
+    "users": [
+      {
+        "name": "Adeline Harber",
+        "id": "54fed9a559bc53292be92ad4"
+      },
+      {
+        "name": "Morgan Kuhlman",
+        "id": "54fed9a559bc53292be92ad5"
+      },
+      {
+        "name": "Maurice Swift",
+        "id": "54fed9a559bc53292be92ad6"
+      },
+      {
+        "name": "Freda Hermiston V",
+        "id": "54fed9a559bc53292be92ad7"
+      },
+      {
+        "name": "Michaela Ratke",
+        "id": "54fed9a559bc53292be92ad8"
+      }
+    ],
+    "question": {
+      "question": {
+        "question": "libero ex dolorem voluptatibus est ea in accusamus eos voluptatem?",
+        "answers": [
+          {
+            "answer": "illo quo aut voluptatum tempore.",
+            "correct": true,
+            "feedback": "earum illo occaecati aliquam enim praesentium qui.",
+            "id": "54fed9a559bc53292be92ae2"
+          },
+          {
+            "answer": "cum inventore explicabo velit ab et at.",
+            "correct": false,
+            "feedback": "et tenetur qui.",
+            "id": "54fed9a559bc53292be92ae1"
+          },
+          {
+            "answer": "sint maiores perferendis.",
+            "correct": false,
+            "feedback": "itaque dolorem quod eligendi dolores ex est repellendus consectetur aut.",
+            "id": "54fed9a559bc53292be92ae0"
+          },
+          {
+            "answer": "autem reiciendis earum impedit laudantium aut temporibus commodi praesentium.",
+            "correct": false,
+            "feedback": "qui dolor in officiis magni tempora ut a in reprehenderit.",
+            "id": "54fed9a559bc53292be92adf"
+          }
+        ],
+        "correctAnswer": {
+          "answer": "illo quo aut voluptatum tempore.",
+          "correct": true,
+          "feedback": "earum illo occaecati aliquam enim praesentium qui.",
+          "id": "54fed9a559bc53292be92ae2"
+        },
+        "id": "54fed9a559bc53292be92ade"
+      },
+      "team": 1,
+      "askedAt": "2015-03-10T11:52:43.708Z",
+      "deadlineAt": "2015-03-10T11:52:53.708Z",
+      "id": "54fedb0b7f091cc22b9a45e0"
+    },
+    "finished": false,
+    "id": "54fed9a559bc53292be92af2"
+  }
+}

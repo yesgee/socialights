@@ -1,0 +1,65 @@
+/* app css stylesheet */
+body { padding-top: 70px; }
+.logo {
+  height:40px;
+  margin-top:-10px;
+  float:left;
+  padding-right:15px;
+}
+
+.fill-height {
+  min-height: 100%;
+  height:auto !important; /* cross-browser */
+  height: 100%;
+}
+
+.removeButton {
+  float:right;
+  height:30px;
+  margin-top: -5px;
+  width:30px;
+  margin-right: -5px;
+  padding-right:20px;
+}
+
+.editButton {
+  height:30px;
+  width:30px;
+  font-size:15px;
+  float:right;
+}
+
+.teamList {
+  margin-bottom:0px !important;
+}
+
+#teamColor {
+  margin-top:5px;
+  margin-left:5px;
+}
+#alert {
+  padding-bottom:10px;
+}
+.leftPanel {
+  padding-left:40px;
+}
+
+.rightPanel {
+  padding-right:40px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.swapButton {
+  float:right;
+  margin-bottom:10px;
+  margin-top:10px;
+  margin-right:40px;
+  bottom:1px;
+}
+
+/*.col-sm-10, .col-sm-1, .col-sm-2, .col-sm-11{
+  padding-bottom:20px;
+}*/

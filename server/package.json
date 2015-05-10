@@ -1,0 +1,40 @@
+{
+  "author": "Mobi-Led",
+  "contributors": [
+    "Gayathri Srinivaasan <gayathri.srinivaasan@aalto.fi>",
+    "Harika Satharasi <harika.satharasi@aalto.fi>",
+    "Hylke Visser <htdvisser@gmail.com>",
+    "Jan van de Kerkhof <jan.vandekerkhof@aalto.fi>",
+    "Samuel Balcha <samuel.balcha@gmail.com>",
+    "Sowmya Ravidas <sowmya.ravidas@aalto.fi>"
+  ],
+  "name": "socialights-server",
+  "description": "SociaLights Server",
+  "version": "0.0.1-wip",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "actionhero": "10.1.0",
+    "async": "0.9.0",
+    "grunt": "latest",
+    "mongoose": "3.8.25",
+    "mongoose-simple-random": "0.3.0",
+    "mongoose-timestamp": "0.4.0",
+    "mout": "0.11.0",
+    "ws": "latest"
+  },
+  "devDependencies": {
+    "chai": "latest",
+    "faker": "2.1.2",
+    "mocha": "latest"
+  },
+  "scripts": {
+    "help": "actionhero help",
+    "start": "actionhero start",
+    "actionhero": "actionhero",
+    "startCluster": "actionhero startCluster",
+    "test": "mocha"
+  },
+  "private": true
+}
