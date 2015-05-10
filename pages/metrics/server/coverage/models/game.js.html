@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for models/game.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">models/game.js</span></h1>
+    <h2>
+        Statements: <span class="metric">93.97% <small>(109 / 116)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">82.98% <small>(39 / 47)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(22 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">97.25% <small>(106 / 109)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">models/</a> &#187; game.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">65</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">45</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44</span>
+<span class="cline-any cline-yes">44</span>
+<span class="cline-any cline-yes">44</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">43</span>
+<span class="cline-any cline-yes">70</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-yes">18</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">32</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+var Schema = require('mongoose').Schema;
+var timestamps = require('mongoose-timestamp');
+&nbsp;
+var async = require('async');
+&nbsp;
+var last = require('mout/array/last');
+var findIndex = require('mout/array/findIndex');
+var isFunction = require('mout/lang/isFunction');
+var sortBy = require('mout/array/sortBy');
+&nbsp;
+// Team Schema
+var teamSchema = new Schema({
+  name: { type: String, required: true },
+  color: { type: String, required: true, match: /#([A-Fa-f0-9]{6})/ },
+  users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  score: { type: Number, required: true, min: 0, default: 0 }
+});
+teamSchema.plugin(timestamps);
+&nbsp;
+// AskedQuestion Schema
+var askedQuestionSchema = new Schema({
+  question: { type: Schema.Types.ObjectId, required: true, ref: 'Question' },
+  team: { type: Number, required: true },
+  askedAt: { type: Date, required: true },
+  deadlineAt: { type: Date, required: true },
+  answeredAt: { type: Date },
+  answeredBy: { type: Schema.Types.ObjectId, ref: 'User' },
+  answer: { type: Schema.Types.ObjectId },
+  answeredCorrectly: { type: Boolean }
+});
+askedQuestionSchema.plugin(timestamps);
+&nbsp;
+// Instance Methods
+&nbsp;
+askedQuestionSchema.methods.isOpen = function() {
+  var answered = this.answer &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >this.answeredAt </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >this.answeredBy;</span>
+  return !answered &amp;&amp; this.isInTime();
+};
+&nbsp;
+askedQuestionSchema.methods.isInTime = function() {
+  var now = this.answeredAt || new Date();
+  return now.getTime() &lt;= this.deadlineAt.getTime();
+};
+&nbsp;
+// Game Schema
+var gameSchema = new Schema({
+  startedAt: { type: Date },
+  users: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  teams: [teamSchema],
+  previousQuestions: [askedQuestionSchema], // Note: The last question in this array is the current question
+  nextQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  finished: {type: Boolean, default:false}
+});
+gameSchema.plugin(timestamps);
+&nbsp;
+// Virtuals
+&nbsp;
+gameSchema.virtual('question').get(function() {
+  return last(this.previousQuestions);
+});
+&nbsp;
+// Instance Methods
+&nbsp;
+gameSchema.methods.initializeTeams = function(callback) {
+  if (this.teams.length !== 0) {
+    callback('Error: Teams already initialized');
+  } else {
+    this.teams.push({ name: 'Red Team', color: '#ff0000', users: [], score: 0 });
+    this.teams.push({ name: 'Blue Team', color: '#0000ff', users: [], score: 0 });
+    this.save(callback);
+  }
+};
+&nbsp;
+gameSchema.methods.userTeam = function(user) {
+  return findIndex(this.teams, function(team) {
+    return findIndex(team.users, user._id) != -1;
+  });
+};
+&nbsp;
+gameSchema.methods.addUserToTeam = function(user, teamIdx, callback) {
+  if (isFunction(teamIdx)) { callback = teamIdx; teamIdx = -1; }
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (this.userTeam(user) &gt;= 0) {
+<span class="cstat-no" title="statement not covered" >    callback('Error: This user is already in a team.');</span>
+<span class="cstat-no" title="statement not covered" >    return;</span>
+  } else if (teamIdx &lt; 0 || teamIdx &gt; this.teams.length - 1) {
+    var teams = sortBy(this.teams, function(team) { return team.users.length; });
+    teams[0].users.addToSet(user._id);
+  } else {
+    this.teams[teamIdx].users.addToSet(user._id);
+  }
+&nbsp;
+  if (findIndex(this.users, user._id) &lt; 0) {
+    this.users.addToSet(user._id);
+  }
+&nbsp;
+  this.save(callback);
+};
+&nbsp;
+gameSchema.methods.removeUserFromTeam = function(user, callback) {
+  var teamIdx = this.userTeam(user);
+  if (teamIdx &lt; 0) {
+    callback('Error: This user is not in a team.');
+  } else {
+    this.teams[teamIdx].users.pull(user._id);
+    this.save(callback);
+  }
+};
+&nbsp;
+gameSchema.methods.switchTeam = function(user, callback) {
+  var oldTeamIdx = this.userTeam(user);
+  var newTeamIdx = (oldTeamIdx + 1) % this.teams.length;
+  if (oldTeamIdx &lt; 0) {
+    callback('Error: This user is not in a team.');
+  } else {
+    this.teams[oldTeamIdx].users.pull(user._id);
+    this.teams[newTeamIdx].users.addToSet(user._id);
+    this.save(callback);
+  }
+};
+&nbsp;
+gameSchema.methods.start = function(callback) {
+  this.startedAt = new Date();
+  this.save(callback);
+};
+&nbsp;
+gameSchema.methods.askNextQuestion = function(callback) {
+  var lastAskedQuestion = last(this.previousQuestions);
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.startedAt) {
+<span class="cstat-no" title="statement not covered" >    callback('Error: The game should be started first.');</span>
+  } else if (lastAskedQuestion &amp;&amp; lastAskedQuestion.isOpen()) {
+    callback('Error: The last question should be answered first.');
+  } else {
+    if (this.nextQuestions.length &lt; 1) {
+      callback('Error: There is no next question.');
+    } else {
+      var now = new Date();
+&nbsp;
+      var nextTeam;
+      if (lastAskedQuestion) {
+        nextTeam = (lastAskedQuestion.team + 1) % this.teams.length;
+      } else {
+        nextTeam = 0;
+      }
+&nbsp;
+      var nextQuestion = {
+        question: this.nextQuestions.shift(),
+        team: nextTeam,
+        askedAt: now,
+        deadlineAt: new Date(now.getTime() + 10 * 1000)
+      };
+      this.previousQuestions.push(nextQuestion);
+      this.save(callback);
+    }
+  }
+};
+&nbsp;
+gameSchema.methods.answerQuestion = function(user, answerId, callback) {
+  var _this = this;
+  var answeredQuestion = this.question;
+&nbsp;
+  if (answeredQuestion.team !== this.userTeam(user)) {
+    callback('Error: Team ' + answeredQuestion.team + ' should answer this question.');
+  } else {
+    answeredQuestion.answer = answerId;
+    answeredQuestion.answeredBy = user._id;
+    answeredQuestion.answeredAt = new Date();
+&nbsp;
+    this.model('Question').findOne(answeredQuestion.question, function(err, result) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (err) { <span class="cstat-no" title="statement not covered" >return callback(err); </span>}
+      var correct = result.correctAnswer.id == answerId.toString(); //TODO: Fix this.
+      answeredQuestion.answeredCorrectly = correct;
+      if (correct &amp;&amp; answeredQuestion.isInTime()) {
+        _this.teams[answeredQuestion.team].score++;
+      }
+      _this.finished = _this.nextQuestions.length === 0;
+      _this.save(function(err, result) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (err) { <span class="cstat-no" title="statement not covered" >return callback(err); </span>}
+        callback(null, answeredQuestion);
+      });
+    });
+  }
+&nbsp;
+};
+&nbsp;
+gameSchema.methods.getFullJSON = function(callback) {
+  var _this = this;
+  this.populate('nextQuestions question previousQuestions teams users', function(err, result) {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (err) { <span class="cstat-no" title="statement not covered" >return callback(err); </span>}
+&nbsp;
+    var populateUser = function(cb) {
+      _this.model('User').populate(_this.teams, { path: 'users' }, cb);
+    };
+&nbsp;
+    var populateQuestion = function(cb) {
+      _this.model('Question').populate(_this.question, { path: 'question' }, cb);
+    };
+&nbsp;
+    var populatePreviousQuestions = function(cb) {
+      _this.model('Question').populate(_this.previousQuestions, { path: 'question' }, cb);
+    };
+&nbsp;
+    async.parallel([populateUser, populateQuestion, populatePreviousQuestions], function(err, results) {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (err) { <span class="cstat-no" title="statement not covered" >return callback(err); </span>}
+      callback(null, _this.toJSON({ virtuals: true }));
+    });
+&nbsp;
+  });
+};
+&nbsp;
+// Initialize the Model for global MongoDB
+var initialize = function(api) {
+  return api.mongo.connection.model('Game', gameSchema);
+};
+&nbsp;
+module.exports = {
+  name: 'Game',
+  teamSchema: teamSchema,
+  askedQuestionSchema: askedQuestionSchema,
+  gameSchema: gameSchema,
+  schema: gameSchema,
+  initialize: initialize
+};
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Apr 08 2015 11:52:58 GMT+0300 (EEST)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
